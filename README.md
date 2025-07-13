@@ -1,2 +1,3 @@
 # CJ's General Store
-Static website hosted on GitHub Pages.
+
+This is the full version for GitHub Pages with folders.
