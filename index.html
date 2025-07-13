@@ -1,11 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>CJ's General Store</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CJ's General Store</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #00f0ff;
+      font-family: 'Orbitron', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    img.logo {
+      max-width: 300px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    h1 {
+      color: #00f0ff;
+      font-size: 3rem;
+      text-shadow: 0 0 10px #00f0ff, 0 0 20px #ff00ff;
+      margin-top: 20px;
+      animation: fadeInText 2s ease-in-out 0.5s forwards;
+      opacity: 0;
+    }
+
+    h2 {
+      color: #ff00ff;
+      font-size: 2rem;
+      margin-top: 10px;
+      text-shadow: 0 0 10px #ff00ff;
+      animation: fadeInText 2s ease-in-out 1s forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeInText {
+      to { opacity: 1; }
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to CJ's General Store</h1>
-    <p>This is the styled version with full layout folders.</p>
+  <img src="assets/img/Logo.png" alt="CJ's General Store" class="logo" />
+  <h1>Welcome to CJ’s General Store</h1>
+  <h2>...and more</h2>
 </body>
 </html>

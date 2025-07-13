@@ -1,0 +1,1 @@
+console.log("CJ's General Store site loaded.");
