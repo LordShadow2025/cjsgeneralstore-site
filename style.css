@@ -1,25 +1,46 @@
 
-body {
-  background-color: black;
-  color: #00ffff;
-  font-family: 'Arial', sans-serif;
-  text-align: center;
-  padding: 40px;
+body.neon-theme {
+    background-color: black;
+    color: turquoise;
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
-.logo {
-  width: 300px;
-  margin-bottom: 20px;
+h1.neon-text {
+    font-size: 3em;
+    text-align: center;
+    color: cyan;
+    text-shadow: 0 0 5px turquoise, 0 0 10px purple, 0 0 20px hotpink;
 }
-.tipjar {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #ff00ff;
-  border: none;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1em;
+    padding: 1em;
 }
-.tipjar:hover {
-  background-color: #cc00cc;
+.grid-container img {
+    width: 100%;
+    border: 2px solid cyan;
+    box-shadow: 0 0 10px cyan;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+.grid-container img:hover {
+    transform: scale(1.05);
+}
+.neon-sign {
+    position: absolute;
+    font-size: 1.5em;
+    padding: 1em;
+    color: hotpink;
+    text-shadow: 0 0 5px hotpink, 0 0 15px purple;
+}
+.quote-left {
+    left: 10px;
+    top: 50%;
+}
+.quote-right {
+    right: 10px;
+    bottom: 20%;
 }
