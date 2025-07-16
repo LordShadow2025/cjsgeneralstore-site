@@ -3,65 +3,183 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="google-adsense-account" content="ca-pub-5761934203737590">
   <title>CJ's General Store</title>
-  <link rel="icon" type="image/png" href="Logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: black;
-      color: #0ff;
-      font-family: monospace;
-      text-align: center;
       margin: 0;
+      padding: 0;
+      background: black;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      overflow-x: hidden;
     }
     h1 {
-      font-size: 3em;
-      color: #0ff;
-      text-shadow: 0 0 5px #0ff, 0 0 10px #f0f, 0 0 20px #ff00ff;
+      text-align: center;
+      font-size: 2em;
       margin-top: 20px;
+      text-shadow: 0 0 5px #f0f, 0 0 10px #0ff, 0 0 15px #f0f;
+      animation: flicker 2s infinite alternate;
+    }
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+      }
+      20%, 22%, 24%, 55% {
+        opacity: 0.4;
+      }
     }
     .logo {
-      width: 200px;
-      margin-top: 10px;
+      display: block;
+      margin: 10px auto;
+      max-width: 160px;
     }
-    .section-grid {
+    .container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1rem;
-      margin-top: 2rem;
+      margin: 30px auto;
+      gap: 20px;
+      max-width: 1000px;
     }
-    .section-tile {
-      width: 200px;
-      height: 200px;
-      border: 3px solid #0ff;
+    .card {
+      width: 180px;
+      height: 180px;
+      border: 3px solid #00ffff;
       border-radius: 10px;
       overflow: hidden;
+      text-align: center;
+      background: #111;
+      transition: 0.4s;
+      box-shadow: 0 0 10px #00ffff;
     }
-    .section-tile img {
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #ff00ff;
+    }
+    .card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    audio {
-      margin-top: 30px;
+    .music-toggle {
+      display: flex;
+      justify-content: center;
+      margin: 20px;
+    }
+    button {
+      font-family: 'Press Start 2P', cursive;
+      background: #111;
+      border: 2px solid #f0f;
+      color: #f0f;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 0 5px #f0f;
+    }
+    .slogan {
+      text-align: center;
+      font-size: 0.9em;
+      color: #ff00ff;
+      margin-top: 20px;
+    }
+    .about-btn {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5em;
+      cursor: pointer;
+      color: #0ff;
+      background: none;
+      border: none;
+      text-shadow: 0 0 5px #0ff;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -20%);
+      background: #000;
+      color: #fff;
+      padding: 20px;
+      border: 2px solid #0ff;
+      box-shadow: 0 0 15px #0ff;
+      z-index: 1000;
+    }
+    .bg-stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/stardust.png');
+      opacity: 0.05;
+      z-index: -1;
+      animation: moveStars 120s linear infinite;
+    }
+    @keyframes moveStars {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
     }
   </style>
 </head>
 <body>
-  <img src="Logo.png" alt="CJ's General Store" class="logo" />
+  <img class="logo" src="Logo.png" alt="CJ's General Store Logo">
   <h1>Welcome to CJ's General Store</h1>
-  <div class="section-grid">
-    <a href="soundroom.html" class="section-tile"><img src="CJsSoundRoom.png" alt="Sound Room" /></a>
-    <a href="clubhouse.html" class="section-tile"><img src="CJsClubhouse.png" alt="Clubhouse" /></a>
-    <a href="library.html" class="section-tile"><img src="CJsLibrary.png" alt="Library" /></a>
-    <a href="office.html" class="section-tile"><img src="CJsOffice.png" alt="Office" /></a>
-    <a href="showcase.html" class="section-tile"><img src="CJsShowcase.png" alt="Showcase" /></a>
-    <a href="shelves.html" class="section-tile"><img src="CJ'sShelves.png" alt="Shelves" /></a>
+
+  <button class="about-btn" onclick="toggleModal()">?</button>
+  <div class="modal" id="modal">
+    <p><strong>CJ’s General Store</strong> is a creative haven filled with nostalgic music, poetry, art, and more. Explore each section and support indie retro vibes!</p>
   </div>
-  <audio controls>
-    <source src="sample.mp3" type="audio/mp3" />
-    Your browser does not support the audio element.
-  </audio>
+
+  <div class="container">
+    <a class="card" href="soundroom.html"><img src="CJsSoundRoom.png" alt="Sound Room"></a>
+    <a class="card" href="clubhouse.html"><img src="CJsClubhouse.png" alt="Clubhouse"></a>
+    <a class="card" href="library.html"><img src="CJsLibrary.png" alt="Library"></a>
+    <a class="card" href="office.html"><img src="CJsOffice.png" alt="Office"></a>
+    <a class="card" href="showcase.html"><img src="CJsShowcase.png" alt="Showcase"></a>
+    <a class="card" href="shelves.html"><img src="CJ'sShelves.png" alt="Shelves"></a>
+  </div>
+
+  <div class="music-toggle">
+    <button onclick="toggleAudio()">Toggle Music</button>
+    <audio id="bgMusic" loop>
+      <source src="music.mp3" type="audio/mp3">
+    </audio>
+  </div>
+
+  <div class="slogan" id="slogan">Be kind, rewind</div>
+  <div class="bg-stars"></div>
+
+  <script>
+    const quotes = [
+      "Be kind, rewind",
+      "Where analog dreams go digital",
+      "Open late, always glowing",
+      "Home of the neon night owls",
+      "Grab a tape, stay awhile"
+    ];
+    function rotateQuote() {
+      const quoteEl = document.getElementById("slogan");
+      quoteEl.textContent = quotes[Math.floor(Math.random() * quotes.length)];
+    }
+    setInterval(rotateQuote, 4000);
+
+    function toggleModal() {
+      const modal = document.getElementById("modal");
+      modal.style.display = modal.style.display === "block" ? "none" : "block";
+    }
+
+    const bgMusic = document.getElementById("bgMusic");
+    function toggleAudio() {
+      if (bgMusic.paused) {
+        bgMusic.play();
+      } else {
+        bgMusic.pause();
+      }
+    }
+  </script>
 </body>
 </html>
