@@ -1,1 +1,73 @@
-/* Placeholder style file */
+body {
+  background: url('Storefront.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.main-logo {
+  width: 120px;
+  margin-top: 20px;
+}
+
+.welcome-text {
+  font-size: 2.5em;
+  color: cyan;
+  text-shadow: 0 0 5px cyan, 0 0 15px magenta, 0 0 20px pink;
+  margin-top: 10px;
+}
+
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 30px 0;
+  gap: 20px;
+}
+
+.card {
+  width: 200px;
+  height: 250px;
+  border: 3px solid cyan;
+  border-radius: 10px;
+  box-shadow: 0 0 10px cyan;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px magenta;
+}
+
+.quote-left, .quote-right {
+  position: absolute;
+  font-size: 1.2em;
+  color: hotpink;
+  text-shadow: 0 0 5px hotpink;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.quote-left {
+  left: 30px;
+  bottom: 20px;
+}
+
+.quote-right {
+  right: 30px;
+  bottom: 20px;
+}
+
+.audio-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: cyan;
+  text-shadow: 0 0 10px cyan;
+}
