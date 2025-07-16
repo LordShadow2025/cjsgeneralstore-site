@@ -1,37 +1,86 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="google-adsense-account" content="ca-pub-5761934203737590">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CJ's General Store and More</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CJ's General Store</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="header">
-        <img src="Logo.png" alt="CJ's Logo" class="logo">
-        <h1>Welcome to CJ's General Store</h1>
+  <header>
+    <img src="Logo.png" alt="CJ's General Store Logo" class="main-logo" />
+    <h1 class="neon-title">Welcome to CJ's General Store</h1>
+    <button id="audioToggle" class="audio-btn">🔊</button>
+  </header>
+
+  <main>
+    <div class="neon-quote left">“Be kind, rewind”</div>
+    <div class="card-grid">
+      <a href="soundroom.html"><img src="CJsSoundRoom.png" class="nav-card" alt="CJ's Sound Room" /></a>
+      <a href="treehouse.html"><img src="CJsClubhouse.png" class="nav-card" alt="CJ's Clubhouse" /></a>
+      <a href="bookshelves.html"><img src="CJsLibrary.png" class="nav-card" alt="CJ's Library" /></a>
+      <a href="office.html"><img src="CJsOffice.png" class="nav-card" alt="CJ's Office" /></a>
+      <a href="showcase.html"><img src="CJsShowcase.png" class="nav-card" alt="CJ's Showcase" /></a>
+      <a href="shelves.html"><img src="CJ'sShelves.png" class="nav-card" alt="CJ's Store Shelves" /></a>
     </div>
-    <div class="grid">
-        <a href="soundroom.html"><img src="CJsSoundRoom.png" alt="CJ's Sound Room"></a>
-        <a href="clubhouse.html"><img src="CJsClubhouse.png" alt="CJ's Clubhouse"></a>
-        <a href="library.html"><img src="CJsLibrary.png" alt="CJ's Library"></a>
-        <a href="office.html"><img src="CJsOffice.png" alt="CJ's Office"></a>
-        <a href="shelves.html"><img src="CJ'sShelves.png" alt="CJ's Shelves"></a>
-        <a href="showcase.html"><img src="CJsShowcase.png" alt="CJ's Showcase"></a>
-    </div>
-    <div class="quotes">
-        <div class="quote left">“Be kind, rewind”</div>
-        <div class="quote right">“Insert coin to begin”</div>
-    </div>
-    <audio id="bg-music" src="your-music.mp3" autoplay loop></audio>
-    <button onclick="toggleMusic()">🔊</button>
-    <script>
-        const music = document.getElementById('bg-music');
-        function toggleMusic() {
-            music.muted = !music.muted;
-        }
-    </script>
+    <div class="neon-quote right">“Insert coin to begin”</div>
+  </main>
+
+  <style>
+    body {
+      background-image: url('Storefront.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      font-family: 'Courier New', monospace;
+    }
+    .main-logo {
+      display: block;
+      margin: 0 auto;
+      width: 200px;
+    }
+    .neon-title {
+      text-align: center;
+      font-size: 2em;
+      color: cyan;
+      text-shadow: 0 0 5px cyan, 0 0 10px purple;
+    }
+    .card-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1em;
+      margin-top: 20px;
+    }
+    .nav-card {
+      width: 200px;
+      border: 3px solid cyan;
+      border-radius: 10px;
+    }
+    .neon-quote {
+      position: absolute;
+      top: 60%;
+      font-size: 1.2em;
+      text-shadow: 0 0 5px magenta, 0 0 10px violet;
+    }
+    .neon-quote.left {
+      left: 2%;
+    }
+    .neon-quote.right {
+      right: 2%;
+    }
+    .audio-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5em;
+      background: transparent;
+      border: none;
+      color: white;
+      text-shadow: 0 0 5px cyan;
+      cursor: pointer;
+    }
+  </style>
 </body>
 </html>
