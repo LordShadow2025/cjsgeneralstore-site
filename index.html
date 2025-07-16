@@ -1,1 +1,37 @@
-<!-- Corrected index.html placeholder -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google-adsense-account" content="ca-pub-5761934203737590">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CJ's General Store and More</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <img src="Logo.png" alt="CJ's Logo" class="logo">
+        <h1>Welcome to CJ's General Store</h1>
+    </div>
+    <div class="grid">
+        <a href="soundroom.html"><img src="CJsSoundRoom.png" alt="CJ's Sound Room"></a>
+        <a href="clubhouse.html"><img src="CJsClubhouse.png" alt="CJ's Clubhouse"></a>
+        <a href="library.html"><img src="CJsLibrary.png" alt="CJ's Library"></a>
+        <a href="office.html"><img src="CJsOffice.png" alt="CJ's Office"></a>
+        <a href="shelves.html"><img src="CJ'sShelves.png" alt="CJ's Shelves"></a>
+        <a href="showcase.html"><img src="CJsShowcase.png" alt="CJ's Showcase"></a>
+    </div>
+    <div class="quotes">
+        <div class="quote left">“Be kind, rewind”</div>
+        <div class="quote right">“Insert coin to begin”</div>
+    </div>
+    <audio id="bg-music" src="your-music.mp3" autoplay loop></audio>
+    <button onclick="toggleMusic()">🔊</button>
+    <script>
+        const music = document.getElementById('bg-music');
+        function toggleMusic() {
+            music.muted = !music.muted;
+        }
+    </script>
+</body>
+</html>
