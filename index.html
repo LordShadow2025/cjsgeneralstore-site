@@ -1,43 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CJ's General Store</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="Logo.png" type="image/png" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CJ's General Store</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="logo-container">
-    <img src="Logo.png" alt="CJ's General Store Logo" class="main-logo" />
-  </div>
-  <h1 class="welcome-text">Welcome to CJ’s General Store</h1>
-  <div class="card-grid">
-    <a href="soundroom.html"><img src="CJsSoundRoom.png" alt="CJs Sound Room" class="card" /></a>
-    <a href="clubhouse.html"><img src="CJsClubhouse.png" alt="CJs Clubhouse" class="card" /></a>
-    <a href="library.html"><img src="CJsLibrary.png" alt="CJs Library" class="card" /></a>
-    <a href="office.html"><img src="CJsOffice.png" alt="CJs Office" class="card" /></a>
-    <a href="showcase.html"><img src="CJsShowcase.png" alt="CJs Showcase" class="card" /></a>
-    <a href="shelves.html"><img src="CJsShelves.png" alt="CJs Store Shelves" class="card" /></a>
-  </div>
-  <div class="quote-left">“Be kind, rewind”</div>
-  <div class="quote-right">“Insert coin to begin”</div>
-  <audio id="bgAudio" autoplay loop>
-    <source src="ambient.mp3" type="audio/mpeg" />
-  </audio>
-  <button id="audioToggle" class="audio-button" onclick="toggleAudio()">🔊</button>
-  <script>
-    function toggleAudio() {
-      const audio = document.getElementById("bgAudio");
-      const button = document.getElementById("audioToggle");
-      if (audio.paused) {
-        audio.play();
-        button.textContent = "🔊";
-      } else {
-        audio.pause();
-        button.textContent = "🔈";
-      }
-    }
-  </script>
+    <div class="logo">
+        <img src="img/Logo.png" alt="CJ's Logo">
+    </div>
+    <h1 class="neon-title">Welcome to CJ's General Store</h1>
+    <div class="card-container">
+        <a href="#"><img src="img/CJsSoundRoom.png" alt="CJ's Sound Room"></a>
+        <a href="#"><img src="img/CJsClubhouse.png" alt="CJ's Clubhouse"></a>
+        <a href="#"><img src="img/CJsLibrary.png" alt="CJ's Library"></a>
+        <a href="#"><img src="img/CJsOffice.png" alt="CJ's Office"></a>
+        <a href="#"><img src="img/CJsShowcase.png" alt="CJ's Showcase"></a>
+        <a href="#"><img src="img/CJsShelves.png" alt="CJ's Store Shelves"></a>
+    </div>
+    <div class="quote-left">“Be kind, rewind”</div>
+    <div class="quote-right">“Insert coin to begin”</div>
+    <button class="audio-toggle" onclick="toggleAudio()">🔊</button>
+    <audio id="bg-music" autoplay loop>
+        <source src="sound/bg.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        function toggleAudio() {
+            const audio = document.getElementById('bg-music');
+            audio.muted = !audio.muted;
+        }
+    </script>
 </body>
 </html>
