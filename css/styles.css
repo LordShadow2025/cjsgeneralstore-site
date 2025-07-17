@@ -88,3 +88,29 @@ body {
   width: 100px;
   z-index: 10;
 }
+
+#volume-slider {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  width: 100px;
+  z-index: 10;
+  accent-color: #00ffff; /* For modern browsers */
+  filter: drop-shadow(0 0 5px #00ffff)
+          drop-shadow(0 0 10px #00ffff)
+          drop-shadow(0 0 20px #ff00ff);
+  background-color: transparent;
+  border-radius: 8px;
+}
+
+#music-toggle {
+  text-shadow:
+    0 0 5px #0ff,
+    0 0 10px #0ff,
+    0 0 20px #ff00ff;
+  background-color: #000;
+  border: 1px solid #00ffff;
+  box-shadow:
+    0 0 5px #00ffff,
+    0 0 10px #ff00ff;
+}
