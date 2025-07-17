@@ -16,14 +16,13 @@ body {
 
 .angled-banner-brush {
   position: absolute;
-  top: 20px;
-  right: -40px;
+  top: 40px;
+  right: -20px;
   transform: rotate(-12deg);
   font-family: 'Permanent Marker', cursive;
   font-size: 1.5rem;
   font-weight: normal;
   color: #00ffff;
-  background: rgba(0,0,0,0.3);
   padding: 10px 22px;
   border-radius: 6px;
   text-shadow:
@@ -70,6 +69,7 @@ body {
   border-radius: 8px;
   box-shadow: 0 0 6px #00f;
   transition: all 0.3s ease-in-out;
+  object-position: center center;
 }
 
 .section img:hover {
