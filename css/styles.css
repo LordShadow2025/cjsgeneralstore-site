@@ -16,8 +16,8 @@ body {
 
 .angled-banner-brush {
   position: absolute;
-  top: 40px;
-  right: -20px;
+  top: 60px;
+  right: -10px;
   transform: rotate(-12deg);
   font-family: 'Permanent Marker', cursive;
   font-size: 1.5rem;
@@ -31,6 +31,7 @@ body {
     0 0 15px #ff00ff,
     0 0 25px #ff00ff;
   z-index: 10;
+  background: transparent !important;
 }
 
 #music-toggle {
@@ -65,11 +66,11 @@ body {
   width: 135px;
   height: 85px;
   object-fit: cover;
+  object-position: center center;
   border: 2px solid #00f;
   border-radius: 8px;
   box-shadow: 0 0 6px #00f;
-  transition: all 0.3s ease-in-out;
-  object-position: center center;
+  transition: all 0.3s ease-in-out; 
 }
 
 .section img:hover {
