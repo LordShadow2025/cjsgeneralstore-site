@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: url('../assets/images/CJsSoundRoom.png') no-repeat center center fixed;
+  background: url('../assets/images/SoundRoomBackground.png') no-repeat center center fixed;
   background-size: cover;
   color: white;
   overflow-x: hidden;
@@ -10,26 +10,24 @@ body {
 .wrapper {
   text-align: center;
   padding: 40px 20px;
+  position: relative;
 }
 
 .neon-title {
-  font-size: 2.5rem;
+  position: absolute;
+  top: 40px;
+  left: 30px;
+  font-size: 1.2rem;
   font-family: 'Permanent Marker', cursive;
   color: #00ffff;
+  padding: 6px 14px;
+  border-radius: 8px;
   text-shadow:
-    0 0 5px #0ff,
-    0 0 10px #0ff,
-    0 0 20px #ff00ff,
-    0 0 40px #ff00ff;
-  margin-bottom: 20px;
-}
-
-.soundroom-image {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 30px;
-  border-radius: 12px;
-  box-shadow: 0 0 10px #00ffff;
+    0 0 4px #00ffff,
+    0 0 8px #00ffff,
+    0 0 16px #ff00ff;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 10;
 }
 
 .sub-heading {
