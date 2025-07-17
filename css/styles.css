@@ -58,6 +58,8 @@ body {
   flex-wrap: nowrap;
   gap: 16px;
   z-index: 9;
+  max-width: 880px;
+  width: 100%;
 }
 
 .section img {
