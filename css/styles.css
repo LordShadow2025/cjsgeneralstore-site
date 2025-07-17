@@ -95,12 +95,10 @@ body {
   left: 20px;
   width: 100px;
   z-index: 10;
-  accent-color: #00ffff; /* For modern browsers */
-  filter: drop-shadow(0 0 5px #00ffff)
-          drop-shadow(0 0 10px #00ffff)
-          drop-shadow(0 0 20px #ff00ff);
+  accent-color: #00ffff;
   background-color: transparent;
   border-radius: 8px;
+  animation: neon-pulse 3s infinite;
 }
 
 #music-toggle {
@@ -113,4 +111,18 @@ body {
   box-shadow:
     0 0 5px #00ffff,
     0 0 10px #ff00ff;
+  animation: neon-pulse 3s infinite;
+}
+
+@keyframes neon-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px #00ffff)
+            drop-shadow(0 0 10px #00ffff)
+            drop-shadow(0 0 20px #ff00ff);
+  }
+  50% {
+    filter: drop-shadow(0 0 8px #00ffff)
+            drop-shadow(0 0 15px #00ffff)
+            drop-shadow(0 0 30px #ff00ff);
+  }
 }
