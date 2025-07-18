@@ -1,0 +1,66 @@
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  background: url('../images/SoundRoomBackground.png') no-repeat center center fixed;
+  background-size: cover;
+  overflow-x: hidden;
+  position: relative;
+  height: 100vh;
+}
+
+#soundroom-title {
+  position: absolute;
+  top: 7%;
+  left: 74%;
+  transform: translate(-50%, -50%);
+  font-family: 'Pacifico', cursive;
+  font-size: 2.6rem;
+  color: #ff4de7;
+  text-shadow:
+    0 0 6px #00f7ff,
+    0 0 12px #00f7ff,
+    0 0 20px #ff4de7,
+    0 0 28px #ff4de7;
+  z-index: 10;
+}
+
+.bandcamp-widget {
+  position: absolute;
+  top: 160px;
+  left: 48%;
+  transform: translateX(-50%);
+  width: 350px;
+  z-index: 5;
+}
+
+.downloads-box {
+  position: absolute;
+  top: 280px;
+  right: 60px;
+  width: 280px;
+  padding: 16px;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 12px #ff00ff;
+}
+
+.exclusives-box {
+  position: absolute;
+  bottom: 90px;
+  left: 100px;
+  width: 280px;
+  padding: 16px;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 12px #00ffff;
+}
+
+h2 {
+  color: #ff00ff;
+  font-family: 'Segoe UI', sans-serif;
+  text-shadow: 0 0 6px #00ffff;
+}
