@@ -5,24 +5,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CJ's Sound Room</title>
-  <link rel="stylesheet" href="assets/css/soundroom.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/soundroom.css">
 </head>
 <body>
-  <h1 id="soundroom-title">CJ’s Sound Room</h1>
+  <div class="background-overlay"></div>
 
-  <div class="bandcamp-widget">
-    <iframe style="border: 0; width: 100%; height: 42px;" src="https://bandcamp.com/EmbeddedPlayer/track=2453122849/size=small/bgcol=ffffff/linkcol=0687f5/transparent=true/" seamless><a href="https://thestorekeeper.bandcamp.com/track/streetlight-memories">Streetlight Memories by C.B. Barkley</a></iframe>
+  <h1 class="neon-slogan" id="section-title">CJ's Sound Room</h1>
+
+  <div class="bandcamp-card">
+    <iframe style="border: 0; width: 100%; height: 42px;" src="https://bandcamp.com/EmbeddedPlayer/track=2453122849/size=small/bgcol=ffffff/linkcol=0687f5/transparent=true/" seamless>
+      <a href="https://thestorekeeper.bandcamp.com/track/streetlight-memories">Streetlight Memories by C.B. Barkley</a>
+    </iframe>
     <iframe scrolling="no" style="border: 0;width: 100%;height: 50px;" src="https://bandcamp.com/band_follow_button_deluxe/2905323804"></iframe>
   </div>
 
-  <div class="downloads-box">
-    <h2>Downloadable Prints</h2>
+  <div class="card downloads-card">
+    <h2 class="card-title">Downloadable Prints</h2>
     <p>(Coming soon — Lyric sheets, cover art, exclusive releases)</p>
   </div>
 
-  <div class="exclusives-box">
-    <h2>Exclusives</h2>
+  <div class="card exclusives-card">
+    <h2 class="card-title">Exclusives</h2>
     <p>New drops, site-only singles, and more.</p>
   </div>
 </body>
