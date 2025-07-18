@@ -1,66 +1,58 @@
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: white;
-  overflow-x: hidden;
-}
-.bg {
+  font-family: 'Arial', sans-serif;
   background-image: url('../images/SoundRoomBackground.png');
   background-size: cover;
   background-position: center;
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
+  color: white;
 }
+
 .title {
   position: absolute;
-  top: 30px;
-  right: 70px;
+  top: 40px;
+  right: 100px;
+  font-family: 'Permanent Marker', cursive;
   font-size: 2.5em;
-  color: #ff4ff9;
-  text-shadow: 0 0 5px #0ff, 0 0 15px #0ff, 0 0 20px #ff4ff9;
+  color: #ff00cc;
+  text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
 }
-.card {
-  backdrop-filter: blur(10px);
-  background: rgba(0, 0, 0, 0.4);
-  border: 2px solid #0ff;
-  border-radius: 12px;
-  box-shadow: 0 0 20px #0ff;
-  padding: 15px;
+
+.bandcamp-card,
+.youtube-card,
+.prints-card,
+.exclusives-card {
   position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #00ffff;
+  border-radius: 12px;
+  padding: 20px;
   width: 300px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px #00ffff;
 }
+
 .bandcamp-card {
   top: 120px;
-  left: 80px;
+  left: 70px;
 }
+
 .youtube-card {
-  top: 230px;
-  left: 400px;
-  width: 360px;
-  text-align: center;
+  top: 220px;
+  left: 420px;
 }
-.youtube-card a {
-  color: #ff4ff9;
-  text-decoration: none;
-  text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
-}
-.youtube-card p {
-  font-size: 0.9em;
-  margin-top: 5px;
-}
-.exclusives-card {
-  bottom: 80px;
-  left: 80px;
-}
-.downloads-card {
-  top: 180px;
+
+.prints-card {
+  top: 120px;
   right: 60px;
 }
+
+.exclusives-card {
+  bottom: 60px;
+  left: 60px;
+}
+
 h2 {
-  margin-top: 0;
-  color: #ff4ff9;
-  text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+  color: #ff00cc;
+  text-shadow: 0 0 5px #0ff;
 }
