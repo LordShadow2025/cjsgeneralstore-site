@@ -1,73 +1,66 @@
 
 body {
   margin: 0;
-  font-family: 'Verdana', sans-serif;
-  color: #fff;
-  background: url('../images/SoundRoomBackground.png') no-repeat center center fixed;
-  background-size: cover;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
   overflow-x: hidden;
 }
-
-.background-overlay {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.25);
+.bg {
+  background-image: url('../images/SoundRoomBackground.png');
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
   z-index: -1;
 }
-
-#section-title.neon-slogan {
-  font-family: 'Brush Script MT', cursive;
-  font-size: 2.5rem;
+.title {
   position: absolute;
-  top: 35px;
-  right: 125px;
-  color: #ff00cc;
-  text-shadow: 0 0 5px #ff00cc, 0 0 10px #9900ff, 0 0 20px #00ffff;
-  z-index: 10;
+  top: 30px;
+  right: 70px;
+  font-size: 2.5em;
+  color: #ff4ff9;
+  text-shadow: 0 0 5px #0ff, 0 0 15px #0ff, 0 0 20px #ff4ff9;
 }
-
-/* Shared card styles */
-.card, .bandcamp-card, .youtube-card {
-  background: rgba(0, 0, 0, 0.35);
+.card {
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px solid #0ff;
   border-radius: 12px;
-  padding: 20px;
-  color: #fff;
-  box-shadow: 0 0 10px #0ff;
+  box-shadow: 0 0 20px #0ff;
+  padding: 15px;
   position: absolute;
-  width: 320px;
-  max-width: 90%;
+  width: 300px;
 }
-
-.card-title {
-  color: #ff00cc;
-  text-shadow: 0 0 4px #ff00cc, 0 0 8px #0ff;
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-}
-
-/* Positions */
 .bandcamp-card {
-  top: 190px;
+  top: 120px;
   left: 80px;
 }
-
 .youtube-card {
-  top: 190px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 420px;
-  max-width: 95%;
+  top: 230px;
+  left: 400px;
+  width: 360px;
+  text-align: center;
 }
-
-.downloads-card {
-  top: 200px;
-  right: 80px;
+.youtube-card a {
+  color: #ff4ff9;
+  text-decoration: none;
+  text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
 }
-
+.youtube-card p {
+  font-size: 0.9em;
+  margin-top: 5px;
+}
 .exclusives-card {
-  bottom: 100px;
-  left: 90px;
+  bottom: 80px;
+  left: 80px;
 }
-
-<link rel="stylesheet" href="assets/css/youtube_card_styles.css">
+.downloads-card {
+  top: 180px;
+  right: 60px;
+}
+h2 {
+  margin-top: 0;
+  color: #ff4ff9;
+  text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+}
