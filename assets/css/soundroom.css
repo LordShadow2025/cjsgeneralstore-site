@@ -1,58 +1,45 @@
-
 body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background-image: url('../images/SoundRoomBackground.png');
-  background-size: cover;
-  background-position: center;
-  color: white;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    background: url('../images/SoundRoomBackground.png') no-repeat center center fixed;
+    background-size: cover;
+    overflow-x: hidden;
 }
-
-.title {
-  position: absolute;
-  top: 40px;
-  right: 100px;
-  font-family: 'Permanent Marker', cursive;
-  font-size: 2.5em;
-  color: #ff00cc;
-  text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+.neon-header {
+    position: absolute;
+    top: 50px;
+    right: 80px;
+    font-size: 2.5em;
+    color: #ff00ff;
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #00ffff;
 }
-
-.bandcamp-card,
-.youtube-card,
-.prints-card,
-.exclusives-card {
-  position: absolute;
-  background: rgba(0, 0, 0, 0.5);
-  border: 2px solid #00ffff;
-  border-radius: 12px;
-  padding: 20px;
-  width: 300px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 20px #00ffff;
+.frosted-glass {
+    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #00ffff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #00ffff;
+    padding: 15px;
+    width: 300px;
 }
-
-.bandcamp-card {
-  top: 120px;
-  left: 70px;
+.bandcamp-box {
+    position: absolute;
+    top: 150px;
+    left: 50px;
 }
-
 .youtube-card {
-  top: 220px;
-  left: 420px;
+    position: absolute;
+    top: 250px;
+    left: 400px;
 }
-
-.prints-card {
-  top: 120px;
-  right: 60px;
+.downloadable-prints {
+    position: absolute;
+    top: 100px;
+    right: 50px;
 }
-
-.exclusives-card {
-  bottom: 60px;
-  left: 60px;
-}
-
-h2 {
-  color: #ff00cc;
-  text-shadow: 0 0 5px #0ff;
+.exclusives-box {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
 }
