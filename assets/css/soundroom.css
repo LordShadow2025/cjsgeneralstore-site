@@ -3,10 +3,8 @@ body {
   margin: 0;
   font-family: 'Verdana', sans-serif;
   color: #fff;
-  background-image: url('../images/SoundRoomBackground.png');
+  background: url('../images/SoundRoomBackground.png') no-repeat center center fixed;
   background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
   overflow-x: hidden;
 }
 
@@ -18,7 +16,6 @@ body {
   z-index: -1;
 }
 
-/* Neon header text over studio door */
 #section-title.neon-slogan {
   font-family: 'Brush Script MT', cursive;
   font-size: 2.5rem;
@@ -30,8 +27,8 @@ body {
   z-index: 10;
 }
 
-/* Card base */
-.card, .bandcamp-card {
+/* Shared card styles */
+.card, .bandcamp-card, .youtube-card {
   background: rgba(0, 0, 0, 0.35);
   border-radius: 12px;
   padding: 20px;
@@ -42,7 +39,6 @@ body {
   max-width: 90%;
 }
 
-/* Titles */
 .card-title {
   color: #ff00cc;
   text-shadow: 0 0 4px #ff00cc, 0 0 8px #0ff;
@@ -50,19 +46,25 @@ body {
   margin-bottom: 10px;
 }
 
-/* Position: Bandcamp box (under “Now Spinning”) */
+/* Positions */
 .bandcamp-card {
-  top: 135px;
-  left: 380px;
+  top: 190px;
+  left: 80px;
 }
 
-/* Position: Downloads (on shelf wall) */
+.youtube-card {
+  top: 190px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 420px;
+  max-width: 95%;
+}
+
 .downloads-card {
   top: 200px;
   right: 80px;
 }
 
-/* Position: Exclusives (left bottom over LP bin) */
 .exclusives-card {
   bottom: 100px;
   left: 90px;
