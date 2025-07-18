@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -7,61 +8,91 @@ body {
   overflow-x: hidden;
 }
 
-.wrapper {
-  text-align: center;
-  position: relative;
-  height: 100vh;
-}
-
-.neon-door-sign {
+.section-title {
   position: absolute;
-  top: 25px;
-  left: 68%;
-  transform: translateX(-50%);
+  top: 40px;
+  right: 180px;
   font-family: 'Permanent Marker', cursive;
-  font-size: 1.7rem;
+  font-size: 2.2rem;
   color: #00ffff;
   text-shadow:
-    0 0 4px #00ffff,
-    0 0 8px #00ffff,
-    0 0 16px #ff00ff,
-    0 0 28px #ff00ff;
+    0 0 5px #0ff,
+    0 0 10px #0ff,
+    0 0 20px #ff00ff,
+    0 0 40px #ff00ff;
+  animation: pulseNeon 4s ease-in-out infinite;
   z-index: 10;
-  background: none;
 }
 
-.title-glow {
+.soundroom-label {
   color: #ff00ff;
+  margin-left: 6px;
   text-shadow:
-    0 0 4px #ff00ff,
-    0 0 10px #00ffff,
-    0 0 20px #00ffff;
+    0 0 5px #f0f,
+    0 0 10px #f0f,
+    0 0 20px #0ff;
 }
 
 .bandcamp-player {
   position: absolute;
-  top: 140px;
-  left: 28%;
+  top: 165px;
+  left: 47%;
   transform: translateX(-50%);
-  width: 280px;
-  z-index: 8;
+  width: 400px;
+  z-index: 5;
 }
 
-.downloads {
+.downloads-section {
   position: absolute;
-  top: 360px;
-  right: 6%;
-  width: 300px;
-  color: #fff;
-  font-size: 0.95rem;
+  top: 280px;
+  right: 90px;
+  width: 280px;
   text-align: left;
+  font-size: 0.95rem;
+}
+
+.exclusive-section {
+  position: absolute;
+  bottom: 110px;
+  left: 160px;
+  width: 300px;
+  padding: 15px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 12px #0ff;
+  text-align: left;
+  font-size: 0.95rem;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.exclusive-section:hover {
+  box-shadow:
+    0 0 15px #0ff,
+    0 0 25px #f0f;
 }
 
 .sub-heading {
-  font-size: 1.2rem;
+  font-family: 'Monoton', cursive;
+  font-size: 1.1rem;
   color: #ff00ff;
-  margin-bottom: 10px;
   text-shadow:
     0 0 4px #ff00ff,
-    0 0 8px #00ffff;
+    0 0 10px #00ffff;
+}
+
+/* Neon pulse animation */
+@keyframes pulseNeon {
+  0%, 100% {
+    text-shadow:
+      0 0 5px #0ff,
+      0 0 10px #0ff,
+      0 0 20px #ff00ff,
+      0 0 40px #ff00ff;
+  }
+  50% {
+    text-shadow:
+      0 0 10px #00f,
+      0 0 20px #00f,
+      0 0 40px #f0f;
+  }
 }
