@@ -1,66 +1,69 @@
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  color: white;
-  background: url('../images/SoundRoomBackground.png') no-repeat center center fixed;
+  font-family: 'Verdana', sans-serif;
+  color: #fff;
+  background-image: url('../img/SoundRoomBackground.png');
   background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   overflow-x: hidden;
-  position: relative;
-  height: 100vh;
 }
 
-#soundroom-title {
+.background-overlay {
   position: absolute;
-  top: 7%;
-  left: 74%;
-  transform: translate(-50%, -50%);
-  font-family: 'Pacifico', cursive;
-  font-size: 2.6rem;
-  color: #ff4de7;
-  text-shadow:
-    0 0 6px #00f7ff,
-    0 0 12px #00f7ff,
-    0 0 20px #ff4de7,
-    0 0 28px #ff4de7;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.25);
+  z-index: -1;
+}
+
+/* Neon header text over studio door */
+#section-title.neon-slogan {
+  font-family: 'Brush Script MT', cursive;
+  font-size: 2.5rem;
+  position: absolute;
+  top: 35px;
+  right: 125px;
+  color: #ff00cc;
+  text-shadow: 0 0 5px #ff00cc, 0 0 10px #9900ff, 0 0 20px #00ffff;
   z-index: 10;
 }
 
-.bandcamp-widget {
+/* Card base */
+.card, .bandcamp-card {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 12px;
+  padding: 20px;
+  color: #fff;
+  box-shadow: 0 0 10px #0ff;
   position: absolute;
-  top: 160px;
-  left: 48%;
-  transform: translateX(-50%);
-  width: 350px;
-  z-index: 5;
+  width: 320px;
+  max-width: 90%;
 }
 
-.downloads-box {
-  position: absolute;
-  top: 280px;
-  right: 60px;
-  width: 280px;
-  padding: 16px;
-  border-radius: 10px;
-  backdrop-filter: blur(6px);
-  background: rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 12px #ff00ff;
+/* Titles */
+.card-title {
+  color: #ff00cc;
+  text-shadow: 0 0 4px #ff00cc, 0 0 8px #0ff;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
 }
 
-.exclusives-box {
-  position: absolute;
-  bottom: 90px;
-  left: 100px;
-  width: 280px;
-  padding: 16px;
-  border-radius: 10px;
-  backdrop-filter: blur(6px);
-  background: rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 12px #00ffff;
+/* Position: Bandcamp box (under “Now Spinning”) */
+.bandcamp-card {
+  top: 135px;
+  left: 380px;
 }
 
-h2 {
-  color: #ff00ff;
-  font-family: 'Segoe UI', sans-serif;
-  text-shadow: 0 0 6px #00ffff;
+/* Position: Downloads (on shelf wall) */
+.downloads-card {
+  top: 200px;
+  right: 80px;
+}
+
+/* Position: Exclusives (left bottom over LP bin) */
+.exclusives-card {
+  bottom: 100px;
+  left: 90px;
 }
