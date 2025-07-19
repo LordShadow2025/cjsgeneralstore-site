@@ -57,3 +57,14 @@ body {
     top: 100px;
     right: 50px;
 }
+
+.neon-heading {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 24px;
+    color: #00ffff;
+    text-shadow:
+        0 0 3px #ff00ff,
+        0 0 6px #8000ff,
+        0 0 12px #8000ff;
+    margin-bottom: 10px;
+}
