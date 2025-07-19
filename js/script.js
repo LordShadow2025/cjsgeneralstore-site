@@ -7,12 +7,24 @@ const playlist = ['assets/audio/cjgs_snippet_mix.mp3'];
 
 let isPlaying = false;
 
-// Set initial volume to 50%
+// Set the audio source immediately
+bgMusic.src = playlist[0];
 bgMusic.volume = 0.5;
 
+// Attempt to autoplay on load
+window.addEventListener('load', () => {
+  // Try to play automatically
+  bgMusic.play().then(() => {
+    isPlaying = true;
+  }).catch(() => {
+    // Autoplay was blocked, wait for user interaction
+    isPlaying = false;
+  });
+});
+
+// Play/Pause toggle
 musicToggle.addEventListener('click', () => {
   if (!isPlaying) {
-    bgMusic.src = playlist[0];
     bgMusic.play().then(() => {
       isPlaying = true;
     });
@@ -22,7 +34,7 @@ musicToggle.addEventListener('click', () => {
   }
 });
 
-// Volume control handler
+// Volume slider
 volumeSlider.addEventListener('input', () => {
   bgMusic.volume = volumeSlider.value;
 });
