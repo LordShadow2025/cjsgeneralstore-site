@@ -55,8 +55,14 @@
     const volumeSlider = document.getElementById('volume-slider');
 
     bgMusic.volume = 0.5;
-    let isPlaying = true;
 
+    document.addEventListener('DOMContentLoaded', () => {
+      bgMusic.play().catch((err) => {
+        console.warn("Autoplay blocked, waiting for interaction.");
+      });
+    });
+
+    let isPlaying = true;
     musicToggle.addEventListener('click', () => {
       if (isPlaying) {
         bgMusic.pause();
@@ -69,6 +75,6 @@
     volumeSlider.addEventListener('input', () => {
       bgMusic.volume = volumeSlider.value;
     });
-  </script>
+</script>
 </body>
 </html>
