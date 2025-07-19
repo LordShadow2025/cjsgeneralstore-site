@@ -121,3 +121,22 @@ body {
   accent-color: #ff00ff;
   cursor: pointer;
 }
+
+.home-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-family: 'Permanent Marker', cursive;
+  color: #00ffff;
+  font-size: 20px;
+  text-decoration: none;
+  text-shadow:
+    0 0 3px #ff00ff,
+    0 0 6px #8000ff,
+    0 0 12px #8000ff;
+  padding: 5px 10px;
+  border: 2px solid #ff00ff;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 8px #ff00ff;
+}
