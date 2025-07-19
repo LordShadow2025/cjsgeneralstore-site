@@ -68,3 +68,22 @@ body {
         0 0 12px #8000ff;
     margin-bottom: 10px;
 }
+
+#music-toggle, #volume-slider {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  background: black;
+  color: #00ffff;
+  border: 2px solid #ff00ff;
+  padding: 8px;
+  font-weight: bold;
+  border-radius: 6px;
+  box-shadow: 0 0 8px #ff00ff;
+}
+
+#volume-slider {
+  margin-left: 10px;
+  width: 100px;
+}
