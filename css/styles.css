@@ -128,13 +128,7 @@ body {
 
 }
 
-/* Ensure music controls are under the overlay at first */
-#music-toggle,
-#volume-slider {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 100;
+
 }
 
 #mini-overlay {
@@ -168,4 +162,33 @@ body {
 
 #mini-overlay.hidden {
   display: none !important;
+}
+
+.audio-controls {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px 16px;
+  border-radius: 10px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 0 10px #ff00ff;
+}
+
+.audio-controls button {
+  font-family: 'Permanent Marker', cursive;
+  background: none;
+  border: none;
+  color: #00ffff;
+  font-size: 14px;
+  cursor: pointer;
+  text-shadow: 0 0 6px #00ffff, 0 0 12px #ff00ff;
+}
+
+.audio-controls input[type="range"] {
+  width: 100px;
+  accent-color: #ff00ff;
 }
