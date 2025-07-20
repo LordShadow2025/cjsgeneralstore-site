@@ -168,3 +168,31 @@ body {
   right: 20px;
   z-index: 100;
 }
+
+#mini-overlay {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: #00ffff;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1.2rem;
+  padding: 12px 24px;
+  border: 2px solid #ff00ff;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 0 10px #ff00ff;
+  text-shadow:
+    0 0 4px #00ffff,
+    0 0 8px #ff00ff;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.05); }
+  100% { transform: translateX(-50%) scale(1); }
+}
