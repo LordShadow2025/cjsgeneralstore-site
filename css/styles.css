@@ -125,39 +125,7 @@ body {
             drop-shadow(0 0 15px #00ffff)
             drop-shadow(0 0 30px #ff00ff);
   }
-}
 
-#start-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.85);
-  color: #00ffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  cursor: pointer;
-  font-family: 'Permanent Marker', cursive;
-  text-shadow:
-    0 0 6px #00ffff,
-    0 0 12px #ff00ff;
-}
-
-.start-text {
-  font-size: 1.6rem;
-  padding: 30px;
-  background: rgba(0,0,0,0.4);
-  border: 2px solid #ff00ff;
-  border-radius: 12px;
-  box-shadow: 0 0 12px #ff00ff;
-}
-
-/* Force the overlay to be on top */
-#start-overlay {
-  z-index: 9999;
 }
 
 /* Ensure music controls are under the overlay at first */
