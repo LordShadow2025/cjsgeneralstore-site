@@ -166,8 +166,8 @@ body {
 
 .audio-controls {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 40px;
+  right: 40px;
   background: rgba(0, 0, 0, 0.7);
   padding: 10px 16px;
   border-radius: 10px;
