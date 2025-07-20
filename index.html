@@ -40,21 +40,20 @@
 <!-- Inline script instead of script.js for this page -->
 <script>
   const bgMusic = document.getElementById('bg-music');
-  const startOverlay = document.getElementById('start-overlay');
   const musicToggle = document.getElementById('music-toggle');
   const volumeSlider = document.getElementById('volume-slider');
 
   let isPlaying = false;
 
-  startOverlay.addEventListener('click', () => {
+  function startMusic() {
     bgMusic.volume = 0.5;
     bgMusic.play().then(() => {
       isPlaying = true;
-      startOverlay.style.display = 'none';
+      document.getElementById('mini-overlay').style.display = 'none';
     }).catch(err => {
       console.warn("Playback failed:", err);
     });
-  });
+  }
 
   musicToggle.addEventListener('click', () => {
     if (isPlaying) {
