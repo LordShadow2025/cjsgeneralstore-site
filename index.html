@@ -42,6 +42,7 @@
   const bgMusic = document.getElementById('bg-music');
   const musicToggle = document.getElementById('music-toggle');
   const volumeSlider = document.getElementById('volume-slider');
+  const overlay = document.getElementById('mini-overlay');
 
   let isPlaying = false;
 
@@ -49,7 +50,9 @@
     bgMusic.volume = 0.5;
     bgMusic.play().then(() => {
       isPlaying = true;
-      document.getElementById('mini-overlay').classList.add('hidden');
+      overlay.style.opacity = '0';
+      overlay.style.pointerEvents = 'none';
+      setTimeout(() => overlay.remove(), 500); // fade then remove
     }).catch(err => {
       console.warn("Playback failed:", err);
     });
