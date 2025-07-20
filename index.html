@@ -24,9 +24,50 @@
     </nav>
   </div>
 
-  <button id="music-toggle">🔊 Music On/Off</button>
-  <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.4" title="Volume">
-  <audio id="bg-music" autoplay loop></audio>
-  <script src="js/script.js"></script>
+  <!-- 🔊 Music Start Overlay -->
+<div id="start-overlay">
+  <div class="start-text">🔊 Power Up & Chill – Click to Begin</div>
+</div>
+
+<!-- 🔊 Music Controls -->
+<button id="music-toggle">🔊 Music On/Off</button>
+<input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.4" title="Volume">
+
+<audio id="bg-music" loop preload="auto">
+  <source src="assets/audio/cjgs_snippet_mix.mp3" type="audio/mp3" />
+</audio>
+
+<!-- Inline script instead of script.js for this page -->
+<script>
+  const bgMusic = document.getElementById('bg-music');
+  const startOverlay = document.getElementById('start-overlay');
+  const musicToggle = document.getElementById('music-toggle');
+  const volumeSlider = document.getElementById('volume-slider');
+
+  let isPlaying = false;
+
+  startOverlay.addEventListener('click', () => {
+    bgMusic.volume = 0.5;
+    bgMusic.play().then(() => {
+      isPlaying = true;
+      startOverlay.style.display = 'none';
+    }).catch(err => {
+      console.warn("Playback failed:", err);
+    });
+  });
+
+  musicToggle.addEventListener('click', () => {
+    if (isPlaying) {
+      bgMusic.pause();
+    } else {
+      bgMusic.play();
+    }
+    isPlaying = !isPlaying;
+  });
+
+  volumeSlider.addEventListener('input', () => {
+    bgMusic.volume = volumeSlider.value;
+  });
+</script>
 </body>
 </html>
