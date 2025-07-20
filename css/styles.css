@@ -157,6 +157,7 @@ body {
     0 0 4px #00ffff,
     0 0 8px #ff00ff;
   animation: pulse 2s infinite;
+  transition: opacity 0.4s ease-in-out;
 }
 
 @keyframes pulse {
