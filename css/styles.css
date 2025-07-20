@@ -154,3 +154,17 @@ body {
   border-radius: 12px;
   box-shadow: 0 0 12px #ff00ff;
 }
+
+/* Force the overlay to be on top */
+#start-overlay {
+  z-index: 9999;
+}
+
+/* Ensure music controls are under the overlay at first */
+#music-toggle,
+#volume-slider {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+}
