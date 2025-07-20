@@ -164,3 +164,7 @@ body {
   50% { transform: translateX(-50%) scale(1.05); }
   100% { transform: translateX(-50%) scale(1); }
 }
+
+#mini-overlay.hidden {
+  display: none !important;
+}
