@@ -125,22 +125,22 @@ body {
 
 #mini-overlay {
   position: fixed;
-  top: 20px;  /* move to upper left instead of bottom center */
+  top: 20px;
   left: 20px;
   background: rgba(0, 0, 0, 0.7);
   color: #00ffff;
-  font-family: 'Permanent Marker', cursive;
+  font-family: 'Permanent Marker', cursive !important;
   font-size: 1.2rem;
-  padding: 10px 20px;
+  padding: 10px 22px;
   border: 2px solid #ff00ff;
-  border-radius: 12px;
+  border-radius: 10px;
   text-align: center;
   cursor: pointer;
   z-index: 9999;
   box-shadow: 0 0 10px #ff00ff;
   text-shadow:
-    0 0 4px #00ffff,
-    0 0 8px #ff00ff;
+    0 0 6px #00ffff,
+    0 0 12px #ff00ff;
   animation: pulse 2s infinite;
   transition: opacity 0.4s ease-in-out;
 }
@@ -157,8 +157,8 @@ body {
 
 .audio-controls {
   position: fixed;
-  bottom: 120px;
-  right: 120px;
+  bottom: 140px;
+  right: 140px;
   display: flex;
   align-items: center;
   gap: 12px;
