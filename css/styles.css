@@ -128,36 +128,37 @@ body {
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.75);
   color: #00ffff;
-  font-family: 'Permanent Marker', cursive;
-  font-size: 1.2rem;
+  font-family: 'Permanent Marker', cursive !important;
+  font-size: 1.3rem;
   padding: 12px 24px;
   border: 2px solid #ff00ff;
-  border-radius: 10px;
+  border-radius: 12px;
   text-align: center;
   cursor: pointer;
   z-index: 9999;
-  box-shadow: 0 0 10px #ff00ff;
   text-shadow:
     0 0 4px #00ffff,
     0 0 8px #ff00ff;
-  animation: neonPulse 2s infinite;
+  box-shadow: 0 0 10px #ff00ff;
+  animation: neon-pulse-overlay 2s infinite;
   transition: opacity 0.4s ease-in-out;
 }
 
-@keyframes neonPulse {
+@keyframes neon-pulse-overlay {
   0%, 100% {
-    filter: drop-shadow(0 0 4px #00ffff)
-            drop-shadow(0 0 8px #00ffff)
-            drop-shadow(0 0 12px #ff00ff);
+    filter: drop-shadow(0 0 5px #00ffff)
+            drop-shadow(0 0 10px #00ffff)
+            drop-shadow(0 0 15px #ff00ff);
   }
   50% {
-    filter: drop-shadow(0 0 6px #00ffff)
-            drop-shadow(0 0 10px #00ffff)
-            drop-shadow(0 0 16px #ff00ff);
+    filter: drop-shadow(0 0 8px #00ffff)
+            drop-shadow(0 0 12px #00ffff)
+            drop-shadow(0 0 18px #ff00ff);
   }
 }
+
 #mini-overlay.hidden {
   display: none !important;
 }
