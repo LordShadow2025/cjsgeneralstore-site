@@ -157,8 +157,8 @@ body {
 
 .audio-controls {
   position: fixed;
-  bottom: 100px;
-  right: 100px;
+  bottom: 120px;
+  right: 120px;
   display: flex;
   align-items: center;
   gap: 12px;
