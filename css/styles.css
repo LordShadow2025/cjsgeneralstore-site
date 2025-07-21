@@ -125,32 +125,39 @@ body {
 
 #mini-overlay {
   position: fixed;
-  top: 20px;
-  left: 20px;
-  font-family: 'Permanent Marker', cursive !important;
-  font-size: 1.2rem;
-  color: #00ffff;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.7);
-  padding: 10px 18px;
+  color: #00ffff;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1.2rem;
+  padding: 12px 24px;
   border: 2px solid #ff00ff;
   border-radius: 10px;
-  z-index: 9999;
-  text-shadow:
-    0 0 6px #00ffff,
-    0 0 12px #ff00ff;
-  box-shadow: 0 0 10px #ff00ff;
-  animation: pulse 2s infinite;
-  transition: opacity 0.4s ease-in-out;
+  text-align: center;
   cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 0 10px #ff00ff;
+  text-shadow:
+    0 0 4px #00ffff,
+    0 0 8px #ff00ff;
+  animation: neonPulse 2s infinite;
+  transition: opacity 0.4s ease-in-out;
 }
 
-
-@keyframes pulse {
-  0% { transform: translateX(-50%) scale(1); }
-  50% { transform: translateX(-50%) scale(1.05); }
-  100% { transform: translateX(-50%) scale(1); }
+@keyframes neonPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 4px #00ffff)
+            drop-shadow(0 0 8px #00ffff)
+            drop-shadow(0 0 12px #ff00ff);
+  }
+  50% {
+    filter: drop-shadow(0 0 6px #00ffff)
+            drop-shadow(0 0 10px #00ffff)
+            drop-shadow(0 0 16px #ff00ff);
+  }
 }
-
 #mini-overlay.hidden {
   display: none !important;
 }
@@ -158,7 +165,7 @@ body {
 .audio-controls {
   position: fixed;
   bottom: 165px;  /* up from 140 */
-  right: 160px;   /* in from 140 */
+  right: 170px;   /* in from 140 */
   display: flex;
   flex-direction: row;
   align-items: center;
