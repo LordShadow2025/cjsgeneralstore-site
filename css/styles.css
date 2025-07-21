@@ -128,22 +128,21 @@ body {
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.75);
-  color: #00ffff;
   font-family: 'Permanent Marker', cursive !important;
-  font-size: 1.3rem;
-  padding: 12px 24px;
+  font-size: 1.2rem;
+  color: #00ffff;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px 18px;
   border: 2px solid #ff00ff;
-  border-radius: 12px;
-  text-align: center;
-  cursor: pointer;
+  border-radius: 10px;
   z-index: 9999;
   text-shadow:
-    0 0 4px #00ffff,
-    0 0 8px #ff00ff;
+    0 0 6px #00ffff,
+    0 0 12px #ff00ff;
   box-shadow: 0 0 10px #ff00ff;
-  animation: neon-pulse-overlay 2s infinite;
+  animation: pulse 2s infinite;
   transition: opacity 0.4s ease-in-out;
+  cursor: pointer;
 }
 
 @keyframes neon-pulse-overlay {
@@ -165,8 +164,8 @@ body {
 
 .audio-controls {
   position: fixed;
-  bottom: 165px;  /* up from 140 */
-  right: 170px;   /* in from 140 */
+  bottom: 180px;  /* up from 140 */
+  right: 190px;   /* in from 140 */
   display: flex;
   flex-direction: row;
   align-items: center;
