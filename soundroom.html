@@ -52,31 +52,40 @@
 </audio>
 
   <script>
-    const musicToggle = document.getElementById('music-toggle');
-    const bgMusic = document.getElementById('bg-music');
-    const volumeSlider = document.getElementById('volume-slider');
+  const musicToggle = document.getElementById('music-toggle');
+  const bgMusic = document.getElementById('bg-music');
+  const volumeSlider = document.getElementById('volume-slider');
 
-    bgMusic.volume = 0.5;
+  bgMusic.volume = 0.5;
+  let isPlaying = false;
+  let hasStarted = false;
 
-    document.addEventListener('DOMContentLoaded', () => {
-      bgMusic.play().catch((err) => {
-        console.warn("Autoplay blocked, waiting for interaction.");
+  function startMusic() {
+    if (!hasStarted) {
+      bgMusic.play().then(() => {
+        isPlaying = true;
+        hasStarted = true;
+      }).catch(err => {
+        console.warn("Autoplay blocked:", err);
       });
-    });
+    }
+  }
 
-    let isPlaying = true;
-    musicToggle.addEventListener('click', () => {
-      if (isPlaying) {
-        bgMusic.pause();
-      } else {
-        bgMusic.play();
-      }
-      isPlaying = !isPlaying;
-    });
+  // Start music on any click (first user interaction)
+  document.body.addEventListener('click', startMusic, { once: true });
 
-    volumeSlider.addEventListener('input', () => {
-      bgMusic.volume = volumeSlider.value;
-    });
+  musicToggle.addEventListener('click', () => {
+    if (isPlaying) {
+      bgMusic.pause();
+    } else {
+      bgMusic.play();
+    }
+    isPlaying = !isPlaying;
+  });
+
+  volumeSlider.addEventListener('input', () => {
+    bgMusic.volume = volumeSlider.value;
+  });
 </script>
 </body>
 </html>
