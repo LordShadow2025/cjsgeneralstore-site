@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>General Store</title>
+  <meta name="google-adsense-account" content="ca-pub-5761934203737590">
+  <link rel="stylesheet" href="assets/css/shared.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
+</head>
+<body class="background-generalstore">
+
+  <!-- 🔙 Back to Home -->
+  <a href="index.html" class="home-button">🔙 Back to Home</a>
+
+  <!-- 🔐 Privacy Policy -->
+  <a href="privacy.html" class="privacy-link">🔐 Privacy Policy</a>
+
+  <!-- 🎵 Music Box -->
+  <div class="audio-controls">
+    <div class="control-group">
+      <button id="music-toggle">🎵 Play/Pause</button>
+      <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" title="Volume">
+    </div>
+  </div>
+
+  <audio id="bg-music" preload="auto" loop>
+    <source src="assets/audio/generalstore.wav" type="audio/wav" />
+  </audio>
+
+  <script>
+    const musicToggle = document.getElementById('music-toggle');
+    const bgMusic = document.getElementById('bg-music');
+    const volumeSlider = document.getElementById('volume-slider');
+
+    bgMusic.volume = 0.5;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      bgMusic.play().catch(() => {
+        console.warn("Autoplay blocked until interaction.");
+      });
+    });
+
+    let isPlaying = true;
+    musicToggle.addEventListener('click', () => {
+      if (isPlaying) {
+        bgMusic.pause();
+      } else {
+        bgMusic.play();
+      }
+      isPlaying = !isPlaying;
+    });
+
+    volumeSlider.addEventListener('input', () => {
+      bgMusic.volume = volumeSlider.value;
+    });
+  </script>
+</body>
+</html>
