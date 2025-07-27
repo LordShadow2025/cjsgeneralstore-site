@@ -1,0 +1,53 @@
+
+/* ===== Shared Styles: Music Controls & Home Button ===== */
+
+.audio-controls {
+  position: fixed;
+  bottom: 180px;
+  right: 190px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 14px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #ff00ff;
+  z-index: 999;
+}
+
+.control-group button {
+  font-family: 'Permanent Marker', cursive;
+  background: none;
+  border: none;
+  color: #00ffff;
+  font-size: 14px;
+  cursor: pointer;
+  text-shadow: 0 0 6px #00ffff, 0 0 12px #ff00ff;
+  white-space: nowrap;
+}
+
+.control-group input[type="range"] {
+  width: 120px;
+  accent-color: #ff00ff;
+  cursor: pointer;
+}
+
+.home-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-family: 'Permanent Marker', cursive;
+  color: #00ffff;
+  font-size: 20px;
+  text-decoration: none;
+  text-shadow:
+    0 0 3px #ff00ff,
+    0 0 6px #8000ff,
+    0 0 12px #8000ff;
+  padding: 5px 10px;
+  border: 2px solid #ff00ff;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 8px #ff00ff;
+}
