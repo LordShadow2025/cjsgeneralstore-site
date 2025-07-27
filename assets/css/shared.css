@@ -130,3 +130,28 @@ body.background-generalstore {
   accent-color: #ff00ff;
   cursor: pointer;
 }
+
+.weather-audio-toggle {
+  position: absolute;
+  top: 110px;    /* adjust based on where the TV is in your image */
+  right: 130px;  /* adjust to fine-tune placement */
+  z-index: 1000;
+}
+
+.weather-audio-toggle button {
+  width: 32px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid #ff00ff;
+  color: #00ffff;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
+  box-shadow: 0 0 6px #ff00ff;
+  transition: background 0.3s ease;
+}
+
+.weather-audio-toggle button:hover {
+  background: rgba(0, 0, 0, 0.85);
+}
