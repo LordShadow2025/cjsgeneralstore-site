@@ -230,11 +230,3 @@ body {
   box-shadow: 0 0 15px #f0f;
 }
 
-body {
-  background: url('assets/AboutBackground.png') no-repeat center center fixed;
-  background-size: cover;
-  margin: 0;
-  font-family: 'Permanent Marker', cursive;
-  color: #fff;
-  text-shadow: 0 0 8px #0ff, 0 0 12px #f0f;
-}
