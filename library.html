@@ -24,6 +24,15 @@
     <source src="assets/audio/library.mp3" type="audio/mp3" />
   </audio>
 
+  <!-- Weather Music Toggle Button and Audio -->
+<div class="weather-audio-toggle">
+  <button id="weather-music-btn">🔊</button>
+</div>
+
+<audio id="weather-music" preload="auto" loop>
+  <source src="assets/audio/weather-track.mp3" type="audio/mp3" />
+</audio>
+
   <script>
     const musicToggle = document.getElementById('music-toggle');
     const bgMusic = document.getElementById('bg-music');
@@ -51,5 +60,22 @@
       bgMusic.volume = volumeSlider.value;
     });
   </script>
+
+  <script>
+  const weatherBtn = document.getElementById('weather-music-btn');
+  const weatherAudio = document.getElementById('weather-music');
+  let weatherPlaying = false;
+
+  weatherBtn.addEventListener('click', () => {
+    if (weatherPlaying) {
+      weatherAudio.pause();
+      weatherBtn.textContent = '🔊';
+    } else {
+      weatherAudio.play();
+      weatherBtn.textContent = '🔈';
+    }
+    weatherPlaying = !weatherPlaying;
+  });
+</script>
 </body>
 </html>
