@@ -51,3 +51,82 @@
   background: rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 8px #ff00ff;
 }
+
+/* Shared Backgrounds */
+body.background-generalstore {
+  background: url('../images/GeneralStore.png') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  font-family: 'Permanent Marker', cursive;
+  overflow-x: hidden;
+  color: white;
+}
+
+/* Neon Back Button */
+.home-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 20px;
+  text-decoration: none;
+  color: #00ffff;
+  padding: 6px 12px;
+  border: 2px solid #ff00ff;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff;
+  box-shadow: 0 0 8px #ff00ff;
+  z-index: 999;
+}
+
+/* Privacy Link */
+.privacy-link {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 16px;
+  color: #00ffff;
+  text-decoration: none;
+  font-family: 'Permanent Marker', cursive;
+  text-shadow: 0 0 4px #ff00ff, 0 0 8px #8000ff;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ff00ff;
+  box-shadow: 0 0 6px #ff00ff;
+  z-index: 999;
+}
+
+/* Music Controls */
+.audio-controls {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 14px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #ff00ff;
+  z-index: 999;
+}
+
+.audio-controls button {
+  font-family: 'Permanent Marker', cursive;
+  background: none;
+  border: none;
+  color: #00ffff;
+  font-size: 14px;
+  cursor: pointer;
+  text-shadow: 0 0 6px #00ffff, 0 0 12px #ff00ff;
+  white-space: nowrap;
+}
+
+.audio-controls input[type="range"] {
+  width: 120px;
+  accent-color: #ff00ff;
+  cursor: pointer;
+}
