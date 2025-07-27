@@ -198,6 +198,16 @@ body {
 }
 
 /* === ABOUT PAGE STYLES === */
+
+.about-page {
+  background: url('assets/about.png') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  font-family: 'Permanent Marker', cursive;
+  color: #fff;
+  text-shadow: 0 0 8px #0ff, 0 0 12px #f0f;
+}
+
 .neon-box {
   background: rgba(0, 0, 0, 0.6);
   border: 2px solid #0ff;
