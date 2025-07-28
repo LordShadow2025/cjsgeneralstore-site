@@ -199,7 +199,7 @@ body {
 
 /* === ABOUT PAGE STYLES === */
 
-.about-page {
+body.about-page {
   background: url('../assets/images/about.png') no-repeat center center fixed;
   background-size: cover;
   margin: 0;
