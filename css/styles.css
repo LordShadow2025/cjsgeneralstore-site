@@ -258,7 +258,7 @@ body.about-page {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 16px;
+  gap: 24px;
   z-index: 9999;
 }
 
