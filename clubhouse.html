@@ -8,49 +8,45 @@
   <link rel="stylesheet" href="assets/css/shared.css" />
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
 </head>
-<body style="background-image: url('assets/images/clubhouse.png'); background-size: cover; background-position: center center; background-repeat: no-repeat;">
+<body style="background-image: url('assets/images/ClubHouse.png'); background-size: cover; background-position: center center; background-repeat: no-repeat; height: 100vh; overflow-x: hidden;">
 
-  <!-- Title + Toggle -->
-  <div style="display: flex; flex-direction: column; align-items: center; padding-top: 40px;">
-    <div style="background:black; padding:12px 20px; font-family:'Permanent Marker', cursive; color:#00ffff; text-shadow:0 0 5px #0ff, 0 0 10px #ff00ff; box-shadow:0 0 10px #ff00ff; border:2px solid #ff00ff; border-radius:12px; margin-bottom: 20px;">
-      <span id="stream-label">🎞️ CJ's Feature Stream – Powered by PlutoTV</span>
-      <button onclick="toggleStreamLabel()" style="margin-left:20px; font-family:'Permanent Marker', cursive; padding:6px 10px; background:black; color:#00ffff; border:2px solid #ff00ff; border-radius:8px; cursor:pointer;">🍿 Movie Night Toggle</button>
-    </div>
-
-    <!-- Viewers Side-by-Side -->
-    <div style="display: flex; flex-direction: row; gap: 40px; justify-content: center; align-items: flex-start; flex-wrap: wrap; max-width: 100%;">
-      <!-- PlutoTV -->
-      <iframe src="https://pluto.tv/en/live-tv/5fd7b8bf927e090007685853"
-        style="width:640px; height:360px; border:4px solid #ff00ff; box-shadow:0 0 12px #00ffff, 0 0 20px #ff00ff; border-radius:12px;"
-        allowfullscreen allow="autoplay"
-        title="PlutoTV Stream">
-      </iframe>
-
-      <!-- FreeFlarum Forum -->
-      <iframe src="https://cjsgenxlounge.freeflarum.com/"
-        style="width:640px; height:360px; border:4px solid #00ffff; box-shadow:0 0 12px #ff00ff, 0 0 20px #00ffff; border-radius:12px;"
-        title="CJ's Forum">
-      </iframe>
-    </div>
-  </div>
-
-  <!-- Buttons -->
+  <!-- Navigation Buttons -->
   <a href="index.html" class="home-button">🔙 Back to Home</a>
   <a href="privacy.html" class="privacy-link">🔒 Privacy</a>
 
-  <!-- Label Toggle Script -->
+  <!-- Channel Switcher -->
+  <div class="channel-buttons">
+    <button onclick="switchStream('pluto')">📺 CJ’s Feature Stream</button>
+    <button onclick="switchStream('toonami')">🌀 Toonami Time</button>
+    <button onclick="switchStream('cartoons')">📺 Classic Cartoons</button>
+  </div>
+
+  <!-- Main Content Layout -->
+  <div class="content-wrapper">
+    <!-- Stream Player -->
+    <div class="player-box">
+      <iframe id="pluto-player" src="https://pluto.tv/en/live-tv/5fd7b8bf927e090007685853" allowfullscreen allow="autoplay"></iframe>
+    </div>
+
+    <!-- Forum Embed -->
+    <div class="forum-box">
+      <iframe src="https://cjsgenxlounge.freeflarum.com/" title="CJ's GenX Forum"></iframe>
+    </div>
+  </div>
+
+  <!-- Channel Switcher Script -->
   <script>
-    function toggleStreamLabel() {
-      const label = document.getElementById('stream-label');
-      if (label.innerText.includes("CJ's Feature Stream")) {
-        label.innerText = "🍿 Now Playing: Movie Night at the Clubhouse!";
+    function switchStream(channel) {
+      const player = document.getElementById('pluto-player');
+      if (channel === 'toonami') {
+        player.src = "https://pluto.tv/en/live-tv/5f309bdc8119840007bc91ec"; // Replace if needed
+      } else if (channel === 'cartoons') {
+        player.src = "https://pluto.tv/en/live-tv/5f309bdc8119840007bc91e1"; // Replace if needed
       } else {
-        label.innerText = "🎞️ CJ's Feature Stream – Powered by PlutoTV";
+        player.src = "https://pluto.tv/en/live-tv/5fd7b8bf927e090007685853"; // Default: Feature Stream
       }
     }
   </script>
 
-</body>
-</html>
 </body>
 </html>
