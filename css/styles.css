@@ -200,7 +200,7 @@ body {
 /* === ABOUT PAGE STYLES === */
 
 .about-page {
-  background: url('assets/about.png') no-repeat center center fixed;
+  background: url('assets/images/about.png') no-repeat center center fixed;
   background-size: cover;
   margin: 0;
   font-family: 'Permanent Marker', cursive;
