@@ -5,153 +5,103 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CJ's Clubhouse</title>
-  <meta name="google-adsense-account" content="ca-pub-5761934203737590" />
-  <link rel="stylesheet" href="assets/css/shared.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
-  <script src="https://embed.twitch.tv/embed/v1.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
+      font-family: 'Permanent Marker', cursive;
       background: url('assets/images/clubhouse.png') no-repeat center center fixed;
       background-size: cover;
-      font-family: 'Permanent Marker', cursive;
-      color: #00ffff;
+      color: white;
+      overflow-x: hidden;
     }
-
-    .layout {
-      display: flex;
-      flex-direction: row;
-      padding: 2rem;
-      gap: 2rem;
-      height: 100vh;
-      box-sizing: border-box;
-    }
-
-    .crt-wrapper {
-      flex: 2;
-      background: rgba(0, 0, 0, 0.7);
-      border: 12px solid #111;
-      border-radius: 14px;
-      padding: 1rem;
-      box-shadow: inset 0 0 25px #00ffff, 0 0 35px #ff00ff;
-      position: relative;
-    }
-
-    .crt-wrapper::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    .video-frame {
-      width: 100%;
-      height: 60vh;
-      border: none;
-      z-index: 1;
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 1rem;
-    }
-
-    .buttons button {
-      font-family: 'Permanent Marker', cursive;
-      padding: 10px 18px;
-      font-size: 1rem;
-      background: #000;
-      border: 2px solid #ff00ff;
-      border-radius: 10px;
-      color: #00ffff;
-      text-shadow: 0 0 4px #00ffff, 0 0 6px #ff00ff;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .buttons button:hover {
-      background: #111;
-      box-shadow: 0 0 10px #00ffff;
-    }
-
-    .forum {
-      flex: 1;
-      background: rgba(0, 0, 0, 0.7);
-      border: 2px solid #00ffff;
+    .crt-frame {
+      border: 6px solid #00ffff;
       border-radius: 12px;
-      padding: 1rem;
-      height: 80vh;
-      box-shadow: 0 0 15px #ff00ff;
-      overflow: hidden;
+      box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff inset;
+      background-color: black;
+      padding: 6px;
     }
-
-    .home-button, .privacy-link {
-      position: fixed;
-      bottom: 20px;
-      font-family: 'Permanent Marker', cursive;
-      font-size: 1rem;
-      text-decoration: none;
-      padding: 6px 12px;
+    .wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 80px 20px 40px;
+    }
+    .stream-section {
+      flex: 2;
+      margin-right: 20px;
+    }
+    .forum-section {
+      flex: 1;
+      background: #2c2c2c;
+      height: 600px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 20px #ff00ff;
+    }
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+    .nav-buttons {
+      text-align: center;
+      padding-top: 20px;
+    }
+    .nav-buttons button {
+      margin: 5px;
+      padding: 12px 20px;
+      background: rgba(0, 0, 0, 0.8);
       border: 2px solid #ff00ff;
       border-radius: 8px;
-      background: rgba(0, 0, 0, 0.6);
-      box-shadow: 0 0 8px #ff00ff;
-      text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
-      z-index: 999;
+      color: #00ffff;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff inset;
     }
-
-    .home-button {
+    .footer-links {
+      position: fixed;
+      bottom: 20px;
       left: 20px;
-      color: #00ffff;
     }
-
-    .privacy-link {
-      right: 20px;
+    .footer-links a {
+      text-decoration: none;
       color: #00ffff;
-    }
-
-    .home-button:hover, .privacy-link:hover {
-      background: rgba(0, 0, 0, 0.8);
-      color: #ff00ff;
-      border-color: #00ffff;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 8px 12px;
+      border: 2px solid #ff00ff;
+      border-radius: 10px;
+      margin-right: 10px;
+      box-shadow: 0 0 10px #ff00ff;
+      display: inline-block;
     }
   </style>
 </head>
 <body>
-  <a href="index.html" class="home-button">🔙 Back to Home</a>
-  <a href="privacy.html" class="privacy-link">🔒 Privacy</a>
+  <div class="nav-buttons">
+    <button onclick="setStream('https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech')">🎬 CJ’s Feature Stream: MST3K</button>
+    <button onclick="setStream('https://player.twitch.tv/?channel=bobross&parent=cjsgeneralstore.tech')">🎨 CJ’s Feature Stream: Bob Ross</button>
+    <button onclick="setStream('https://player.twitch.tv/?channel=shoutfactorytv&parent=cjsgeneralstore.tech')">📺 CJ’s Feature Stream: Shout TV</button>
+  </div>
 
-  <div class="layout">
-    <div class="crt-wrapper">
-      <div class="buttons">
-        <button onclick="loadYT('https://www.youtube.com/embed/videoseries?list=PLVp9sNZqFozZ4iwZQyksHTZWAIogD5ZDj')">📺 GenX Clips</button>
-        <button onclick="loadTwitch('mst3k')">🎬 CJ’s Feature Stream: MST3K</button>
-        <button onclick="loadTwitch('watchshouttv')">🎬 CJ’s Feature Stream: Shout!TV</button>
-        <button onclick="loadYT('https://www.youtube.com/embed/videoseries?list=PLyhdCj4tjts_qbKLtC0rkHjddHHoDuBde')">🎞 GenX Movie Trailers</button>
-      </div>
-      <div id="player-box">
-        <iframe class="video-frame" id="video-frame" src="https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech" allowfullscreen></iframe>
-      </div>
+  <div class="wrapper">
+    <div class="stream-section crt-frame">
+      <iframe id="stream" src="https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech" allowfullscreen></iframe>
     </div>
-
-    <div class="forum">
-      <iframe src="https://cjsgenxlounge.freeflarum.com/" width="100%" height="100%" frameborder="0" style="border-radius: 10px;"></iframe>
+    <div class="forum-section">
+      <iframe src="https://cjsgenxlounge.freeflarum.com/"></iframe>
     </div>
   </div>
 
-  <script>
-    function loadYT(url) {
-      const frame = document.getElementById('video-frame');
-      frame.src = url;
-    }
+  <div class="footer-links">
+    <a href="index.html">🔙 Back to Home</a>
+    <a href="privacy.html">🔒 Privacy</a>
+  </div>
 
-    function loadTwitch(channel) {
-      const frame = document.getElementById('video-frame');
-      frame.src = `https://player.twitch.tv/?channel=${channel}&parent=cjsgeneralstore.tech`;
+  <script>
+    function setStream(url) {
+      document.getElementById("stream").src = url;
     }
   </script>
 </body>
