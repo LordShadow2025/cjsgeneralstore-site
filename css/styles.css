@@ -279,3 +279,16 @@ body.about-page {
   border-color: #00ffff;
   box-shadow: 0 0 12px #00ffff;
 }
+
+.clubhouse-title {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 2.2rem;
+  color: #00ffff;
+  text-align: center;
+  margin: 12px 0 8px;
+  text-shadow:
+    0 0 5px #0ff,
+    0 0 10px #0ff,
+    0 0 20px #ff00ff,
+    0 0 30px #ff00ff;
+}
