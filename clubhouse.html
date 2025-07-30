@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CJ's Clubhouse</title>
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/shared.css" />
   <style>
     body {
       margin: 0;
@@ -15,38 +16,23 @@
       color: white;
       overflow-x: hidden;
     }
-
-    .nav-buttons {
-      text-align: center;
-      padding-top: 20px;
+    .crt-frame {
+      border: 6px solid #00ffff;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff inset;
+      background-color: black;
+      padding: 6px;
     }
-
-    .nav-buttons button {
-      margin: 6px;
-      padding: 12px 20px;
-      background: rgba(0, 0, 0, 0.8);
-      border: 2px solid #ff00ff;
-      border-radius: 10px;
-      color: #00ffff;
-      font-size: 1rem;
-      font-family: 'Permanent Marker', cursive;
-      cursor: pointer;
-      box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff inset;
-      text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 15px #ff00ff;
-    }
-
     .wrapper {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      padding: 60px 20px 40px;
+      padding: 80px 20px 40px;
     }
-
     .stream-section {
       flex: 2;
       margin-right: 20px;
     }
-
     .forum-section {
       flex: 1;
       background: #2c2c2c;
@@ -55,60 +41,65 @@
       overflow: hidden;
       box-shadow: 0 0 20px #ff00ff;
     }
-
-    .crt-frame {
-      border: 6px solid #00ffff;
-      border-radius: 12px;
-      box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff inset;
-      background-color: black;
-      padding: 6px;
-    }
-
     iframe {
       width: 100%;
       height: 600px;
       border: none;
     }
-
+    .nav-buttons {
+      text-align: center;
+      padding-top: 20px;
+    }
+    .nav-buttons button {
+      margin: 5px;
+      padding: 12px 20px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid #ff00ff;
+      border-radius: 8px;
+      color: #00ffff;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff inset;
+      font-family: 'Permanent Marker', cursive;
+    }
     .footer-links {
       position: fixed;
       bottom: 20px;
       left: 20px;
       display: flex;
-      gap: 14px;
+      gap: 16px;
       z-index: 9999;
     }
-
     .footer-links a {
       text-decoration: none;
       color: #00ffff;
       background: rgba(0, 0, 0, 0.7);
-      padding: 8px 14px;
+      padding: 8px 12px;
       border: 2px solid #ff00ff;
       border-radius: 10px;
-      font-family: 'Permanent Marker', cursive;
       box-shadow: 0 0 10px #ff00ff;
-      text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
+      font-family: 'Permanent Marker', cursive;
     }
-
     .clubhouse-title {
       font-family: 'Permanent Marker', cursive;
       font-size: 2.2rem;
       color: #00ffff;
       text-align: center;
-      margin: 6px 0 12px;
+      margin: 20px 0 8px;
       text-shadow:
-        0 0 5px #00ffff,
-        0 0 10px #00ffff,
+        0 0 5px #0ff,
+        0 0 10px #0ff,
         0 0 20px #ff00ff,
         0 0 30px #ff00ff;
     }
   </style>
 </head>
 <body>
+
   <div class="nav-buttons">
     <button onclick="setStream('https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech')">🎬 CJ’s Feature Stream: MST3K</button>
     <button onclick="setStream('https://player.twitch.tv/?channel=bobross&parent=cjsgeneralstore.tech')">🎨 CJ’s Feature Stream: Bob Ross</button>
+    <button onclick="window.open('https://www.myretrotvs.com', '_blank')">📺 GenX TV Bumpers</button>
   </div>
 
   <div class="wrapper">
@@ -116,7 +107,7 @@
       <iframe id="stream" src="https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech" allowfullscreen></iframe>
     </div>
     <div class="forum-section">
-      <h1 class="clubhouse-title">THE CLUBHOUSE</h1>
+      <div class="clubhouse-title">The Clubhouse</div>
       <iframe src="https://cjsgenxlounge.freeflarum.com/"></iframe>
     </div>
   </div>
