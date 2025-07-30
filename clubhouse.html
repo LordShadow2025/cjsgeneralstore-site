@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CJ's Clubhouse</title>
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/shared.css" />
   <style>
     body {
       margin: 0;
@@ -16,42 +15,14 @@
       color: white;
       overflow-x: hidden;
     }
-    .crt-frame {
-      border: 6px solid #00ffff;
-      border-radius: 12px;
-      box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff inset;
-      background-color: black;
-      padding: 6px;
-    }
-    .wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 80px 20px 40px;
-    }
-    .stream-section {
-      flex: 2;
-      margin-right: 20px;
-    }
-    .forum-section {
-      flex: 1;
-      background: #2c2c2c;
-      height: 600px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 0 20px #ff00ff;
-    }
-    iframe {
-      width: 100%;
-      height: 600px;
-      border: none;
-    }
+
     .nav-buttons {
       text-align: center;
-      padding-top: 20px;
+      padding: 20px;
     }
+
     .nav-buttons button {
-      margin: 5px;
+      margin: 6px;
       padding: 12px 20px;
       background: rgba(0, 0, 0, 0.8);
       border: 2px solid #ff00ff;
@@ -60,8 +31,50 @@
       font-size: 1rem;
       cursor: pointer;
       box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff inset;
-      font-family: 'Permanent Marker', cursive;
     }
+
+    .wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 20px 30px 80px;
+      gap: 20px;
+    }
+
+    .stream-section {
+      flex: 2;
+    }
+
+    .forum-section {
+      flex: 1.2;
+    }
+
+    .crt-frame {
+      border: 6px solid #00ffff;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff inset;
+      background-color: black;
+      padding: 6px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+
+    .clubhouse-title {
+      font-size: 2.4rem;
+      color: #00ffff;
+      text-align: center;
+      margin: 16px 0;
+      text-shadow:
+        0 0 5px #00ffff,
+        0 0 10px #00ffff,
+        0 0 20px #ff00ff,
+        0 0 30px #ff00ff;
+    }
+
     .footer-links {
       position: fixed;
       bottom: 20px;
@@ -70,27 +83,34 @@
       gap: 16px;
       z-index: 9999;
     }
+
     .footer-links a {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 1rem;
+      color: #00ffff;
       text-decoration: none;
-      color: #00ffff;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 8px 12px;
+      padding: 6px 12px;
       border: 2px solid #ff00ff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #ff00ff;
-      font-family: 'Permanent Marker', cursive;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 8px #ff00ff;
+      text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
     }
-    .clubhouse-title {
-      font-family: 'Permanent Marker', cursive;
-      font-size: 2.2rem;
-      color: #00ffff;
-      text-align: center;
-      margin: 20px 0 8px;
-      text-shadow:
-        0 0 5px #0ff,
-        0 0 10px #0ff,
-        0 0 20px #ff00ff,
-        0 0 30px #ff00ff;
+
+    .footer-links a:hover {
+      background: rgba(0, 0, 0, 0.8);
+      color: #ff00ff;
+      border-color: #00ffff;
+      box-shadow: 0 0 12px #00ffff;
+    }
+
+    @media (max-width: 992px) {
+      .wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        padding: 20px;
+      }
     }
   </style>
 </head>
@@ -99,22 +119,25 @@
   <div class="nav-buttons">
     <button onclick="setStream('https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech')">🎬 CJ’s Feature Stream: MST3K</button>
     <button onclick="setStream('https://player.twitch.tv/?channel=bobross&parent=cjsgeneralstore.tech')">🎨 CJ’s Feature Stream: Bob Ross</button>
-    <button onclick="window.open('https://www.myretrotvs.com', '_blank')">📺 GenX TV Bumpers</button>
+    <button onclick="window.open('https://myretrotvs.com/', '_blank')">📺 CJ’s Retro TV Portal</button>
   </div>
 
   <div class="wrapper">
     <div class="stream-section crt-frame">
       <iframe id="stream" src="https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech" allowfullscreen></iframe>
     </div>
+
     <div class="forum-section">
       <div class="clubhouse-title">The Clubhouse</div>
-      <iframe src="https://cjsgenxlounge.freeflarum.com/"></iframe>
+      <div class="crt-frame">
+        <iframe src="https://cjsgenxlounge.freeflarum.com/"></iframe>
+      </div>
     </div>
   </div>
 
   <div class="footer-links">
     <a href="index.html">🔙 Back to Home</a>
-    <a href="privacy.html">🔒 Privacy</a>
+    <a href="privacy.html" class="privacy-link">🔒 Privacy</a>
   </div>
 
   <script>
@@ -122,5 +145,6 @@
       document.getElementById("stream").src = url;
     }
   </script>
+
 </body>
 </html>
