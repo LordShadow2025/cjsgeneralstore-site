@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CJ's Clubhouse</title>
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -16,15 +16,33 @@
       overflow-x: hidden;
     }
 
+    .nav-buttons {
+      text-align: center;
+      padding: 20px 10px 0;
+    }
+
+    .nav-buttons button {
+      margin: 5px;
+      padding: 10px 18px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid #ff00ff;
+      border-radius: 8px;
+      color: #00ffff;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff inset;
+      text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
+    }
+
     .wrapper {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      padding: 80px 20px 40px;
+      padding: 10px 20px 40px;
       gap: 20px;
     }
 
-    .stream-column {
+    .stream-section {
       flex: 2;
     }
 
@@ -34,55 +52,48 @@
       box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff inset;
       background-color: black;
       padding: 6px;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
-    .crt-frame iframe {
+    iframe {
       width: 100%;
-      height: 400px;
+      height: 480px;
       border: none;
-      border-radius: 8px;
     }
 
-    .speaker-graphic {
-      display: block;
-      margin: 20px auto 40px;
-      width: 180px;
-      height: auto;
-      filter: drop-shadow(0 0 8px #0ff) drop-shadow(0 0 16px #ff00ff);
-    }
-
-    .discord-column {
-      flex: 1;
-    }
-
-    .clubhouse-title {
-      font-size: 2rem;
+    .webamp-container {
+      margin-top: 10px;
       text-align: center;
-      margin-bottom: 12px;
-      color: #00ffff;
-      text-shadow:
-        0 0 6px #0ff,
-        0 0 12px #ff00ff,
-        0 0 20px #0ff;
     }
 
-    .discord-widget {
+    .webamp-container iframe {
       width: 100%;
-      height: 500px;
+      max-width: 420px;
+      height: 120px;
       border-radius: 12px;
+      border: 2px solid #00ffff;
+      box-shadow: 0 0 10px #ff00ff;
+    }
+
+    .discord-section {
+      flex: 1;
+      background: rgba(0,0,0,0.6);
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff00ff;
       overflow: hidden;
-      box-shadow: 0 0 15px #ff00ff;
+    }
+
+    .discord-section iframe {
+      width: 100%;
+      height: 600px;
     }
 
     .discord-banner {
-      margin-top: 10px;
       text-align: center;
-      font-size: 1rem;
+      font-size: 1.2rem;
       color: #00ffff;
-      text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff;
-      border-top: 1px solid #ff00ff33;
-      padding-top: 8px;
+      margin-top: 10px;
+      text-shadow: 0 0 5px #0ff, 0 0 10px #ff00ff;
     }
 
     .footer-links {
@@ -90,8 +101,8 @@
       bottom: 20px;
       left: 20px;
       display: flex;
-      gap: 16px;
-      z-index: 9999;
+      gap: 14px;
+      z-index: 999;
     }
 
     .footer-links a {
@@ -102,62 +113,40 @@
       border: 2px solid #ff00ff;
       border-radius: 10px;
       box-shadow: 0 0 10px #ff00ff;
+      text-shadow: 0 0 4px #00ffff;
       font-family: 'Permanent Marker', cursive;
-      font-size: 1rem;
-      text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
     }
 
-    .footer-links a:hover {
-      background: rgba(0, 0, 0, 0.85);
-      color: #ff00ff;
+    .clubhouse-title {
+      font-size: 2.4rem;
+      color: #00ffff;
+      text-align: center;
+      padding-top: 15px;
+      text-shadow: 0 0 5px #0ff, 0 0 10px #ff00ff;
     }
   </style>
 </head>
 <body>
 
+  <div class="nav-buttons">
+    <button onclick="setStream('https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech')">🎬 CJ’s Feature Stream: MST3K</button>
+    <button onclick="setStream('https://player.twitch.tv/?channel=bobross&parent=cjsgeneralstore.tech')">🎨 CJ’s Feature Stream: Bob Ross</button>
+  </div>
+
   <div class="wrapper">
-    <!-- Left Column -->
-    <div class="stream-column">
-      <!-- Twitch CRT -->
+    <div class="stream-section">
       <div class="crt-frame">
-        <iframe
-          src="https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech"
-          allowfullscreen
-        ></iframe>
+        <iframe id="stream" src="https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech" allowfullscreen></iframe>
       </div>
 
-      <!-- Music CRTs -->
-      <div class="crt-frame">
-        <iframe title="Best Net Radio" src="https://live365.com/embed/player.html?station=a07012" allow="autoplay"></iframe>
+      <div class="webamp-container">
+        <iframe src="https://live365.com/embed/player.html?station=a46931" allow="autoplay"></iframe>
       </div>
-      <div class="crt-frame">
-        <iframe title="Magic 90s" src="https://live365.com/embed/player.html?station=a61116" allow="autoplay"></iframe>
-      </div>
-      <div class="crt-frame">
-        <iframe title="Big R Radio" src="https://live365.com/embed/player.html?station=a88059" allow="autoplay"></iframe>
-      </div>
-      <div class="crt-frame">
-        <iframe title="Z93" src="https://live365.com/embed/player.html?station=a50057" allow="autoplay"></iframe>
-      </div>
-
-      <!-- Speaker Image -->
-      <img src="assets/images/speaker-glow.png" alt="Glowing Speaker" class="speaker-graphic" />
     </div>
 
-    <!-- Right Column (Discord) -->
-    <div class="discord-column">
-      <div class="clubhouse-title">The Clubhouse</div>
-      <div class="discord-widget">
-        <iframe
-          src="https://discord.com/widget?id=582629989850284060&theme=dark"
-          width="100%"
-          height="100%"
-          allowtransparency="true"
-          frameborder="0"
-          sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-        ></iframe>
-      </div>
-      <div class="discord-banner">🎤 Join Our GenX Hangout on Discord!</div>
+    <div class="discord-section">
+      <iframe src="https://discord.com/widget?id=582629989850284060&theme=dark" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+      <div class="discord-banner">💬 Join Our GenX Hangout on Discord</div>
     </div>
   </div>
 
@@ -166,5 +155,10 @@
     <a href="privacy.html">🔒 Privacy</a>
   </div>
 
+  <script>
+    function setStream(url) {
+      document.getElementById("stream").src = url;
+    }
+  </script>
 </body>
 </html>
