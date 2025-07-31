@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CJ's Clubhouse</title>
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
@@ -16,34 +16,15 @@
       overflow-x: hidden;
     }
 
-    .nav-buttons {
-      text-align: center;
-      padding-top: 20px;
-    }
-
-    .nav-buttons button {
-      margin: 6px;
-      padding: 10px 16px;
-      background: rgba(0, 0, 0, 0.85);
-      border: 2px solid #ff00ff;
-      border-radius: 8px;
-      color: #00ffff;
-      font-size: 1rem;
-      cursor: pointer;
-      font-family: 'Permanent Marker', cursive;
-      text-shadow: 0 0 6px #00ffff;
-      box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff inset;
-    }
-
     .wrapper {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      padding: 30px 20px 60px;
-      gap: 24px;
+      padding: 80px 20px 40px;
+      gap: 20px;
     }
 
-    .stream-section {
+    .stream-column {
       flex: 2;
     }
 
@@ -53,78 +34,55 @@
       box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff inset;
       background-color: black;
       padding: 6px;
+      margin-bottom: 30px;
     }
 
-    .stream-section iframe {
+    .crt-frame iframe {
       width: 100%;
-      height: 500px;
+      height: 400px;
       border: none;
+      border-radius: 8px;
     }
 
-    .discord-section {
+    .speaker-graphic {
+      display: block;
+      margin: 20px auto 40px;
+      width: 180px;
+      height: auto;
+      filter: drop-shadow(0 0 8px #0ff) drop-shadow(0 0 16px #ff00ff);
+    }
+
+    .discord-column {
       flex: 1;
-      background: #2c2c2c;
-      border-radius: 12px;
-      overflow: hidden;
-      padding: 10px;
-      box-shadow: 0 0 20px #ff00ff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .discord-section iframe {
-      width: 100%;
-      height: 500px;
-      border: none;
     }
 
     .clubhouse-title {
-      font-size: 2.2rem;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 12px;
       color: #00ffff;
       text-shadow:
-        0 0 5px #00ffff,
-        0 0 10px #00ffff,
-        0 0 20px #ff00ff,
-        0 0 30px #ff00ff;
-      margin: 10px 0;
-      text-align: center;
+        0 0 6px #0ff,
+        0 0 12px #ff00ff,
+        0 0 20px #0ff;
     }
 
-    .cta-banner {
-      margin-top: 10px;
-      font-size: 1.1rem;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 8px 14px;
-      border-radius: 10px;
-      border: 2px solid #00ffff;
-      color: #00ffff;
-      text-align: center;
-      text-shadow: 0 0 6px #00ffff, 0 0 12px #ff00ff;
-      box-shadow: 0 0 12px #ff00ff;
-    }
-
-    .ticker {
-      margin-top: 10px;
+    .discord-widget {
       width: 100%;
+      height: 500px;
+      border-radius: 12px;
       overflow: hidden;
-      white-space: nowrap;
-      box-shadow: inset 0 0 10px #ff00ff;
-      border-radius: 6px;
+      box-shadow: 0 0 15px #ff00ff;
     }
 
-    .ticker span {
-      display: inline-block;
-      padding-left: 100%;
-      animation: scroll-text 18s linear infinite;
+    .discord-banner {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 1rem;
       color: #00ffff;
-      text-shadow: 0 0 4px #00ffff, 0 0 6px #ff00ff;
-      font-size: 0.95rem;
-    }
-
-    @keyframes scroll-text {
-      0% { transform: translateX(0%); }
-      100% { transform: translateX(-100%); }
+      text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff;
+      border-top: 1px solid #ff00ff33;
+      padding-top: 8px;
     }
 
     .footer-links {
@@ -133,43 +91,73 @@
       left: 20px;
       display: flex;
       gap: 16px;
-      z-index: 999;
+      z-index: 9999;
     }
 
     .footer-links a {
-      font-family: 'Permanent Marker', cursive;
-      font-size: 1rem;
-      color: #00ffff;
       text-decoration: none;
+      color: #00ffff;
+      background: rgba(0, 0, 0, 0.7);
       padding: 8px 12px;
       border: 2px solid #ff00ff;
-      border-radius: 8px;
-      background: rgba(0, 0, 0, 0.7);
-      box-shadow: 0 0 8px #ff00ff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ff00ff;
+      font-family: 'Permanent Marker', cursive;
+      font-size: 1rem;
       text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
     }
 
     .footer-links a:hover {
       background: rgba(0, 0, 0, 0.85);
+      color: #ff00ff;
     }
   </style>
 </head>
 <body>
-  <div class="nav-buttons">
-    <button onclick="setStream('https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech')">🎬 CJ’s Feature Stream: MST3K</button>
-    <button onclick="setStream('https://player.twitch.tv/?channel=bobross&parent=cjsgeneralstore.tech')">🎨 CJ’s Feature Stream: Bob Ross</button>
-    <button onclick="window.open('https://www.myretrotvs.com/', '_blank')">📺 Retro TV Portal</button>
-  </div>
 
   <div class="wrapper">
-    <div class="stream-section crt-frame">
-      <iframe id="stream" src="https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech" allowfullscreen></iframe>
+    <!-- Left Column -->
+    <div class="stream-column">
+      <!-- Twitch CRT -->
+      <div class="crt-frame">
+        <iframe
+          src="https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <!-- Music CRTs -->
+      <div class="crt-frame">
+        <iframe title="Best Net Radio" src="https://live365.com/embed/player.html?station=a07012" allow="autoplay"></iframe>
+      </div>
+      <div class="crt-frame">
+        <iframe title="Magic 90s" src="https://live365.com/embed/player.html?station=a61116" allow="autoplay"></iframe>
+      </div>
+      <div class="crt-frame">
+        <iframe title="Big R Radio" src="https://live365.com/embed/player.html?station=a88059" allow="autoplay"></iframe>
+      </div>
+      <div class="crt-frame">
+        <iframe title="Z93" src="https://live365.com/embed/player.html?station=a50057" allow="autoplay"></iframe>
+      </div>
+
+      <!-- Speaker Image -->
+      <img src="assets/images/speaker-glow.png" alt="Glowing Speaker" class="speaker-graphic" />
     </div>
-    <div class="discord-section">
+
+    <!-- Right Column (Discord) -->
+    <div class="discord-column">
       <div class="clubhouse-title">The Clubhouse</div>
-      <iframe src="https://discord.com/widget?id=582629989850284060&theme=dark" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-      <div class="cta-banner">💬 Join Our GenX Hangout on Discord!</div>
-      <div class="ticker"><span>📢 Stay tuned for Toonami Time and 80s Throwback Movie Nights every Friday! 🔥</span></div>
+      <div class="discord-widget">
+        <iframe
+          src="https://discord.com/widget?id=582629989850284060&theme=dark"
+          width="100%"
+          height="100%"
+          allowtransparency="true"
+          frameborder="0"
+          sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+        ></iframe>
+      </div>
+      <div class="discord-banner">🎤 Join Our GenX Hangout on Discord!</div>
     </div>
   </div>
 
@@ -178,10 +166,5 @@
     <a href="privacy.html">🔒 Privacy</a>
   </div>
 
-  <script>
-    function setStream(url) {
-      document.getElementById("stream").src = url;
-    }
-  </script>
 </body>
 </html>
