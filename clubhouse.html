@@ -16,6 +16,37 @@
       overflow-x: hidden;
     }
 
+    .nav-buttons {
+      text-align: center;
+      padding-top: 20px;
+    }
+
+    .nav-buttons button {
+      margin: 6px;
+      padding: 10px 16px;
+      background: rgba(0, 0, 0, 0.85);
+      border: 2px solid #ff00ff;
+      border-radius: 8px;
+      color: #00ffff;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: 'Permanent Marker', cursive;
+      text-shadow: 0 0 6px #00ffff;
+      box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff inset;
+    }
+
+    .wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 30px 20px 60px;
+      gap: 24px;
+    }
+
+    .stream-section {
+      flex: 2;
+    }
+
     .crt-frame {
       border: 6px solid #00ffff;
       border-radius: 12px;
@@ -24,56 +55,76 @@
       padding: 6px;
     }
 
-    .wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 60px 20px 40px;
-    }
-
-    .stream-section {
-      flex: 2;
-      margin-right: 20px;
+    .stream-section iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
     }
 
     .discord-section {
       flex: 1;
       background: #2c2c2c;
-      height: 500px;
       border-radius: 12px;
       overflow: hidden;
+      padding: 10px;
       box-shadow: 0 0 20px #ff00ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    iframe {
+    .discord-section iframe {
       width: 100%;
-      height: 100%;
+      height: 500px;
       border: none;
     }
 
-    .nav-buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      padding-top: 20px;
-    }
-
-    .nav-buttons button {
-      padding: 12px 20px;
-      background: rgba(0, 0, 0, 0.8);
-      border: 2px solid #ff00ff;
-      border-radius: 8px;
+    .clubhouse-title {
+      font-size: 2.2rem;
       color: #00ffff;
-      font-size: 1rem;
-      cursor: pointer;
-      font-family: 'Permanent Marker', cursive;
-      box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff inset;
+      text-shadow:
+        0 0 5px #00ffff,
+        0 0 10px #00ffff,
+        0 0 20px #ff00ff,
+        0 0 30px #ff00ff;
+      margin: 10px 0;
+      text-align: center;
     }
 
-    .nav-buttons button:hover {
-      background: rgba(0, 0, 0, 1);
-      box-shadow: 0 0 12px #00ffff, 0 0 25px #ff00ff;
+    .cta-banner {
+      margin-top: 10px;
+      font-size: 1.1rem;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 8px 14px;
+      border-radius: 10px;
+      border: 2px solid #00ffff;
+      color: #00ffff;
+      text-align: center;
+      text-shadow: 0 0 6px #00ffff, 0 0 12px #ff00ff;
+      box-shadow: 0 0 12px #ff00ff;
+    }
+
+    .ticker {
+      margin-top: 10px;
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      box-shadow: inset 0 0 10px #ff00ff;
+      border-radius: 6px;
+    }
+
+    .ticker span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll-text 18s linear infinite;
+      color: #00ffff;
+      text-shadow: 0 0 4px #00ffff, 0 0 6px #ff00ff;
+      font-size: 0.95rem;
+    }
+
+    @keyframes scroll-text {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-100%); }
     }
 
     .footer-links {
@@ -86,32 +137,24 @@
     }
 
     .footer-links a {
-      text-decoration: none;
+      font-family: 'Permanent Marker', cursive;
+      font-size: 1rem;
       color: #00ffff;
-      background: rgba(0, 0, 0, 0.7);
+      text-decoration: none;
       padding: 8px 12px;
       border: 2px solid #ff00ff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #ff00ff;
-      font-family: 'Permanent Marker', cursive;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 0 8px #ff00ff;
+      text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
     }
 
-    .clubhouse-title {
-      font-family: 'Permanent Marker', cursive;
-      font-size: 2.2rem;
-      color: #00ffff;
-      text-align: center;
-      margin-top: 20px;
-      text-shadow:
-        0 0 5px #0ff,
-        0 0 10px #0ff,
-        0 0 20px #ff00ff,
-        0 0 30px #ff00ff;
+    .footer-links a:hover {
+      background: rgba(0, 0, 0, 0.85);
     }
   </style>
 </head>
 <body>
-
   <div class="nav-buttons">
     <button onclick="setStream('https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech')">🎬 CJ’s Feature Stream: MST3K</button>
     <button onclick="setStream('https://player.twitch.tv/?channel=bobross&parent=cjsgeneralstore.tech')">🎨 CJ’s Feature Stream: Bob Ross</button>
@@ -123,10 +166,10 @@
       <iframe id="stream" src="https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech" allowfullscreen></iframe>
     </div>
     <div class="discord-section">
-      <h1 class="clubhouse-title">The Clubhouse</h1>
-      <iframe src="https://discord.com/widget?id=582629989850284060&theme=dark"
-        allowtransparency="true" frameborder="0"
-        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+      <div class="clubhouse-title">The Clubhouse</div>
+      <iframe src="https://discord.com/widget?id=582629989850284060&theme=dark" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+      <div class="cta-banner">💬 Join Our GenX Hangout on Discord!</div>
+      <div class="ticker"><span>📢 Stay tuned for Toonami Time and 80s Throwback Movie Nights every Friday! 🔥</span></div>
     </div>
   </div>
 
