@@ -5,8 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CJ's Clubhouse</title>
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -18,49 +17,29 @@
     }
 
     .nav-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      padding: 20px;
-      flex-wrap: wrap;
+      text-align: center;
+      padding-top: 16px;
     }
 
-    .nav-buttons a {
-      padding: 10px 20px;
+    .nav-buttons button {
+      margin: 5px;
+      padding: 10px 18px;
       background: rgba(0, 0, 0, 0.8);
       border: 2px solid #ff00ff;
-      border-radius: 10px;
+      border-radius: 8px;
       color: #00ffff;
-      text-decoration: none;
       font-size: 1rem;
-      text-shadow: 0 0 5px #0ff, 0 0 10px #f0f;
-      box-shadow: 0 0 12px #ff00ff, 0 0 16px #00ffff inset;
-      transition: transform 0.2s ease-in-out;
-    }
-
-    .nav-buttons a:hover {
-      transform: scale(1.05);
+      cursor: pointer;
+      font-family: 'Permanent Marker', cursive;
+      box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff inset;
+      text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
     }
 
     .wrapper {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      padding: 0 20px 40px;
-      gap: 20px;
-    }
-
-    .stream-section {
-      flex: 2;
-    }
-
-    .discord-section {
-      flex: 1;
-      background: #2c2c2c;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 0 20px #ff00ff;
-      padding-top: 30px;
+      padding: 30px 20px;
     }
 
     .crt-frame {
@@ -72,33 +51,77 @@
       margin-bottom: 20px;
     }
 
+    .stream-section {
+      flex: 2;
+      margin-right: 20px;
+    }
+
+    .music-player {
+      width: 100%;
+      height: 160px;
+      border: none;
+    }
+
+    .forum-section {
+      flex: 1;
+      background: #2c2c2c;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 20px #ff00ff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .discord-title {
+      font-size: 2rem;
+      color: #00ffff;
+      text-align: center;
+      padding: 10px 0 0;
+      text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff, 0 0 15px #ff00ff;
+    }
+
     iframe {
       width: 100%;
       height: 500px;
       border: none;
     }
 
-    .music-player {
-      width: 100%;
-      height: 120px;
-      border: none;
-      margin-top: -10px;
-    }
-
-    .clubhouse-title {
+    .music-header {
       text-align: center;
-      font-size: 2.4rem;
-      margin: 12px 0;
+      margin-bottom: 10px;
+      font-family: 'Permanent Marker', cursive;
       color: #00ffff;
-      text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+      text-shadow: 0 0 6px #00ffff, 0 0 12px #ff00ff;
     }
 
-    .discord-banner {
+    #stationSelect {
+      font-family: 'Permanent Marker', cursive;
+      background-color: #000;
+      color: #00ffff;
+      border: 2px solid #ff00ff;
+      border-radius: 6px;
+      padding: 6px 12px;
+      box-shadow: 0 0 10px #00ffff;
+      text-shadow: 0 0 5px #ff00ff;
+    }
+
+    .discord-footer {
       text-align: center;
-      margin-top: 6px;
+      padding: 10px;
+    }
+
+    .discord-footer a {
+      font-family: 'Permanent Marker', cursive;
       font-size: 1rem;
       color: #00ffff;
-      text-shadow: 0 0 6px #00ffff, 0 0 10px #ff00ff;
+      text-decoration: none;
+      padding: 6px 14px;
+      border: 2px solid #ff00ff;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 8px #ff00ff;
+      text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
     }
 
     .footer-links {
@@ -106,8 +129,10 @@
       bottom: 20px;
       left: 20px;
       display: flex;
-      gap: 16px;
-      z-index: 10;
+      flex-direction: row;
+      align-items: center;
+      gap: 24px;
+      z-index: 9999;
     }
 
     .footer-links a {
@@ -122,41 +147,50 @@
       box-shadow: 0 0 8px #ff00ff;
       text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
     }
+
+    .footer-links a:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
   </style>
 </head>
 <body>
 
-  <!-- TOP NAV BUTTONS -->
   <div class="nav-buttons">
-    <a onclick="setStream('https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech')">📼 CJ’s Feature Stream: MST3K</a>
-    <a onclick="setStream('https://player.twitch.tv/?channel=bobross&parent=cjsgeneralstore.tech')">🎨 CJ’s Feature Stream: Bob Ross</a>
-    <a href="https://www.myretrotvs.com/" target="_blank">📺 Retro TV Portal</a>
+    <button onclick="setStream('https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech')">📺 CJ’s Feature Stream: MST3K</button>
+    <button onclick="setStream('https://player.twitch.tv/?channel=bobross&parent=cjsgeneralstore.tech')">🎨 CJ’s Feature Stream: Bob Ross</button>
+    <button onclick="window.open('https://www.myretrotvs.com/', '_blank')">📼 Retro TV Portal</button>
   </div>
 
-  <!-- CONTENT WRAPPER -->
   <div class="wrapper">
-
-    <!-- LEFT: STREAM + MUSIC -->
     <div class="stream-section">
       <div class="crt-frame">
         <iframe id="stream" src="https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech" allowfullscreen></iframe>
       </div>
+
       <div class="crt-frame">
-        <iframe class="music-player" src="https://live365.com/embed/player.html?station=a46931" allow="autoplay"></iframe>
+        <div class="music-header">
+          <label for="stationSelect">🎵 Select Your Station:</label>
+          <select id="stationSelect" onchange="switchStation(this.value)">
+            <option value="a46931">Q106.5 – 80s & 90s Hits</option>
+            <option value="a07012">Best Net Radio – 80s/90s Mix</option>
+            <option value="a61116">Magic 90s</option>
+            <option value="a88059">Big R – 90s Alt Rock</option>
+            <option value="a50057">Z93</option>
+          </select>
+        </div>
+        <iframe id="musicPlayer" class="music-player" src="https://live365.com/embed/player.html?station=a46931" allow="autoplay"></iframe>
       </div>
     </div>
 
-    <!-- RIGHT: DISCORD -->
-    <div class="discord-section">
-      <div class="clubhouse-title">The Clubhouse</div>
-      <iframe src="https://discord.com/widget?id=582629989850284060&theme=dark" width="100%" height="500" allowtransparency="true" frameborder="0"
-        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-      <div class="discord-banner">💬 Join Our GenX Hangout on Discord</div>
+    <div class="forum-section">
+      <div class="discord-title">The Clubhouse</div>
+      <iframe src="https://discord.com/widget?id=582629989850284060&theme=dark" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+      <div class="discord-footer">
+        <a href="https://discord.gg/J9kGbM2g" target="_blank">💬 Join Our GenX Hangout on Discord</a>
+      </div>
     </div>
-
   </div>
 
-  <!-- FOOTER -->
   <div class="footer-links">
     <a href="index.html">🔙 Back to Home</a>
     <a href="privacy.html">🔒 Privacy</a>
@@ -166,7 +200,11 @@
     function setStream(url) {
       document.getElementById("stream").src = url;
     }
-  </script>
 
+    function switchStation(stationId) {
+      const player = document.getElementById("musicPlayer");
+      player.src = `https://live365.com/embed/player.html?station=${stationId}`;
+    }
+  </script>
 </body>
 </html>
