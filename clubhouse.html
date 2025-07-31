@@ -18,28 +18,28 @@
 
     .nav-buttons {
       text-align: center;
-      padding-top: 16px;
+      padding: 20px 0;
     }
 
     .nav-buttons button {
       margin: 5px;
-      padding: 10px 18px;
-      background: rgba(0, 0, 0, 0.8);
+      padding: 10px 16px;
+      background: rgba(0, 0, 0, 0.85);
       border: 2px solid #ff00ff;
-      border-radius: 8px;
+      border-radius: 10px;
       color: #00ffff;
       font-size: 1rem;
-      cursor: pointer;
       font-family: 'Permanent Marker', cursive;
+      cursor: pointer;
       box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff inset;
-      text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
+      text-shadow: 0 0 5px #00ffff;
     }
 
     .wrapper {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      padding: 30px 20px;
+      padding: 0 20px 20px;
     }
 
     .crt-frame {
@@ -48,37 +48,8 @@
       box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff inset;
       background-color: black;
       padding: 6px;
-      margin-bottom: 20px;
-    }
-
-    .stream-section {
       flex: 2;
       margin-right: 20px;
-    }
-
-    .music-player {
-      width: 100%;
-      height: 160px;
-      border: none;
-    }
-
-    .forum-section {
-      flex: 1;
-      background: #2c2c2c;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 0 20px #ff00ff;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .discord-title {
-      font-size: 2rem;
-      color: #00ffff;
-      text-align: center;
-      padding: 10px 0 0;
-      text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff, 0 0 15px #ff00ff;
     }
 
     iframe {
@@ -87,41 +58,50 @@
       border: none;
     }
 
-    .music-header {
+    .discord-box {
+      flex: 1;
+      background: #1e1e1e;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 20px #ff00ff;
+      padding-bottom: 40px;
+    }
+
+    .clubhouse-title {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 2.2rem;
+      color: #00ffff;
       text-align: center;
-      margin-bottom: 10px;
-      font-family: 'Permanent Marker', cursive;
-      color: #00ffff;
-      text-shadow: 0 0 6px #00ffff, 0 0 12px #ff00ff;
+      margin: 12px 0;
+      padding: 6px 0;
+      text-shadow:
+        0 0 5px #00ffff,
+        0 0 10px #00ffff,
+        0 0 20px #ff00ff,
+        0 0 30px #ff00ff;
+      background: none;
+      border: none;
     }
 
-    #stationSelect {
-      font-family: 'Permanent Marker', cursive;
-      background-color: #000;
+    .cta-discord {
+      position: absolute;
+      bottom: 12px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.75);
+      border: 2px solid #00ffff;
+      border-radius: 10px;
+      padding: 8px 14px;
       color: #00ffff;
-      border: 2px solid #ff00ff;
-      border-radius: 6px;
-      padding: 6px 12px;
-      box-shadow: 0 0 10px #00ffff;
-      text-shadow: 0 0 5px #ff00ff;
-    }
-
-    .discord-footer {
-      text-align: center;
-      padding: 10px;
-    }
-
-    .discord-footer a {
       font-family: 'Permanent Marker', cursive;
-      font-size: 1rem;
-      color: #00ffff;
-      text-decoration: none;
-      padding: 6px 14px;
-      border: 2px solid #ff00ff;
-      border-radius: 8px;
-      background: rgba(0, 0, 0, 0.6);
-      box-shadow: 0 0 8px #ff00ff;
+      font-size: 0.9rem;
       text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
+      box-shadow: 0 0 10px #ff00ff;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .cta-discord:hover {
+      background-color: rgba(0, 0, 0, 0.9);
     }
 
     .footer-links {
@@ -135,7 +115,7 @@
       z-index: 9999;
     }
 
-    .footer-links a {
+    .privacy-link {
       font-family: 'Permanent Marker', cursive;
       font-size: 1rem;
       color: #00ffff;
@@ -148,52 +128,88 @@
       text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
     }
 
-    .footer-links a:hover {
+    .privacy-link:hover {
       background: rgba(0, 0, 0, 0.8);
+      color: #ff00ff;
+      border-color: #00ffff;
+      box-shadow: 0 0 12px #00ffff;
+    }
+
+    .music-box {
+      position: fixed;
+      bottom: 80px;
+      left: 20px;
+      width: 380px;
+      border: 3px solid #00ffff;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff inset;
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 10px;
+      z-index: 1000;
+    }
+
+    .music-box label {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 1rem;
+      color: #00ffff;
+      text-shadow: 0 0 5px #0ff, 0 0 10px #ff00ff;
+      margin-right: 10px;
+    }
+
+    .music-box select {
+      background-color: black;
+      color: #00ffff;
+      font-family: 'Permanent Marker', cursive;
+      border: 2px solid #ff00ff;
+      border-radius: 6px;
+      padding: 4px 8px;
+      box-shadow: 0 0 8px #ff00ff;
+    }
+
+    .music-box iframe {
+      width: 100%;
+      height: 200px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 8px;
     }
   </style>
 </head>
-<body>
 
+<body>
   <div class="nav-buttons">
-    <button onclick="setStream('https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech')">📺 CJ’s Feature Stream: MST3K</button>
-    <button onclick="setStream('https://player.twitch.tv/?channel=bobross&parent=cjsgeneralstore.tech')">🎨 CJ’s Feature Stream: Bob Ross</button>
-    <button onclick="window.open('https://www.myretrotvs.com/', '_blank')">📼 Retro TV Portal</button>
+    <button onclick="setStream('https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech')">📺 CJ's Feature Stream: MST3K</button>
+    <button onclick="setStream('https://player.twitch.tv/?channel=bobross&parent=cjsgeneralstore.tech')">🎨 CJ's Feature Stream: Bob Ross</button>
+    <button onclick="window.open('https://www.myretrotvs.com/', '_blank')">📺 Retro TV Portal</button>
   </div>
 
   <div class="wrapper">
-    <div class="stream-section">
-      <div class="crt-frame">
-        <iframe id="stream" src="https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech" allowfullscreen></iframe>
-      </div>
-
-      <div class="crt-frame">
-        <div class="music-header">
-          <label for="stationSelect">🎵 Select Your Station:</label>
-          <select id="stationSelect" onchange="switchStation(this.value)">
-            <option value="a46931">Q106.5 – 80s & 90s Hits</option>
-            <option value="a07012">Best Net Radio – 80s/90s Mix</option>
-            <option value="a61116">Magic 90s</option>
-            <option value="a88059">Big R – 90s Alt Rock</option>
-            <option value="a50057">Z93</option>
-          </select>
-        </div>
-        <iframe id="musicPlayer" class="music-player" src="https://live365.com/embed/player.html?station=a46931" allow="autoplay"></iframe>
-      </div>
+    <div class="crt-frame">
+      <iframe id="stream" src="https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech" allowfullscreen></iframe>
     </div>
 
-    <div class="forum-section">
-      <div class="discord-title">The Clubhouse</div>
-      <iframe src="https://discord.com/widget?id=582629989850284060&theme=dark" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-      <div class="discord-footer">
-        <a href="https://discord.gg/J9kGbM2g" target="_blank">💬 Join Our GenX Hangout on Discord</a>
-      </div>
+    <div class="discord-box">
+      <div class="clubhouse-title">The Clubhouse</div>
+      <iframe src="https://discord.com/widget?id=582629989850284060&theme=dark" width="100%" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+      <a href="https://discord.gg/J9kGbM2g" target="_blank" class="cta-discord">💬 Join Our GenX Hangout on Discord</a>
     </div>
   </div>
 
+  <div class="music-box">
+    <label for="stationSelect">🎵 Select Your Station:</label>
+    <select id="stationSelect" onchange="updateStation(this.value)">
+      <option value="https://live365.com/embed/player/a46931">Q106.5 – 80s + 90s Hits</option>
+      <option value="https://live365.com/embed/player/a07012">Best Net Radio – 80s/90s Mix</option>
+      <option value="https://live365.com/embed/player/a61116">Magic 90s</option>
+      <option value="https://live365.com/embed/player/a88059">90s Alt Rock</option>
+      <option value="https://live365.com/embed/player/a50057">Z93</option>
+    </select>
+    <iframe id="stationFrame" src="https://live365.com/embed/player/a46931" allow="autoplay"></iframe>
+  </div>
+
   <div class="footer-links">
-    <a href="index.html">🔙 Back to Home</a>
-    <a href="privacy.html">🔒 Privacy</a>
+    <a href="index.html" class="privacy-link">🔙 Back to Home</a>
+    <a href="privacy.html" class="privacy-link">🔒 Privacy</a>
   </div>
 
   <script>
@@ -201,9 +217,9 @@
       document.getElementById("stream").src = url;
     }
 
-    function switchStation(stationId) {
-      const player = document.getElementById("musicPlayer");
-      player.src = `https://live365.com/embed/player.html?station=${stationId}`;
+    function updateStation(url) {
+      const frame = document.getElementById("stationFrame");
+      frame.src = url + "?autoplay=1";
     }
   </script>
 </body>
