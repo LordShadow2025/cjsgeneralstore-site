@@ -16,39 +16,6 @@
       overflow-x: hidden;
     }
 
-    .nav-buttons {
-      text-align: center;
-      padding: 20px;
-    }
-
-    .nav-buttons button {
-      margin: 6px;
-      padding: 12px 20px;
-      background: rgba(0, 0, 0, 0.8);
-      border: 2px solid #ff00ff;
-      border-radius: 8px;
-      color: #00ffff;
-      font-size: 1rem;
-      cursor: pointer;
-      box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff inset;
-    }
-
-    .wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 20px 30px 80px;
-      gap: 20px;
-    }
-
-    .stream-section {
-      flex: 2;
-    }
-
-    .forum-section {
-      flex: 1.2;
-    }
-
     .crt-frame {
       border: 6px solid #00ffff;
       border-radius: 12px;
@@ -57,22 +24,56 @@
       padding: 6px;
     }
 
+    .wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 60px 20px 40px;
+    }
+
+    .stream-section {
+      flex: 2;
+      margin-right: 20px;
+    }
+
+    .discord-section {
+      flex: 1;
+      background: #2c2c2c;
+      height: 500px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 20px #ff00ff;
+    }
+
     iframe {
       width: 100%;
-      height: 600px;
+      height: 100%;
       border: none;
     }
 
-    .clubhouse-title {
-      font-size: 2.4rem;
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 20px;
+    }
+
+    .nav-buttons button {
+      padding: 12px 20px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid #ff00ff;
+      border-radius: 8px;
       color: #00ffff;
-      text-align: center;
-      margin: 16px 0;
-      text-shadow:
-        0 0 5px #00ffff,
-        0 0 10px #00ffff,
-        0 0 20px #ff00ff,
-        0 0 30px #ff00ff;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: 'Permanent Marker', cursive;
+      box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff inset;
+    }
+
+    .nav-buttons button:hover {
+      background: rgba(0, 0, 0, 1);
+      box-shadow: 0 0 12px #00ffff, 0 0 25px #ff00ff;
     }
 
     .footer-links {
@@ -81,36 +82,31 @@
       left: 20px;
       display: flex;
       gap: 16px;
-      z-index: 9999;
+      z-index: 999;
     }
 
     .footer-links a {
-      font-family: 'Permanent Marker', cursive;
-      font-size: 1rem;
-      color: #00ffff;
       text-decoration: none;
-      padding: 6px 12px;
+      color: #00ffff;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 8px 12px;
       border: 2px solid #ff00ff;
-      border-radius: 8px;
-      background: rgba(0, 0, 0, 0.6);
-      box-shadow: 0 0 8px #ff00ff;
-      text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ff00ff;
+      font-family: 'Permanent Marker', cursive;
     }
 
-    .footer-links a:hover {
-      background: rgba(0, 0, 0, 0.8);
-      color: #ff00ff;
-      border-color: #00ffff;
-      box-shadow: 0 0 12px #00ffff;
-    }
-
-    @media (max-width: 992px) {
-      .wrapper {
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-        padding: 20px;
-      }
+    .clubhouse-title {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 2.2rem;
+      color: #00ffff;
+      text-align: center;
+      margin-top: 20px;
+      text-shadow:
+        0 0 5px #0ff,
+        0 0 10px #0ff,
+        0 0 20px #ff00ff,
+        0 0 30px #ff00ff;
     }
   </style>
 </head>
@@ -119,25 +115,24 @@
   <div class="nav-buttons">
     <button onclick="setStream('https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech')">🎬 CJ’s Feature Stream: MST3K</button>
     <button onclick="setStream('https://player.twitch.tv/?channel=bobross&parent=cjsgeneralstore.tech')">🎨 CJ’s Feature Stream: Bob Ross</button>
-    <button onclick="window.open('https://myretrotvs.com/', '_blank')">📺 CJ’s Retro TV Portal</button>
+    <button onclick="window.open('https://www.myretrotvs.com/', '_blank')">📺 Retro TV Portal</button>
   </div>
 
   <div class="wrapper">
     <div class="stream-section crt-frame">
       <iframe id="stream" src="https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech" allowfullscreen></iframe>
     </div>
-
-    <div class="forum-section">
-      <div class="clubhouse-title">The Clubhouse</div>
-      <div class="crt-frame">
-        <iframe src="https://cjsgenxlounge.freeflarum.com/"></iframe>
-      </div>
+    <div class="discord-section">
+      <h1 class="clubhouse-title">The Clubhouse</h1>
+      <iframe src="https://discord.com/widget?id=582629989850284060&theme=dark"
+        allowtransparency="true" frameborder="0"
+        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
     </div>
   </div>
 
   <div class="footer-links">
     <a href="index.html">🔙 Back to Home</a>
-    <a href="privacy.html" class="privacy-link">🔒 Privacy</a>
+    <a href="privacy.html">🔒 Privacy</a>
   </div>
 
   <script>
@@ -145,6 +140,5 @@
       document.getElementById("stream").src = url;
     }
   </script>
-
 </body>
 </html>
