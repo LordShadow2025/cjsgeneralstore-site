@@ -55,11 +55,6 @@
       margin-right: 20px;
     }
 
-    .music-section {
-      width: 100%;
-      margin-top: -10px;
-    }
-
     .discord-section {
       flex: 1;
       background: #1e1e1e;
@@ -117,8 +112,15 @@
       box-shadow: 0 0 8px #ff00ff;
     }
 
+    .music-section {
+      max-width: 500px;
+      margin: 20px auto 40px;
+    }
+
     .music-section iframe {
-      height: 140px;
+      width: 100%;
+      height: 130px;
+      border: none;
     }
   </style>
 </head>
@@ -134,19 +136,23 @@
       <div class="crt-frame">
         <iframe id="stream" src="https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech" height="600" allowfullscreen></iframe>
       </div>
-      <div class="music-section crt-frame">
-        <iframe src="https://live365.com/embed/player.html?station=a46931" allow="autoplay"></iframe>
-      </div>
     </div>
 
     <div class="discord-section">
       <div class="discord-header">The Clubhouse</div>
       <iframe src="https://discord.com/widget?id=582629989850284060&theme=dark"
               allowtransparency="true"
+              height="500"
               sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
       </iframe>
-      <div class="discord-banner">💬 <a href="https://discord.gg/J9kGbM2g" style="color:#00ffff; text-decoration:none;" target="_blank">Join Our GenX Hangout on Discord</a></div>
+      <div class="discord-banner">
+        💬 <a href="https://discord.gg/J9kGbM2g" target="_blank" style="color: #00ffff; text-decoration: none;">Join Our GenX Hangout on Discord</a>
+      </div>
     </div>
+  </div>
+
+  <div class="music-section crt-frame">
+    <iframe src="https://live365.com/embed/player.html?station=a46931" allow="autoplay"></iframe>
   </div>
 
   <div class="footer-links">
