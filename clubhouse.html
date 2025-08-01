@@ -55,8 +55,14 @@
       margin-right: 20px;
     }
 
-    .discord-section {
+    .right-column {
       flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .discord-section {
       background: #1e1e1e;
       border-radius: 12px;
       overflow: hidden;
@@ -113,15 +119,15 @@
     }
 
     .music-section {
-      max-width: 500px;
-      margin: 20px auto 40px;
+      height: 140px;
     }
 
     .music-section iframe {
       width: 100%;
-      height: 130px;
+      height: 100%;
       border: none;
     }
+
   </style>
 </head>
 <body>
@@ -138,21 +144,23 @@
       </div>
     </div>
 
-    <div class="discord-section">
-      <div class="discord-header">The Clubhouse</div>
-      <iframe src="https://discord.com/widget?id=582629989850284060&theme=dark"
-              allowtransparency="true"
-              height="500"
-              sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
-      </iframe>
-      <div class="discord-banner">
-        💬 <a href="https://discord.gg/J9kGbM2g" target="_blank" style="color: #00ffff; text-decoration: none;">Join Our GenX Hangout on Discord</a>
+    <div class="right-column">
+      <div class="discord-section">
+        <div class="discord-header">The Clubhouse</div>
+        <iframe src="https://discord.com/widget?id=582629989850284060&theme=dark"
+                height="500"
+                allowtransparency="true"
+                sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+        </iframe>
+        <div class="discord-banner">
+          💬 <a href="https://discord.gg/J9kGbM2g" target="_blank" style="color: #00ffff; text-decoration: none;">Join Our GenX Hangout on Discord</a>
+        </div>
+      </div>
+
+      <div class="music-section crt-frame">
+        <iframe src="https://live365.com/embed/player.html?station=a46931" allow="autoplay"></iframe>
       </div>
     </div>
-  </div>
-
-  <div class="music-section crt-frame">
-    <iframe src="https://live365.com/embed/player.html?station=a46931" allow="autoplay"></iframe>
   </div>
 
   <div class="footer-links">
