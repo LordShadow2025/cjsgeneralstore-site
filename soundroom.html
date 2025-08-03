@@ -33,52 +33,6 @@
     <p>New drops, site-only singles, and more.</p>
   </div>
 
-<!-- CRT Video Player Embed Block for CJ's Sound Room -->
-<div class="container text-center my-5">
-  <h2 class="neon-title">Now Playing</h2>
-  <div style="position: relative; display: inline-block; max-width: 800px;">
-    <!-- CRT Frame -->
-    <img src="assets/images/crt_frame_resized.png" alt="CRT TV Frame" style="width: 100%; display: block;">
-
-    <!-- Video Embed -->
-    <iframe id="crtPlayer"
-      src="https://www.youtube.com/embed/videoseries?list=PLFgquLnL59alCl_2TQvOiD5Vgm1hCaGSI"
-      style="position: absolute; top: 15.5%; left: 11.5%; width: 56.5%; height: 56.5%; border: none;"
-      allowfullscreen>
-    </iframe>
-
-    <!-- Dial UI -->
-    <div style="position: absolute; top: 18%; right: 4%; width: 50px; height: 50px; cursor: pointer;"
-         onclick="togglePlaylist()"
-         title="Switch Playlist">
-      <div style="width: 50px; height: 50px; border-radius: 50%; border: 3px solid #00ffff; box-shadow: 0 0 10px #ff00ff;">
-        <span style="font-size: 10px; color: #fff; position: absolute; top: 18px; left: 8px;">🎛️</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-  const playlists = [
-    "https://www.youtube.com/embed/videoseries?list=PLFgquLnL59alCl_2TQvOiD5Vgm1hCaGSI", // 80s
-    "https://www.youtube.com/embed/videoseries?list=PLKZl0Lr2hL3EAgqpn7DqEEx78fhkZMu1a"  // 90s
-  ];
-  let current = 0;
-  function togglePlaylist() {
-    current = (current + 1) % playlists.length;
-    document.getElementById("crtPlayer").src = playlists[current];
-  }
-</script>
-
-<style>
-  .neon-title {
-    font-family: 'Permanent Marker', cursive;
-    color: #00ffff;
-    text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff, 0 0 20px #ff00ff;
-    margin-bottom: 20px;
-  }
-</style>
-  
   <div class="prints glass-box">
     <h3 class="neon-heading">Downloadable Prints</h3>
     <p>Coming soon — Lyric sheets, cover art, exclusive releases</p>
@@ -133,5 +87,3 @@
     bgMusic.volume = volumeSlider.value;
   });
 </script>
-</body>
-</html>
