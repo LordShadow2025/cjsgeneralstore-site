@@ -1,3 +1,5 @@
+/* === BASE GLOBAL STYLES === */
+
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -12,6 +14,8 @@ body {
   padding: 0;
   position: relative;
 }
+
+/* === ANGLED BRUSH BANNER === */
 
 .angled-banner-brush {
   position: absolute;
@@ -31,6 +35,8 @@ body {
     0 0 25px #ff00ff;
   z-index: 10;
 }
+
+/* === MID BUTTONS ROW === */
 
 .mid-sign-row {
   position: absolute;
@@ -65,7 +71,8 @@ body {
     0 0 30px #ff00ff;
 }
 
-/* Power Toggle Button */
+/* === MINI POWER TOGGLE === */
+
 #mini-overlay {
   position: fixed;
   top: 20px;
@@ -100,7 +107,8 @@ body {
   }
 }
 
-/* Music Toggle Button */
+/* === MUSIC CONTROLS === */
+
 #music-toggle {
   font-family: 'Permanent Marker', cursive;
   font-size: 14px;
@@ -119,7 +127,6 @@ body {
   white-space: nowrap;
 }
 
-/* Music Controls */
 .audio-controls {
   position: fixed;
   bottom: 30px;
@@ -146,23 +153,16 @@ body {
   white-space: nowrap;
 }
 
-.audio-controls input[type="range"] {
+.audio-controls input[type="range"],
+#volume-slider {
   width: 120px;
   accent-color: #ff00ff;
-  cursor: pointer;
-}
-
-/* Volume Slider general styling (if floating separately) */
-#volume-slider {
-  accent-color: #00ffff;
   background-color: transparent;
   border-radius: 8px;
   animation: neon-pulse 3s infinite;
-  width: 120px;
   cursor: pointer;
 }
 
-/* Neon Glow Keyframes */
 @keyframes neon-pulse {
   0%, 100% {
     filter: drop-shadow(0 0 5px #00ffff)
@@ -176,7 +176,10 @@ body {
   }
 }
 
-.privacy-link {
+/* === LINKS & FOOTER === */
+
+.privacy-link,
+.about-link {
   font-family: 'Permanent Marker', cursive;
   font-size: 1rem;
   color: #00ffff;
@@ -189,11 +192,26 @@ body {
   text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
 }
 
-.privacy-link:hover {
+.privacy-link:hover,
+.about-link:hover {
   background: rgba(0, 0, 0, 0.8);
+  color: #ff00ff;
+  border-color: #00ffff;
+  box-shadow: 0 0 12px #00ffff;
 }
 
-/* === ABOUT PAGE STYLES === */
+.footer-links {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  z-index: 9999;
+}
+
+/* === ABOUT PAGE === */
 
 body.about-page {
   background-image: url('../assets/images/about.png') !important;
@@ -247,56 +265,12 @@ body.about-page {
   box-shadow: 0 0 15px #f0f;
 }
 
-.footer-links {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 24px;
-  z-index: 9999;
-}
-
-.privacy-link,
-.about-link {
-  font-family: 'Permanent Marker', cursive;
-  font-size: 1rem;
-  color: #00ffff;
-  text-decoration: none;
-  padding: 6px 12px;
-  border: 2px solid #ff00ff;
-  border-radius: 8px;
-  background: rgba(0, 0, 0, 0.6);
-  box-shadow: 0 0 8px #ff00ff;
-  text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
-}
-
-.privacy-link:hover,
-.about-link:hover {
-  background: rgba(0, 0, 0, 0.8);
-  color: #ff00ff;
-  border-color: #00ffff;
-  box-shadow: 0 0 12px #00ffff;
-}
+/* === CLUBHOUSE TITLE === */
 
 .clubhouse-title {
   font-family: 'Permanent Marker', cursive;
   font-size: 2.2rem;
   color: #00ffff;
-  text-align: center;
-  margin: 12px 0 8px;
-  text-shadow:
-    0 0 5px #0ff,
-    0 0 10px #0ff,
-    0 0 20px #ff00ff,
-    0 0 30px #ff00ff;
-}
-
-.clubhouse-title {
-  font-family: 'Permanent Marker', cursive;
-  font-size: 2.2rem;
-  color: #00ffff !important;
   text-align: center;
   margin: 12px 0;
   padding: 6px 0;
@@ -307,4 +281,85 @@ body.about-page {
     0 0 30px #ff00ff;
   background: none !important;
   border: none;
+}
+
+/* === TERMINAL GLOW + GLITCH (CJ-OG) === */
+
+.terminal-wrapper {
+  max-width: 800px;
+  margin: 3rem auto;
+  background-color: #000014;
+  border: 3px solid #8a2be2;
+  box-shadow:
+    0 0 25px #8a2be2,
+    0 0 45px #4b0082,
+    inset 0 0 15px #1e1e50;
+  font-family: 'VT323', monospace;
+  color: #00ffff;
+  padding: 2rem;
+  border-radius: 12px;
+  position: relative;
+  backdrop-filter: blur(4px);
+}
+
+.terminal-header {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #1e1e50;
+  color: #8a2be2;
+  border-bottom: 1px solid #4b0082;
+  text-shadow: 0 0 5px #ff00ff;
+  font-family: 'Permanent Marker', cursive;
+  letter-spacing: 1px;
+}
+
+.terminal-screen p {
+  margin: 1.2rem 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.glitch-box.cosmic {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px dashed #ff00ff;
+  box-shadow:
+    0 0 20px #8a2be2,
+    0 0 30px #4b0082,
+    inset 0 0 15px #ff00ff;
+  color: #ff66ff;
+  animation: fadeIn 3s ease-in 2s forwards;
+  opacity: 0;
+  font-size: 1.05rem;
+  font-family: 'VT323', monospace;
+}
+
+.typing {
+  overflow: hidden;
+  white-space: pre-line;
+  display: inline-block;
+  animation: typing 6s steps(70, end);
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+.giggle {
+  animation: flicker 2s infinite alternate;
+}
+
+@keyframes flicker {
+  0%   { opacity: 1; }
+  25%  { opacity: 0.6; }
+  50%  { opacity: 0.2; }
+  75%  { opacity: 0.8; }
+  100% { opacity: 1; }
 }
