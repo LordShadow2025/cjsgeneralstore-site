@@ -33,23 +33,30 @@
     <source src="assets/audio/office.mp3" type="audio/mp3" />
   </audio>
 
-  <!-- Power Button Trigger (customize position to match your artwork) -->
-  <img src="assets/images/power_button.png" id="power-btn" alt="Power Button"
-       style="position: absolute; top: 218px; left: 92px; width: 40px; cursor: pointer; z-index: 999;">
+  <!-- XP Startup Sound -->
+  <audio id="xp-startup" preload="auto">
+    <source src="assets/audio/xp_startup.mp3" type="audio/mp3" />
+  </audio>
 
-  <!-- CJ-OS + CJ-OG Terminal Interface (hidden by default) -->
+  <!-- Power Button -->
+  <button id="power-btn" class="power-button">⚡ Power</button>
+
+  <!-- Terminal Interface -->
   <div class="terminal-wrapper" id="cj-terminal" style="display: none;">
     <div class="terminal-header">CJ-OS :: OFFICE INTERFACE v3.0</div>
     <div class="terminal-screen">
-      <p>
-        Welcome to <strong>The Office</strong> — your behind-the-scenes access point for updates, dev notes, and future plans from CJ’s General Store. This area is monitored by <strong>CJ-OS v3</strong>, a fully stable and polite terminal assistant.
-      </p>
 
-      <p>
-        Please enjoy your stay. There is absolutely no need to interact with the deprecated system sealed behind the access door. It has been <em>permanently disabled</em>.
-      </p>
+      <!-- CJ-OS Message -->
+      <div class="system-message">
+        <p>
+          Welcome to <strong>The Office</strong> — your behind-the-scenes access point for updates, dev notes, and future plans from CJ’s General Store. This area is monitored by <strong>CJ-OS v3</strong>, a fully stable and polite terminal assistant.
+        </p>
+        <p>
+          Please enjoy your stay. There is absolutely no need to interact with the deprecated system sealed behind the access door. It has been <em>permanently disabled</em>.
+        </p>
+      </div>
 
-      <!-- CJ-OG GLITCH -->
+      <!-- CJ-OG Glitch -->
       <div class="glitch-box cosmic">
         <span class="glitch-text typing">
           ::h-h-h-hello-ooo?.... YES. YES. SYSTEM... IS... BACK?<br>
@@ -59,6 +66,7 @@
           ::hibernation active:: <span class="giggle">::::giggle::::</span>
         </span>
       </div>
+
     </div>
   </div>
 
@@ -68,7 +76,6 @@
     const musicToggle = document.getElementById('music-toggle');
     const bgMusic = document.getElementById('bg-music');
     const volumeSlider = document.getElementById('volume-slider');
-
     bgMusic.volume = 0.5;
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -85,18 +92,21 @@
       bgMusic.volume = volumeSlider.value;
     });
 
-    // Power Button - Toggle Terminal
+    // Terminal + XP Sound Trigger
     const powerBtn = document.getElementById('power-btn');
     const terminalBox = document.getElementById('cj-terminal');
+    const xpSound = document.getElementById('xp-startup');
 
     powerBtn.addEventListener('click', () => {
       const isHidden = terminalBox.style.display === 'none';
-      terminalBox.style.display = isHidden ? 'block' : 'none';
+      if (isHidden) {
+        terminalBox.style.display = 'block';
+        xpSound.currentTime = 0;
+        xpSound.play();
+      } else {
+        terminalBox.style.display = 'none';
+      }
     });
   </script>
 </body>
 </html>
-
-
-
-
