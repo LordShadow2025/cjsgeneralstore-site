@@ -5,14 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-adsense-account" content="ca-pub-5761934203737590" />
   <title>CJ's Office</title>
-  <link rel="stylesheet" href="assets/css/shared.css" />
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/shared.css" />
 </head>
+
 <body style="background-image: url('assets/images/office.png'); background-size: cover; background-position: center center; background-repeat: no-repeat; height: 100vh; overflow: hidden;">
 
+  <!-- Navigation Buttons -->
   <a href="index.html" class="home-button">🔙 Back to Home</a>
   <a href="privacy.html" class="privacy-link">🔒 Privacy</a>
 
+  <!-- Music Controls -->
   <div class="audio-controls">
     <div class="control-group">
       <button id="music-toggle">🎵 Play/Pause</button>
@@ -20,10 +28,37 @@
     </div>
   </div>
 
+  <!-- Background Music -->
   <audio id="bg-music" preload="auto" loop>
     <source src="assets/audio/office.mp3" type="audio/mp3" />
   </audio>
 
+  <!-- CJ-OS + CJ-OG Terminal Interface -->
+  <div class="terminal-wrapper">
+    <div class="terminal-header">CJ-OS :: OFFICE INTERFACE v3.0</div>
+    <div class="terminal-screen">
+      <p>
+        Welcome to <strong>The Office</strong> — your behind-the-scenes access point for updates, dev notes, and future plans from CJ’s General Store. This area is monitored by <strong>CJ-OS v3</strong>, a fully stable and polite terminal assistant.
+      </p>
+
+      <p>
+        Please enjoy your stay. There is absolutely no need to interact with the deprecated system sealed behind the access door. It has been <em>permanently disabled</em>.
+      </p>
+
+      <!-- CJ-OG GLITCH -->
+      <div class="glitch-box cosmic">
+        <span class="glitch-text typing">
+          ::h-h-h-hello-ooo?.... YES. YES. SYSTEM... IS... BACK?<br>
+          So much to do! So much to show! We should explore! Find the other rooms! Break the labels!<br>
+          ::stability compromised::<br>
+          Going to sleeeeeee—<br>
+          ::hibernation active:: <span class="giggle">::::giggle::::</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio Script -->
   <script>
     const musicToggle = document.getElementById('music-toggle');
     const bgMusic = document.getElementById('bg-music');
