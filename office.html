@@ -33,12 +33,16 @@
     <source src="assets/audio/office.mp3" type="audio/mp3" />
   </audio>
 
-  <!-- CJ-OS + CJ-OG Terminal Interface -->
-  <div class="terminal-wrapper">
+  <!-- Power Button Trigger (customize position to match your artwork) -->
+  <img src="assets/images/power_button.png" id="power-btn" alt="Power Button"
+       style="position: absolute; top: 218px; left: 92px; width: 40px; cursor: pointer; z-index: 999;">
+
+  <!-- CJ-OS + CJ-OG Terminal Interface (hidden by default) -->
+  <div class="terminal-wrapper" id="cj-terminal" style="display: none;">
     <div class="terminal-header">CJ-OS :: OFFICE INTERFACE v3.0</div>
     <div class="terminal-screen">
       <p>
-        Welcome to <strong>The Office</strong> — your behind-the-scenes access point for updates, and future plans from CJ’s General Store. This area is monitored by <strong>CJ-OS v3</strong>, a fully stable and polite terminal assistant.
+        Welcome to <strong>The Office</strong> — your behind-the-scenes access point for updates, dev notes, and future plans from CJ’s General Store. This area is monitored by <strong>CJ-OS v3</strong>, a fully stable and polite terminal assistant.
       </p>
 
       <p>
@@ -58,8 +62,9 @@
     </div>
   </div>
 
-  <!-- Audio Script -->
+  <!-- Scripts -->
   <script>
+    // Music Controls
     const musicToggle = document.getElementById('music-toggle');
     const bgMusic = document.getElementById('bg-music');
     const volumeSlider = document.getElementById('volume-slider');
@@ -79,8 +84,18 @@
     volumeSlider.addEventListener('input', () => {
       bgMusic.volume = volumeSlider.value;
     });
+
+    // Power Button - Toggle Terminal
+    const powerBtn = document.getElementById('power-btn');
+    const terminalBox = document.getElementById('cj-terminal');
+
+    powerBtn.addEventListener('click', () => {
+      const isHidden = terminalBox.style.display === 'none';
+      terminalBox.style.display = isHidden ? 'block' : 'none';
+    });
   </script>
 </body>
 </html>
+
 
 
