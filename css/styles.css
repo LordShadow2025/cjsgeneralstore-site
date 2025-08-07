@@ -362,4 +362,20 @@ body.about-page {
   50%  { opacity: 0.2; }
   75%  { opacity: 0.8; }
   100% { opacity: 1; }
+
+}
+
+.power-button {
+  position: absolute;
+  top: 402px;     /* Aligns vertically over the blue glow rectangle */
+  left: 190px;    /* Adjust horizontally for fine-tuning */
+  width: 48px;
+  height: auto;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.2s ease-in-out;
+}
+
+.power-button:hover {
+  transform: scale(1.1);
 }
