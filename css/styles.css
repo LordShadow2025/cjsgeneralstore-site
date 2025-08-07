@@ -404,3 +404,44 @@ body.about-page {
   transform: scale(1.1);
 }
 
+/* === Top Navigation Buttons === */
+.top-nav {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  gap: 12px;
+  z-index: 1000;
+}
+
+.nav-button {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1rem;
+  color: #00ffff;
+  text-decoration: none;
+  padding: 6px 12px;
+  border: 2px solid #ff00ff;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 8px #ff00ff;
+  text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
+  transition: 0.3s ease;
+}
+
+.nav-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+  color: #ff00ff;
+  border-color: #00ffff;
+  box-shadow: 0 0 12px #00ffff;
+}
+
+/* === Power Button Image Position === */
+#power-img {
+  position: absolute;
+  left: 114px;   /* adjust as needed */
+  top: 415px;    /* adjust as needed */
+  width: 40px;   /* tweak for better fit */
+  height: auto;
+  z-index: 900;
+  filter: drop-shadow(0 0 6px #ff00ff);
+}
