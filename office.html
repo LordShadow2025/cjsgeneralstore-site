@@ -28,26 +28,34 @@
     </div>
   </div>
 
-  <!-- Background Music -->
+  <!-- Audio -->
   <audio id="bg-music" preload="auto" loop>
     <source src="assets/audio/office.mp3" type="audio/mp3" />
   </audio>
-
-  <!-- XP Startup Sound -->
   <audio id="xp-startup" preload="auto">
     <source src="assets/audio/xp_startup.mp3" type="audio/mp3" />
   </audio>
 
-  <!-- Power Button -->
-  <button id="power-btn" class="power-button">⚡ Power</button>
+  <!-- Power Button Graphic -->
+  <img src="assets/images/power.jpg" alt="Power Button" id="power-btn" style="
+    position: absolute;
+    top: 365px;  /* Adjust to align with terminal panel */
+    left: 148px; /* Adjust to align with panel */
+    width: 60px;
+    height: auto;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 12px;
+    box-shadow: 0 0 12px #ff00ff;
+  " />
 
-  <!-- Terminal Interface -->
-  <div class="terminal-wrapper" id="cj-terminal" style="display: none;">
+  <!-- Terminal -->
+  <div id="cj-terminal" class="terminal-wrapper" style="display: none; opacity: 0; transition: opacity 1s ease;">
     <div class="terminal-header">CJ-OS :: OFFICE INTERFACE v3.0</div>
     <div class="terminal-screen">
 
-      <!-- CJ-OS Message -->
-      <div class="system-message">
+      <!-- System Message -->
+      <div class="system-message" style="animation: fadeIn 2s ease-in forwards;">
         <p>
           Welcome to <strong>The Office</strong> — your behind-the-scenes access point for updates, dev notes, and future plans from CJ’s General Store. This area is monitored by <strong>CJ-OS v3</strong>, a fully stable and polite terminal assistant.
         </p>
@@ -57,7 +65,7 @@
       </div>
 
       <!-- CJ-OG Glitch -->
-      <div class="glitch-box cosmic">
+      <div class="glitch-box cosmic" style="animation: fadeIn 3s ease-in 4s forwards; opacity: 0;">
         <span class="glitch-text typing">
           ::h-h-h-hello-ooo?.... YES. YES. SYSTEM... IS... BACK?<br>
           So much to do! So much to show! We should explore! Find the other rooms! Break the labels!<br>
@@ -70,44 +78,41 @@
     </div>
   </div>
 
-  <!-- Scripts -->
+  <!-- Script -->
   <script>
-    // Music Controls
     const musicToggle = document.getElementById('music-toggle');
     const bgMusic = document.getElementById('bg-music');
     const volumeSlider = document.getElementById('volume-slider');
+    const powerBtn = document.getElementById('power-btn');
+    const terminalBox = document.getElementById('cj-terminal');
+    const xpSound = document.getElementById('xp-startup');
+
     bgMusic.volume = 0.5;
 
     document.addEventListener('DOMContentLoaded', () => {
       bgMusic.play().catch(() => {});
     });
 
-    let isPlaying = true;
     musicToggle.addEventListener('click', () => {
+      const isPlaying = !bgMusic.paused;
       isPlaying ? bgMusic.pause() : bgMusic.play();
-      isPlaying = !isPlaying;
     });
 
     volumeSlider.addEventListener('input', () => {
       bgMusic.volume = volumeSlider.value;
     });
 
-    // Terminal + XP Sound Trigger
-    const powerBtn = document.getElementById('power-btn');
-    const terminalBox = document.getElementById('cj-terminal');
-    const xpSound = document.getElementById('xp-startup');
-
     powerBtn.addEventListener('click', () => {
-      const isHidden = terminalBox.style.display === 'none';
-      if (isHidden) {
+      if (terminalBox.style.display === 'none') {
         terminalBox.style.display = 'block';
+        setTimeout(() => terminalBox.style.opacity = '1', 100); // Smooth fade
         xpSound.currentTime = 0;
         xpSound.play();
       } else {
-        terminalBox.style.display = 'none';
+        terminalBox.style.opacity = '0';
+        setTimeout(() => terminalBox.style.display = 'none', 500);
       }
     });
   </script>
 </body>
 </html>
-
