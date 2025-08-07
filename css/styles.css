@@ -437,14 +437,17 @@ body.about-page {
 /* === Power Button Image Position === */
 #power-img {
   position: absolute;
-  top: 57.6%; /* Adjust these values to fine-tune position */
-  left: 16.9%;
-  width: 40px;
+  top: 404px;  /* Adjust this to fine-tune vertically */
+  left: 190px; /* Adjust this to fine-tune horizontally */
+  width: 50px;
   height: auto;
-  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease-in-out;
   cursor: pointer;
-  z-index: 50;
-  filter: drop-shadow(0 0 8px #ff00ff);
+  z-index: 1000;
+  filter: drop-shadow(0 0 6px #ff00ff) drop-shadow(0 0 12px #00ffff);
 }
 
+#power-img:hover {
+  transform: scale(1.1);
+}
 
