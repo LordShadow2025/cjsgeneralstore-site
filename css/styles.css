@@ -406,30 +406,29 @@ body.about-page {
 
 /* === Top Navigation Buttons === */
 .top-nav {
-  position: absolute;
+  position: fixed;
   top: 20px;
   left: 20px;
   display: flex;
-  gap: 12px;
-  z-index: 1000;
+  gap: 20px;
+  z-index: 9999;
 }
 
 .nav-button {
   font-family: 'Permanent Marker', cursive;
   font-size: 1rem;
   color: #00ffff;
-  text-decoration: none;
-  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.7);
   border: 2px solid #ff00ff;
   border-radius: 8px;
-  background: rgba(0, 0, 0, 0.6);
-  box-shadow: 0 0 8px #ff00ff;
+  padding: 8px 16px;
+  text-decoration: none;
   text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
-  transition: 0.3s ease;
+  box-shadow: 0 0 10px #ff00ff;
 }
 
 .nav-button:hover {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.9);
   color: #ff00ff;
   border-color: #00ffff;
   box-shadow: 0 0 12px #00ffff;
@@ -445,3 +444,4 @@ body.about-page {
   z-index: 900;
   filter: drop-shadow(0 0 6px #ff00ff);
 }
+
