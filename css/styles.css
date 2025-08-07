@@ -365,6 +365,30 @@ body.about-page {
 
 }
 
+.home-button {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1rem;
+  color: #00ffff;
+  text-decoration: none;
+  padding: 6px 12px;
+  border: 2px solid #ff00ff;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 8px #ff00ff;
+  text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  z-index: 1000;
+}
+
+.home-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+  color: #ff00ff;
+  border-color: #00ffff;
+  box-shadow: 0 0 12px #00ffff;
+}
+
 .power-button {
   position: absolute;
   top: 402px;     /* Aligns vertically over the blue glow rectangle */
@@ -379,3 +403,4 @@ body.about-page {
 .power-button:hover {
   transform: scale(1.1);
 }
+
