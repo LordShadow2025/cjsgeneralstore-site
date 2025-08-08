@@ -434,17 +434,22 @@ body.about-page {
   box-shadow: 0 0 12px #00ffff;
 }
 
-/* === Power Button Image Position === */
+/* === Power Button Image Position (Responsive) === */
 #power-img {
   position: absolute;
-  top: 404px;
-  left: 190px;
-  width: 50px;
+  top: 57.2%;      /* vertical position relative to background height */
+  left: 15.9%;     /* horizontal position relative to background width */
+  width: 4%;       /* keeps button size proportional */
   height: auto;
-  transition: transform 0.2s ease-in-out;
   cursor: pointer;
   z-index: 1000;
   filter: drop-shadow(0 0 6px #ff00ff) drop-shadow(0 0 12px #00ffff);
   animation: neon-pulse 3s infinite;
+  transition: transform 0.2s ease-in-out;
 }
+
+#power-img:hover {
+  transform: scale(1.1);
+}
+
 
