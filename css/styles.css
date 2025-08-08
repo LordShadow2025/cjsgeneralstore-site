@@ -437,17 +437,14 @@ body.about-page {
 /* === Power Button Image Position === */
 #power-img {
   position: absolute;
-  top: 404px;  /* Adjust this to fine-tune vertically */
-  left: 190px; /* Adjust this to fine-tune horizontally */
+  top: 404px;
+  left: 190px;
   width: 50px;
   height: auto;
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
   z-index: 1000;
   filter: drop-shadow(0 0 6px #ff00ff) drop-shadow(0 0 12px #00ffff);
-}
-
-#power-img:hover {
-  transform: scale(1.1);
+  animation: neon-pulse 3s infinite;
 }
 
