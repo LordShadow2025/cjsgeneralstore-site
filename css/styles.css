@@ -437,8 +437,8 @@ body.about-page {
 /* === Power Button Image Position (Responsive) === */
 #power-btn {
   position: absolute;
-  top: 57.2%;
-  left: 15.9%;
+  top: 56.8%;
+  left: 14.7%;
   width: 4%;
   height: auto;
   cursor: pointer;
@@ -451,5 +451,6 @@ body.about-page {
 #power-btn:hover {
   transform: scale(1.1);
 }
+
 
 
