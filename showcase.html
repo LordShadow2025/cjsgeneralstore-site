@@ -7,6 +7,47 @@
   <title>CJ's Showcase</title>
   <link rel="stylesheet" href="assets/css/shared.css" />
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
+  <style>
+    /* Neon frosted welcome banner */
+    .welcome-banner{
+      max-width: 900px;
+      margin: 1.25rem auto 1.5rem;
+      padding: 1rem 1.25rem;
+      text-align: center;
+      background: rgba(14,14,28,0.55);
+      -webkit-backdrop-filter: saturate(160%) blur(8px);
+      backdrop-filter: saturate(160%) blur(8px);
+      border: 1px solid rgba(0,255,255,0.35);
+      border-radius: 20px;
+      box-shadow:
+        0 0 12px rgba(0,255,255,0.9),
+        inset 0 0 28px rgba(255,0,128,0.35);
+    }
+
+    .welcome-banner h2{
+      margin: 0 0 .35rem;
+      font-family: 'Permanent Marker', cursive;
+      font-weight: 400;
+      font-size: clamp(1.2rem, 2vw + .6rem, 1.75rem);
+      color: #e7f8ff;
+      letter-spacing: .5px;
+      text-shadow:
+        0 0 6px rgba(0,153,255,0.9),
+        0 0 14px rgba(255,0,255,0.8);
+    }
+
+    .welcome-banner p{
+      margin: 0;
+      color: #eaf9ff;
+      line-height: 1.55;
+      font-size: clamp(.95rem, 1vw + .6rem, 1.05rem);
+      text-shadow: 0 0 4px rgba(0,255,255,0.6);
+    }
+
+    @media (max-width: 480px){
+      .welcome-banner{ margin: .75rem 12px 1rem; padding: .75rem .9rem; }
+    }
+  </style>
 </head>
 <body style="background-image: url('assets/images/showcase.png'); background-size: cover; background-position: center center; background-repeat: no-repeat; height: 100vh; overflow: hidden;">
 
@@ -18,6 +59,16 @@
       <button id="music-toggle">🎵 Play/Pause</button>
       <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" title="Volume">
     </div>
+  </div>
+
+  <!-- Showcase Welcome Banner -->
+  <div class="welcome-banner" id="showcase-welcome" role="region" aria-label="Showcase introduction">
+    <h2>Welcome to the Showcase!</h2>
+    <p>
+      Step into the Showcase of CJ’s General Store, where we display odd finds, share stories, musings.
+      Will be my main area to share my thoughts and comments from fellow GenXr's. Be sure to check out our other sections,
+      the Library
+    </p>
   </div>
 
   <audio id="bg-music" preload="auto" loop>
