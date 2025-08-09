@@ -452,6 +452,15 @@ body.about-page {
   transform: scale(1.1);
 }
 
+/* === Privacy Page Back to Home Button Fix === */
+body:has(.privacy-wrapper) .home-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: inline-block;
+  width: auto;
+  height: auto;
+}
 
 
 
