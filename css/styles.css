@@ -454,13 +454,16 @@ body.about-page {
 
 /* === Privacy Page Back to Home Button Fix === */
 body:has(.privacy-wrapper) .home-button {
-  position: fixed;
+  position: fixed !important;
   bottom: 20px;
   right: 20px;
+  top: auto !important;
+  left: auto !important;
   display: inline-block;
   width: auto;
   height: auto;
 }
+
 
 
 
