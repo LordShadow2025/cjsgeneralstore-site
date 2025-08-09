@@ -438,7 +438,7 @@ body.about-page {
 #power-btn {
   position: absolute;
   top: 61.9%;
-  left: 24.8%;
+  left: 24.0%;
   width: 3.6%;
   height: auto;
   cursor: pointer;
@@ -451,6 +451,7 @@ body.about-page {
 #power-btn:hover {
   transform: scale(1.1);
 }
+
 
 
 
