@@ -440,7 +440,6 @@ body.about-page {
   top: 61.9%;
   left: 28.3%;
   width: 3.9%;
-  transform: translate(-50%, -50%);
   height: auto;
   cursor: pointer;
   z-index: 1000;
@@ -452,6 +451,7 @@ body.about-page {
 #power-btn:hover {
   transform: scale(1.1);
 }
+
 
 
 
