@@ -723,16 +723,16 @@ body:has(.privacy-wrapper) .home-button {
   color:#eefbff; text-shadow:0 0 3px rgba(0,255,255,.75), 0 0 10px rgba(255,0,255,.4);
 }
 
-/* Office-specific neon cosmic red text */
+/* Office-specific cosmic neon blue text */
 .office-page .welcome-banner h2,
 .office-page .welcome-banner p {
-  color: #ff003c; /* bright neon red-pink */
+  color: #00e5ff; /* bright neon cyan-blue */
   text-shadow:
-    0 0 5px #ff003c,
-    0 0 10px #ff003c,
-    0 0 20px #ff1a4d,
-    0 0 30px #ff1a4d,
-    0 0 40px #ff4d6d;
+    0 0 5px #00e5ff,
+    0 0 10px #00e5ff,
+    0 0 20px #00bfff,
+    0 0 30px #00bfff,
+    0 0 40px #66ffff;
 }
 
 
