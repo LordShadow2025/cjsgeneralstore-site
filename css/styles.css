@@ -599,6 +599,44 @@ body:has(.privacy-wrapper) .home-button {
   }
 }
 
+/* Showcase-specific welcome banner text color */
+.showcase-page .welcome-banner h2,
+.showcase-page .welcome-banner p {
+  color: #d77bff; /* cosmic purple */
+  text-shadow:
+    0 0 6px rgba(215,123,255,0.9),
+    0 0 14px rgba(255,0,255,0.85),
+    0 0 28px rgba(215,123,255,0.35);
+}
+
+/* Restore Home & Privacy button style for welcome-banner pages */
+.showcase-page a.home-button,
+.showcase-page a.privacy-link {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1rem;
+  color: #00ffff;
+  text-decoration: none;
+  padding: 6px 12px;
+  border: 2px solid #ff00ff;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 8px #ff00ff;
+  text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
+  position: absolute;
+  top: 20px;
+  z-index: 1000;
+}
+
+.showcase-page a.home-button { left: 10px; }
+.showcase-page a.privacy-link { left: 130px; }
+
+.showcase-page a.home-button:hover,
+.showcase-page a.privacy-link:hover {
+  background: rgba(0, 0, 0, 0.8);
+  color: #ff00ff;
+  border-color: #00ffff;
+  box-shadow: 0 0 12px #00ffff;
+}
 
 
 
