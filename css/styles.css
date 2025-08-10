@@ -747,6 +747,17 @@ body:has(.privacy-wrapper) .home-button {
     0 0 40px #66ff66 !important;
 }
 
+/* FORCE Office banner to neon green (beats earlier reds) */
+body.office-page .welcome-banner#office-welcome h2,
+body.office-page .welcome-banner#office-welcome p {
+  color: #39ff14 !important; /* neon green */
+  text-shadow:
+    0 0 5px #39ff14,
+    0 0 10px #39ff14,
+    0 0 20px #00ff00,
+    0 0 30px #00ff00,
+    0 0 40px #66ff66 !important;
+}
 
 
 
