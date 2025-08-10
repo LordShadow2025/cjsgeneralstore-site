@@ -668,6 +668,24 @@ body:has(.privacy-wrapper) .home-button {
   box-shadow: 0 0 12px #00ffff;
 }
 
+/* Showcase: keep buttons side-by-side, no overlap */
+.showcase-page .top-buttons{
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  display: flex;
+  gap: 14px;         /* space between buttons */
+  z-index: 10000;
+}
+
+/* Neutralize older absolute/left rules on the anchors */
+.showcase-page .top-buttons .home-button,
+.showcase-page .top-buttons .privacy-link{
+  position: static !important;  /* override earlier .home-button absolute */
+  top: auto !important;
+  left: auto !important;
+  margin: 0;
+}
 
 
 
