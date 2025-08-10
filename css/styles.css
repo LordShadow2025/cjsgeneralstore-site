@@ -638,6 +638,35 @@ body:has(.privacy-wrapper) .home-button {
   box-shadow: 0 0 12px #00ffff;
 }
 
+/* Showcase-specific top button positioning */
+.showcase-page .home-button,
+.showcase-page .privacy-link {
+  position: fixed;
+  top: 20px;
+  padding: 6px 12px;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1rem;
+  text-decoration: none;
+  color: #00ffff;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid #ff00ff;
+  border-radius: 8px;
+  box-shadow: 0 0 8px #ff00ff;
+  text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
+  z-index: 1000;
+}
+
+/* Back to Home stays left, Privacy sits right beside it with space */
+.showcase-page .home-button { left: 20px; }
+.showcase-page .privacy-link { left: 160px; }
+
+.showcase-page .home-button:hover,
+.showcase-page .privacy-link:hover {
+  background: rgba(0, 0, 0, 0.8);
+  color: #ff00ff;
+  border-color: #00ffff;
+  box-shadow: 0 0 12px #00ffff;
+}
 
 
 
