@@ -13,7 +13,7 @@
   <!-- Navigation -->
   <a href="index.html" class="home-button">🔙 Back to Home</a>
 
-  <!-- Audio Controls (TV area) -->
+  <!-- Audio Controls -->
   <div class="audio-stack">
     <div class="audio-controls">
       <div class="control-group">
@@ -26,11 +26,10 @@
     </div>
   </div>
 
-  <!-- Audio Elements -->
+  <!-- Audio Sources -->
   <audio id="bg-music" preload="auto" loop>
     <source src="assets/audio/library.mp3" type="audio/mp3" />
   </audio>
-
   <audio id="weather-music" preload="auto" loop>
     <source src="assets/audio/dailytemps.mp3" type="audio/mp3" />
   </audio>
@@ -38,36 +37,35 @@
   <!-- Welcome Message -->
   <div class="library-welcome">
     <h1 class="neon-welcome-text">
-      Step into the Library – where stories glow and zines still breathe.Maybe check the temps on TV, maybe a apple game?
+      Step into the Library – where stories glow and zines still breathe. Poems, journals, and old-school vibes await.
     </h1>
   </div>
 
-  <!-- CJ's Picks (YouTube Embed) -->
+  <!-- CJ's Picks -->
   <div class="neon-picks-box">
     <h2 class="neon-title">🎒 CJ’s Picks – Vintage Classroom Media</h2>
 
     <div class="embed-wrapper">
       <iframe 
-        src="https://www.youtube.com/embed/6DzzPDnIKtQ?list=PLKJR_fa1TmjaVYJQepCM7KC7P2ZEYaTFA" 
+        src="https://www.youtube.com/embed/6DzzPDnIKtQ?list=PLKJR_fa1TmjaVYJQepCM7KC7P2ZEYaTFA"
         title="PBS Gold"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
         class="yt-embed">
       </iframe>
-      
       <div class="embed-caption">📺 PBS Gold</div>
     </div>
   </div>
 
-  <!-- CJ's Blog Embed -->
+  <!-- Blog Section -->
   <div class="neon-blog-box">
     <h2 class="neon-title">📚 CJ’s Blog</h2>
 
     <iframe 
       src="https://cjsgeneralstore.blogspot.com/" 
       width="100%" 
-      height="640" 
+      height="520" 
       frameborder="0" 
       class="blog-iframe"
       title="CJ’s Blog">
@@ -80,21 +78,21 @@
     </div>
   </div>
 
-  <!-- Footer Privacy Link -->
+  <!-- Footer -->
   <a href="privacy.html" class="privacy-link bottom">🔒 Privacy</a>
 
-  <!-- Music & Weather Script -->
+  <!-- Scripts -->
   <script>
     const musicToggle = document.getElementById('music-toggle');
     const bgMusic = document.getElementById('bg-music');
     const volumeSlider = document.getElementById('volume-slider');
+    const weatherBtn = document.getElementById('weather-music-btn');
+    const weatherAudio = document.getElementById('weather-music');
 
     bgMusic.volume = 0.5;
 
     document.addEventListener('DOMContentLoaded', () => {
-      bgMusic.play().catch((err) => {
-        console.warn("Autoplay blocked until user interacts.");
-      });
+      bgMusic.play().catch(() => {});
     });
 
     let isPlaying = true;
@@ -111,10 +109,7 @@
       bgMusic.volume = volumeSlider.value;
     });
 
-    const weatherBtn = document.getElementById('weather-music-btn');
-    const weatherAudio = document.getElementById('weather-music');
     let weatherPlaying = false;
-
     weatherBtn.addEventListener('click', () => {
       if (weatherPlaying) {
         weatherAudio.pause();
@@ -128,4 +123,6 @@
   </script>
 </body>
 </html>
+
+
 
