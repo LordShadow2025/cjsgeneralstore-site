@@ -12,9 +12,9 @@
 
   <!-- Navigation -->
   <a href="index.html" class="home-button">🔙 Back to Home</a>
-  <a href="privacy.html" class="privacy-link">🔒 Privacy</a>
+  <a href="privacy.html" class="privacy-link bottom">🔒 Privacy</a>
 
-  <!-- Audio Controls + Weather (near TV) -->
+  <!-- Audio Controls (TV area) -->
   <div class="audio-stack">
     <div class="audio-controls">
       <div class="control-group">
@@ -22,12 +22,12 @@
         <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" title="Volume">
       </div>
     </div>
-    <div class="weather-audio-toggle neon-btn small-btn">
-      <button id="weather-music-btn">🔊 Weather Audio</button>
+    <div class="weather-audio-toggle">
+      <button id="weather-music-btn">🔊</button>
     </div>
   </div>
 
-  <!-- Audio Sources -->
+  <!-- Audio Elements -->
   <audio id="bg-music" preload="auto" loop>
     <source src="assets/audio/library.mp3" type="audio/mp3" />
   </audio>
@@ -36,41 +36,41 @@
   </audio>
 
   <!-- Welcome Message -->
-  <div class="library-welcome neon-box">
-    <h1 class="neon-welcome-text">
-      Step into the Library – where stories glow and zines still breathe. Poems, journals, and old-school vibes await.
+  <div class="library-welcome cosmic-purple-border">
+    <h1 class="neon-welcome-text cosmic-purple-text">
+      Step into the Library – where stories glow and zines still breathe. Where GenXr's, and all are welcome.
     </h1>
   </div>
 
-  <!-- YouTube Channel Embed -->
+  <!-- GenX Media Link -->
+  <div class="neon-btn-row">
+    <a href="https://www.youtube.com/watch?v=6DzzPDnIKtQ&list=PLKJR_fa1TmjaVYJQepCM7KC7P2ZEYaTFA" 
+       class="neon-btn" target="_blank" rel="noopener">
+      📺 GenX Media
+    </a>
+  </div>
+
+  <!-- CJ’s Picks (YouTube Embed) -->
   <div class="neon-picks-box">
     <h2 class="neon-title">🎒 CJ’s Picks – Vintage Classroom Media</h2>
-
-    <div class="embed-wrapper left-aligned">
+    <div class="embed-wrapper">
       <iframe 
+        width="440" height="520"
         src="https://www.youtube.com/embed?listType=user_uploads&list=UCtbyrpBGqUMIIsH10spZQkg"
-        title="CJ's YouTube Channel"
+        title="CJ’s Picks"
         frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
         class="yt-embed">
       </iframe>
-      <div class="embed-caption">📺 Channel Stream</div>
-    </div>
-
-    <!-- External Linkout -->
-    <div class="visit-row">
-      <a class="neon-btn" href="https://www.youtube.com/watch?v=6DzzPDnIKtQ&list=PLKJR_fa1TmjaVYJQepCM7KC7P2ZEYaTFA" target="_blank" rel="noopener">GenX Media</a>
     </div>
   </div>
 
-  <!-- Blog Embed -->
-  <div class="neon-blog-box left-aligned">
+  <!-- CJ’s Blog Embed -->
+  <div class="neon-blog-box">
     <h2 class="neon-title">📚 CJ’s Blog</h2>
     <iframe 
       src="https://cjsgeneralstore.blogspot.com/" 
-      width="100%" 
-      height="440"
+      width="440" height="520"
       frameborder="0" 
       class="blog-iframe"
       title="CJ’s Blog">
@@ -82,24 +82,26 @@
     </div>
   </div>
 
-  <!-- Music Control JS -->
+  <!-- Scripts -->
   <script>
     const musicToggle = document.getElementById('music-toggle');
     const bgMusic = document.getElementById('bg-music');
     const volumeSlider = document.getElementById('volume-slider');
-    const weatherBtn = document.getElementById('weather-music-btn');
-    const weatherAudio = document.getElementById('weather-music');
-
     bgMusic.volume = 0.5;
-    let isPlaying = true;
-    let weatherPlaying = false;
 
     document.addEventListener('DOMContentLoaded', () => {
-      bgMusic.play().catch(() => {});
+      bgMusic.play().catch((err) => {
+        console.warn("Autoplay blocked until user interacts.");
+      });
     });
 
+    let isPlaying = true;
     musicToggle.addEventListener('click', () => {
-      isPlaying ? bgMusic.pause() : bgMusic.play();
+      if (isPlaying) {
+        bgMusic.pause();
+      } else {
+        bgMusic.play();
+      }
       isPlaying = !isPlaying;
     });
 
@@ -107,9 +109,18 @@
       bgMusic.volume = volumeSlider.value;
     });
 
+    const weatherBtn = document.getElementById('weather-music-btn');
+    const weatherAudio = document.getElementById('weather-music');
+    let weatherPlaying = false;
+
     weatherBtn.addEventListener('click', () => {
-      weatherPlaying ? weatherAudio.pause() : weatherAudio.play();
-      weatherBtn.textContent = weatherPlaying ? '🔊 Weather Audio' : '🔈 Playing...';
+      if (weatherPlaying) {
+        weatherAudio.pause();
+        weatherBtn.textContent = '🔊';
+      } else {
+        weatherAudio.play();
+        weatherBtn.textContent = '🔈';
+      }
       weatherPlaying = !weatherPlaying;
     });
   </script>
