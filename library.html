@@ -5,14 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-adsense-account" content="ca-pub-5761934203737590" />
   <title>CJ's Library</title>
-  <link rel="stylesheet" href="assets/css/shared.css" />
+  <link rel="stylesheet" href="css/styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
 </head>
 <body style="background-image: url('assets/images/library.png'); background-size: cover; background-position: center center; background-repeat: no-repeat; height: 100vh; overflow: hidden;">
 
+  <!-- Navigation Buttons -->
   <a href="index.html" class="home-button">🔙 Back to Home</a>
   <a href="privacy.html" class="privacy-link">🔒 Privacy</a>
 
+  <!-- Audio Controls -->
   <div class="audio-controls">
     <div class="control-group">
       <button id="music-toggle">🎵 Play/Pause</button>
@@ -24,15 +26,60 @@
     <source src="assets/audio/library.mp3" type="audio/mp3" />
   </audio>
 
-  <!-- Weather Music Toggle Button and Audio -->
-<div class="weather-audio-toggle">
-  <button id="weather-music-btn">🔊</button>
-</div>
+  <!-- Weather Music Toggle -->
+  <div class="weather-audio-toggle">
+    <button id="weather-music-btn">🔊</button>
+  </div>
 
-<audio id="weather-music" preload="auto" loop>
-  <source src="assets/audio/dailytemps.mp3" type="audio/mp3" />
-</audio>
+  <audio id="weather-music" preload="auto" loop>
+    <source src="assets/audio/dailytemps.mp3" type="audio/mp3" />
+  </audio>
 
+  <!-- Neon Welcome Message -->
+  <div class="library-welcome">
+    <h1 class="neon-welcome-text">
+      Step into the Library – where stories glow and zines still breathe. Poems, journals, and old-school vibes await.
+    </h1>
+  </div>
+
+  <!-- CJ's Picks (YouTube Embed) -->
+  <div class="neon-picks-box">
+    <h2 class="neon-title">🎒 CJ’s Picks – Vintage Classroom Media</h2>
+
+    <div class="embed-wrapper">
+      <iframe 
+        src="https://www.youtube.com/embed/videoseries?list=PLKJR_fa1TmjaVYJQepCM7KC7P2ZEYaTFA" 
+        title="PBS Gold"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        class="yt-embed">
+      </iframe>
+      <div class="embed-caption">📺 PBS Gold</div>
+    </div>
+  </div>
+
+  <!-- CJ's Blog Embed -->
+  <div class="neon-blog-box">
+    <h2 class="neon-title">📚 CJ’s Blog</h2>
+
+    <iframe 
+      src="https://cjsgeneralstore.blogspot.com/" 
+      width="100%" 
+      height="640" 
+      frameborder="0" 
+      class="blog-iframe"
+      title="CJ’s Blog">
+    </iframe>
+
+    <div class="visit-row">
+      <a class="neon-btn" href="https://cjsgeneralstore.blogspot.com/" target="_blank" rel="noopener">
+        Visit Blog (Full View)
+      </a>
+    </div>
+  </div>
+
+  <!-- Music + Weather JS -->
   <script>
     const musicToggle = document.getElementById('music-toggle');
     const bgMusic = document.getElementById('bg-music');
@@ -59,23 +106,21 @@
     volumeSlider.addEventListener('input', () => {
       bgMusic.volume = volumeSlider.value;
     });
+
+    const weatherBtn = document.getElementById('weather-music-btn');
+    const weatherAudio = document.getElementById('weather-music');
+    let weatherPlaying = false;
+
+    weatherBtn.addEventListener('click', () => {
+      if (weatherPlaying) {
+        weatherAudio.pause();
+        weatherBtn.textContent = '🔊';
+      } else {
+        weatherAudio.play();
+        weatherBtn.textContent = '🔈';
+      }
+      weatherPlaying = !weatherPlaying;
+    });
   </script>
-
-  <script>
-  const weatherBtn = document.getElementById('weather-music-btn');
-  const weatherAudio = document.getElementById('weather-music');
-  let weatherPlaying = false;
-
-  weatherBtn.addEventListener('click', () => {
-    if (weatherPlaying) {
-      weatherAudio.pause();
-      weatherBtn.textContent = '🔊';
-    } else {
-      weatherAudio.play();
-      weatherBtn.textContent = '🔈';
-    }
-    weatherPlaying = !weatherPlaying;
-  });
-</script>
 </body>
 </html>
