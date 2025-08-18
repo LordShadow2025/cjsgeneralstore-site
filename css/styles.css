@@ -1052,6 +1052,45 @@ body.office-page .welcome-banner#office-welcome p {
   z-index: 9999;
 }
 
+/* === FINAL LIBRARY SCROLL AND BOX FIX === */
+
+.library-page .yt-embed,
+.library-page .blog-iframe {
+  width: 360px !important;
+  height: 420px !important;
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 12px #ff00ff;
+}
+
+.library-page .neon-picks-box,
+.library-page .neon-blog-box {
+  max-width: 400px;
+  margin: 0 20px 28px 40px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  border: 2px solid #00ffff;
+  box-shadow: 0 0 10px #ff00ff;
+}
+
+.library-page .neon-picks-box h2,
+.library-page .neon-blog-box h2 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  text-align: left;
+  padding-left: 4px;
+}
+
+.library-page .visit-row {
+  text-align: left;
+  margin-top: 10px;
+}
+
+.library-page iframe {
+  display: block;
+  margin: 0 auto;
+}
 
 
 
