@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="library-page">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,26 +8,20 @@
   <link rel="stylesheet" href="css/styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
 </head>
-<body class="library-page" style="background-image: url('assets/images/library.png'); background-size: cover; background-position: center center; background-repeat: no-repeat; min-height: 100vh;">
+<body style="background-image: url('assets/images/library.png'); background-size: cover; background-position: center center; background-repeat: no-repeat; min-height: 100vh;">
 
   <!-- Navigation -->
-  <a href="index.html" class="home-button">🔙 Back to Home</a>
-  <a href="privacy.html" class="privacy-link bottom">🔒 Privacy</a>
-
-  <!-- Audio Controls (TV area) -->
-  <div class="audio-stack">
-    <div class="audio-controls">
-      <div class="control-group">
-        <button id="music-toggle">🎵 Play/Pause</button>
-        <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" title="Volume">
-      </div>
-    </div>
-    <div class="weather-audio-toggle">
-      <button id="weather-music-btn">🔊</button>
-    </div>
+  <div class="top-buttons">
+    <a href="index.html" class="home-button">🔙 Back to Home</a>
+    <a href="privacy.html" class="privacy-link">🔒 Privacy</a>
   </div>
 
-  <!-- Audio Elements -->
+  <!-- Audio Controls (TV area) -->
+  <div class="weather-audio-btn neon-btn-styled">
+    <button id="weather-music-btn">🔊 Weather Audio</button>
+  </div>
+
+  <!-- Background Music -->
   <audio id="bg-music" preload="auto" loop>
     <source src="assets/audio/library.mp3" type="audio/mp3" />
   </audio>
@@ -36,45 +30,29 @@
   </audio>
 
   <!-- Welcome Message -->
-  <div class="library-welcome cosmic-purple-border">
-    <h1 class="neon-welcome-text cosmic-purple-text">
-      Step into the Library – where stories glow and zines still breathe. Where GenXr's, and all are welcome.
-    </h1>
+  <div class="welcome-banner">
+    <h2>Step into the Library – where stories glow and zines still breathe. Poems, journals, and old-school vibes await.</h2>
   </div>
 
-  <!-- GenX Media Link -->
-  <div class="neon-btn-row">
-    <a href="https://www.youtube.com/watch?v=6DzzPDnIKtQ&list=PLKJR_fa1TmjaVYJQepCM7KC7P2ZEYaTFA" 
-       class="neon-btn" target="_blank" rel="noopener">
+  <!-- GenX Media Linkout -->
+  <div class="linkout-row">
+    <a class="neon-btn" href="https://www.youtube.com/watch?v=6DzzPDnIKtQ&list=PLKJR_fa1TmjaVYJQepCM7KC7P2ZEYaTFA" target="_blank" rel="noopener">
       📺 GenX Media
     </a>
   </div>
 
-  <!-- CJ’s Picks (YouTube Embed) -->
-  <div class="neon-picks-box">
-    <h2 class="neon-title">🎒 CJ’s Picks – Vintage Classroom Media</h2>
-    <div class="embed-wrapper">
-      <iframe 
-        width="440" height="520"
-        src="https://www.youtube.com/embed?listType=user_uploads&list=UCtbyrpBGqUMIIsH10spZQkg"
-        title="CJ’s Picks"
-        frameborder="0"
-        allowfullscreen
-        class="yt-embed">
-      </iframe>
-    </div>
-  </div>
-
-  <!-- CJ’s Blog Embed -->
+  <!-- CJ’s Blog -->
   <div class="neon-blog-box">
     <h2 class="neon-title">📚 CJ’s Blog</h2>
     <iframe 
       src="https://cjsgeneralstore.blogspot.com/" 
-      width="440" height="520"
+      width="460" 
+      height="520" 
       frameborder="0" 
       class="blog-iframe"
       title="CJ’s Blog">
     </iframe>
+
     <div class="visit-row">
       <a class="neon-btn" href="https://cjsgeneralstore.blogspot.com/" target="_blank" rel="noopener">
         Visit Blog (Full View)
@@ -82,44 +60,27 @@
     </div>
   </div>
 
-  <!-- Scripts -->
+  <!-- Music & Weather Script -->
   <script>
     const musicToggle = document.getElementById('music-toggle');
     const bgMusic = document.getElementById('bg-music');
     const volumeSlider = document.getElementById('volume-slider');
-    bgMusic.volume = 0.5;
-
-    document.addEventListener('DOMContentLoaded', () => {
-      bgMusic.play().catch((err) => {
-        console.warn("Autoplay blocked until user interacts.");
-      });
-    });
-
-    let isPlaying = true;
-    musicToggle.addEventListener('click', () => {
-      if (isPlaying) {
-        bgMusic.pause();
-      } else {
-        bgMusic.play();
-      }
-      isPlaying = !isPlaying;
-    });
-
-    volumeSlider.addEventListener('input', () => {
-      bgMusic.volume = volumeSlider.value;
-    });
-
     const weatherBtn = document.getElementById('weather-music-btn');
     const weatherAudio = document.getElementById('weather-music');
     let weatherPlaying = false;
 
+    document.addEventListener('DOMContentLoaded', () => {
+      bgMusic.volume = 0.5;
+      bgMusic.play().catch(() => {});
+    });
+
     weatherBtn.addEventListener('click', () => {
       if (weatherPlaying) {
         weatherAudio.pause();
-        weatherBtn.textContent = '🔊';
+        weatherBtn.textContent = '🔊 Weather Audio';
       } else {
         weatherAudio.play();
-        weatherBtn.textContent = '🔈';
+        weatherBtn.textContent = '🔈 Weather Audio';
       }
       weatherPlaying = !weatherPlaying;
     });
