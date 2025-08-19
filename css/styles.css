@@ -1092,6 +1092,69 @@ body.office-page .welcome-banner#office-welcome p {
   margin: 0 auto;
 }
 
+/* === LIBRARY FINAL STYLES === */
+
+.library-page .weather-audio-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.library-page .weather-audio-btn button {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1rem;
+  padding: 6px 12px;
+  color: #00ffff;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid #ff00ff;
+  border-radius: 8px;
+  box-shadow: 0 0 8px #ff00ff;
+  text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
+  cursor: pointer;
+}
+
+.library-page .weather-audio-btn button:hover {
+  background: rgba(0, 0, 0, 0.8);
+  color: #ff00ff;
+  border-color: #00ffff;
+  box-shadow: 0 0 12px #00ffff;
+}
+
+.library-page .linkout-row {
+  display: flex;
+  justify-content: center;
+  margin: 10px auto;
+}
+
+.library-page .neon-btn {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1rem;
+  color: #00ffff;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid #ff00ff;
+  border-radius: 8px;
+  padding: 6px 12px;
+  text-decoration: none;
+  box-shadow: 0 0 8px #ff00ff;
+  text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
+  margin: 6px;
+}
+
+.library-page .neon-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+  color: #ff00ff;
+  border-color: #00ffff;
+  box-shadow: 0 0 12px #00ffff;
+}
+
+.library-page .neon-blog-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
 
 
 
