@@ -1,177 +1,38 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-adsense-account" content="ca-pub-5761934203737590" />
   <title>CJ's Clubhouse</title>
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Permanent Marker', cursive;
-      background: url('assets/images/clubhouse.png') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-      overflow-x: hidden;
-    }
-
-    .nav-buttons {
-      text-align: center;
-      padding-top: 20px;
-    }
-
-    .nav-buttons button {
-      margin: 5px;
-      padding: 12px 20px;
-      background: rgba(0, 0, 0, 0.8);
-      border: 2px solid #ff00ff;
-      border-radius: 8px;
-      color: #00ffff;
-      font-size: 1rem;
-      cursor: pointer;
-      font-family: 'Permanent Marker', cursive;
-      box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff inset;
-    }
-
-    .wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 40px 20px 20px;
-    }
-
-    .crt-frame {
-      border: 6px solid #00ffff;
-      border-radius: 12px;
-      box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff inset;
-      background-color: black;
-      padding: 6px;
-      margin-bottom: 20px;
-    }
-
-    .stream-section {
-      flex: 2;
-      margin-right: 20px;
-    }
-
-    .right-column {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .discord-section {
-      background: #1e1e1e;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 0 20px #ff00ff;
-      position: relative;
-    }
-
-    .discord-header {
-      text-align: center;
-      font-size: 2rem;
-      color: #00ffff;
-      text-shadow: 0 0 6px #00ffff, 0 0 12px #ff00ff;
-      margin: 10px 0;
-    }
-
-    iframe {
-      width: 100%;
-      border: none;
-    }
-
-    .footer-links {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      display: flex;
-      gap: 24px;
-      z-index: 999;
-    }
-
-    .footer-links a {
-      font-family: 'Permanent Marker', cursive;
-      color: #00ffff;
-      text-decoration: none;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 8px 12px;
-      border: 2px solid #ff00ff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #ff00ff;
-    }
-
-    .discord-banner {
-      position: absolute;
-      bottom: 8px;
-      right: 10px;
-      font-family: 'Permanent Marker', cursive;
-      font-size: 1rem;
-      color: #00ffff;
-      text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 6px 12px;
-      border: 2px solid #ff00ff;
-      border-radius: 8px;
-      box-shadow: 0 0 8px #ff00ff;
-    }
-
-    .music-section {
-      height: 140px;
-    }
-
-    .music-section iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-  </style>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
 </head>
-<body>
-  <div class="nav-buttons">
-    <button onclick="setStream('https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech')">📺 CJ’s Feature Stream: MST3K</button>
-    <button onclick="setStream('https://player.twitch.tv/?channel=bobross&parent=cjsgeneralstore.tech')">🎨 CJ’s Feature Stream: Bob Ross</button>
-    <button onclick="window.open('https://www.myretrotvs.com/', '_blank')">📼 Retro TV Portal</button>
+<body class="clubhouse-page" style="background-image: url('assets/images/clubhouse.png'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 100vh;">
+
+  <!-- Welcome Banner -->
+  <div class="welcome-banner">
+    <h2>Welcome to the Clubhouse</h2>
+    <p>Enjoy some vids, we got the music, the chat. Feel free to join our discord, but more importantly sit back, relax and enjoy yourselves.</p>
   </div>
 
-  <div class="wrapper">
-    <div class="stream-section">
-      <div class="crt-frame">
-        <iframe id="stream" src="https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech" height="600" allowfullscreen></iframe>
-      </div>
-    </div>
-
-    <div class="right-column">
-      <div class="discord-section">
-        <div class="discord-header">The Clubhouse</div>
-        <iframe src="https://discord.com/widget?id=582629989850284060&theme=dark"
-                height="500"
-                allowtransparency="true"
-                sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
-        </iframe>
-        <div class="discord-banner">
-          💬 <a href="https://discord.gg/J9kGbM2g" target="_blank" style="color: #00ffff; text-decoration: none;">Join Our GenX Hangout on Discord</a>
-        </div>
-      </div>
-
-      <div class="music-section crt-frame">
-        <iframe src="https://live365.com/embed/player.html?station=a46931" allow="autoplay"></iframe>
-      </div>
-    </div>
+  <!-- Top Button Row -->
+  <div class="top-buttons">
+    <a class="nav-button" href="index.html">🏠 Back to Home</a>
+    <a class="nav-button" href="privacy.html">🔒 Privacy</a>
+    <a class="nav-button" href="https://www.youtube.com/playlist?list=PL-ntIamaxXVmH9IwIf5I6h9dN5HKeZZwr" target="_blank" rel="noopener">📺 Liquid TV</a>
+    <a class="nav-button" href="https://discord.com" target="_blank" rel="noopener">💬 Join Our GenX Hangout on Discord</a>
   </div>
 
-  <div class="footer-links">
-    <a href="index.html">🔙 Back to Home</a>
-    <a href="privacy.html">🔒 Privacy</a>
+  <!-- Twitch Embed Shrunk -->
+  <div class="twitch-wrapper">
+    <iframe
+      src="https://player.twitch.tv/?channel=shadowstriker6389&parent=cjsgeneralstore.tech"
+      allowfullscreen
+      frameborder="0"
+      class="clubhouse-twitch">
+    </iframe>
   </div>
 
-  <script>
-    function setStream(url) {
-      document.getElementById("stream").src = url;
-    }
-  </script>
 </body>
 </html>
