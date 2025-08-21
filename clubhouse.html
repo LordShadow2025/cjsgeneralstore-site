@@ -6,92 +6,79 @@
   <meta name="google-adsense-account" content="ca-pub-5761934203737590" />
   <title>CJ's Clubhouse</title>
   <link rel="stylesheet" href="css/styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
-<body class="clubhouse-page" style="background-image: url('assets/images/clubhouse.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+<body class="clubhouse-page" style="background-image: url('assets/images/clubhouse.png'); background-size: cover; background-position: center center; background-repeat: no-repeat; min-height: 100vh;">
 
   <!-- Top Buttons -->
   <div class="top-buttons">
     <a href="index.html" class="neon-btn">🏠 Back to Home</a>
     <a href="privacy.html" class="neon-btn">🔒 Privacy</a>
-    <a href="https://www.youtube.com/playlist?list=PL-ntIamaxXVmH9IwIf5I6h9dN5HKeZZwr" target="_blank" class="neon-btn">📺 GenX TV</a>
-    <a href="https://discord.gg/yourserver" target="_blank" class="neon-btn">💬 Join Our Discord</a>
+    <a href="https://www.youtube.com/playlist?list=PL-ntIamaxXVmH9IwIf5I6h9dN5HKeZZwr" class="neon-btn" target="_blank" rel="noopener">📼 GenX TV</a>
+    <a href="https://discord.com/channels/582629989850284060/582629990282166273" class="neon-btn" target="_blank" rel="noopener">💬 Join Our Discord</a>
   </div>
 
-  <!-- Welcome Banner -->
+  <!-- Welcome Message -->
   <div class="welcome-banner">
-    <h1 class="welcome-title">WELCOME TO THE CLUBHOUSE</h1>
-    <p class="welcome-sub">Enjoy some vids, we got the music, the chat. Feel free to join our Discord, but more importantly sit back, relax and enjoy yourselves.</p>
+    <h1 class="neon-sunburst-text">WELCOME TO THE CLUBHOUSE</h1>
+    <p>Enjoy some vids, we got the music, the chat. Feel free to join our discord, but more importantly sit back, relax and enjoy yourselves.</p>
   </div>
 
-  <!-- Twitch Stream -->
+  <!-- Twitch Selector Buttons -->
+  <div class="selector-buttons">
+    <button onclick="loadTwitch('mst3k')" class="neon-btn">📺 CJ’s Feature Stream: MST3K</button>
+    <button onclick="loadTwitch('bobross')" class="neon-btn">🎨 CJ’s Feature Stream: Bob Ross</button>
+  </div>
+
+  <!-- Twitch Embed -->
   <div class="twitch-wrapper">
-    <iframe
-      class="twitch-embed"
-      src="https://player.twitch.tv/?channel=BobRoss&parent=cjsgeneralstore.tech"
+    <iframe 
+      id="twitch-embed"
+      src="https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech"
       frameborder="0"
       allowfullscreen
       scrolling="no"
-      height="400"
-      width="720">
+      class="twitch-embed">
     </iframe>
   </div>
 
-  <!-- Audio Control -->
-  <div class="audio-controls bottom">
+  <!-- Music Controls (bottom right) -->
+  <div class="audio-controls">
     <div class="control-group">
       <button id="music-toggle">🎵 Play/Pause</button>
       <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" title="Volume">
     </div>
-    <div class="weather-audio-toggle">
-      <button id="weather-music-btn">🔊</button>
-    </div>
   </div>
 
-  <!-- Audio Elements -->
+  <!-- Audio Track -->
   <audio id="bg-music" preload="auto" loop>
     <source src="assets/audio/clubhouse.mp3" type="audio/mp3" />
   </audio>
 
-  <audio id="weather-music" preload="auto" loop>
-    <source src="assets/audio/dailytemps.mp3" type="audio/mp3" />
-  </audio>
-
-  <!-- Scripts -->
+  <!-- Script for Twitch channel switching and audio -->
   <script>
     const musicToggle = document.getElementById('music-toggle');
     const bgMusic = document.getElementById('bg-music');
     const volumeSlider = document.getElementById('volume-slider');
 
     bgMusic.volume = 0.5;
+
     document.addEventListener('DOMContentLoaded', () => {
       bgMusic.play().catch(() => {});
     });
 
-    let isPlaying = true;
     musicToggle.addEventListener('click', () => {
-      isPlaying ? bgMusic.pause() : bgMusic.play();
-      isPlaying = !isPlaying;
+      bgMusic.paused ? bgMusic.play() : bgMusic.pause();
     });
 
     volumeSlider.addEventListener('input', () => {
       bgMusic.volume = volumeSlider.value;
     });
 
-    const weatherBtn = document.getElementById('weather-music-btn');
-    const weatherAudio = document.getElementById('weather-music');
-    let weatherPlaying = false;
-
-    weatherBtn.addEventListener('click', () => {
-      if (weatherPlaying) {
-        weatherAudio.pause();
-        weatherBtn.textContent = '🔊';
-      } else {
-        weatherAudio.play();
-        weatherBtn.textContent = '🔈';
-      }
-      weatherPlaying = !weatherPlaying;
-    });
+    function loadTwitch(channel) {
+      const twitchFrame = document.getElementById('twitch-embed');
+      twitchFrame.src = `https://player.twitch.tv/?channel=${channel}&parent=cjsgeneralstore.tech`;
+    }
   </script>
 </body>
 </html>
