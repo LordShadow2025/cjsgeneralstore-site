@@ -1425,6 +1425,45 @@ body.office-page .welcome-banner#office-welcome p {
   box-shadow: 0 0 20px #0ff, 0 0 30px #f0f;
 }
 
+/* === SOUND ROOM WELCOME === */
+.soundroom-welcome {
+  max-width: 80%;
+  margin: 40px auto 20px auto;
+  text-align: center;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid #ff00ff;
+  box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff33cc;
+}
+
+.soundroom-welcome .neon-welcome-text {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1.4rem;
+  color: #ff66ff;
+  text-shadow:
+    0 0 5px #ff66ff,
+    0 0 10px #ff33cc,
+    0 0 20px #cc00cc;
+  line-height: 1.6;
+}
+
+.soundroom-welcome .glitch {
+  display: inline-block;
+  animation: glitch-hello 2s infinite;
+  color: #ff00ff;
+}
+
+/* Optional tiny glitch animation */
+@keyframes glitch-hello {
+  0% { opacity: 1; transform: translate(0); }
+  20% { opacity: 0.6; transform: translate(-1px, 1px); }
+  40% { opacity: 0.8; transform: translate(1px, -1px); }
+  60% { opacity: 0.6; transform: translate(-1px, 0); }
+  80% { opacity: 0.9; transform: translate(1px, 1px); }
+  100% { opacity: 1; transform: translate(0); }
+}
+
 
 
 
