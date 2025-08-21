@@ -5,92 +5,87 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-adsense-account" content="ca-pub-5761934203737590" />
   <title>CJ's Sound Room</title>
-  <link rel="stylesheet" href="assets/css/soundroom.css" />
+  <link rel="stylesheet" href="css/soundroom.css" />
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
 </head>
-<body>
-  <div class="title">CJ’s Sound Room</div>
+<body style="background-image: url('assets/images/soundroom.png'); background-size: cover; background-position: center center; background-repeat: no-repeat; min-height: 100vh;">
 
-  <div class="bandcamp-card glass-box">
-    <iframe style="border: 0; width: 100%; height: 42px;"
-      src="https://bandcamp.com/EmbeddedPlayer/track=2453122849/size=small/bgcol=ffffff/linkcol=0687f5/transparent=true/"
-      seamless>
+  <!-- Navigation -->
+  <a href="index.html" class="home-button">🔙 Back to Home</a>
+
+  <!-- 🎵 Background Music Controls -->
+  <div class="audio-controls">
+    <button id="music-toggle">🎵 Play/Pause</button>
+    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" title="Volume" />
+  </div>
+
+  <!-- Audio -->
+  <audio id="bg-music" preload="auto" loop>
+    <source src="assets/audio/soundroom.mp3" type="audio/mp3" />
+  </audio>
+
+  <!-- ✅ Welcome Message (ONLY addition) -->
+  <div class="soundroom-welcome">
+    <h1 class="soundroom-welcome-text">
+      Welcome to the sound room — the musical expression of my writing. Check out my YouTube or Bandcamp for more info. Digital lyric prints — check out our other sections for more. Just avoid the office, been some strange noise from there… <span class="glitch">Heelloo??</span>
+    </h1>
+  </div>
+
+  <!-- Bandcamp Embed -->
+  <div class="bandcamp-box">
+    <iframe style="border: 0; width: 280px; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=1420137554/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/" seamless>
       <a href="https://thestorekeeper.bandcamp.com/track/streetlight-memories">Streetlight Memories by C.B. Barkley</a>
     </iframe>
-    <iframe scrolling="no" style="border: 0;width: 100%;height: 50px;"
-      src="https://bandcamp.com/band_follow_button_deluxe/2905323804"></iframe>
   </div>
 
-  <div class="youtube-card glass-box">
-    <a href="https://www.youtube.com/@shadowstriker6389" target="_blank">
-      <h3 class="neon-heading">🎞️ Visit My YouTube Channel</h3>
-    </a>
+  <!-- YouTube Card -->
+  <div class="youtube-card">
+    <h2 class="neon-title">📺 Visit My YouTube Channel</h2>
     <p>Music videos, ambient sessions, and more.</p>
+    <a class="neon-btn" href="https://www.youtube.com/@shadowstriker6389" target="_blank" rel="noopener">
+      Go to Channel
+    </a>
   </div>
 
-  <div class="exclusives glass-box">
-    <h3 class="neon-heading">Exclusives</h3>
+  <!-- Exclusives Block -->
+  <div class="exclusives-box">
+    <h2 class="neon-title">💾 Exclusives</h2>
     <p>New drops, site-only singles, and more.</p>
   </div>
 
-  <div class="prints glass-box">
-    <h3 class="neon-heading">Downloadable Prints</h3>
-    <p>Coming soon — Lyric sheets, cover art, exclusive releases</p>
+  <!-- Coming Soon Printables Block -->
+  <div class="printables-box">
+    <h2 class="neon-title">🖨️ Downloadable Prints</h2>
+    <p>Coming soon — lyric sheets, cover art, exclusive releases</p>
   </div>
 
-  <div class="audio-controls">
-    <div class="control-group">
-      <button id="music-toggle">🎵 Play/Pause</button>
-      <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" title="Volume">
-  </div>
-</div>
-  
-<!-- Welcome Message -->
-<div class="soundroom-welcome">
-  <h1 class="neon-welcome-text">
-    Welcome to the sound room — the musical expression of my writing. Check out my YouTube or Bandcamp for more info. Digital lyric prints — check out our other sections for more. Just avoid the office, been some strange noise from there… <span class="glitch">Heelloo??</span>
-  </h1>
-</div>
-
-  <a href="index.html" class="home-button">🔙 Back to Home</a>
-
- <audio id="bg-music" preload="auto" loop>
-  <source src="assets/audio/Soundroom.mp3" type="audio/mp3" />
-</audio>
-
+  <!-- Music Control Script -->
   <script>
-  const musicToggle = document.getElementById('music-toggle');
-  const bgMusic = document.getElementById('bg-music');
-  const volumeSlider = document.getElementById('volume-slider');
+    const musicToggle = document.getElementById('music-toggle');
+    const bgMusic = document.getElementById('bg-music');
+    const volumeSlider = document.getElementById('volume-slider');
 
-  bgMusic.volume = 0.5;
-  let isPlaying = false;
-  let hasStarted = false;
+    bgMusic.volume = 0.5;
 
-  function startMusic() {
-    if (!hasStarted) {
-      bgMusic.play().then(() => {
-        isPlaying = true;
-        hasStarted = true;
-      }).catch(err => {
-        console.warn("Autoplay blocked:", err);
+    document.addEventListener('DOMContentLoaded', () => {
+      bgMusic.play().catch((err) => {
+        console.warn("Autoplay blocked until user interacts.");
       });
-    }
-  }
+    });
 
-  // Start music on any click (first user interaction)
-  document.body.addEventListener('click', startMusic, { once: true });
+    let isPlaying = true;
+    musicToggle.addEventListener('click', () => {
+      if (isPlaying) {
+        bgMusic.pause();
+      } else {
+        bgMusic.play();
+      }
+      isPlaying = !isPlaying;
+    });
 
-  musicToggle.addEventListener('click', () => {
-    if (isPlaying) {
-      bgMusic.pause();
-    } else {
-      bgMusic.play();
-    }
-    isPlaying = !isPlaying;
-  });
-
-  volumeSlider.addEventListener('input', () => {
-    bgMusic.volume = volumeSlider.value;
-  });
-</script>
+    volumeSlider.addEventListener('input', () => {
+      bgMusic.volume = volumeSlider.value;
+    });
+  </script>
+</body>
+</html>
