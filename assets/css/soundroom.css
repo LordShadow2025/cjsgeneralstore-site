@@ -274,3 +274,43 @@ body {
   40%, 60% { opacity: 0.9; transform: translateX(2px); }
   50% { opacity: 0.3; transform: translateX(-1px); }
 }
+
+/* === WELCOME MESSAGE ADJUSTMENTS === */
+.soundroom-welcome {
+  max-width: 960px;
+  margin: 20px auto;
+  padding: 12px;
+  text-align: center;
+}
+
+.soundroom-welcome-text {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #b68cff;
+  text-shadow:
+    0 0 5px #ff00e0,
+    0 0 10px #ff00e0,
+    0 0 20px #ff1ae0,
+    0 0 30px #ff1ae0,
+    0 0 40px #ff4de0;
+}
+
+.soundroom-welcome-text .glitch {
+  display: inline-block;
+  animation: glitch-flicker 1.5s infinite;
+  color: #ff0055;
+}
+
+/* === LEFT SIDE CARD SPACING FIX === */
+.youtube-card {
+  position: absolute;
+  top: 320px;
+  left: 60px;
+}
+
+.exclusives {
+  position: absolute;
+  top: 560px;
+  left: 60px;
+}
