@@ -314,3 +314,23 @@ body {
   top: 560px;
   left: 60px;
 }
+
+/* === FINAL FIX: Force Welcome Font + Neon Glow === */
+.soundroom-welcome-text {
+  font-family: 'Permanent Marker', cursive !important;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #b68cff;
+  text-shadow:
+    0 0 5px #ff00e0,
+    0 0 10px #ff00e0,
+    0 0 20px #ff1ae0,
+    0 0 30px #ff1ae0,
+    0 0 40px #ff4de0;
+}
+
+.soundroom-welcome-text .glitch {
+  display: inline-block;
+  animation: glitch-flicker 1.5s infinite;
+  color: #ff0055;
+}
