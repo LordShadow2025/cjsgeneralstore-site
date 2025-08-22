@@ -2,84 +2,76 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="google-adsense-account" content="ca-pub-5761934203737590">
   <title>CJ's Sound Room</title>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/soundroom.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- 🔙 Back to Home -->
-  <a href="index.html" class="home-button">
-    <img src="images/homeicon.png" alt="Back" style="height: 18px; vertical-align: middle; margin-right: 8px;" />
-    Back to Home
-  </a>
+  <a href="index.html" class="home-button">🏠 Back to Home</a>
 
-  <!-- 🎵 Audio Controls -->
-  <div class="audio-controls">
-    <div class="control-group">
-      <button onclick="togglePlay()">🎵 Play/Pause</button>
-      <input type="range" id="volumeControl" min="0" max="1" step="0.01" onchange="setVolume(this.value)" />
-    </div>
-  </div>
-  <audio id="backgroundMusic" loop>
-    <source src="audio/soundroomtrack.mp3" type="audio/mpeg" />
-    Your browser does not support the audio element.
-  </audio>
-
-  <!-- 🎤 Welcome Message -->
-  <div class="soundroom-welcome glass-box">
-    <div class="soundroom-welcome-text">
-      Welcome to the sound room — the musical expression of my writing. Check out my YouTube or Bandcamp for more info. Digital lyric prints — check out our other sections for more. Just avoid the office, been some strange noise from there... <span class="glitch">Heelloo??</span>
-    </div>
+  <div class="soundroom-welcome-card">
+    <p class="soundroom-welcome-text">
+      Welcome to the sound room — the musical expression of my writing. Check out my YouTube or Bandcamp for more info. Digital lyric prints — check out our other sections for more. Just avoid the office, been some strange noise from there… <span class="glitch">Heelloo??</span>
+    </p>
   </div>
 
-  <!-- 🎶 Bandcamp Card -->
   <div class="bandcamp-card glass-box">
-    <iframe style="border: 0; width: 280px; height: 42px;" src="https://bandcamp.com/EmbeddedPlayer/track=1790121965/size=small/bgcol=333333/linkcol=ffffff/artwork=none/transparent=true/" seamless>
+    <iframe style="border: 0; width: 100%; height: 120px;" 
+            src="https://bandcamp.com/EmbeddedPlayer/track=1506049992/size=large/bgcol=333333/linkcol=ffffff/artwork=small/transparent=true/" 
+            seamless>
       <a href="https://thestorekeeper.bandcamp.com/track/streetlight-memories">Streetlight Memories by C.B. Barkley</a>
     </iframe>
-    <br />
-    <a href="https://thestorekeeper.bandcamp.com" style="color: #fff;">C.B. Barkley</a>
+    <p style="font-size: 14px; text-align: center; margin-top: 8px;">🎵 C.B. Barkley</p>
   </div>
 
-  <!-- 📺 YouTube Card -->
   <div class="youtube-card glass-box">
-    <div class="neon-heading">📺 Visit My YouTube Channel</div>
+    <h3 class="neon-heading">📺 Visit My YouTube Channel</h3>
     <p>Music videos, ambient sessions, and more.</p>
-    <a href="https://www.youtube.com/@shadowstriker6389" style="color: #fff;">Go to Channel</a>
+    <a href="https://www.youtube.com/@shadowstriker6389" target="_blank">Go to Channel</a>
   </div>
 
-  <!-- 📦 Exclusives Card -->
   <div class="exclusives glass-box">
-    <div class="neon-heading">📦 Exclusives</div>
+    <h3 class="neon-heading">🎁 Exclusives</h3>
     <p>New drops, site-only singles, and more.</p>
   </div>
 
-  <!-- 🖨️ Prints Card -->
   <div class="prints glass-box">
-    <div class="neon-heading">🖨️ Downloadable Prints</div>
+    <h3 class="neon-heading">🖨️ Downloadable Prints</h3>
     <p>Coming soon — lyric sheets, cover art, exclusive releases</p>
   </div>
 
+  <div class="audio-controls">
+    <div class="control-group">
+      <span>🎵</span>
+      <button onclick="toggleAudio()">Play/Pause</button>
+      <input type="range" id="volumeControl" min="0" max="1" step="0.01" onchange="setVolume(this.value)" />
+    </div>
+  </div>
+
+  <audio id="background-audio" loop>
+    <source src="assets/audio/soundroom-track.mp3" type="audio/mpeg" />
+  </audio>
+
   <script>
-    const music = document.getElementById('backgroundMusic');
-    const volumeControl = document.getElementById('volumeControl');
-    function togglePlay() {
-      if (music.paused) {
-        music.play();
+    const audio = document.getElementById('background-audio');
+    const volumeSlider = document.getElementById('volumeControl');
+    volumeSlider.value = 0.5;
+    audio.volume = 0.5;
+    audio.play();
+
+    function toggleAudio() {
+      if (audio.paused) {
+        audio.play();
       } else {
-        music.pause();
+        audio.pause();
       }
     }
-    function setVolume(val) {
-      music.volume = val;
+
+    function setVolume(value) {
+      audio.volume = value;
     }
-    // Default volume
-    window.onload = () => {
-      volumeControl.value = 0.5;
-      setVolume(0.5);
-    };
   </script>
 </body>
 </html>
