@@ -1,77 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="google-adsense-account" content="ca-pub-5761934203737590">
+  <meta charset="UTF-8">
   <title>CJ's Sound Room</title>
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/soundroom.css" />
+  <link rel="stylesheet" href="assets/css/soundroom.css">
 </head>
 <body>
+
   <a href="index.html" class="home-button">🏠 Back to Home</a>
 
-  <div class="soundroom-welcome-card">
-    <p class="soundroom-welcome-text">
-      Welcome to the sound room — the musical expression of my writing. Check out my YouTube or Bandcamp for more info. Digital lyric prints — check out our other sections for more. Just avoid the office, been some strange noise from there… <span class="glitch">Heelloo??</span>
-    </p>
+  <div class="soundroom-welcome glass-box">
+    <div class="soundroom-welcome-text">
+      Welcome to the sound room — the musical expression of my writing.<br>
+      Check out my YouTube or Bandcamp for more info. Digital lyric prints — check out our other sections for more.<br>
+      Just avoid the office, been some strange noise from there... <span class="glitch">Heelloo??</span>
+    </div>
   </div>
 
   <div class="bandcamp-card glass-box">
-    <iframe style="border: 0; width: 100%; height: 120px;" 
-            src="https://bandcamp.com/EmbeddedPlayer/track=1506049992/size=large/bgcol=333333/linkcol=ffffff/artwork=small/transparent=true/" 
-            seamless>
+    <iframe 
+      style="border: 0; width: 100%; height: 120px;"
+      src="https://bandcamp.com/EmbeddedPlayer/track=1613022175/size=large/bgcol=333333/linkcol=0f91ff/transparent=true/"
+      seamless>
       <a href="https://thestorekeeper.bandcamp.com/track/streetlight-memories">Streetlight Memories by C.B. Barkley</a>
     </iframe>
-    <p style="font-size: 14px; text-align: center; margin-top: 8px;">🎵 C.B. Barkley</p>
   </div>
 
   <div class="youtube-card glass-box">
-    <h3 class="neon-heading">📺 Visit My YouTube Channel</h3>
+    <h2 class="neon-heading">📺 Visit My YouTube Channel</h2>
     <p>Music videos, ambient sessions, and more.</p>
     <a href="https://www.youtube.com/@shadowstriker6389" target="_blank">Go to Channel</a>
   </div>
 
   <div class="exclusives glass-box">
-    <h3 class="neon-heading">🎁 Exclusives</h3>
+    <h2 class="neon-heading">🎁 Exclusives</h2>
     <p>New drops, site-only singles, and more.</p>
   </div>
 
   <div class="prints glass-box">
-    <h3 class="neon-heading">🖨️ Downloadable Prints</h3>
+    <h2 class="neon-heading">🖨️ Downloadable Prints</h2>
     <p>Coming soon — lyric sheets, cover art, exclusive releases</p>
   </div>
 
+  <!-- 🔊 Audio Controls (Optional) -->
   <div class="audio-controls">
     <div class="control-group">
-      <span>🎵</span>
-      <button onclick="toggleAudio()">Play/Pause</button>
-      <input type="range" id="volumeControl" min="0" max="1" step="0.01" onchange="setVolume(this.value)" />
+      <button onclick="toggleAudio()">🎵 Play/Pause</button>
+      <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.6">
     </div>
   </div>
 
-  <audio id="background-audio" loop>
-    <source src="assets/audio/soundroom-track.mp3" type="audio/mpeg" />
+  <audio id="bgAudio" loop>
+    <source src="assets/audio/neontrack.wav" type="audio/wav">
   </audio>
 
   <script>
-    const audio = document.getElementById('background-audio');
-    const volumeSlider = document.getElementById('volumeControl');
-    volumeSlider.value = 0.5;
-    audio.volume = 0.5;
-    audio.play();
+    const bgAudio = document.getElementById("bgAudio");
+    const volumeSlider = document.getElementById("volumeSlider");
+    bgAudio.volume = volumeSlider.value;
 
     function toggleAudio() {
-      if (audio.paused) {
-        audio.play();
+      if (bgAudio.paused) {
+        bgAudio.play();
       } else {
-        audio.pause();
+        bgAudio.pause();
       }
     }
 
-    function setVolume(value) {
-      audio.volume = value;
-    }
+    volumeSlider.addEventListener("input", function () {
+      bgAudio.volume = this.value;
+    });
   </script>
+
 </body>
 </html>
