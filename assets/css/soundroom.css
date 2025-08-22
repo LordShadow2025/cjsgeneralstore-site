@@ -216,3 +216,18 @@ body {
   40%, 60% { opacity: 0.9; transform: translateX(2px); }
   50% { opacity: 0.3; transform: translateX(-1px); }
 }
+
+/* ✅ Sound Room Welcome Message Container Fix */
+.soundroom-welcome.glass-box {
+  position: relative;
+  top: 30px;
+  left: 0;
+  right: 0;
+  max-width: 960px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #ff00ff;
+  z-index: 10;
+}
