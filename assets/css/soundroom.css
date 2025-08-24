@@ -1,4 +1,3 @@
-
 body {
   margin: 0;
   padding: 0;
@@ -36,19 +35,28 @@ body {
 
 .bandcamp-card {
   position: absolute;
-  top: 160px;
+  top: 250px;
   left: 60px;
+  z-index: 5;
+}
+
+.bandcamp-card iframe {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: 120px;
+  border: none;
 }
 
 .youtube-card {
   position: absolute;
-  top: 370px;
+  top: 450px;
   left: 60px;
 }
 
 .exclusives {
   position: absolute;
-  top: 640px;
+  top: 720px;
   left: 60px;
 }
 
@@ -69,7 +77,7 @@ body {
   margin-bottom: 10px;
 }
 
-/* 🔊 Matching Landing Page Audio Controls */
+/* 🔊 Audio Controls */
 .audio-controls {
   position: fixed;
   bottom: 40px;
@@ -145,196 +153,7 @@ body {
   cursor: pointer;
 }
 
-/* === SOUND ROOM WELCOME MESSAGE === */
-.soundroom-welcome {
-  max-width: 960px;
-  margin: 40px auto 0;
-  padding: 20px;
-  text-align: center;
-}
-
-.neon-welcome-text {
-  font-family: 'Permanent Marker', cursive;
-  font-size: 1.6rem;
-  line-height: 1.5;
-  color: #b68cff;
-  text-shadow:
-    0 0 5px #ff00e0,
-    0 0 10px #ff00e0,
-    0 0 20px #ff1ae0,
-    0 0 30px #ff1ae0,
-    0 0 40px #ff4de0;
-}
-
-.neon-welcome-text .glitch {
-  display: inline-block;
-  animation: glitch-flicker 1.5s infinite;
-  color: #ff0055;
-}
-
-@keyframes glitch-flicker {
-  0%, 100% { opacity: 1; }
-  10%, 90% { opacity: 0.4; transform: translateX(-1px); }
-  20%, 80% { opacity: 0.8; transform: translateX(1px); }
-  30%, 70% { opacity: 0.6; transform: translateX(-2px); }
-  40%, 60% { opacity: 0.9; transform: translateX(2px); }
-  50% { opacity: 0.3; transform: translateX(-1px); }
-}
-
-/* === SOUNDROOM PAGE WELCOME STYLING === */
-.soundroom-welcome {
-  max-width: 960px;
-  margin: 40px auto 0;
-  padding: 20px;
-  text-align: center;
-}
-
-.soundroom-welcome-text {
-  font-family: 'Permanent Marker', cursive;
-  font-size: 1.6rem;
-  line-height: 1.5;
-  color: #b68cff;
-  text-shadow:
-    0 0 5px #ff00e0,
-    0 0 10px #ff00e0,
-    0 0 20px #ff1ae0,
-    0 0 30px #ff1ae0,
-    0 0 40px #ff4de0;
-}
-
-.soundroom-welcome-text .glitch {
-  display: inline-block;
-  animation: glitch-flicker 1.5s infinite;
-  color: #ff0055;
-}
-
-@keyframes glitch-flicker {
-  0%, 100% { opacity: 1; }
-  10%, 90% { opacity: 0.4; transform: translateX(-1px); }
-  20%, 80% { opacity: 0.8; transform: translateX(1px); }
-  30%, 70% { opacity: 0.6; transform: translateX(-2px); }
-  40%, 60% { opacity: 0.9; transform: translateX(2px); }
-  50% { opacity: 0.3; transform: translateX(-1px); }
-}
-
-/* ✅ Sound Room Welcome Message Container Fix */
-.soundroom-welcome.glass-box {
-  position: relative;
-  top: 30px;
-  left: 0;
-  right: 0;
-  max-width: 960px;
-  margin: 0 auto;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 0 15px #ff00ff;
-  z-index: 10;
-}
-
-/* === Welcome Message Card Horizontal Layout Fix === */
-.soundroom-welcome-card {
-  position: absolute;
-  top: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.6);
-  padding: 20px 40px;
-  border-radius: 12px;
-  max-width: 880px;
-  text-align: center;
-  box-shadow: 0 0 15px #ff00ff;
-  z-index: 5;
-}
-
-.soundroom-welcome-text {
-  font-family: 'Permanent Marker', cursive;
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: #ff77e9;
-  text-shadow:
-    0 0 5px #ff00e0,
-    0 0 10px #ff00e0,
-    0 0 20px #ff1ae0,
-    0 0 30px #ff1ae0,
-    0 0 40px #ff4de0;
-}
-
-.soundroom-welcome-text .glitch {
-  display: inline-block;
-  animation: glitch-flicker 1.5s infinite;
-  color: #ff0055;
-}
-
-@keyframes glitch-flicker {
-  0%, 100% { opacity: 1; }
-  10%, 90% { opacity: 0.4; transform: translateX(-1px); }
-  20%, 80% { opacity: 0.8; transform: translateX(1px); }
-  30%, 70% { opacity: 0.6; transform: translateX(-2px); }
-  40%, 60% { opacity: 0.9; transform: translateX(2px); }
-  50% { opacity: 0.3; transform: translateX(-1px); }
-}
-
-/* === WELCOME MESSAGE ADJUSTMENTS === */
-.soundroom-welcome {
-  max-width: 960px;
-  margin: 20px auto;
-  padding: 12px;
-  text-align: center;
-}
-
-.soundroom-welcome-text {
-  font-family: 'Permanent Marker', cursive;
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: #b68cff;
-  text-shadow:
-    0 0 5px #ff00e0,
-    0 0 10px #ff00e0,
-    0 0 20px #ff1ae0,
-    0 0 30px #ff1ae0,
-    0 0 40px #ff4de0;
-}
-
-.soundroom-welcome-text .glitch {
-  display: inline-block;
-  animation: glitch-flicker 1.5s infinite;
-  color: #ff0055;
-}
-
-/* === LEFT SIDE CARD SPACING FIX === */
-.youtube-card {
-  position: absolute;
-  top: 320px;
-  left: 60px;
-}
-
-.exclusives {
-  position: absolute;
-  top: 560px;
-  left: 60px;
-}
-
-/* === FINAL FIX: Force Welcome Font + Neon Glow === */
-.soundroom-welcome-text {
-  font-family: 'Permanent Marker', cursive !important;
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: #b68cff;
-  text-shadow:
-    0 0 5px #ff00e0,
-    0 0 10px #ff00e0,
-    0 0 20px #ff1ae0,
-    0 0 30px #ff1ae0,
-    0 0 40px #ff4de0;
-}
-
-.soundroom-welcome-text .glitch {
-  display: inline-block;
-  animation: glitch-flicker 1.5s infinite;
-  color: #ff0055;
-}
-
+/* === Welcome Message === */
 .soundroom-welcome {
   position: absolute;
   top: 40px;
@@ -344,7 +163,7 @@ body {
   width: 90%;
   background: rgba(0, 0, 0, 0.6);
   border-radius: 12px;
-  padding: 20px 30px;
+  padding: 30px 50px;
   text-align: center;
   box-shadow: 0 0 15px #ff00ff;
   z-index: 10;
@@ -363,34 +182,18 @@ body {
     0 0 40px #ff4de0;
 }
 
-.soundroom-welcome-box {
-  position: absolute;
-  top: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 12px;
-  padding: 20px 30px;
-  color: #ff00ff;
-  max-width: 1000px;
-  font-family: 'Permanent Marker', cursive;
-  font-size: 1.4rem;
-  line-height: 1.6;
-  text-align: center;
-  text-shadow:
-    0 0 5px #ff00ff,
-    0 0 10px #ff00ff,
-    0 0 20px #ff1ae0,
-    0 0 30px #ff1ae0,
-    0 0 40px #ff4de0;
-  box-shadow: 0 0 15px #ff00ff;
-  z-index: 10;
+/* Glitch effect */
+.soundroom-welcome-text .glitch {
+  display: inline-block;
+  animation: glitch-flicker 1.5s infinite;
+  color: #ff0055;
 }
 
-.bandcamp-card iframe {
-  display: block;
-  width: 100%;
-  max-width: 300px;
-  height: 120px;
-  border: none;
+@keyframes glitch-flicker {
+  0%, 100% { opacity: 1; }
+  10%, 90% { opacity: 0.4; transform: translateX(-1px); }
+  20%, 80% { opacity: 0.8; transform: translateX(1px); }
+  30%, 70% { opacity: 0.6; transform: translateX(-2px); }
+  40%, 60% { opacity: 0.9; transform: translateX(2px); }
+  50% { opacity: 0.3; transform: translateX(-1px); }
 }
