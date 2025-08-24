@@ -386,3 +386,11 @@ body {
   box-shadow: 0 0 15px #ff00ff;
   z-index: 10;
 }
+
+.bandcamp-card iframe {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: 120px;
+  border: none;
+}
