@@ -35,17 +35,18 @@ body {
 
 .bandcamp-card {
   position: absolute;
-  top: 250px;
-  left: 60px;
+  top: 160px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 5;
+  width: 300px;
 }
 
 .bandcamp-card iframe {
-  display: block;
   width: 100%;
-  max-width: 300px;
   height: 120px;
   border: none;
+  display: block;
 }
 
 .youtube-card {
@@ -159,11 +160,11 @@ body {
   top: 40px;
   left: 50%;
   transform: translateX(-50%);
+  width: 80%;
   max-width: 960px;
-  width: 90%;
   background: rgba(0, 0, 0, 0.6);
   border-radius: 12px;
-  padding: 30px 50px;
+  padding: 24px 40px;
   text-align: center;
   box-shadow: 0 0 15px #ff00ff;
   z-index: 10;
