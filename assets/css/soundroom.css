@@ -198,3 +198,54 @@ body {
   40%, 60% { opacity: 0.9; transform: translateX(2px); }
   50% { opacity: 0.3; transform: translateX(-1px); }
 }
+
+/* === FINAL FIX: Welcome Box Horizontal === */
+.soundroom-welcome {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  max-width: 960px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  padding: 24px 40px;
+  text-align: center;
+  box-shadow: 0 0 15px #ff00ff;
+  z-index: 10;
+}
+
+.soundroom-welcome-text {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: #b68cff;
+  text-shadow:
+    0 0 5px #ff00e0,
+    0 0 10px #ff00e0,
+    0 0 20px #ff1ae0,
+    0 0 30px #ff1ae0,
+    0 0 40px #ff4de0;
+}
+
+.soundroom-welcome-text .glitch {
+  display: inline-block;
+  animation: glitch-flicker 1.5s infinite;
+  color: #ff0055;
+}
+
+/* === FINAL FIX: Bandcamp Box Shifted Down === */
+.bandcamp-card {
+  position: absolute;
+  top: 180px; /* push it lower than welcome box */
+  left: 60px;
+  width: 300px;
+  z-index: 5;
+}
+
+.bandcamp-card iframe {
+  width: 100%;
+  height: 120px;
+  border: none;
+  display: block;
+}
