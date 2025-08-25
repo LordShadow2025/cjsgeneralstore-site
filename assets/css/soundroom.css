@@ -320,3 +320,38 @@ body {
   z-index: 10;          /* lower than the Bandcamp card only */
   pointer-events: none; /* prevents the welcome box from blocking clicks */
 }
+
+/* === Bandcamp visibility/overlap hard fix (targeted) === */
+
+/* Keep YouTube link readable (unchanged from before) */
+.youtube-card a,
+.youtube-card a:visited { color:#fff !important; text-shadow:0 0 4px #00e5ff,0 0 10px #00e5ff; font-weight:700; }
+.youtube-card a:hover { text-decoration:underline; filter:drop-shadow(0 0 6px #00e5ff); }
+
+/* 1) Guarantee Bandcamp sits ABOVE any welcome/overlay glass */
+.bandcamp-card {
+  position: relative !important;
+  z-index: 10000 !important;          /* outrank any stacking context */
+  margin-top: 16px;                    /* small lift so it isn't tucked under */
+  pointer-events: auto !important;     /* clickable */
+}
+
+/* If your embed is an iframe or embed element, raise it too */
+.bandcamp-card iframe,
+.bandcamp-card embed {
+  position: relative !important;
+  z-index: 10001 !important;
+  display: block;
+  width: 100%;
+  max-width: 540px;                    /* typical Bandcamp width; adjust if needed */
+  height: 472px;                       /* typical tall player; adjust to your embed */
+  pointer-events: auto !important;
+}
+
+/* 2) Ensure the welcome panel can’t cover/capture clicks */
+.soundroom-welcome,
+.soundroom-welcome::before,
+.soundroom-welcome::after {
+  z-index: 1 !important;               /* keep visuals intact but below Bandcamp */
+  pointer-events: none !important;     /* prevent blocking clicks on player */
+}
