@@ -249,3 +249,47 @@ body {
   border: none;
   display: block;
 }
+
+/* === Final Welcome Message Fix === */
+.soundroom-welcome {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 960px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  padding: 20px 30px;
+  text-align: center;
+  box-shadow: 0 0 15px #ff00ff;
+  z-index: 10;
+}
+
+.soundroom-welcome-text {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: #b68cff;
+  text-shadow:
+    0 0 5px #ff00e0,
+    0 0 10px #ff00e0,
+    0 0 20px #ff1ae0,
+    0 0 30px #ff1ae0,
+    0 0 40px #ff4de0;
+}
+
+/* Ensure Bandcamp stays visible left-side */
+.bandcamp-card {
+  position: absolute;
+  top: 160px;
+  left: 60px;
+  width: 300px;
+}
+
+.bandcamp-card iframe {
+  width: 100%;
+  max-width: 300px;
+  height: 120px;
+  border: none;
+}
