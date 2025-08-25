@@ -406,3 +406,49 @@ body {
   border: 0;
   display: block;
 }
+
+/* === Neon match: Bandcamp + YouTube cards ONLY === */
+.bandcamp-card,
+.youtube-card {
+  background: rgba(0, 0, 0, 0.55) !important;   /* frosted glass */
+  border: 2px solid #00e5ff !important;         /* cyan edge */
+  border-radius: 18px !important;
+  padding: 14px !important;
+  box-shadow:
+    0 0 6px #00e5ff,
+    0 0 14px #00e5ff,
+    inset 0 0 24px rgba(0, 229, 255, 0.18) !important;  /* inner glow */
+  backdrop-filter: blur(4px);
+}
+
+/* Keep the Bandcamp position/size aligned above YouTube with a 20px gap */
+.bandcamp-card {
+  position: absolute !important;
+  top: 310px !important;       /* 20px above YouTube at 450px */
+  left: 60px !important;
+  width: 300px !important;
+  transform: none !important;
+  z-index: 10001 !important;
+}
+
+/* Bandcamp iframe size (same visual block height as YouTube card) */
+.bandcamp-card iframe {
+  width: 100% !important;
+  height: 120px !important;
+  border: 0;
+  display: block;
+  position: relative !important;
+  z-index: 10002 !important;
+}
+
+/* YouTube link legibility (inside its card only) */
+.youtube-card a,
+.youtube-card a:visited {
+  color: #fff !important;
+  text-shadow: 0 0 4px #00e5ff, 0 0 10px #00e5ff;
+  font-weight: 700;
+}
+.youtube-card a:hover {
+  text-decoration: underline;
+  filter: drop-shadow(0 0 6px #00e5ff);
+}
