@@ -388,3 +388,21 @@ body {
 
 /* Ensure welcome panel sits below Bandcamp without changing its look */
 .soundroom-welcome { z-index: 10 !important; }
+
+/* === Bandcamp: match YouTube card size & align above with gap === */
+.bandcamp-card {
+  position: absolute !important;
+  top: 310px !important;       /* 20px gap above YouTube card at 450px */
+  left: 60px !important;       /* align with YouTube card */
+  width: 300px !important;     /* match YouTube card width */
+  height: auto !important;
+  transform: none !important;
+  z-index: 10001 !important;
+}
+
+.bandcamp-card iframe {
+  width: 100% !important;
+  height: 120px !important;    /* same visual block height as YouTube */
+  border: 0;
+  display: block;
+}
