@@ -355,3 +355,36 @@ body {
   z-index: 1 !important;               /* keep visuals intact but below Bandcamp */
   pointer-events: none !important;     /* prevent blocking clicks on player */
 }
+
+/* === FINAL OVERRIDE: Bandcamp position & stacking (only) === */
+.bandcamp-card {
+  position: absolute !important;
+  top: 210px !important;          /* adjust this value as needed */
+  left: 60px !important;          /* left-side placement */
+  transform: none !important;     /* cancel earlier translateX(-50%) */
+  width: 540px !important;        /* typical Bandcamp embed width */
+  max-width: 540px !important;
+  z-index: 10001 !important;      /* above welcome box */
+  pointer-events: auto !important;
+}
+
+.bandcamp-card iframe {
+  display: block;
+  width: 100% !important;
+  height: 472px !important;       /* tall player; set to your embed’s height */
+  border: 0;
+  position: relative !important;
+  z-index: 10002 !important;
+}
+
+/* Keep YouTube link readable inside its card */
+.youtube-card a,
+.youtube-card a:visited {
+  color:#fff !important;
+  text-shadow:0 0 4px #00e5ff,0 0 10px #00e5ff;
+  font-weight:700;
+}
+.youtube-card a:hover { text-decoration:underline; filter:drop-shadow(0 0 6px #00e5ff); }
+
+/* Ensure welcome panel sits below Bandcamp without changing its look */
+.soundroom-welcome { z-index: 10 !important; }
