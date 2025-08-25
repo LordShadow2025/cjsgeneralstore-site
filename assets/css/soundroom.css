@@ -452,3 +452,20 @@ body {
   text-decoration: underline;
   filter: drop-shadow(0 0 6px #00e5ff);
 }
+
+/* Unified neon CTA for all cards (YouTube, Bandcamp, Prints, Exclusives) */
+.youtube-card a,
+.bandcamp-card a,
+.prints a,
+.exclusives a {
+  color: #fff !important;
+  text-shadow: 0 0 4px #00e5ff, 0 0 10px #00e5ff;
+  font-weight: 700;
+}
+.youtube-card a:hover,
+.bandcamp-card a:hover,
+.prints a:hover,
+.exclusives a:hover {
+  text-decoration: underline;
+  filter: drop-shadow(0 0 6px #00e5ff);
+}
