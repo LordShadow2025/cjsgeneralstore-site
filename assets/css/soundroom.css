@@ -469,3 +469,6 @@ body {
   text-decoration: underline;
   filter: drop-shadow(0 0 6px #00e5ff);
 }
+
+/* Lift Bandcamp block higher (no other layout changes) */
+.bandcamp-card { top: 260px !important; }  /* try 250–270px to taste */
