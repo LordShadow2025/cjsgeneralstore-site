@@ -226,3 +226,59 @@ body.background-generalstore {
   height: 100%;
   border: none;
 }
+
+.welcome-box {
+  position: absolute;
+  top: 120px;
+  left: 80px;
+  max-width: 520px;
+  padding: 20px;
+  font-size: 16px;
+  font-family: 'Permanent Marker', cursive;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #ff00ff;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+  text-shadow: 0 0 2px #fff;
+  z-index: 5;
+}
+
+.welcome-text a {
+  color: #00ffff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: text-shadow 0.2s ease;
+}
+
+.welcome-text a:hover {
+  text-shadow: 0 0 10px #00ffff;
+}
+
+.glitch-text {
+  display: block;
+  margin-top: 15px;
+  color: #ff00ff;
+  text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+  font-size: 14px;
+  animation: glitchLoop 3s infinite;
+}
+
+.glitch-flicker {
+  animation: flicker 2s infinite alternate;
+}
+
+@keyframes glitchLoop {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-1px); }
+  40% { transform: translateX(1px); }
+  60% { transform: translateX(-1px); }
+  80% { transform: translateX(1px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
