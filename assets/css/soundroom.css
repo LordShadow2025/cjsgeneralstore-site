@@ -471,4 +471,4 @@ body {
 }
 
 /* Lift Bandcamp block higher (no other layout changes) */
-.bandcamp-card { top: 290px !important; }  /* try 250–270px to taste */
+.bandcamp-card { top: 270px !important; }  /* try 250–270px to taste */
