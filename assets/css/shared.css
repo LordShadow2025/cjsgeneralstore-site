@@ -286,10 +286,10 @@ body.background-generalstore {
 /* 📦 eBay Display Box */
 .ebay-box {
   position: absolute;
-  top: 360px;
-  left: 80px;
+  top: 120px;
+  right: 80px;
   max-width: 420px;
-  padding: 18px;
+  padding: 20px;
   font-size: 16px;
   font-family: 'Permanent Marker', cursive;
   color: #ffffff;
@@ -298,7 +298,7 @@ body.background-generalstore {
   border-radius: 12px;
   box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
   text-shadow: 0 0 2px #fff;
-  z-index: 4;
+  z-index: 3;
 }
 
 .ebay-text a {
