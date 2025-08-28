@@ -127,21 +127,6 @@ body {
   white-space: nowrap;
 }
 
-.audio-controls {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 12px;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 10px 14px;
-  border-radius: 12px;
-  box-shadow: 0 0 10px #ff00ff;
-  z-index: 999;
-}
-
 .audio-controls button {
   font-family: 'Permanent Marker', cursive;
   background: none;
@@ -1496,6 +1481,7 @@ body.office-page .welcome-banner#office-welcome p {
   accent-color: #00ffff;
   width: 100px;
 }
+
 
 
 
