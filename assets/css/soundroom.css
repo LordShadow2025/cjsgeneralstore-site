@@ -105,8 +105,11 @@ body {
   white-space: nowrap;
 }
 
-.audio-controls input[type="range"] {
+.audio-controls input[type="range"],
+#volume-slider {
   width: 120px;
+  max-width: 100%;
+  flex-shrink: 1;
   accent-color: #ff00ff;
   cursor: pointer;
 }
