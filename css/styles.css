@@ -1467,16 +1467,20 @@ body.office-page .welcome-banner#office-welcome p {
 }
 
 .audio-controls {
-  position: absolute;
+  position: fixed;
   bottom: 30px;
-  left: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
   background: rgba(0, 0, 0, 0.6);
-  padding: 8px 12px;
-  border: 2px solid #00ffff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px #00ffff;
-  font-family: 'Permanent Marker', cursive;
-  z-index: 5;
+  padding: 10px 14px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #ff00ff;
+  z-index: 999;
+  max-width: 240px;
+  overflow: hidden;
 }
 
 .audio-controls button {
@@ -1492,6 +1496,7 @@ body.office-page .welcome-banner#office-welcome p {
   accent-color: #00ffff;
   width: 100px;
 }
+
 
 
 
