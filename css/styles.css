@@ -1465,7 +1465,7 @@ body.office-page .welcome-banner#office-welcome p {
   box-shadow: 0 0 10px #ff00ff;
   z-index: 999;
   max-width: 240px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .audio-controls button {
@@ -1481,6 +1481,7 @@ body.office-page .welcome-banner#office-welcome p {
   accent-color: #00ffff;
   width: 100px;
 }
+
 
 
 
