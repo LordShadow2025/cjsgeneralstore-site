@@ -101,8 +101,8 @@ body.background-generalstore {
 /* Music Controls */
 .audio-controls {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 30px;
+  right: 30px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -112,6 +112,8 @@ body.background-generalstore {
   border-radius: 12px;
   box-shadow: 0 0 10px #ff00ff;
   z-index: 999;
+  max-width: 240px;
+  overflow: hidden;
 }
 
 .audio-controls button {
