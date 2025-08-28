@@ -54,7 +54,6 @@
   const bgMusic = document.getElementById('bg-music');
   const musicToggle = document.getElementById('music-toggle');
   const volumeSlider = document.getElementById('volume-slider');
-  const overlay = document.getElementById('mini-overlay');
 
   let isPlaying = false;
 
@@ -62,11 +61,8 @@
     bgMusic.volume = 0.5;
     bgMusic.play().then(() => {
       isPlaying = true;
-      overlay.style.opacity = '0';
-      overlay.style.pointerEvents = 'none';
-      setTimeout(() => overlay.remove(), 500); // fade then remove
-    }).catch(err => {
-      console.warn("Playback failed:", err);
+    }).catch((err) => {
+      console.warn("Autoplay prevented:", err);
     });
   }
 
@@ -81,6 +77,10 @@
 
   volumeSlider.addEventListener('input', () => {
     bgMusic.volume = volumeSlider.value;
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    startMusic();
   });
 </script>
 </body>
