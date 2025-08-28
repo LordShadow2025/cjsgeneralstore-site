@@ -156,6 +156,8 @@ body {
 .audio-controls input[type="range"],
 #volume-slider {
   width: 120px;
+  max-width: 100%;
+  flex-shrink: 1;
   accent-color: #ff00ff;
   background-color: transparent;
   border-radius: 8px;
@@ -1490,6 +1492,7 @@ body.office-page .welcome-banner#office-welcome p {
   accent-color: #00ffff;
   width: 100px;
 }
+
 
 
 
