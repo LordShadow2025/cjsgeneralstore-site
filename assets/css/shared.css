@@ -299,3 +299,40 @@ body.background-generalstore {
 .ebay-text a:hover {
   text-shadow: 0 0 10px #ff00ff;
 }
+
+.audio-controls {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 14px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #ff00ff;
+  z-index: 9999;
+  max-width: 300px;
+}
+
+.audio-controls button {
+  font-family: 'Permanent Marker', cursive;
+  background: none;
+  border: none;
+  color: #00ffff;
+  font-size: 14px;
+  cursor: pointer;
+  text-shadow: 0 0 6px #00ffff, 0 0 12px #ff00ff;
+  white-space: nowrap;
+}
+
+.audio-controls input[type="range"] {
+  width: 120px;
+  max-width: 100%;
+  accent-color: #ff00ff;
+  background-color: transparent;
+  border-radius: 8px;
+  animation: neon-pulse 3s infinite;
+  cursor: pointer;
+}
+
