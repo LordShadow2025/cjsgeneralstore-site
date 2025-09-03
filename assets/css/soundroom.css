@@ -542,3 +542,79 @@ body {
   }
 }
 
+/* ==== SOUND ROOM: Neon Footer (local overrides) ==== */
+
+/* reserve space so content/players don't hide under the footer */
+#page-content {
+  padding-bottom: 120px; /* adjust if your row wraps */
+}
+
+/* footer container (no blur bar; just floating neon buttons) */
+footer.glow-footer{
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 1200;           /* above page decor */
+  display: grid;
+  place-items: center;
+  padding: 10px 0 12px;
+  width: 100%;
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+  border: none;
+}
+
+/* centered button row */
+footer.glow-footer .glow-footer__wrap{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* neon link pills (match global look) */
+footer.glow-footer .glow-card{
+  --neon1:#00ffff; --neon2:#ff00ff; --neon3:#7d3cff;
+
+  font-family:'Permanent Marker', system-ui, sans-serif;
+  font-size: 1rem;
+  padding: 8px 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  color:#fff;
+
+  background: rgba(15,15,30,.70);
+  border:2px solid var(--neon1);
+  box-shadow:
+    0 0 6px var(--neon1),
+    0 0 16px var(--neon2),
+    inset 0 0 6px rgba(255,255,255,.08);
+  transition: transform .15s, box-shadow .15s, border-color .15s;
+}
+
+footer.glow-footer .glow-card:hover,
+footer.glow-footer .glow-card:focus{
+  border-color: var(--neon2);
+  box-shadow:
+    0 0 8px var(--neon2),
+    0 0 22px var(--neon3),
+    0 0 40px var(--neon2);
+  transform: translateY(-1px) scale(1.02);
+  outline: none;
+}
+
+/* keep the page's bottom-right audio widget clear of the footer */
+.audio-controls, .music-controls, .player-controls {
+  bottom: 84px !important;   /* nudge up so it doesn't overlap footer */
+  z-index: 1100;             /* under footer but above content */
+}
+
+@media (max-width: 720px){
+  #page-content{ padding-bottom: 132px; }
+  footer.glow-footer .glow-card{
+    padding: 7px 12px;
+    font-size: .95rem;
+    border-radius: 12px;
+  }
+}
