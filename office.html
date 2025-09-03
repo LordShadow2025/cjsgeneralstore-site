@@ -123,8 +123,45 @@
       }
     });
   </script>
+  <div id="site-footer"></div>
+<script>
+(function () {
+  const PATH = '/footer.html'; // root path
+
+  function inject(html) {
+    var slot = document.getElementById('site-footer');
+    if (!slot) { slot = document.createElement('div'); slot.id = 'site-footer'; document.body.appendChild(slot); }
+    slot.innerHTML = html;
+  }
+
+  function load() {
+    fetch(PATH, { cache: 'no-store' })
+      .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+      .then(inject)
+      .catch(err => {
+        console.warn('Footer include failed:', err);
+        // Fallback so the page still gets a footer even if fetch fails
+        inject('<footer class="glow-footer" role="navigation" aria-label="Section navigation">\
+          <nav class="glow-footer__wrap">\
+            <a class="glow-card" href="/index.html">Home</a>\
+            <a class="glow-card" href="/soundroom.html">Sound Room</a>\
+            <a class="glow-card" href="/library.html">Library</a>\
+            <a class="glow-card" href="/clubhouse.html">Clubhouse</a>\
+            <a class="glow-card" href="/office.html">Office</a>\
+            <a class="glow-card" href="/showcase.html">Showcase</a>\
+            <a class="glow-card" href="/privacy.html">Privacy</a>\
+          </nav></footer>');
+      });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load);
+  else load();
+})();
+</script>
+
 </body>
 </html>
+
 
 
 
