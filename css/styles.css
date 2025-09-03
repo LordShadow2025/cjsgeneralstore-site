@@ -1535,6 +1535,62 @@ body.office-page .welcome-banner#office-welcome p {
   cursor: pointer;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+:root { --footer-h: 64px; } /* Reserve height to prevent overlap */
+
+/* Reserve space so content + ads never sit under the footer */
+#page-content {
+  padding-bottom: calc(var(--footer-h) + env(safe-area-inset-bottom, 0px));
+}
+
+/* Bottom, centered footer (fixed = always visible; use sticky if you prefer) */
+.cjgs-footer-nav {
+  position: fixed;            /* use 'sticky' if you only want it at page end */
+  left: 0; right: 0; bottom: 0;
+  height: var(--footer-h);
+  z-index: 1000;
+  background: rgba(10, 10, 20, 0.72);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+/* Center the button row */
+.cjgs-footer-wrap {
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8px 12px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Neon buttons */
+.cjgs-btn {
+  --neon1:#00ffff; --neon2:#ff00ff; --neon3:#7d3cff;
+  font-family:'Permanent Marker', system-ui, sans-serif;
+  font-size: 1rem; padding: 10px 16px; border-radius: 14px;
+  color:#eaf6ff; text-decoration:none;
+  background: rgba(15,15,30,0.65);
+  border:2px solid var(--neon1);
+  box-shadow: 0 0 6px var(--neon1), 0 0 14px var(--neon2), inset 0 0 8px rgba(255,255,255,0.06);
+  transition: transform .15s, box-shadow .15s, border-color .15s;
+}
+.cjgs-btn:hover,.cjgs-btn:focus{
+  border-color:var(--neon2);
+  box-shadow:0 0 8px var(--neon2),0 0 22px var(--neon3),0 0 40px var(--neon2);
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Mobile tweaks */
+@media (max-width:720px){
+  :root { --footer-h: 74px; } /* a touch taller for wrap */
+  .cjgs-btn{ padding:8px 12px; font-size:.95rem; border-radius:12px; }
+}
+
 
 
 
