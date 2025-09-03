@@ -481,3 +481,67 @@ body.background-generalstore {
   .glow-footer__wrap{ width: min(94vw, 980px); padding: 10px; border-radius: 16px; }
   .glow-card{ padding: 7px 12px; font-size: .95rem; }
 }
+
+/* Footer container (no big outer glowbox) */
+.glow-footer {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 12px 0 14px;
+  width: 100%;
+
+  background: transparent;   /* <- no big box */
+  box-shadow: none;
+  border: none;
+}
+
+/* Button row stays centered */
+.glow-footer__wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Neon link buttons (mini-boxes) */
+.glow-card {
+  --neon1:#00ffff; --neon2:#ff00ff; --neon3:#7d3cff;
+
+  font-family:'Permanent Marker', system-ui, sans-serif;
+  font-size: 1rem;
+  padding: 8px 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #fff;
+
+  background: rgba(15,15,30,0.70);
+  border: 2px solid var(--neon1);
+  box-shadow:
+    0 0 6px var(--neon1),
+    0 0 16px var(--neon2),
+    inset 0 0 6px rgba(255,255,255,0.08);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+
+.glow-card:hover,
+.glow-card:focus {
+  border-color: var(--neon2);
+  box-shadow:
+    0 0 8px var(--neon2),
+    0 0 22px var(--neon3),
+    0 0 40px var(--neon2);
+  transform: translateY(-1px) scale(1.02);
+  outline: none;
+}
+
+/* Small-screen tweaks */
+@media (max-width: 720px) {
+  .glow-card {
+    padding: 7px 12px;
+    font-size: .95rem;
+    border-radius: 12px;
+  }
+}
