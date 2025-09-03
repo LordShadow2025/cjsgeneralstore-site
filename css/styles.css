@@ -1537,59 +1537,71 @@ body.office-page .welcome-banner#office-welcome p {
 
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
-:root { --footer-h: 64px; } /* Reserve height to prevent overlap */
+/* Reserve space so nothing hides behind the fixed footer */
+:root { --footer-pad: 96px; } /* tweak if you add more links */
+#page-content { padding-bottom: calc(var(--footer-pad) + env(safe-area-inset-bottom, 0px)); }
 
-/* Reserve space so content + ads never sit under the footer */
-#page-content {
-  padding-bottom: calc(var(--footer-h) + env(safe-area-inset-bottom, 0px));
-}
-
-/* Bottom, centered footer (fixed = always visible; use sticky if you prefer) */
-.cjgs-footer-nav {
-  position: fixed;            /* use 'sticky' if you only want it at page end */
+/* Big glowing container centered at bottom */
+.glow-footer{
+  position: fixed;
   left: 0; right: 0; bottom: 0;
-  height: var(--footer-h);
   z-index: 1000;
-  background: rgba(10, 10, 20, 0.72);
+  display: grid;
+  place-items: center;
+  padding: 12px 10px calc(12px + env(safe-area-inset-bottom, 0px));
+  /* frosted neon box look */
+  background: rgba(15,15,30,0.55);
   backdrop-filter: blur(6px);
-  border-top: 1px solid rgba(255,255,255,0.12);
+  border-top: 2px solid #ff00ff; /* neon pink edge */
+  box-shadow: 0 0 18px #ff00ff, 0 0 28px #00ffff, 0 -10px 40px rgba(0,0,0,0.35);
 }
 
-/* Center the button row */
-.cjgs-footer-wrap {
-  height: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 8px 12px;
+/* Inner content area: max-width keeps it bottom-center */
+.glow-footer__wrap{
+  max-width: 1100px;
+  width: min(95vw, 1100px);
   display: flex;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 12px;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
 }
 
-/* Neon buttons */
-.cjgs-btn {
+/* Link "cards" that match your glass neon boxes */
+.glow-card{
   --neon1:#00ffff; --neon2:#ff00ff; --neon3:#7d3cff;
   font-family:'Permanent Marker', system-ui, sans-serif;
-  font-size: 1rem; padding: 10px 16px; border-radius: 14px;
-  color:#eaf6ff; text-decoration:none;
-  background: rgba(15,15,30,0.65);
-  border:2px solid var(--neon1);
-  box-shadow: 0 0 6px var(--neon1), 0 0 14px var(--neon2), inset 0 0 8px rgba(255,255,255,0.06);
-  transition: transform .15s, box-shadow .15s, border-color .15s;
+  font-size: 1rem;
+  padding: 10px 16px;
+  border-radius: 14px;
+  text-decoration: none;
+  color: #ffffff;
+  background: rgba(20,20,35,0.70);
+  border: 2px solid var(--neon1);
+  box-shadow:
+    0 0 6px var(--neon1),
+    0 0 16px var(--neon2),
+    inset 0 0 6px rgba(255,255,255,0.08);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
 }
-.cjgs-btn:hover,.cjgs-btn:focus{
-  border-color:var(--neon2);
-  box-shadow:0 0 8px var(--neon2),0 0 22px var(--neon3),0 0 40px var(--neon2);
+.glow-card:hover, .glow-card:focus{
+  border-color: var(--neon2);
+  box-shadow:
+    0 0 8px var(--neon2),
+    0 0 22px var(--neon3),
+    0 0 40px var(--neon2);
   transform: translateY(-1px) scale(1.02);
+  outline: none;
 }
 
-/* Mobile tweaks */
-@media (max-width:720px){
-  :root { --footer-h: 74px; } /* a touch taller for wrap */
-  .cjgs-btn{ padding:8px 12px; font-size:.95rem; border-radius:12px; }
+/* Mobile: a bit taller padding and tighter cards */
+@media (max-width: 720px){
+  :root { --footer-pad: 112px; }
+  .glow-card{ padding: 8px 12px; font-size: .95rem; border-radius: 12px; }
 }
+
+
+
 
 
 
