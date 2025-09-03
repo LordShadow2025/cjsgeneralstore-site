@@ -400,3 +400,84 @@ body.background-generalstore {
   :root { --footer-pad: 112px; }
   .glow-card{ padding: 8px 12px; font-size: .95rem; border-radius: 12px; }
 }
+
+/* --- Footer sizing & spacing (no overlap) --- */
+:root { --footer-pad: 120px; }            /* was 96px — gives more room for wrap */
+#page-content { padding-bottom: var(--footer-pad); }
+
+/* Big glow box centered, narrower */
+.glow-footer{
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 1000;
+
+  /* keep it bottom-center + not full width */
+  display: grid; place-items: center;
+  padding: 12px 0 14px;
+  width: 100%;
+  background: rgba(15,15,30,0.55);
+  backdrop-filter: blur(6px);
+
+  /* match your site’s glow (blue outer, pink inner) */
+  border-top: 2px solid #ff00ff;                    /* neon pink edge */
+  box-shadow:
+    0 0 12px #00eaff,                               /* cyan halo */
+    0 0 24px #00eaff,
+    0 0 36px #ff00f0,                               /* pink bloom */
+    0 -10px 40px rgba(0,0,0,0.35);                  /* soft lift */
+}
+
+/* Inner container = the actual rounded box */
+.glow-footer__wrap{
+  /* shrink on both sides & center */
+  width: min(92vw, 980px);                          /* <- narrower */
+  margin: 0 auto;
+
+  padding: 12px;
+  border-radius: 18px;
+
+  /* frosted interior like your other boxes */
+  background: rgba(20,20,35,0.66);
+  border: 2px solid #00ffff;                        /* cyan edge */
+  box-shadow:
+    0 0 8px #00ffff,
+    0 0 22px #ff00ff,
+    inset 0 0 10px rgba(255,255,255,0.08);
+
+  display: flex; flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center; align-items: center;
+}
+
+/* Link cards = smaller “pills” to match your buttons */
+.glow-card{
+  font-family:'Permanent Marker', system-ui, sans-serif;
+  font-size: clamp(.92rem, 1.1vw, 1rem);
+  padding: 8px 14px;
+  border-radius: 12px;
+  text-decoration: none; color: #fff;
+
+  background: rgba(15,15,30,0.70);
+  border: 2px solid #00ffff;
+  box-shadow:
+    0 0 6px #00ffff,
+    0 0 16px #ff00ff,
+    inset 0 0 6px rgba(255,255,255,0.08);
+  transition: transform .15s, box-shadow .15s, border-color .15s;
+}
+.glow-card:hover,.glow-card:focus{
+  border-color: #ff00ff;
+  box-shadow:
+    0 0 8px #ff00ff,
+    0 0 22px #7d3cff,
+    0 0 40px #ff00ff;
+  transform: translateY(-1px) scale(1.02);
+  outline: none;
+}
+
+/* Mobile breathing room */
+@media (max-width: 720px){
+  :root { --footer-pad: 132px; }                    /* extra room for two lines */
+  .glow-footer__wrap{ width: min(94vw, 980px); padding: 10px; border-radius: 16px; }
+  .glow-card{ padding: 7px 12px; font-size: .95rem; }
+}
