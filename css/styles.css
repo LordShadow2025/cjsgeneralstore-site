@@ -1541,25 +1541,25 @@ body.office-page .welcome-banner#office-welcome p {
 :root { --footer-pad: 96px; } /* tweak if you add more links */
 #page-content { padding-bottom: calc(var(--footer-pad) + env(safe-area-inset-bottom, 0px)); }
 
-/* Big glowing container centered at bottom */
-.glow-footer{
+/* ===== Neon Footer Navigation ===== */
+.glow-footer {
   position: fixed;
-  left: 0; right: 0; bottom: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 1000;
   display: grid;
   place-items: center;
-  padding: 12px 10px calc(12px + env(safe-area-inset-bottom, 0px));
-  /* frosted neon box look */
-  background: rgba(15,15,30,0.55);
-  backdrop-filter: blur(6px);
-  border-top: 2px solid #ff00ff; /* neon pink edge */
-  box-shadow: 0 0 18px #ff00ff, 0 0 28px #00ffff, 0 -10px 40px rgba(0,0,0,0.35);
+  padding: 10px 0;
+  width: 100%;
+
+  background: transparent;   /* no blur/haze */
+  backdrop-filter: none;
+  box-shadow: none;
+  border: none;
 }
 
-/* Inner content area: max-width keeps it bottom-center */
-.glow-footer__wrap{
-  max-width: 1100px;
-  width: min(95vw, 1100px);
+.glow-footer__wrap {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
@@ -1567,24 +1567,29 @@ body.office-page .welcome-banner#office-welcome p {
   align-items: center;
 }
 
-/* Link "cards" that match your glass neon boxes */
-.glow-card{
-  --neon1:#00ffff; --neon2:#ff00ff; --neon3:#7d3cff;
-  font-family:'Permanent Marker', system-ui, sans-serif;
+.glow-card {
+  --neon1: #00ffff;
+  --neon2: #ff00ff;
+  --neon3: #7d3cff;
+
+  font-family: 'Permanent Marker', system-ui, sans-serif;
   font-size: 1rem;
-  padding: 10px 16px;
-  border-radius: 14px;
+  padding: 8px 14px;
+  border-radius: 12px;
   text-decoration: none;
-  color: #ffffff;
-  background: rgba(20,20,35,0.70);
+  color: #fff;
+
+  background: rgba(15, 15, 30, 0.70);
   border: 2px solid var(--neon1);
   box-shadow:
     0 0 6px var(--neon1),
     0 0 16px var(--neon2),
-    inset 0 0 6px rgba(255,255,255,0.08);
-  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    inset 0 0 6px rgba(255, 255, 255, 0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
-.glow-card:hover, .glow-card:focus{
+
+.glow-card:hover,
+.glow-card:focus {
   border-color: var(--neon2);
   box-shadow:
     0 0 8px var(--neon2),
@@ -1594,11 +1599,15 @@ body.office-page .welcome-banner#office-welcome p {
   outline: none;
 }
 
-/* Mobile: a bit taller padding and tighter cards */
-@media (max-width: 720px){
-  :root { --footer-pad: 112px; }
-  .glow-card{ padding: 8px 12px; font-size: .95rem; border-radius: 12px; }
+@media (max-width: 720px) {
+  .glow-card {
+    padding: 7px 12px;
+    font-size: 0.95rem;
+    border-radius: 12px;
+  }
 }
+
+
 
 
 
