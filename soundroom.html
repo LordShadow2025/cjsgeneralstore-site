@@ -14,111 +14,112 @@
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 <body>
-  <a href="index.html" class="home-button">🏠 Back to Home</a>
 
-  <!-- 🎶 Audio Controls -->
-  <div class="audio-controls">
-    <div class="control-group">
-      <span>🎵</span>
-      <button onclick="toggleAudio()">Play/Pause</button>
-      <input type="range" id="volumeControl" min="0" max="1" step="0.01" onchange="setVolume(this.value)">
+  <main id="page-content">
+    <a href="index.html" class="home-button">🏠 Back to Home</a>
+
+    <!-- 🎶 Audio Controls -->
+    <div class="audio-controls">
+      <div class="control-group">
+        <span>🎵</span>
+        <button onclick="toggleAudio()">Play/Pause</button>
+        <input type="range" id="volumeControl" min="0" max="1" step="0.01" onchange="setVolume(this.value)">
+      </div>
     </div>
-  </div>
-  <audio id="backgroundAudio" loop autoplay>
-    <source src="assets/audio/soundroom.mp3" type="audio/mp3">
-  </audio>
+    <audio id="backgroundAudio" loop autoplay>
+      <source src="assets/audio/soundroom.mp3" type="audio/mp3">
+    </audio>
 
-  <!-- 🎤 Welcome Message -->
-<div class="soundroom-welcome">
-  <p class="soundroom-welcome-text">
-    Welcome to the sound room — the musical expression of my writing. <br>
-    Check out my YouTube or Bandcamp for more info. Digital lyric prints — check out our other sections for more. <br>
-    Just avoid the office, been some strange noise from there… <span class="glitch">Heelloo??</span>
-  </p>
-</div>
+    <!-- 🎤 Welcome Message -->
+    <div class="soundroom-welcome">
+      <p class="soundroom-welcome-text">
+        Welcome to the sound room — the musical expression of my writing. <br>
+        Check out my YouTube or Bandcamp for more info. Digital lyric prints — check out our other sections for more. <br>
+        Just avoid the office, been some strange noise from there… <span class="glitch">Heelloo??</span>
+      </p>
+    </div>
 
-<!-- 🎵 Bandcamp Embed (with artwork + neon-friendly colors) -->
-<div class="bandcamp-card glass-box">
-  <iframe
-  style="border:0; width:100%; height:150px;"
-  src="https://bandcamp.com/EmbeddedPlayer/track=2453122849/size=large/bgcol=000000/linkcol=00e5ff/tracklist=false/artwork=small/transparent=true/"
-  seamless>
-  <a href="https://thestorekeeper.bandcamp.com/track/streetlight-memories">
-    Streetlight Memories by C.B. Barkley
-  </a>
-</iframe>
-</div>
+    <!-- 🎵 Bandcamp Embed (with artwork + neon-friendly colors) -->
+    <div class="bandcamp-card glass-box">
+      <iframe
+        style="border:0; width:100%; height:150px;"
+        src="https://bandcamp.com/EmbeddedPlayer/track=2453122849/size=large/bgcol=000000/linkcol=00e5ff/tracklist=false/artwork=small/transparent=true/"
+        seamless>
+        <a href="https://thestorekeeper.bandcamp.com/track/streetlight-memories">
+          Streetlight Memories by C.B. Barkley
+        </a>
+      </iframe>
+    </div>
 
+    <!-- 📺 YouTube Card -->
+    <div class="youtube-card glass-box">
+      <h3 class="neon-heading">📺 Visit My YouTube Channel</h3>
+      <p>Music videos, ambient sessions, and more.</p>
+      <a href="https://www.youtube.com/@shadowstriker6389" target="_blank">Go to Channel</a>
+    </div>
 
+    <!-- 💾 Exclusives -->
+    <div class="exclusives glass-box">
+      <h3 class="neon-heading">🎁 Exclusives</h3>
+      <p>New drops, site-only singles, and more.</p>
+    </div>
 
-  <!-- 📺 YouTube Card -->
-  <div class="youtube-card glass-box">
-    <h3 class="neon-heading">📺 Visit My YouTube Channel</h3>
-    <p>Music videos, ambient sessions, and more.</p>
-    <a href="https://www.youtube.com/@shadowstriker6389" target="_blank">Go to Channel</a>
-  </div>
+    <!-- 🖨️ Downloadables -->
+    <div class="prints glass-box">
+      <h3 class="neon-heading">🖨️ Downloadable Prints</h3>
+      <p>Coming soon — lyric sheets, cover art, exclusive releases</p>
+    </div>
 
-  <!-- 💾 Exclusives -->
-  <div class="exclusives glass-box">
-    <h3 class="neon-heading">🎁 Exclusives</h3>
-    <p>New drops, site-only singles, and more.</p>
-  </div>
-
-  <!-- 🖨️ Downloadables -->
-  <div class="prints glass-box">
-    <h3 class="neon-heading">🖨️ Downloadable Prints</h3>
-    <p>Coming soon — lyric sheets, cover art, exclusive releases</p>
-  </div>
-
-  <script>
-    const audio = document.getElementById("backgroundAudio");
-    function toggleAudio() {
-      if (audio.paused) {
-        audio.play();
-      } else {
-        audio.pause();
+    <script>
+      const audio = document.getElementById("backgroundAudio");
+      function toggleAudio() {
+        if (audio.paused) {
+          audio.play();
+        } else {
+          audio.pause();
+        }
       }
+      function setVolume(val) {
+        audio.volume = val;
+      }
+    </script>
+  </main>
+
+  <div id="site-footer"></div>
+  <script>
+  (function () {
+    const PATH = '/footer.html'; // root path
+
+    function inject(html) {
+      var slot = document.getElementById('site-footer');
+      if (!slot) { slot = document.createElement('div'); slot.id = 'site-footer'; document.body.appendChild(slot); }
+      slot.innerHTML = html;
     }
-    function setVolume(val) {
-      audio.volume = val;
+
+    function load() {
+      fetch(PATH, { cache: 'no-store' })
+        .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+        .then(inject)
+        .catch(err => {
+          console.warn('Footer include failed:', err);
+          // Fallback so the page still gets a footer even if fetch fails
+          inject('<footer class="glow-footer" role="navigation" aria-label="Section navigation">\
+            <nav class="glow-footer__wrap">\
+              <a class="glow-card" href="/index.html">Home</a>\
+              <a class="glow-card" href="/soundroom.html">Sound Room</a>\
+              <a class="glow-card" href="/library.html">Library</a>\
+              <a class="glow-card" href="/clubhouse.html">Clubhouse</a>\
+              <a class="glow-card" href="/office.html">Office</a>\
+              <a class="glow-card" href="/showcase.html">Showcase</a>\
+              <a class="glow-card" href="/privacy.html">Privacy</a>\
+            </nav></footer>');
+        });
     }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load);
+    else load();
+  })();
   </script>
 
- <div id="site-footer"></div>
-<script>
-(function () {
-  const PATH = '/footer.html'; // root path
-
-  function inject(html) {
-    var slot = document.getElementById('site-footer');
-    if (!slot) { slot = document.createElement('div'); slot.id = 'site-footer'; document.body.appendChild(slot); }
-    slot.innerHTML = html;
-  }
-
-  function load() {
-    fetch(PATH, { cache: 'no-store' })
-      .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
-      .then(inject)
-      .catch(err => {
-        console.warn('Footer include failed:', err);
-        // Fallback so the page still gets a footer even if fetch fails
-        inject('<footer class="glow-footer" role="navigation" aria-label="Section navigation">\
-          <nav class="glow-footer__wrap">\
-            <a class="glow-card" href="/index.html">Home</a>\
-            <a class="glow-card" href="/soundroom.html">Sound Room</a>\
-            <a class="glow-card" href="/library.html">Library</a>\
-            <a class="glow-card" href="/clubhouse.html">Clubhouse</a>\
-            <a class="glow-card" href="/office.html">Office</a>\
-            <a class="glow-card" href="/showcase.html">Showcase</a>\
-            <a class="glow-card" href="/privacy.html">Privacy</a>\
-          </nav></footer>');
-      });
-  }
-
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load);
-  else load();
-})();
-</script>
- 
 </body>
 </html>
