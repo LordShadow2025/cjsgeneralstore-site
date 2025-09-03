@@ -492,7 +492,9 @@ body.background-generalstore {
   padding: 12px 0 14px;
   width: 100%;
 
-  background: transparent;   /* <- no big box */
+  /* remove blur & background haze */
+  background: transparent;
+  backdrop-filter: none;
   box-shadow: none;
   border: none;
 }
