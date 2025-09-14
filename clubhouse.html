@@ -30,21 +30,28 @@
     }
     .wrap{max-width:1200px;margin:0 auto;padding:16px;}
     .top-buttons{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:10px auto;}
-    .welcome-banner{max-width:900px;margin:0 auto 8px;text-align:center;}
-    .selector-buttons{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:8px 0 12px;}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:10px;}
-    .video-wall{
-      display:grid;gap:14px;
-      grid-template-columns: 1fr 300px; /* main + side */
-      align-items:start;
+    .neon-card{background:var(--card);border:1px solid var(--border);border-radius:16px;}
+    .welcome-banner{
+      max-width:1000px; margin:10px auto 14px; text-align:center;
+      padding:14px 16px; position:relative; z-index:3;
+      background:var(--glass); border:1px solid var(--border); border-radius:16px;
+      box-shadow: 0 0 16px rgba(45,226,230,.18), inset 0 0 24px rgba(138,43,226,.12);
     }
-    .side-stack{display:flex;flex-direction:column;gap:14px;}
+    .selector-buttons{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:12px 0 14px;}
+    .video-wall{
+      position:relative; z-index:2;
+      display:grid; gap:16px; grid-template-columns: 1fr 300px; align-items:start;
+      margin-bottom: 14px;
+    }
+    .side-stack{display:flex;flex-direction:column;gap:16px;}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:10px;}
     .viewer, .viewer--small{
-      width:100%;border:0;border-radius:12px;background:#000;
+      width:100%; border:0; border-radius:12px; background:#000;
+      position:relative; display:block; z-index:1;
     }
     .viewer{height:min(62vh,560px);}
     .viewer--small{height:240px;}
-    .radio-card{margin:14px 0 22px;}
+    .radio-card{margin:16px 0 24px;}
     .audio-controls{position:fixed;right:10px;bottom:10px;z-index:10;}
     @media (max-width: 980px){
       .video-wall{grid-template-columns:1fr;}
@@ -64,10 +71,10 @@
       <a href="https://discord.com/channels/582629989850284060/582629990282166273" class="neon-btn" target="_blank" rel="noopener">💬 Join Our Discord</a>
     </div>
 
-    <!-- Welcome -->
-    <div class="welcome-banner">
-      <h1 class="neon-sunburst-text">WELCOME TO THE CLUBHOUSE</h1>
-      <p>Enjoy some vids, we got the music, the chat. Feel free to join our discord, but more importantly sit back, relax and enjoy yourselves.</p>
+    <!-- Welcome (now on top and never overlapped) -->
+    <div class="welcome-banner neon-card">
+      <h1 class="neon-sunburst-text" style="margin:6px 0 8px;">WELCOME TO THE CLUBHOUSE</h1>
+      <p style="margin:0;">Enjoy some vids, we got the music, the chat. Feel free to join our discord, but more importantly sit back, relax and enjoy yourselves.</p>
     </div>
 
     <!-- Stream Selector -->
@@ -101,11 +108,10 @@
         </iframe>
       </div>
 
-      <!-- SIDE VIEWERS (always visible) -->
+      <!-- SIDE VIEWERS -->
       <aside class="side-stack">
-        <!-- Side A: Bob Ross small -->
         <div class="card">
-          <div style="font-weight:700;margin:2px 0 6px;">🎨 Bob Ross (side)</div>
+          <div style="font-weight:700;margin:2px 0 8px;">🎨 Bob Ross (side)</div>
           <iframe
             id="twitch-side-bob"
             class="viewer--small"
@@ -114,9 +120,8 @@
           </iframe>
         </div>
 
-        <!-- Side B: YouTube playlist small -->
         <div class="card">
-          <div style="font-weight:700;margin:2px 0 6px;">🍿 GenX Saturday Morning (side)</div>
+          <div style="font-weight:700;margin:2px 0 8px;">🍿 GenX Saturday Morning (side)</div>
           <iframe
             id="yt-side"
             class="viewer--small"
@@ -147,7 +152,7 @@
       </p>
     </section>
 
-    <!-- (Optional) background page music controls -->
+    <!-- Optional background page music controls -->
     <div class="audio-controls card">
       <div class="control-group" style="display:flex;gap:10px;align-items:center;">
         <button id="music-toggle">🎵 Play/Pause</button>
@@ -194,7 +199,6 @@
       twitchMain.style.display = 'block';
       ytMain.style.display     = 'none';
       ytMain.src = ''; // stop YT audio
-      // scroll to top of video wall for consistency
       const wall = document.querySelector('.video-wall');
       wall && window.scrollTo({ top: wall.offsetTop - 8, behavior: 'smooth' });
     }
@@ -204,8 +208,6 @@
       ytMain.src = `https://www.youtube.com/embed/videoseries?list=${playlistId}&rel=0&modestbranding=1`;
       ytMain.style.display     = 'block';
       twitchMain.style.display = 'none';
-      // optional: blank twitch to hard-stop audio
-      // twitchMain.src = '';
       const wall = document.querySelector('.video-wall');
       wall && window.scrollTo({ top: wall.offsetTop - 8, behavior: 'smooth' });
     }
@@ -249,4 +251,3 @@
 
 </body>
 </html>
-
