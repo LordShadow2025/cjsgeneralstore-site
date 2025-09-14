@@ -23,58 +23,58 @@
       --border: rgba(255,255,255,0.18);
       --glass: rgba(255,255,255,0.08);
     }
+
+    /* PAGE */
     body.clubhouse-page{
       background-image: url('assets/images/clubhouse.png');
-      background-size: cover; background-position: center center; background-repeat: no-repeat;
+      background-size: cover; background-position: center; background-repeat: no-repeat;
       min-height: 100vh; margin: 0;
     }
     .wrap{max-width:1200px;margin:0 auto;padding:16px;}
+
+    /* Cards / buttons */
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:12px;}
     .top-buttons{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:10px auto;}
-    .neon-card{background:var(--card);border:1px solid var(--border);border-radius:16px;}
     .welcome-banner{
-      max-width:1000px; margin:10px auto 14px; text-align:center;
-      padding:14px 16px; position:relative; z-index:1;
-      background:var(--glass); border:1px solid var(--border); border-radius:16px;
-      box-shadow: 0 0 16px rgba(45,226,230,.18), inset 0 0 24px rgba(138,43,226,.12);
+      max-width:1000px;margin:10px auto 14px;text-align:center;
+      padding:14px 16px;background:var(--glass);border:1px solid var(--border);border-radius:16px;
+      box-shadow:0 0 16px rgba(45,226,230,.18), inset 0 0 24px rgba(138,43,226,.12);
     }
     .selector-buttons{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:12px 0 16px;}
 
-    /* -------- VIDEO WALL LAYOUT -------- */
+    /* VIDEO WALL */
     .video-wall{
-      display:grid; gap:16px;
-      grid-template-columns: 300px 1fr 300px; /* left side | main | right side */
+      display:grid;gap:16px;
+      grid-template-columns: 280px 1fr 280px; /* left | main | right */
       align-items:start;
-      margin-bottom: 14px;
-      position: relative; z-index: 1;
-    }
-    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:10px;}
-    .viewer, .viewer--small{
-      width:100%; border:0; border-radius:12px; background:#000;
-      position:relative; display:block;
-    }
-    .viewer{
-      height:min(62vh,560px);
-    }
-    .viewer--small{
-      height:260px;
-    }
-    .side-title{
-      font-weight:700;margin:2px 0 8px;
+      margin-bottom:16px;
     }
 
-    /* Radio + Controls */
-    .radio-card{margin:16px 0 20px;}
+    /* EMBEDS — rock-solid sizing via aspect-ratio */
+    .viewer, .viewer--small{
+      display:block; width:100%; border:0; border-radius:12px; background:#000;
+      /* Reset any external positioning that could overlap */
+      position: static; float:none; clear:none;
+    }
+    /* Main: 16:9 box that scales, max 560px height */
+    .viewer{ aspect-ratio: 16 / 9; max-height: 560px; }
+    /* Side: shorter */
+    .viewer--small{ aspect-ratio: 16 / 9; max-height: 220px; }
+
+    .side-title{font-weight:700;margin:2px 0 8px;}
+
+    /* RADIO + CONTROLS */
+    .radio-card{margin:12px 0 18px;}
     .controls-card{margin:0 0 24px;}
 
-    /* Responsive */
-    @media (max-width: 1100px){
-      .video-wall{grid-template-columns: 260px 1fr 260px;}
-      .viewer--small{height:240px;}
+    /* RESPONSIVE */
+    @media (max-width: 1120px){
+      .video-wall{grid-template-columns:260px 1fr 260px;}
     }
-    @media (max-width: 960px){
-      .video-wall{grid-template-columns: 1fr; }
-      .viewer{height:52vh;}
-      .viewer--small{height:220px;}
+    @media (max-width: 980px){
+      .video-wall{grid-template-columns:1fr;}
+      .viewer{max-height: 52vh;}
+      .viewer--small{max-height: 210px;}
     }
   </style>
 </head>
@@ -89,77 +89,75 @@
       <a href="https://discord.com/channels/582629989850284060/582629990282166273" class="neon-btn" target="_blank" rel="noopener">💬 Join Our Discord</a>
     </div>
 
-    <!-- Welcome (always visible, never overlapped) -->
-    <div class="welcome-banner neon-card">
+    <!-- Welcome -->
+    <div class="welcome-banner card">
       <h1 class="neon-sunburst-text" style="margin:6px 0 8px;">WELCOME TO THE CLUBHOUSE</h1>
       <p style="margin:0;">Enjoy some vids, we got the music, the chat. Feel free to join our discord, but more importantly sit back, relax and enjoy yourselves.</p>
     </div>
 
-    <!-- Stream Selector -->
+    <!-- Selector -->
     <div class="selector-buttons">
       <button onclick="showTwitch('mst3k')" class="neon-btn">📺 CJ’s Feature Stream: MST3K</button>
       <button onclick="showTwitch('bobross')" class="neon-btn">🎨 CJ’s Feature Stream: Bob Ross</button>
       <button onclick="showYouTube('PLlnbhgDuE0zKbLdEgrWhJC7nEB3cDguzB')" class="neon-btn">🍿 GenX Saturday Morning (YouTube)</button>
     </div>
 
-    <!-- VIDEO WALL (left side | main | right side) -->
+    <!-- VIDEO WALL (left | main | right) -->
     <section class="video-wall">
-      <!-- LEFT SIDE: Bob Ross (always visible) -->
+      <!-- LEFT: Bob Ross -->
       <aside class="card">
         <div class="side-title">🎨 Bob Ross (side)</div>
         <iframe
           id="twitch-side-bob"
           class="viewer--small"
           src="https://player.twitch.tv/?channel=bobross&parent=cjsgeneralstore.tech"
-          allowfullscreen scrolling="no" title="Twitch Bob Ross (side)">
+          title="Twitch Bob Ross (side)" allowfullscreen scrolling="no">
         </iframe>
       </aside>
 
-      <!-- CENTER: Main viewer (switchable) -->
+      <!-- CENTER: Main (switchable) -->
       <div class="card">
-        <!-- Twitch (main) -->
         <iframe 
           id="twitch-main"
           class="viewer"
           src="https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech"
-          allowfullscreen scrolling="no" title="Twitch Main">
+          title="Twitch Main" allowfullscreen scrolling="no">
         </iframe>
 
-        <!-- YouTube (main) -->
         <iframe
           id="yt-main"
           class="viewer"
           src=""
-          title="GenX Saturday Morning Cartoons"
+          title="GenX Saturday Morning (Main)"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
           style="display:none;">
         </iframe>
       </div>
 
-      <!-- RIGHT SIDE: YouTube playlist (always visible) -->
+      <!-- RIGHT: YouTube playlist -->
       <aside class="card">
         <div class="side-title">🍿 GenX Saturday Morning (side)</div>
         <iframe
           id="yt-side"
           class="viewer--small"
           src="https://www.youtube.com/embed/videoseries?list=PLlnbhgDuE0zKbLdEgrWhJC7nEB3cDguzB&rel=0&modestbranding=1"
-          title="GenX Saturday Morning Cartoons (side)"
+          title="GenX Saturday Morning (side)"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen>
         </iframe>
       </aside>
     </section>
 
-    <!-- GenX Radio: Live365 (smaller, in flow) -->
+    <!-- GenX Radio (Live365) -->
     <section class="card radio-card">
-      <h2 class="neon-sunburst-text" style="font-size:1.2em;text-align:center;margin-bottom:6px;">
+      <h2 class="neon-sunburst-text" style="font-size:1.1em;text-align:center;margin-bottom:6px;">
         📻 GenX Radio — 80s/90s Hits
       </h2>
       <iframe
         id="live365"
         src="https://live365.com/embed/player.html?station=a46931&s=xl&m=dark"
-        style="width:100%; height:140px; border:0; border-radius:12px; background:#000;"
+        style="display:block;width:100%;height:120px;border:0;border-radius:12px;background:#000;"
         title="GenX Radio — Live365 Player"
         loading="lazy"
         allow="autoplay; encrypted-media">
@@ -169,7 +167,7 @@
       </p>
     </section>
 
-    <!-- Background page music controls (in flow, not fixed) -->
+    <!-- Page music (in flow) -->
     <section class="card controls-card">
       <h3 style="margin:0 0 8px;">🎵 Page Music</h3>
       <div class="control-group" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
@@ -185,10 +183,10 @@
 
   <!-- Scripts -->
   <script>
-    // ---------- Config ----------
-    const AUTO_PLAY_BG = false; // set true if you want the page music to auto-play (not recommended)
+    // ---- Config ----
+    const AUTO_PLAY_BG = false; // set true to auto-play page music (not recommended)
 
-    // ---------- Background audio ----------
+    // ---- Page music controls ----
     const musicToggle  = document.getElementById('music-toggle');
     const bgMusic      = document.getElementById('bg-music');
     const volumeSlider = document.getElementById('volume-slider');
@@ -208,7 +206,7 @@
       bgMusic.volume = volumeSlider.value;
     });
 
-    // ---------- Main viewer switchers ----------
+    // ---- Main viewer switchers ----
     const twitchMain = document.getElementById('twitch-main');
     const ytMain     = document.getElementById('yt-main');
 
