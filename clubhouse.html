@@ -36,10 +36,10 @@
     .wrap{
       flex:1 0 auto;
       max-width:1180px; margin:0 auto;
-      padding:12px;
+      padding:10px;                     /* slightly tighter */
       display:grid;
       grid-template-rows: auto auto 1fr;
-      gap:10px;
+      gap:8px;                          /* slightly tighter */
       box-sizing:border-box;
       width:100%;
     }
@@ -52,12 +52,13 @@
     }
 
     .welcome-banner{
-      padding:12px 14px; text-align:center;
+      padding:10px 12px;                /* tighter to free vertical space */
+      text-align:center;
       background:var(--glass); border:1px solid var(--border); border-radius:16px;
       box-shadow:0 0 16px rgba(45,226,230,.18), inset 0 0 24px rgba(138,43,226,.12);
     }
     .selector-buttons{
-      margin-top:8px; display:flex; gap:8px; flex-wrap:wrap; justify-content:center;
+      margin-top:6px; display:flex; gap:8px; flex-wrap:wrap; justify-content:center;
     }
 
     .stage{
@@ -67,10 +68,14 @@
       align-items:stretch;
     }
 
-    .player-card{ padding:8px; display:flex; flex-direction:column; gap:8px; }
+    .player-card{ padding:6px; display:flex; flex-direction:column; gap:6px; }
+
+    /* -------- MAIN CHANGE: taller player -------- */
     .player-frame{
-      flex:1 1 auto; min-height:0;
-      display:block; width:100%; height:100%; border:0; border-radius:12px; background:#000;
+      display:block; width:100%; border:0; border-radius:12px; background:#000;
+      /* instead of forcing height:100%, use a taller aspect + max-height cap */
+      aspect-ratio: 16 / 8.5;          /* a bit taller than 16:9 */
+      max-height: 64vh;                /* keeps footer visible */
     }
     .player-frame.youtube{ display:none; }
 
@@ -85,6 +90,7 @@
     @media (max-width: 980px){
       body.clubhouse-page { overflow:auto; }
       .stage{ grid-template-columns: 1fr; }
+      .player-frame{ max-height:56vh; }  /* keep it comfy on small screens */
       .radio-card{ height:280px; }
     }
 
