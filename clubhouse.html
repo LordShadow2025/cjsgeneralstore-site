@@ -23,36 +23,75 @@
       --border: rgba(255,255,255,0.18);
       --glass: rgba(255,255,255,0.08);
     }
+
+    /* --- lock the page to one viewport --- */
+    html, body { height: 100%; }
     body.clubhouse-page{
-      background-image: url('assets/images/clubhouse.png');
-      background-size: cover; background-position: center; background-repeat: no-repeat;
-      min-height: 100vh; margin: 0;
+      margin:0; height:100%;
+      background:url('assets/images/clubhouse.png') center/cover no-repeat fixed;
+      overflow:hidden; /* no scroll */
+      color:#fff;
     }
-    .wrap{max-width:1100px;margin:0 auto;padding:16px;}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:12px;}
-    .top-buttons{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:10px auto;}
+
+    .wrap{
+      height:100%;
+      max-width:1180px; margin:0 auto;
+      padding:12px;
+      display:grid;
+      grid-template-rows: auto auto 1fr; /* top buttons, header, stage fills rest */
+      gap:10px;
+      box-sizing:border-box;
+    }
+
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;}
+
+    /* top buttons compact */
+    .top-buttons{
+      display:flex; gap:8px; flex-wrap:wrap; justify-content:center;
+      padding:6px;
+    }
+
+    /* header (welcome + selector) */
     .welcome-banner{
-      margin:10px auto 12px;text-align:center;
-      padding:12px 14px;background:var(--glass);border:1px solid var(--border);border-radius:16px;
+      padding:12px 14px; text-align:center;
+      background:var(--glass); border:1px solid var(--border); border-radius:16px;
       box-shadow:0 0 16px rgba(45,226,230,.18), inset 0 0 24px rgba(138,43,226,.12);
     }
-    .selector-buttons{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:10px 0 14px;}
-
-    /* MAIN PLAYER — stable sizing with aspect ratio */
-    .viewer{
-      display:block;width:100%;border:0;border-radius:12px;background:#000;
-      aspect-ratio: 16 / 9;           /* scales cleanly */
-      max-height: 460px;               /* keeps whole page visible */
+    .selector-buttons{
+      margin-top:8px; display:flex; gap:8px; flex-wrap:wrap; justify-content:center;
     }
 
-    /* RADIO */
-    .radio-card{margin:12px 0 18px;}
-    #live365{
-      display:block;width:100%;height:115px;border:0;border-radius:12px;background:#000;
+    /* stage = main player (left) + vertical radio (right) */
+    .stage{
+      min-height:0; /* allow children to size within grid */
+      display:grid; gap:10px;
+      grid-template-columns: 1fr 320px; /* main | radio side */
+      align-items:stretch;
     }
 
-    @media (max-width: 640px){
-      .viewer{max-height: 52vh;}
+    /* main player container fills available height */
+    .player-card{ padding:8px; display:flex; flex-direction:column; gap:8px; }
+    .player-frame{
+      flex:1 1 auto; min-height:0;
+      display:block; width:100%; height:100%; border:0; border-radius:12px; background:#000;
+    }
+    /* keep nice letterboxing */
+    .player-frame.youtube{ display:none; }
+
+    /* radio column */
+    .radio-card{ padding:8px; display:flex; flex-direction:column; gap:8px; }
+    .radio-title{ font-weight:700; text-align:center; }
+    .radio-embed{
+      flex:1 1 auto; min-height:0;
+      display:block; width:100%; height:100%; border:0; border-radius:12px; background:#000;
+    }
+    .radio-help{ font-size:12px; opacity:.85; text-align:center; margin:0; }
+
+    /* responsive safeguard: on narrow screens, allow scroll instead of breaking */
+    @media (max-width: 980px){
+      body.clubhouse-page { overflow:auto; }      /* permit scroll on small screens */
+      .stage{ grid-template-columns: 1fr; }       /* stack */
+      .radio-card{ height:280px; }                /* reasonable height when stacked */
     }
   </style>
 </head>
@@ -60,67 +99,65 @@
 
   <div class="wrap">
     <!-- Top Buttons -->
-    <div class="top-buttons">
+    <nav class="top-buttons card">
       <a href="index.html" class="neon-btn">🏠 Back to Home</a>
       <a href="privacy.html" class="neon-btn">🔒 Privacy</a>
       <a href="https://www.youtube.com/playlist?list=PL-ntIamaxXVmH9IwIf5I6h9dN5HKeZZwr" class="neon-btn" target="_blank" rel="noopener">📼 GenX TV</a>
       <a href="https://discord.com/channels/582629989850284060/582629990282166273" class="neon-btn" target="_blank" rel="noopener">💬 Join Our Discord</a>
-    </div>
+    </nav>
 
-    <!-- Welcome -->
-    <div class="welcome-banner card">
+    <!-- Welcome + Selector -->
+    <header class="welcome-banner card">
       <h1 class="neon-sunburst-text" style="margin:4px 0 6px;">WELCOME TO THE CLUBHOUSE</h1>
       <p style="margin:0;">Enjoy some vids, we got the music, the chat. Feel free to join our discord, but more importantly sit back, relax and enjoy yourselves.</p>
-    </div>
 
-    <!-- Selector -->
-    <div class="selector-buttons">
-      <button onclick="showTwitch('mst3k')" class="neon-btn">📺 CJ’s Feature Stream: MST3K</button>
-      <button onclick="showTwitch('bobross')" class="neon-btn">🎨 CJ’s Feature Stream: Bob Ross</button>
-      <button onclick="showYouTube('PLlnbhgDuE0zKbLdEgrWhJC7nEB3cDguzB')" class="neon-btn">🍿 GenX Saturday Morning (YouTube)</button>
-    </div>
+      <div class="selector-buttons">
+        <button onclick="showTwitch('mst3k')"  class="neon-btn">📺 CJ’s Feature Stream: MST3K</button>
+        <button onclick="showTwitch('bobross')" class="neon-btn">🎨 CJ’s Feature Stream: Bob Ross</button>
+        <button onclick="showYouTube('PLlnbhgDuE0zKbLdEgrWhJC7nEB3cDguzB')" class="neon-btn">🍿 GenX Saturday Morning (YouTube)</button>
+      </div>
+    </header>
 
-    <!-- Single Player (switches between Twitch/YouTube) -->
-    <section class="card" style="margin-bottom:14px;">
-      <!-- Twitch main -->
-      <iframe 
-        id="twitch-main"
-        class="viewer"
-        src="https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech"
-        title="Twitch Main" allowfullscreen scrolling="no">
-      </iframe>
+    <!-- Stage: main player + radio side -->
+    <main class="stage">
+      <!-- Main player (switches Twitch/YouTube) -->
+      <section class="player-card card" aria-label="Main player">
+        <!-- Twitch -->
+        <iframe 
+          id="twitch-main"
+          class="player-frame twitch"
+          src="https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech"
+          title="Twitch Main" allowfullscreen scrolling="no">
+        </iframe>
 
-      <!-- YouTube main -->
-      <iframe
-        id="yt-main"
-        class="viewer"
-        src=""
-        title="GenX Saturday Morning (Main)"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-        style="display:none;">
-      </iframe>
-    </section>
+        <!-- YouTube -->
+        <iframe
+          id="yt-main"
+          class="player-frame youtube"
+          src=""
+          title="GenX Saturday Morning (Main)"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </section>
 
-    <!-- GenX Radio (Live365) -->
-    <section class="card radio-card">
-      <h2 class="neon-sunburst-text" style="font-size:1.05em;text-align:center;margin-bottom:6px;">
-        📻 GenX Radio — 80s/90s Hits
-      </h2>
-      <iframe
-        id="live365"
-        src="https://live365.com/embed/player.html?station=a46931&s=xl&m=dark"
-        title="GenX Radio — Live365 Player"
-        loading="lazy"
-        allow="autoplay; encrypted-media">
-      </iframe>
-      <p class="small" style="opacity:.85;margin-top:6px;text-align:center;">
-        Trouble playing? <a href="https://live365.com/station/Q106-5---80s---90s-Hit-Music-a46931" target="_blank" rel="noopener">Open in a new tab</a>.
-      </p>
-    </section>
+      <!-- Vertical radio on the side -->
+      <aside class="radio-card card" aria-label="GenX Radio">
+        <div class="radio-title">📻 GenX Radio — 80s/90s Hits</div>
+        <iframe
+          id="live365"
+          class="radio-embed"
+          src="https://live365.com/embed/player.html?station=a46931&s=xl&m=dark"
+          title="GenX Radio — Live365 Player"
+          loading="lazy"
+          allow="autoplay; encrypted-media">
+        </iframe>
+        <p class="radio-help">Trouble playing? <a href="https://live365.com/station/Q106-5---80s---90s-Hit-Music-a46931" target="_blank" rel="noopener">Open in a new tab</a>.</p>
+      </aside>
+    </main>
   </div><!-- /.wrap -->
 
-  <!-- Player Switcher Scripts -->
+  <!-- Switcher script -->
   <script>
     const twitchMain = document.getElementById('twitch-main');
     const ytMain     = document.getElementById('yt-main');
@@ -128,56 +165,18 @@
     function showTwitch(channel){
       twitchMain.src = `https://player.twitch.tv/?channel=${channel}&parent=cjsgeneralstore.tech`;
       twitchMain.style.display = 'block';
-      ytMain.style.display     = 'none';
-      ytMain.src = ''; // stop YT audio
-      const top = document.querySelector('.selector-buttons');
-      top && window.scrollTo({ top: top.offsetTop, behavior: 'smooth' });
+      twitchMain.classList.remove('youtube'); twitchMain.classList.add('twitch');
+      ytMain.style.display = 'none'; ytMain.src = '';
     }
 
     function showYouTube(playlistId){
       ytMain.src = `https://www.youtube.com/embed/videoseries?list=${playlistId}&rel=0&modestbranding=1`;
-      ytMain.style.display     = 'block';
+      ytMain.style.display = 'block';
       twitchMain.style.display = 'none';
-      const top = document.querySelector('.selector-buttons');
-      top && window.scrollTo({ top: top.offsetTop, behavior: 'smooth' });
     }
 
-    // Default = MST3K
+    // default
     document.addEventListener('DOMContentLoaded', () => showTwitch('mst3k'));
   </script>
-
-  <!-- Footer include -->
-  <div id="site-footer"></div>
-  <script>
-    (function () {
-      const PATH = '/footer.html';
-      function inject(html) {
-        let slot = document.getElementById('site-footer');
-        if (!slot) { slot = document.createElement('div'); slot.id = 'site-footer'; document.body.appendChild(slot); }
-        slot.innerHTML = html;
-      }
-      function load() {
-        fetch(PATH, { cache: 'no-store' })
-          .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
-          .then(inject)
-          .catch(err => {
-            console.warn('Footer include failed:', err);
-            inject('<footer class="glow-footer" role="navigation" aria-label="Section navigation">\
-              <nav class="glow-footer__wrap">\
-                <a class="glow-card" href="/index.html">Home</a>\
-                <a class="glow-card" href="/soundroom.html">Sound Room</a>\
-                <a class="glow-card" href="/library.html">Library</a>\
-                <a class="glow-card" href="/clubhouse.html">Clubhouse</a>\
-                <a class="glow-card" href="/office.html">Office</a>\
-                <a class="glow-card" href="/showcase.html">Showcase</a>\
-                <a class="glow-card" href="/privacy.html">Privacy</a>\
-              </nav></footer>');
-          });
-      }
-      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load);
-      else load();
-    })();
-  </script>
-
 </body>
 </html>
