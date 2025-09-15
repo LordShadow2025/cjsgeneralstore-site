@@ -99,4 +99,106 @@
       <a href="index.html" class="neon-btn">🏠 Back to Home</a>
       <a href="privacy.html" class="neon-btn">🔒 Privacy</a>
       <a href="https://www.youtube.com/playlist?list=PL-ntIamaxXVmH9IwIf5I6h9dN5HKeZZwr" class="neon-btn" target="_blank" rel="noopener">📼 GenX TV</a>
-      <a href="https://discord.com/channels/582629989850284060/582629990282166273" class="neon-btn" target="_blank" rel="noope_
+      <a href="https://discord.com/channels/582629989850284060/582629990282166273" class="neon-btn" target="_blank" rel="noopener">💬 Join Our Discord</a>
+    </nav>
+
+    <header class="welcome-banner card">
+      <h1 class="neon-sunburst-text" style="margin:4px 0 6px;">WELCOME TO THE CLUBHOUSE</h1>
+      <p style="margin:0;">Enjoy some vids, we got the music, the chat. Feel free to join our discord, but more importantly sit back, relax and enjoy yourselves.</p>
+
+      <div class="selector-buttons">
+        <button onclick="showTwitch('mst3k')"  class="neon-btn">📺 CJ’s Feature Stream: MST3K</button>
+        <button onclick="showTwitch('bobross')" class="neon-btn">🎨 CJ’s Feature Stream: Bob Ross</button>
+        <button onclick="showYouTube('PLlnbhgDuE0zKbLdEgrWhJC7nEB3cDguzB')" class="neon-btn">🍿 GenX Saturday Morning (YouTube)</button>
+      </div>
+    </header>
+
+    <main class="stage">
+      <section class="player-card card" aria-label="Main player">
+        <iframe 
+          id="twitch-main"
+          class="player-frame twitch"
+          src="https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech"
+          title="Twitch Main" allowfullscreen scrolling="no">
+        </iframe>
+
+        <iframe
+          id="yt-main"
+          class="player-frame youtube"
+          src=""
+          title="GenX Saturday Morning (Main)"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </section>
+
+      <aside class="radio-card card" aria-label="GenX Radio">
+        <div class="radio-title">📻 GenX Radio — 80s/90s Hits</div>
+        <iframe
+          id="live365"
+          class="radio-embed"
+          src="https://live365.com/embed/player.html?station=a46931&s=xl&m=dark"
+          title="GenX Radio — Live365 Player"
+          loading="lazy"
+          allow="autoplay; encrypted-media">
+        </iframe>
+        <p class="radio-help">Trouble playing? <a href="https://live365.com/station/Q106-5---80s---90s-Hit-Music-a46931" target="_blank" rel="noopener">Open in a new tab</a>.</p>
+      </aside>
+    </main>
+  </div><!-- /.wrap -->
+
+  <!-- Footer include -->
+  <div id="site-footer"></div>
+  <script>
+    (function () {
+      const PATH = '/footer.html';
+      function inject(html) {
+        let slot = document.getElementById('site-footer');
+        if (!slot) { slot = document.createElement('div'); slot.id = 'site-footer'; document.body.appendChild(slot); }
+        slot.innerHTML = html;
+      }
+      function load() {
+        fetch(PATH, { cache: 'no-store' })
+          .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+          .then(inject)
+          .catch(err => {
+            console.warn('Footer include failed:', err);
+            inject('<footer class="glow-footer" role="navigation" aria-label="Section navigation">\
+              <nav class="glow-footer__wrap">\
+                <a class="glow-card" href="/index.html">Home</a>\
+                <a class="glow-card" href="/soundroom.html">Sound Room</a>\
+                <a class="glow-card" href="/library.html">Library</a>\
+                <a class="glow-card" href="/clubhouse.html">Clubhouse</a>\
+                <a class="glow-card" href="/office.html">Office</a>\
+                <a class="glow-card" href="/showcase.html">Showcase</a>\
+                <a class="glow-card" href="/privacy.html">Privacy</a>\
+              </nav></footer>');
+          });
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load);
+      else load();
+    })();
+  </script>
+
+  <script>
+    const twitchMain = document.getElementById('twitch-main');
+    const ytMain     = document.getElementById('yt-main');
+
+    function showTwitch(channel){
+      twitchMain.src = `https://player.twitch.tv/?channel=${channel}&parent=cjsgeneralstore.tech`;
+      twitchMain.style.display = 'block';
+      ytMain.style.display = 'none';
+      ytMain.src = '';
+    }
+
+    function showYouTube(playlistId){
+      ytMain.src = `https://www.youtube.com/embed/videoseries?list=${playlistId}&rel=0&modestbranding=1`;
+      ytMain.style.display = 'block';
+      twitchMain.style.display = 'none';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => showTwitch('mst3k'));
+  </script>
+
+</body>
+</html>
