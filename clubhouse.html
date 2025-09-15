@@ -24,34 +24,33 @@
       --glass: rgba(255,255,255,0.08);
     }
 
-    /* --- lock the page to one viewport --- */
     html, body { height: 100%; }
     body.clubhouse-page{
       margin:0; height:100%;
       background:url('assets/images/clubhouse.png') center/cover no-repeat fixed;
-      overflow:hidden; /* no scroll */
+      overflow:hidden;
       color:#fff;
+      display:flex; flex-direction:column;
     }
 
     .wrap{
-      height:100%;
+      flex:1 0 auto;
       max-width:1180px; margin:0 auto;
       padding:12px;
       display:grid;
-      grid-template-rows: auto auto 1fr; /* top buttons, header, stage fills rest */
+      grid-template-rows: auto auto 1fr;
       gap:10px;
       box-sizing:border-box;
+      width:100%;
     }
 
     .card{background:var(--card);border:1px solid var(--border);border-radius:16px;}
 
-    /* top buttons compact */
     .top-buttons{
       display:flex; gap:8px; flex-wrap:wrap; justify-content:center;
       padding:6px;
     }
 
-    /* header (welcome + selector) */
     .welcome-banner{
       padding:12px 14px; text-align:center;
       background:var(--glass); border:1px solid var(--border); border-radius:16px;
@@ -61,24 +60,20 @@
       margin-top:8px; display:flex; gap:8px; flex-wrap:wrap; justify-content:center;
     }
 
-    /* stage = main player (left) + vertical radio (right) */
     .stage{
-      min-height:0; /* allow children to size within grid */
+      min-height:0;
       display:grid; gap:10px;
-      grid-template-columns: 1fr 320px; /* main | radio side */
+      grid-template-columns: 1fr 320px;
       align-items:stretch;
     }
 
-    /* main player container fills available height */
     .player-card{ padding:8px; display:flex; flex-direction:column; gap:8px; }
     .player-frame{
       flex:1 1 auto; min-height:0;
       display:block; width:100%; height:100%; border:0; border-radius:12px; background:#000;
     }
-    /* keep nice letterboxing */
     .player-frame.youtube{ display:none; }
 
-    /* radio column */
     .radio-card{ padding:8px; display:flex; flex-direction:column; gap:8px; }
     .radio-title{ font-weight:700; text-align:center; }
     .radio-embed{
@@ -87,96 +82,21 @@
     }
     .radio-help{ font-size:12px; opacity:.85; text-align:center; margin:0; }
 
-    /* responsive safeguard: on narrow screens, allow scroll instead of breaking */
     @media (max-width: 980px){
-      body.clubhouse-page { overflow:auto; }      /* permit scroll on small screens */
-      .stage{ grid-template-columns: 1fr; }       /* stack */
-      .radio-card{ height:280px; }                /* reasonable height when stacked */
+      body.clubhouse-page { overflow:auto; }
+      .stage{ grid-template-columns: 1fr; }
+      .radio-card{ height:280px; }
     }
+
+    /* Footer */
+    #site-footer{flex-shrink:0;}
   </style>
 </head>
 <body class="clubhouse-page">
 
   <div class="wrap">
-    <!-- Top Buttons -->
     <nav class="top-buttons card">
       <a href="index.html" class="neon-btn">🏠 Back to Home</a>
       <a href="privacy.html" class="neon-btn">🔒 Privacy</a>
       <a href="https://www.youtube.com/playlist?list=PL-ntIamaxXVmH9IwIf5I6h9dN5HKeZZwr" class="neon-btn" target="_blank" rel="noopener">📼 GenX TV</a>
-      <a href="https://discord.com/channels/582629989850284060/582629990282166273" class="neon-btn" target="_blank" rel="noopener">💬 Join Our Discord</a>
-    </nav>
-
-    <!-- Welcome + Selector -->
-    <header class="welcome-banner card">
-      <h1 class="neon-sunburst-text" style="margin:4px 0 6px;">WELCOME TO THE CLUBHOUSE</h1>
-      <p style="margin:0;">Enjoy some vids, we got the music, the chat. Feel free to join our discord, but more importantly sit back, relax and enjoy yourselves.</p>
-
-      <div class="selector-buttons">
-        <button onclick="showTwitch('mst3k')"  class="neon-btn">📺 CJ’s Feature Stream: MST3K</button>
-        <button onclick="showTwitch('bobross')" class="neon-btn">🎨 CJ’s Feature Stream: Bob Ross</button>
-        <button onclick="showYouTube('PLlnbhgDuE0zKbLdEgrWhJC7nEB3cDguzB')" class="neon-btn">🍿 GenX Saturday Morning (YouTube)</button>
-      </div>
-    </header>
-
-    <!-- Stage: main player + radio side -->
-    <main class="stage">
-      <!-- Main player (switches Twitch/YouTube) -->
-      <section class="player-card card" aria-label="Main player">
-        <!-- Twitch -->
-        <iframe 
-          id="twitch-main"
-          class="player-frame twitch"
-          src="https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech"
-          title="Twitch Main" allowfullscreen scrolling="no">
-        </iframe>
-
-        <!-- YouTube -->
-        <iframe
-          id="yt-main"
-          class="player-frame youtube"
-          src=""
-          title="GenX Saturday Morning (Main)"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
-      </section>
-
-      <!-- Vertical radio on the side -->
-      <aside class="radio-card card" aria-label="GenX Radio">
-        <div class="radio-title">📻 GenX Radio — 80s/90s Hits</div>
-        <iframe
-          id="live365"
-          class="radio-embed"
-          src="https://live365.com/embed/player.html?station=a46931&s=xl&m=dark"
-          title="GenX Radio — Live365 Player"
-          loading="lazy"
-          allow="autoplay; encrypted-media">
-        </iframe>
-        <p class="radio-help">Trouble playing? <a href="https://live365.com/station/Q106-5---80s---90s-Hit-Music-a46931" target="_blank" rel="noopener">Open in a new tab</a>.</p>
-      </aside>
-    </main>
-  </div><!-- /.wrap -->
-
-  <!-- Switcher script -->
-  <script>
-    const twitchMain = document.getElementById('twitch-main');
-    const ytMain     = document.getElementById('yt-main');
-
-    function showTwitch(channel){
-      twitchMain.src = `https://player.twitch.tv/?channel=${channel}&parent=cjsgeneralstore.tech`;
-      twitchMain.style.display = 'block';
-      twitchMain.classList.remove('youtube'); twitchMain.classList.add('twitch');
-      ytMain.style.display = 'none'; ytMain.src = '';
-    }
-
-    function showYouTube(playlistId){
-      ytMain.src = `https://www.youtube.com/embed/videoseries?list=${playlistId}&rel=0&modestbranding=1`;
-      ytMain.style.display = 'block';
-      twitchMain.style.display = 'none';
-    }
-
-    // default
-    document.addEventListener('DOMContentLoaded', () => showTwitch('mst3k'));
-  </script>
-</body>
-</html>
+      <a href="https://discord.com/channels/582629989850284060/582629990282166273" class="neon-btn" target="_blank" rel="noope_
