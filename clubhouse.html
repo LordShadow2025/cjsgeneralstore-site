@@ -23,58 +23,36 @@
       --border: rgba(255,255,255,0.18);
       --glass: rgba(255,255,255,0.08);
     }
-
-    /* PAGE */
     body.clubhouse-page{
       background-image: url('assets/images/clubhouse.png');
       background-size: cover; background-position: center; background-repeat: no-repeat;
       min-height: 100vh; margin: 0;
     }
-    .wrap{max-width:1200px;margin:0 auto;padding:16px;}
-
-    /* Cards / buttons */
+    .wrap{max-width:1100px;margin:0 auto;padding:16px;}
     .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:12px;}
     .top-buttons{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:10px auto;}
     .welcome-banner{
-      max-width:1000px;margin:10px auto 14px;text-align:center;
-      padding:14px 16px;background:var(--glass);border:1px solid var(--border);border-radius:16px;
+      margin:10px auto 12px;text-align:center;
+      padding:12px 14px;background:var(--glass);border:1px solid var(--border);border-radius:16px;
       box-shadow:0 0 16px rgba(45,226,230,.18), inset 0 0 24px rgba(138,43,226,.12);
     }
-    .selector-buttons{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:12px 0 16px;}
+    .selector-buttons{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:10px 0 14px;}
 
-    /* VIDEO WALL */
-    .video-wall{
-      display:grid;gap:16px;
-      grid-template-columns: 280px 1fr 280px; /* left | main | right */
-      align-items:start;
-      margin-bottom:16px;
+    /* MAIN PLAYER — stable sizing with aspect ratio */
+    .viewer{
+      display:block;width:100%;border:0;border-radius:12px;background:#000;
+      aspect-ratio: 16 / 9;           /* scales cleanly */
+      max-height: 460px;               /* keeps whole page visible */
     }
 
-    /* EMBEDS — rock-solid sizing via aspect-ratio */
-    .viewer, .viewer--small{
-      display:block; width:100%; border:0; border-radius:12px; background:#000;
-      /* Reset any external positioning that could overlap */
-      position: static; float:none; clear:none;
-    }
-    /* Main: 16:9 box that scales, max 560px height */
-    .viewer{ aspect-ratio: 16 / 9; max-height: 560px; }
-    /* Side: shorter */
-    .viewer--small{ aspect-ratio: 16 / 9; max-height: 220px; }
-
-    .side-title{font-weight:700;margin:2px 0 8px;}
-
-    /* RADIO + CONTROLS */
+    /* RADIO */
     .radio-card{margin:12px 0 18px;}
-    .controls-card{margin:0 0 24px;}
-
-    /* RESPONSIVE */
-    @media (max-width: 1120px){
-      .video-wall{grid-template-columns:260px 1fr 260px;}
+    #live365{
+      display:block;width:100%;height:115px;border:0;border-radius:12px;background:#000;
     }
-    @media (max-width: 980px){
-      .video-wall{grid-template-columns:1fr;}
+
+    @media (max-width: 640px){
       .viewer{max-height: 52vh;}
-      .viewer--small{max-height: 210px;}
     }
   </style>
 </head>
@@ -91,7 +69,7 @@
 
     <!-- Welcome -->
     <div class="welcome-banner card">
-      <h1 class="neon-sunburst-text" style="margin:6px 0 8px;">WELCOME TO THE CLUBHOUSE</h1>
+      <h1 class="neon-sunburst-text" style="margin:4px 0 6px;">WELCOME TO THE CLUBHOUSE</h1>
       <p style="margin:0;">Enjoy some vids, we got the music, the chat. Feel free to join our discord, but more importantly sit back, relax and enjoy yourselves.</p>
     </div>
 
@@ -102,62 +80,36 @@
       <button onclick="showYouTube('PLlnbhgDuE0zKbLdEgrWhJC7nEB3cDguzB')" class="neon-btn">🍿 GenX Saturday Morning (YouTube)</button>
     </div>
 
-    <!-- VIDEO WALL (left | main | right) -->
-    <section class="video-wall">
-      <!-- LEFT: Bob Ross -->
-      <aside class="card">
-        <div class="side-title">🎨 Bob Ross (side)</div>
-        <iframe
-          id="twitch-side-bob"
-          class="viewer--small"
-          src="https://player.twitch.tv/?channel=bobross&parent=cjsgeneralstore.tech"
-          title="Twitch Bob Ross (side)" allowfullscreen scrolling="no">
-        </iframe>
-      </aside>
+    <!-- Single Player (switches between Twitch/YouTube) -->
+    <section class="card" style="margin-bottom:14px;">
+      <!-- Twitch main -->
+      <iframe 
+        id="twitch-main"
+        class="viewer"
+        src="https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech"
+        title="Twitch Main" allowfullscreen scrolling="no">
+      </iframe>
 
-      <!-- CENTER: Main (switchable) -->
-      <div class="card">
-        <iframe 
-          id="twitch-main"
-          class="viewer"
-          src="https://player.twitch.tv/?channel=mst3k&parent=cjsgeneralstore.tech"
-          title="Twitch Main" allowfullscreen scrolling="no">
-        </iframe>
-
-        <iframe
-          id="yt-main"
-          class="viewer"
-          src=""
-          title="GenX Saturday Morning (Main)"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          style="display:none;">
-        </iframe>
-      </div>
-
-      <!-- RIGHT: YouTube playlist -->
-      <aside class="card">
-        <div class="side-title">🍿 GenX Saturday Morning (side)</div>
-        <iframe
-          id="yt-side"
-          class="viewer--small"
-          src="https://www.youtube.com/embed/videoseries?list=PLlnbhgDuE0zKbLdEgrWhJC7nEB3cDguzB&rel=0&modestbranding=1"
-          title="GenX Saturday Morning (side)"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
-      </aside>
+      <!-- YouTube main -->
+      <iframe
+        id="yt-main"
+        class="viewer"
+        src=""
+        title="GenX Saturday Morning (Main)"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        style="display:none;">
+      </iframe>
     </section>
 
     <!-- GenX Radio (Live365) -->
     <section class="card radio-card">
-      <h2 class="neon-sunburst-text" style="font-size:1.1em;text-align:center;margin-bottom:6px;">
+      <h2 class="neon-sunburst-text" style="font-size:1.05em;text-align:center;margin-bottom:6px;">
         📻 GenX Radio — 80s/90s Hits
       </h2>
       <iframe
         id="live365"
         src="https://live365.com/embed/player.html?station=a46931&s=xl&m=dark"
-        style="display:block;width:100%;height:120px;border:0;border-radius:12px;background:#000;"
         title="GenX Radio — Live365 Player"
         loading="lazy"
         allow="autoplay; encrypted-media">
@@ -166,67 +118,28 @@
         Trouble playing? <a href="https://live365.com/station/Q106-5---80s---90s-Hit-Music-a46931" target="_blank" rel="noopener">Open in a new tab</a>.
       </p>
     </section>
-
-    <!-- Page music (in flow) -->
-    <section class="card controls-card">
-      <h3 style="margin:0 0 8px;">🎵 Page Music</h3>
-      <div class="control-group" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-        <button id="music-toggle">Play/Pause</button>
-        <label>Volume <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" title="Volume"></label>
-      </div>
-      <audio id="bg-music" preload="auto" loop>
-        <source src="assets/audio/clubhouse.mp3" type="audio/mp3" />
-      </audio>
-      <p class="small" style="opacity:.8;margin-top:6px;">Tip: If you start the radio, you may want to pause this background track.</p>
-    </section>
   </div><!-- /.wrap -->
 
-  <!-- Scripts -->
+  <!-- Player Switcher Scripts -->
   <script>
-    // ---- Config ----
-    const AUTO_PLAY_BG = false; // set true to auto-play page music (not recommended)
-
-    // ---- Page music controls ----
-    const musicToggle  = document.getElementById('music-toggle');
-    const bgMusic      = document.getElementById('bg-music');
-    const volumeSlider = document.getElementById('volume-slider');
-
-    if (bgMusic){
-      bgMusic.volume = 0.5;
-      document.addEventListener('DOMContentLoaded', () => {
-        if (AUTO_PLAY_BG) bgMusic.play().catch(()=>{});
-      });
-    }
-    musicToggle?.addEventListener('click', () => {
-      if (!bgMusic) return;
-      bgMusic.paused ? bgMusic.play() : bgMusic.pause();
-    });
-    volumeSlider?.addEventListener('input', () => {
-      if (!bgMusic) return;
-      bgMusic.volume = volumeSlider.value;
-    });
-
-    // ---- Main viewer switchers ----
     const twitchMain = document.getElementById('twitch-main');
     const ytMain     = document.getElementById('yt-main');
 
     function showTwitch(channel){
-      if (!twitchMain || !ytMain) return;
       twitchMain.src = `https://player.twitch.tv/?channel=${channel}&parent=cjsgeneralstore.tech`;
       twitchMain.style.display = 'block';
       ytMain.style.display     = 'none';
       ytMain.src = ''; // stop YT audio
-      const wall = document.querySelector('.video-wall');
-      wall && window.scrollTo({ top: wall.offsetTop - 8, behavior: 'smooth' });
+      const top = document.querySelector('.selector-buttons');
+      top && window.scrollTo({ top: top.offsetTop, behavior: 'smooth' });
     }
 
     function showYouTube(playlistId){
-      if (!twitchMain || !ytMain) return;
       ytMain.src = `https://www.youtube.com/embed/videoseries?list=${playlistId}&rel=0&modestbranding=1`;
       ytMain.style.display     = 'block';
       twitchMain.style.display = 'none';
-      const wall = document.querySelector('.video-wall');
-      wall && window.scrollTo({ top: wall.offsetTop - 8, behavior: 'smooth' });
+      const top = document.querySelector('.selector-buttons');
+      top && window.scrollTo({ top: top.offsetTop, behavior: 'smooth' });
     }
 
     // Default = MST3K
