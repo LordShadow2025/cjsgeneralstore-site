@@ -2285,6 +2285,47 @@ header, .angled-banner-brush {
   margin-top: clamp(260px, 32vh, 380px) !important;
 }
 
+/***** FINAL HARD RESTORE (banner + buttons) + DECOUPLED VIDEO *****/
+
+/* Angled neon banner – original spot */
+.angled-banner-brush{
+  position: absolute !important;
+  top: 60px !important;
+  right: -10px !important;
+  transform: rotate(-12deg) !important;
+  z-index: 10 !important;
+}
+
+/* Section buttons – centered under the sign */
+.mid-sign-row{
+  position: absolute !important;
+  top: 210px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  display: flex !important;
+  gap: 16px !important;
+  max-width: 880px !important;
+  width: 100% !important;
+  z-index: 9 !important; /* sits above video */
+}
+
+/* VIDEO: detach from any margins/flex and place lower on the porch */
+.promo-wrap{
+  position: absolute !important;      /* anchor to .wrapper (which is relative) */
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  top: 430px !important;              /* ↓ move lower/higher by changing this one value */
+  width: 60% !important;
+  max-width: 640px !important;
+  min-width: 260px !important;
+  margin: 0 !important;               /* kill inherited margins */
+  padding: 0 !important;
+  z-index: 8 !important;              /* below buttons, above background */
+}
+
+.promo-frame{ border-radius: 12px !important; }
+.promo-video{ border-radius: 12px !important; }
+
 
 
 
