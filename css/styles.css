@@ -1729,6 +1729,93 @@ body.office-page .welcome-banner#office-welcome p {
   .promo-wrap { width: min(95%, 1000px); }
 }
 
+/* === 🎥 Final Promo Video Fix === */
+.promo-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: clamp(20px, 3vw, 40px) auto;
+  width: 90%;                     /* slightly smaller overall width */
+  max-width: 900px;               /* reduced from 1100px */
+  padding: clamp(6px, 1.5vw, 12px);
+  position: relative;
+  z-index: 10;
+}
+
+.promo-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #000;
+  box-shadow:
+    0 0 4px rgba(0,255,255,0.6),
+    0 0 8px rgba(255,0,204,0.5),
+    0 0 16px rgba(0,255,255,0.35),
+    0 0 24px rgba(255,0,204,0.25);
+  animation: fadeInVideo 1.2s ease forwards, neonPulse 4.5s ease-in-out infinite;
+  opacity: 0;
+  transform: scale(0.98);
+}
+
+.promo-video {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 14px;
+}
+
+.promo-caption {
+  max-width: 800px;
+  margin: 12px auto 0;
+  text-align: center;
+  color: #fff;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1rem;
+}
+
+header, .angled-banner-brush {
+  position: relative;
+  z-index: 1;              /* ensure header stays behind video */
+}
+
+#mini-overlay {
+  position: fixed;
+  z-index: 9999;           /* always top layer */
+}
+
+/* Glow animation */
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 4px rgba(0,255,255,0.6),
+      0 0 8px rgba(255,0,204,0.5),
+      0 0 16px rgba(0,255,255,0.35),
+      0 0 24px rgba(255,0,204,0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 8px rgba(0,255,255,0.75),
+      0 0 16px rgba(255,0,204,0.65),
+      0 0 24px rgba(0,255,255,0.45),
+      0 0 36px rgba(255,0,204,0.35);
+  }
+}
+
+@keyframes fadeInVideo {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 480px) {
+  .promo-wrap { width: 95%; max-width: 100%; }
+  .promo-frame, .promo-video { border-radius: 10px; }
+  .promo-caption { font-size: 0.9rem; }
+}
+
 
 
 
