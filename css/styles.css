@@ -2038,6 +2038,61 @@ header, .angled-banner-brush {
   }
 }
 
+/* --- Move the promo video down onto the rocking-chair area --- */
+.promo-wrap {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* ↓ push it down; tweak this to fine-tune */
+  margin-top: clamp(140px, 18vh, 260px);
+
+  /* keep it centered and smaller */
+  width: 60%;
+  max-width: 640px;
+  min-width: 260px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.promo-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+  box-shadow:
+    0 0 4px rgba(0,255,255,0.6),
+    0 0 8px rgba(255,0,204,0.5),
+    0 0 14px rgba(0,255,255,0.35),
+    0 0 18px rgba(255,0,204,0.25);
+}
+
+.promo-video {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  border-radius: 12px;
+}
+
+/* ensure header text never overlaps */
+header, .angled-banner-brush { position: relative; z-index: 1; }
+
+/* overlay always on top */
+#mini-overlay { position: fixed; z-index: 9999; }
+
+/* mobile: a little wider so it feels balanced */
+@media (max-width: 600px) {
+  .promo-wrap {
+    margin-top: clamp(90px, 14vh, 160px);
+    width: 85%;
+    max-width: 500px;
+  }
+}
+
 
 
 
