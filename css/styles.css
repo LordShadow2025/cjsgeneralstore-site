@@ -2189,6 +2189,60 @@ header, .angled-banner-brush {
   }
 }
 
+/* === RESTORE ORIGINAL LAYOUT FOR ANGLED TEXT & SECTION BUTTONS === */
+
+/* --- Angled Brush Banner (Power Up and Chill – It’s a GenX Thing) --- */
+.angled-banner-brush {
+  position: absolute !important;
+  top: 60px !important;
+  right: -10px !important;
+  transform: rotate(-12deg) !important;
+  font-family: 'Permanent Marker', cursive !important;
+  font-size: 1.5rem !important;
+  color: #00ffff !important;
+  text-shadow:
+    0 0 5px #0ff,
+    0 0 10px #0ff,
+    0 0 15px #ff00ff,
+    0 0 25px #ff00ff !important;
+  background: transparent !important;
+  z-index: 10 !important;
+}
+
+/* --- Section Button Row (between sign and door) --- */
+.mid-sign-row {
+  position: absolute !important;
+  top: 210px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  display: flex !important;
+  justify-content: center !important;
+  flex-wrap: nowrap !important;
+  gap: 16px !important;
+  z-index: 9 !important;
+  max-width: 880px !important;
+  width: 100% !important;
+}
+
+/* --- Section Button Styling --- */
+.section img {
+  width: 135px !important;
+  height: 175px !important;
+  object-fit: cover !important;
+  border-radius: 8px !important;
+  border: 2px solid #00f !important;
+  box-shadow: 0 0 6px #00f !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+.section img:hover {
+  transform: scale(1.05) !important;
+  box-shadow:
+    0 0 10px #00ffff,
+    0 0 20px #00ffff,
+    0 0 30px #ff00ff !important;
+}
+
 
 
 
