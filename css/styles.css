@@ -1816,6 +1816,80 @@ header, .angled-banner-brush {
   .promo-caption { font-size: 0.9rem; }
 }
 
+/* === 🎥 Smaller Promo Video positioned over rocking chairs === */
+.promo-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: clamp(14px, 4vh, 36px) auto;
+  width: 72%;
+  max-width: 720px;
+  min-width: 280px;
+  position: relative;
+  z-index: 5;
+}
+
+.promo-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #000;
+  box-shadow:
+    0 0 4px rgba(0,255,255,0.6),
+    0 0 8px rgba(255,0,204,0.5),
+    0 0 16px rgba(0,255,255,0.35),
+    0 0 24px rgba(255,0,204,0.25);
+}
+
+.promo-video {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  border-radius: 14px;
+}
+
+header, .angled-banner-brush {
+  position: relative;
+  z-index: 1; /* keep banner behind video */
+}
+
+#mini-overlay {
+  position: fixed;
+  z-index: 9999; /* overlay always clickable above all */
+}
+
+/* Glow pulse animation */
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 4px rgba(0,255,255,0.6),
+      0 0 8px rgba(255,0,204,0.5),
+      0 0 16px rgba(0,255,255,0.35),
+      0 0 24px rgba(255,0,204,0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 8px rgba(0,255,255,0.75),
+      0 0 16px rgba(255,0,204,0.65),
+      0 0 24px rgba(0,255,255,0.45),
+      0 0 36px rgba(255,0,204,0.35);
+  }
+}
+
+/* Mobile optimization */
+@media (max-width: 600px) {
+  .promo-wrap {
+    width: 90%;
+    max-width: 520px;
+  }
+  .promo-frame,
+  .promo-video {
+    border-radius: 10px;
+  }
+}
+
 
 
 
