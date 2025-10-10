@@ -4,22 +4,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CJ's General Store and More</title>
-<meta name="description" content="Retro GenX vibes, music, stories, collectibles, and fun. Visit the Clubhouse, Sound Room, Library, and more.">
-<meta name="robots" content="index, follow">
-<meta property="og:title" content="CJ's General Store and More">
-<meta property="og:description" content="Your nostalgic GenX destination – music, stories, games, and collectibles.">
-<meta property="og:url" content="https://cjsgeneralstore.tech/">
-<meta property="og:image" content="https://cjsgeneralstore.tech/images/StorefrontLanding.png">
-<meta name="twitter:card" content="summary_large_image">
+
+  <!-- META & SEO -->
+  <meta name="description" content="Retro GenX vibes, music, stories, collectibles, and fun. Visit the Clubhouse, Sound Room, Library, and more.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="CJ's General Store and More">
+  <meta property="og:description" content="Your nostalgic GenX destination – music, stories, games, and collectibles.">
+  <meta property="og:url" content="https://cjsgeneralstore.tech/">
+  <meta property="og:image" content="https://cjsgeneralstore.tech/images/StorefrontLanding.png">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="google-adsense-account" content="ca-pub-5761934203737590">
+
+  <!-- STYLES & FONTS -->
   <link rel="stylesheet" href="css/styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <div class="wrapper">
     <header>
       <div class="angled-banner-brush">Power Up and Chill – It’s a GenX Thing.</div>
     </header>
+
+    <!-- 🎥 YouTube Promo Section -->
+    <section class="promo-wrap">
+      <div class="promo-frame">
+        <iframe
+          class="promo-video"
+          src="https://www.youtube.com/embed/p2cW0R0j61s?autoplay=1&mute=1&loop=1&playlist=p2cW0R0j61s&controls=1&modestbranding=1&rel=0"
+          title="CJ’s General Store – Site Promo"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </section>
+
+    <!-- 🪩 Section Navigation Buttons -->
     <nav class="mid-sign-row">
       <a href="generalstore.html" class="section"><img src="assets/images/CJsShelves.png" alt="Shelves" /></a>
       <a href="soundroom.html" class="section"><img src="assets/images/CJsSoundRoom.png" alt="Sound Room" /></a>
@@ -29,60 +50,55 @@
       <a href="office.html" class="section"><img src="assets/images/CJsOffice.png" alt="Office" /></a>
     </nav>
   </div>
-<div class="footer-links">
-  <a href="privacy.html" class="privacy-link">🔒 Privacy & Legal Info</a>
-  <a href="about.html" class="about-link">📘 About</a>
-</div> 
+
+  <!-- 📎 Footer Links -->
+  <div class="footer-links">
+    <a href="privacy.html" class="privacy-link">🔒 Privacy & Legal Info</a>
+    <a href="about.html" class="about-link">📘 About</a>
+  </div> 
+
   <!-- 🔊 Music Start Overlay -->
-<div id="mini-overlay" onclick="startMusic()">
-  🔊 Click to Power Up
-</div>
+  <div id="mini-overlay" onclick="startMusic()">
+    🔊 Click to Power Up
+  </div>
 
-<!-- 🔊 Music Controls -->
-<div class="audio-controls">
-  <button id="music-toggle">🔊 Music On/Off</button>
-  <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" title="Volume">
-</div>
+  <!-- 🔊 Music Controls -->
+  <div class="audio-controls">
+    <button id="music-toggle">🔊 Music On/Off</button>
+    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" title="Volume">
+  </div>
 
-<audio id="bg-music" loop preload="auto">
-  <source src="assets/audio/cjgs_snippet_mix.mp3" type="audio/mp3" />
-</audio>
+  <audio id="bg-music" loop preload="auto">
+    <source src="assets/audio/cjgs_snippet_mix.mp3" type="audio/mp3" />
+  </audio>
 
-<!-- Inline script instead of script.js for this page -->
-<script>
-  const bgMusic = document.getElementById('bg-music');
-  const musicToggle = document.getElementById('music-toggle');
-  const volumeSlider = document.getElementById('volume-slider');
-  const overlay = document.getElementById('mini-overlay');
+  <!-- 🎵 Inline Music Control Script -->
+  <script>
+    const bgMusic = document.getElementById('bg-music');
+    const musicToggle = document.getElementById('music-toggle');
+    const volumeSlider = document.getElementById('volume-slider');
+    const overlay = document.getElementById('mini-overlay');
+    let isPlaying = false;
 
-  let isPlaying = false;
-
-  function startMusic() {
-    bgMusic.volume = 0.5;
-    bgMusic.play().then(() => {
-      isPlaying = true;
-      overlay.style.opacity = '0';
-      overlay.style.pointerEvents = 'none';
-      setTimeout(() => overlay.remove(), 500); // fade then remove
-    }).catch(err => {
-      console.warn("Playback failed:", err);
-      console.warn("Autoplay prevented:", err);
-    });
-  }
-
-  musicToggle.addEventListener('click', () => {
-    if (isPlaying) {
-      bgMusic.pause();
-    } else {
-      bgMusic.play();
+    function startMusic() {
+      bgMusic.volume = 0.5;
+      bgMusic.play().then(() => {
+        isPlaying = true;
+        overlay.style.opacity = '0';
+        overlay.style.pointerEvents = 'none';
+        setTimeout(() => overlay.remove(), 500);
+      }).catch(err => console.warn("Autoplay prevented:", err));
     }
-    isPlaying = !isPlaying;
-  });
 
-  volumeSlider.addEventListener('input', () => {
-    bgMusic.volume = volumeSlider.value;
-  });
+    musicToggle.addEventListener('click', () => {
+      if (isPlaying) bgMusic.pause();
+      else bgMusic.play();
+      isPlaying = !isPlaying;
+    });
 
-</script>
+    volumeSlider.addEventListener('input', () => {
+      bgMusic.volume = volumeSlider.value;
+    });
+  </script>
 </body>
 </html>
