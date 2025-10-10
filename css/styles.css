@@ -2092,6 +2092,64 @@ header, .angled-banner-brush { position: relative; z-index: 1; }
     max-width: 500px;
   }
 }
+/* === 🎥 Position promo video directly across rocking chairs === */
+.promo-wrap {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* ↓ move the video farther down (adjust bottom value if needed) */
+  margin-top: clamp(260px, 32vh, 380px);
+
+  width: 60%;
+  max-width: 640px;
+  min-width: 260px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.promo-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+  box-shadow:
+    0 0 4px rgba(0,255,255,0.6),
+    0 0 8px rgba(255,0,204,0.5),
+    0 0 14px rgba(0,255,255,0.35),
+    0 0 18px rgba(255,0,204,0.25);
+}
+
+.promo-video {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  border-radius: 12px;
+}
+
+header, .angled-banner-brush {
+  position: relative;
+  z-index: 1;
+}
+
+#mini-overlay {
+  position: fixed;
+  z-index: 9999;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 600px) {
+  .promo-wrap {
+    margin-top: clamp(180px, 25vh, 260px);
+    width: 85%;
+    max-width: 500px;
+  }
+}
+
 
 
 
