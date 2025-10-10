@@ -2149,6 +2149,46 @@ header, .angled-banner-brush {
     max-width: 500px;
   }
 }
+/***** FIXES – append to the very end of styles.css *****/
+
+/* 1) Restore angled brush banner EXACT position (no layout changes elsewhere) */
+.angled-banner-brush{
+  position: absolute !important;
+  top: 60px !important;
+  right: -10px !important;
+  transform: rotate(-12deg) !important;
+  z-index: 10 !important;
+}
+
+/* 2) Lower ONLY the promo video block on the landing page */
+.promo-wrap{
+  /* keep size modest so it sits over the rocking chairs */
+  width: 60% !important;
+  max-width: 640px !important;
+  min-width: 260px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  /* push it down – raise these numbers to move lower, lower to move up */
+  margin-top: clamp(360px, 46vh, 560px) !important;
+
+  /* no extra stacking tricks; don't affect anything else */
+  position: relative !important;
+  z-index: 5 !important;
+}
+
+.promo-frame{ border-radius: 12px !important; }
+.promo-video{ border-radius: 12px !important; }
+
+/* Mobile: a bit wider and slightly less offset so it stays visible */
+@media (max-width: 600px){
+  .promo-wrap{
+    width: 85% !important;
+    max-width: 500px !important;
+    margin-top: clamp(230px, 34vh, 380px) !important;
+  }
+}
+
 
 
 
