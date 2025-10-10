@@ -1890,6 +1890,80 @@ header, .angled-banner-brush {
   }
 }
 
+/* === 🎥 FINAL: Promo Video scaled to fit over rocking chairs === */
+.promo-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: clamp(18px, 5vh, 42px) auto;
+  width: 60%;              /* smaller overall width */
+  max-width: 640px;        /* perfectly fits porch area */
+  min-width: 260px;
+  position: relative;
+  z-index: 5;
+}
+
+.promo-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+  box-shadow:
+    0 0 4px rgba(0,255,255,0.6),
+    0 0 8px rgba(255,0,204,0.5),
+    0 0 14px rgba(0,255,255,0.35),
+    0 0 18px rgba(255,0,204,0.25);
+  transform: translateY(15px); /* visually drop down to align with chairs */
+}
+
+.promo-video {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  border-radius: 12px;
+}
+
+header, .angled-banner-brush {
+  position: relative;
+  z-index: 1;
+}
+
+#mini-overlay {
+  position: fixed;
+  z-index: 9999;
+}
+
+/* Subtle pulse */
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 4px rgba(0,255,255,0.6),
+      0 0 8px rgba(255,0,204,0.5),
+      0 0 14px rgba(0,255,255,0.35),
+      0 0 18px rgba(255,0,204,0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 8px rgba(0,255,255,0.75),
+      0 0 14px rgba(255,0,204,0.65),
+      0 0 18px rgba(0,255,255,0.45),
+      0 0 28px rgba(255,0,204,0.35);
+  }
+}
+
+@media (max-width: 600px) {
+  .promo-wrap {
+    width: 85%;
+    max-width: 500px;
+  }
+  .promo-frame,
+  .promo-video {
+    border-radius: 10px;
+  }
+}
+
 
 
 
