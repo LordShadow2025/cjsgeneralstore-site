@@ -1636,6 +1636,72 @@ body.office-page .welcome-banner#office-welcome p {
                0 0 30px #00ffff;
 }
 
+/* === 🎥 YouTube Promo Frame Styling === */
+.promo-wrap {
+  display: grid;
+  place-items: center;
+  margin: clamp(12px, 3vw, 28px) auto;
+  width: min(100%, 1100px);
+  padding: clamp(6px, 1.5vw, 12px);
+}
+
+.promo-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+  box-shadow:
+    0 0 6px rgba(0,255,255,0.6),
+    0 0 12px rgba(255,0,204,0.5),
+    0 0 22px rgba(0,255,255,0.35),
+    0 0 36px rgba(255,0,204,0.25);
+  animation: fadeInVideo 1.2s ease forwards, neonPulse 4.5s ease-in-out infinite;
+  opacity: 0;
+  transform: scale(0.98);
+}
+
+.promo-video {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 16px;
+}
+
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 6px rgba(0,255,255,0.6),
+      0 0 12px rgba(255,0,204,0.5),
+      0 0 22px rgba(0,255,255,0.35),
+      0 0 36px rgba(255,0,204,0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 10px rgba(0,255,255,0.75),
+      0 0 18px rgba(255,0,204,0.65),
+      0 0 30px rgba(0,255,255,0.45),
+      0 0 48px rgba(255,0,204,0.35);
+  }
+}
+
+@keyframes fadeInVideo {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 480px) {
+  .promo-frame {
+    border-radius: 12px;
+  }
+  .promo-video {
+    border-radius: 12px;
+  }
+}
+
 
 
 
