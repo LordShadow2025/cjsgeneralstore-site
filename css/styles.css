@@ -2326,6 +2326,21 @@ header, .angled-banner-brush {
 .promo-frame{ border-radius: 12px !important; }
 .promo-video{ border-radius: 12px !important; }
 
+.site-intro {
+  max-width: 820px;
+  margin: 30px auto;
+  padding: 18px 24px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 16px;
+  border: 2px solid #ff00ff;
+  box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+  text-align: center;
+  font-family: 'Permanent Marker', cursive;
+  color: #fff;
+  text-shadow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
 
 
 
