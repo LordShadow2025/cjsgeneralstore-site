@@ -2342,6 +2342,36 @@ header, .angled-banner-brush {
   font-size: 1.1rem;
 }
 
+/* === Homepage Intro Box: Moved Up + Matching Glow === */
+.site-intro {
+  position: relative;
+  top: -40px; /* raise closer to the video */
+  max-width: 780px;
+  margin: 0 auto 20px;
+  padding: 16px 24px;
+
+  background: rgba(0, 0, 0, 0.55);
+  border: 2px solid #00ffff;
+  border-radius: 14px;
+  box-shadow:
+    0 0 8px #00ffff,
+    0 0 16px #ff00ff,
+    0 0 24px #00ffff;
+
+  text-align: center;
+  font-family: 'Permanent Marker', cursive;
+  color: #00ffff;
+  text-shadow:
+    0 0 5px #00ffff,
+    0 0 10px #00ffff,
+    0 0 20px #ff00ff,
+    0 0 30px #ff00ff;
+
+  line-height: 1.6;
+  font-size: 1.1rem;
+  z-index: 20;
+}
+
 
 
 
