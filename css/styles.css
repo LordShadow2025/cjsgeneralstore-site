@@ -2346,7 +2346,7 @@ header, .angled-banner-brush {
 .site-intro {
   position: relative;
   top: auto; /* remove upward shift */
-  margin-top: 5px; /* lower the box a bit under the buttons */
+  margin-top: 0px; /* lower the box a bit under the buttons */
   max-width: 780px;
   padding: 16px 24px;
 
@@ -2371,6 +2371,7 @@ header, .angled-banner-brush {
   font-size: 1.1rem;
   z-index: 20;
 }
+
 
 
 
