@@ -2342,12 +2342,12 @@ header, .angled-banner-brush {
   font-size: 1.1rem;
 }
 
-/* === Homepage Intro Box: Moved Up + Matching Glow === */
+/* === Homepage Intro Box: Lowered slightly, same neon styling === */
 .site-intro {
   position: relative;
-  top: -15px; /* raise closer to the video */
+  top: auto; /* remove upward shift */
+  margin-top: 25px; /* lower the box a bit under the buttons */
   max-width: 780px;
-  margin: 0 auto 20px;
   padding: 16px 24px;
 
   background: rgba(0, 0, 0, 0.55);
@@ -2371,6 +2371,8 @@ header, .angled-banner-brush {
   font-size: 1.1rem;
   z-index: 20;
 }
+
+
 
 
 
