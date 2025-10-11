@@ -2345,7 +2345,7 @@ header, .angled-banner-brush {
 /* === Homepage Intro Box: Moved Up + Matching Glow === */
 .site-intro {
   position: relative;
-  top: -40px; /* raise closer to the video */
+  top: -30px; /* raise closer to the video */
   max-width: 780px;
   margin: 0 auto 20px;
   padding: 16px 24px;
@@ -2371,6 +2371,7 @@ header, .angled-banner-brush {
   font-size: 1.1rem;
   z-index: 20;
 }
+
 
 
 
