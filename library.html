@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-adsense-account" content="ca-pub-5761934203737590" />
   <title>The Library | Poems, Writing & GenX Blog</title>
-<meta name="description" content="Read original poems, writing, and visit the GenX blog. A cozy reading room powered by nostalgia.">
-<meta name="robots" content="index, follow">
-<meta property="og:title" content="The Library">
-<meta property="og:description" content="A place for stories, poems, and vintage memories from CJ's world.">
-<meta property="og:url" content="https://cjsgeneralstore.tech/library.html">
-<meta property="og:image" content="https://cjsgeneralstore.tech/images/Library.png">
-<meta name="twitter:card" content="summary_large_image">
+  <meta name="description" content="Read original poems, writing, and visit the GenX blog. A cozy reading room powered by nostalgia.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="The Library">
+  <meta property="og:description" content="A place for stories, poems, and vintage memories from CJ's world.">
+  <meta property="og:url" content="https://cjsgeneralstore.tech/library.html">
+  <meta property="og:image" content="https://cjsgeneralstore.tech/images/Library.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="css/styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
 </head>
@@ -28,7 +28,7 @@
     <button id="weather-music-btn">🔊 Weather Audio</button>
   </div>
 
-  <!-- Background Music -->
+  <!-- Background Music (NO AUTOPLAY) -->
   <audio id="bg-music" preload="auto" loop>
     <source src="assets/audio/Library.mp3" type="audio/mp3" />
   </audio>
@@ -67,109 +67,96 @@
     </div>
   </div>
 
-  <!-- Music & Weather Script -->
+  <!-- 🎵 Background Music Controls -->
+  <div class="audio-controls">
+    <button id="music-toggle">🔊 Music On/Off</button>
+    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" title="Volume">
+  </div>
+
+  <!-- ONE clean script: no autoplay + working buttons/slider -->
   <script>
-    const musicToggle = document.getElementById('music-toggle');
-    const bgMusic = document.getElementById('bg-music');
-    const volumeSlider = document.getElementById('volume-slider');
-    const weatherBtn = document.getElementById('weather-music-btn');
-    const weatherAudio = document.getElementById('weather-music');
-    let weatherPlaying = false;
+    document.addEventListener('DOMContentLoaded', () => {
+      const bg = document.getElementById('bg-music');
+      const weather = document.getElementById('weather-music');
+      const musicBtn = document.getElementById('music-toggle');
+      const vol = document.getElementById('volume-slider');
+      const weatherBtn = document.getElementById('weather-music-btn');
 
-  document.addEventListener('DOMContentLoaded', () => {
-    bgMusic.volume = 0.5; // set default volume only; no autoplay
-});
+      // Default volume only (no autoplay)
+      if (bg && vol) bg.volume = Number(vol.value || 0.5);
 
-    <script>
-  function toggleAudio() {
-    const audio = document.getElementById("bg-music");
-    if (audio.paused) {
-      audio.play();
-    } else {
-      audio.pause();
-    }
-  }
-
-  function setVolume(val) {
-    const audio = document.getElementById("bg-music");
-    audio.volume = val;
-  }
-
-  // ✅ Hook up the controls on this page
-  document.getElementById('music-toggle').addEventListener('click', toggleAudio);
-  document.getElementById('volume-slider').addEventListener('input', (e) => setVolume(e.target.value));
-</script>
-    weatherBtn.addEventListener('click', () => {
-      if (weatherPlaying) {
-        weatherAudio.pause();
-        weatherBtn.textContent = '🔊 Weather Audio';
-      } else {
-        weatherAudio.play();
-        weatherBtn.textContent = '🔈 Weather Audio';
+      // Music play/pause button
+      if (musicBtn && bg) {
+        musicBtn.addEventListener('click', () => {
+          if (bg.paused) { bg.play(); }
+          else { bg.pause(); }
+        });
       }
-      weatherPlaying = !weatherPlaying;
+
+      // Volume slider
+      if (vol && bg) {
+        vol.addEventListener('input', (e) => {
+          bg.volume = Number(e.target.value);
+        });
+      }
+
+      // Weather audio toggle
+      let weatherPlaying = false;
+      if (weatherBtn && weather) {
+        weatherBtn.addEventListener('click', () => {
+          if (weatherPlaying) {
+            weather.pause();
+            weatherBtn.textContent = '🔊 Weather Audio';
+          } else {
+            weather.play();
+            weatherBtn.textContent = '🔈 Weather Audio';
+          }
+          weatherPlaying = !weatherPlaying;
+        });
+      }
     });
   </script>
 
- <!-- 🎵 Background Music Controls -->
-<div class="audio-controls">
-  <button id="music-toggle">🔊 Music On/Off</button>
-  <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" title="Volume">
-</div>
-
-<script>
-  function toggleAudio() {
-    const audio = document.getElementById("bg-music");
-    if (audio.paused) {
-      audio.play();
-    } else {
-      audio.pause();
-    }
-  }
-
-  function setVolume(val) {
-    const audio = document.getElementById("bg-music");
-    audio.volume = val;
-  }
-</script>
   <div id="site-footer"></div>
-<script>
-(function () {
-  const PATH = '/footer.html'; // root path
+  <script>
+  (function () {
+    const PATH = '/footer.html'; // root path
 
-  function inject(html) {
-    var slot = document.getElementById('site-footer');
-    if (!slot) { slot = document.createElement('div'); slot.id = 'site-footer'; document.body.appendChild(slot); }
-    slot.innerHTML = html;
-  }
+    function inject(html) {
+      var slot = document.getElementById('site-footer');
+      if (!slot) { slot = document.createElement('div'); slot.id = 'site-footer'; document.body.appendChild(slot); }
+      slot.innerHTML = html;
+    }
 
-  function load() {
-    fetch(PATH, { cache: 'no-store' })
-      .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
-      .then(inject)
-      .catch(err => {
-        console.warn('Footer include failed:', err);
-        // Fallback so the page still gets a footer even if fetch fails
-        inject('<footer class="glow-footer" role="navigation" aria-label="Section navigation">\
-          <nav class="glow-footer__wrap">\
-            <a class="glow-card" href="/index.html">Home</a>\
-            <a class="glow-card" href="/soundroom.html">Sound Room</a>\
-            <a class="glow-card" href="/library.html">Library</a>\
-            <a class="glow-card" href="/clubhouse.html">Clubhouse</a>\
-            <a class="glow-card" href="/office.html">Office</a>\
-            <a class="glow-card" href="/showcase.html">Showcase</a>\
-            <a class="glow-card" href="/privacy.html">Privacy</a>\
-          </nav></footer>');
-      });
-  }
+    function load() {
+      fetch(PATH, { cache: 'no-store' })
+        .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+        .then(inject)
+        .catch(err => {
+          console.warn('Footer include failed:', err);
+          // Fallback so the page still gets a footer even if fetch fails
+          inject('<footer class="glow-footer" role="navigation" aria-label="Section navigation">\
+            <nav class="glow-footer__wrap">\
+              <a class="glow-card" href="/index.html">Home</a>\
+              <a class="glow-card" href="/soundroom.html">Sound Room</a>\
+              <a class="glow-card" href="/library.html">Library</a>\
+              <a class="glow-card" href="/clubhouse.html">Clubhouse</a>\
+              <a class="glow-card" href="/office.html">Office</a>\
+              <a class="glow-card" href="/showcase.html">Showcase</a>\
+              <a class="glow-card" href="/privacy.html">Privacy</a>\
+            </nav></footer>');
+        });
+    }
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load);
-  else load();
-})();
-</script>
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load);
+    else load();
+  })();
+  </script>
 
 </body>
 </html>
+
+
 
 
 
