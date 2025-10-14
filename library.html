@@ -29,7 +29,7 @@
   </div>
 
   <!-- Background Music -->
-  <audio id="bg-music" preload=loop>
+  <audio id="bg-music" preload="auto" loop>
     <source src="assets/audio/Library.mp3" type="audio/mp3" />
   </audio>
   <audio id="weather-music" preload="auto" loop>
@@ -76,11 +76,29 @@
     const weatherAudio = document.getElementById('weather-music');
     let weatherPlaying = false;
 
-    document.addEventListener('DOMContentLoaded', () => {
-      bgMusic.volume = 0.5;
-      bgMusic.play().catch(() => {});
-    });
+  document.addEventListener('DOMContentLoaded', () => {
+    bgMusic.volume = 0.5; // set default volume only; no autoplay
+});
 
+    <script>
+  function toggleAudio() {
+    const audio = document.getElementById("bg-music");
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  }
+
+  function setVolume(val) {
+    const audio = document.getElementById("bg-music");
+    audio.volume = val;
+  }
+
+  // ✅ Hook up the controls on this page
+  document.getElementById('music-toggle').addEventListener('click', toggleAudio);
+  document.getElementById('volume-slider').addEventListener('input', (e) => setVolume(e.target.value));
+</script>
     weatherBtn.addEventListener('click', () => {
       if (weatherPlaying) {
         weatherAudio.pause();
@@ -152,6 +170,7 @@
 
 </body>
 </html>
+
 
 
 
