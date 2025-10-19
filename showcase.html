@@ -108,8 +108,19 @@
 })();
 </script>
 
+<script>
+  // Ensure no audio autoplays on load
+  window.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('audio').forEach(a => {
+      a.autoplay = false;
+      try { a.pause(); } catch(_) {}
+    });
+  });
+</script>
+
 </body>
 </html>
+
 
 
 
