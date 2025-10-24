@@ -64,13 +64,9 @@
 
     bgMusic.volume = 0.5;
 
-    document.addEventListener('DOMContentLoaded', () => {
-      bgMusic.play().catch(() => {
-        console.warn("Autoplay blocked until interaction.");
-      });
-    });
+    
 
-    let isPlaying = true;
+    let isPlaying = false;
     musicToggle.addEventListener('click', () => {
       if (isPlaying) {
         bgMusic.pause();
@@ -99,6 +95,7 @@
 </footer>
 </body>
 </html>
+
 
 
 
