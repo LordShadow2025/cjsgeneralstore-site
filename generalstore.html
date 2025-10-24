@@ -63,10 +63,9 @@
     const volumeSlider = document.getElementById('volume-slider');
 
     bgMusic.volume = 0.5;
-
-    
-
+    bgMusic.pause();
     let isPlaying = false;
+    
     musicToggle.addEventListener('click', () => {
       if (isPlaying) {
         bgMusic.pause();
@@ -95,6 +94,7 @@
 </footer>
 </body>
 </html>
+
 
 
 
