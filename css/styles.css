@@ -2372,6 +2372,34 @@ header, .angled-banner-brush {
   z-index: 20;
 }
 
+.affiliate-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    color: #fff;
+    background: transparent;
+    border: 2px solid #00eaff;
+    border-radius: 12px;
+    text-decoration: none;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.2rem;
+    text-shadow: 
+        0 0 5px #00eaff,
+        0 0 10px #00eaff,
+        0 0 20px #00eaff;
+    box-shadow:
+        0 0 10px #00eaff,
+        inset 0 0 10px #00eaff;
+    transition: 0.3s ease;
+}
+
+.affiliate-btn:hover {
+    box-shadow:
+        0 0 20px #00eaff,
+        inset 0 0 20px #00eaff;
+    transform: scale(1.05);
+}
+
 
 
 
