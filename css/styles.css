@@ -2400,7 +2400,100 @@ header, .angled-banner-brush {
     transform: scale(1.05);
 }
 
+/* === LoreKeeper Room Door Trigger === */
 
+/* Make sure the page itself can anchor absolute children cleanly */
+body.library-page {
+  position: relative;
+}
+
+/* Clickable keyhole placed over the library door */
+.lorekeeper-door {
+  position: absolute;
+  top: 43%;
+  left: 66%;
+  transform: translate(-50%, -50%);
+  z-index: 50;
+  display: block;
+  text-decoration: none;
+}
+
+/* The keyhole image itself */
+.lorekeeper-door-img {
+  display: block;
+  width: 130px;
+  max-width: 14vw;
+  height: auto;
+  opacity: 0.92;
+  border-radius: 18px;
+  transition:
+    transform 0.28s ease,
+    opacity 0.28s ease,
+    filter 0.28s ease;
+  animation: lorekeeperPulse 3.2s ease-in-out infinite;
+}
+
+/* Hover state: brighter, slightly larger, more "alive" */
+.lorekeeper-door:hover .lorekeeper-door-img {
+  opacity: 1;
+  transform: scale(1.06);
+  filter:
+    drop-shadow(0 0 6px #00ffff)
+    drop-shadow(0 0 12px #00ffff)
+    drop-shadow(0 0 20px #ff00ff)
+    drop-shadow(0 0 28px rgba(255, 0, 255, 0.75));
+}
+
+/* Keyboard focus support */
+.lorekeeper-door:focus-visible .lorekeeper-door-img {
+  opacity: 1;
+  transform: scale(1.06);
+  filter:
+    drop-shadow(0 0 6px #00ffff)
+    drop-shadow(0 0 12px #00ffff)
+    drop-shadow(0 0 20px #ff00ff)
+    drop-shadow(0 0 28px rgba(255, 0, 255, 0.75));
+  outline: none;
+}
+
+/* Soft idle pulse */
+@keyframes lorekeeperPulse {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 4px rgba(0, 255, 255, 0.55))
+      drop-shadow(0 0 8px rgba(255, 0, 255, 0.35));
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 8px rgba(0, 255, 255, 0.85))
+      drop-shadow(0 0 16px rgba(255, 0, 255, 0.55));
+  }
+}
+
+/* Mobile tuning */
+@media (max-width: 900px) {
+  .lorekeeper-door {
+    top: 45%;
+    left: 66%;
+  }
+
+  .lorekeeper-door-img {
+    width: 105px;
+    max-width: 22vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .lorekeeper-door {
+    top: 47%;
+    left: 67%;
+  }
+
+  .lorekeeper-door-img {
+    width: 88px;
+    max-width: 26vw;
+  }
+}
 
 
 
