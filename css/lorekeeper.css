@@ -1,146 +1,82 @@
-/* === LoreKeeper Room === */
+/* ===== LoreKeeper Room ===== */
 
 body.lorekeeper-page {
   margin: 0;
+  padding: 0;
   min-height: 100vh;
   background: url('../assets/images/lorekeeper-room.png') no-repeat center center fixed;
   background-size: cover;
+  font-family: 'Permanent Marker', cursive;
   color: #ffffff;
-  overflow-x: hidden;
-  position: relative;
-}
-
-/* soft darkening layer so text stays readable */
-body.lorekeeper-page::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background:
-    linear-gradient(to bottom, rgba(5, 8, 18, 0.30), rgba(5, 8, 18, 0.52)),
-    radial-gradient(circle at center, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.35));
-  pointer-events: none;
-  z-index: 0;
 }
 
 .lorekeeper-overlay {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  min-height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding-top: 80px;
 }
 
-.lorekeeper-intro,
-.lorekeeper-placeholder {
-  background: rgba(0, 0, 0, 0.58);
-  border: 2px solid rgba(0, 255, 255, 0.8);
-  border-radius: 16px;
-  box-shadow:
-    0 0 10px rgba(0, 255, 255, 0.85),
-    0 0 20px rgba(255, 0, 255, 0.55);
-  backdrop-filter: blur(3px);
-}
-
-/* title box sits high and centered */
 .lorekeeper-intro {
-  max-width: 560px;
-  margin: 80px auto 0;
-  padding: 18px 24px;
   text-align: center;
+  padding: 20px 40px;
+  margin-bottom: 40px;
 }
 
 .lorekeeper-title {
-  margin: 0 0 8px;
-  font-family: 'Permanent Marker', cursive;
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
-  color: #00ffff;
+  font-size: 2.5rem;
+  color: #00f7ff;
   text-shadow:
-    0 0 6px #00ffff,
-    0 0 14px #00ffff,
-    0 0 24px #ff00ff;
+    0 0 5px #00f7ff,
+    0 0 10px #00f7ff,
+    0 0 20px #00f7ff,
+    0 0 30px #ff00ff;
 }
 
 .lorekeeper-subtitle {
-  margin: 0;
-  font-family: 'Permanent Marker', cursive;
+  margin-top: 10px;
   font-size: 1rem;
-  line-height: 1.5;
-  color: #f2f7ff;
-  text-shadow:
-    0 0 4px #00ffff,
-    0 0 8px #ff00ff;
+  opacity: 0.85;
 }
 
-/* placeholder box lower on desk side of image */
 .lorekeeper-placeholder {
-  max-width: 420px;
-  margin: 260px 0 0 90px;
-  padding: 16px 18px;
-  text-align: left;
-  font-family: 'Permanent Marker', cursive;
-  line-height: 1.6;
-  color: #f7fbff;
-  text-shadow:
-    0 0 4px #00ffff,
-    0 0 8px rgba(255, 0, 255, 0.75);
-}
-
-.lorekeeper-placeholder p {
-  margin: 0 0 10px;
+  text-align: center;
+  padding: 30px;
+  max-width: 500px;
 }
 
 .lorekeeper-whisper {
-  opacity: 0.92;
-  font-size: 0.95rem;
+  margin-top: 15px;
+  font-size: 0.85rem;
+  opacity: 0.6;
+  font-style: italic;
 }
 
-/* top buttons positioned cleanly */
-body.lorekeeper-page .home-button,
-body.lorekeeper-page .privacy-link {
+.glass-box {
+  background: rgba(0, 0, 0, 0.55);
+  border: 2px solid rgba(0, 255, 255, 0.45);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 0 10px rgba(0, 255, 255, 0.3),
+    0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+.home-button,
+.privacy-link {
   position: fixed;
-  top: 18px;
+  top: 15px;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #00f7ff;
+  border-radius: 8px;
+  color: #00f7ff;
+  text-decoration: none;
+  box-shadow: 0 0 10px #00f7ff;
   z-index: 1000;
 }
 
-body.lorekeeper-page .home-button {
-  left: 18px;
-}
-
-body.lorekeeper-page .privacy-link {
-  left: 170px;
-}
-
-/* mobile adjustments */
-@media (max-width: 900px) {
-  .lorekeeper-placeholder {
-    margin: 180px auto 0;
-    max-width: 86%;
-    text-align: center;
-  }
-}
-
-@media (max-width: 640px) {
-  .lorekeeper-intro {
-    max-width: 86%;
-    margin-top: 90px;
-    padding: 16px;
-  }
-
-  .lorekeeper-title {
-    font-size: 1.8rem;
-  }
-
-  .lorekeeper-subtitle,
-  .lorekeeper-placeholder {
-    font-size: 0.95rem;
-  }
-
-  body.lorekeeper-page .privacy-link {
-    left: 18px;
-    top: 68px;
-  }
-}
-
-.lorekeeper-whisper:last-child {
-  opacity: 0.75;
-  font-size: 0.9rem;
-}
+.home-button { left: 15px; }
+.privacy-link { left: 180px; }
