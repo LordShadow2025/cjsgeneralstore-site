@@ -3,7 +3,7 @@
 body.lorekeeper-page {
   margin: 0;
   min-height: 100vh;
-  background: url('../images/lorekeeper-room.png') no-repeat center center fixed;
+  background: url('../assets/images/lorekeeper-room.png') no-repeat center center fixed;
   background-size: cover;
   color: #ffffff;
   overflow-x: hidden;
