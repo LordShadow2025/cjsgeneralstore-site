@@ -1,58 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The LoreKeeper Room</title>
-  <meta name="google-adsense-account" content="ca-pub-5761934203737590">
-  <link rel="stylesheet" href="css/shared.css" />
-  <link rel="stylesheet" href="css/lorekeeper.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
-</head>
-<body class="lorekeeper-page">
+/* ===== LoreKeeper Page Base ===== */
+.lorekeeper-page {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
 
-  <a href="library.html" class="home-button">🔙 Return to Library</a>
-  <a href="privacy.html" class="privacy-link">🔐 Privacy Policy</a>
+  /* 🔥 THIS IS THE IMPORTANT LINE */
+  background: url('../assets/images/lorekeeper-room.png') no-repeat center center fixed;
+  background-size: cover;
 
-  <div class="lorekeeper-overlay">
-    <div class="lorekeeper-intro glass-box">
-      <h1 class="lorekeeper-title">The LoreKeeper Room</h1>
-      <p class="lorekeeper-subtitle">
-        Some works are shelved.<br>
-        Some are kept.
-      </p>
-</div>
-    </div>
+  font-family: 'Permanent Marker', cursive;
+  color: white;
+}
 
-    <div class="lorekeeper-placeholder glass-box">
-  <p>
-    The room is prepared.<br>
-    The pages are not yet in place.
-  </p>
+/* ===== Overlay Layout ===== */
+.lorekeeper-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding-top: 80px;
+}
 
-  <p class="lorekeeper-whisper">
-    There are notes here. Drafts. Bindings. Things waiting to be named.
-  </p>
+/* ===== Title Box ===== */
+.lorekeeper-intro {
+  text-align: center;
+  padding: 20px 40px;
+  margin-bottom: 40px;
+}
 
-  <p class="lorekeeper-whisper">
-    Some entries have already been recorded.<br>
-    They are not visible from here.
-  </p>
-</div>
-    </div>
-  </div>
+/* ===== Title Styling ===== */
+.lorekeeper-title {
+  font-size: 2.5rem;
+  color: #00f7ff;
+  text-shadow:
+    0 0 5px #00f7ff,
+    0 0 10px #00f7ff,
+    0 0 20px #00f7ff;
+}
 
-  <footer class="glow-footer" role="navigation" aria-label="Section navigation">
-    <nav class="glow-footer__wrap">
-      <a class="glow-card" href="index.html">Home</a>
-      <a class="glow-card" href="soundroom.html">Sound Room</a>
-      <a class="glow-card" href="library.html">Library</a>
-      <a class="glow-card" href="clubhouse.html">Clubhouse</a>
-      <a class="glow-card" href="office.html">Office</a>
-      <a class="glow-card" href="showcase.html">Showcase</a>
-      <a class="glow-card" href="privacy.html">Privacy</a>
-    </nav>
-  </footer>
+/* ===== Subtitle ===== */
+.lorekeeper-subtitle {
+  margin-top: 10px;
+  font-size: 1rem;
+  opacity: 0.8;
+}
 
-</body>
-</html>
+/* ===== Placeholder Box ===== */
+.lorekeeper-placeholder {
+  text-align: center;
+  padding: 30px;
+  max-width: 500px;
+}
+
+/* ===== Whisper Text ===== */
+.lorekeeper-whisper {
+  margin-top: 15px;
+  font-size: 0.85rem;
+  opacity: 0.6;
+  font-style: italic;
+}
+
+/* ===== Glass Box (matches your site style) ===== */
+.glass-box {
+  background: rgba(0, 0, 0, 0.55);
+  border: 2px solid rgba(0, 255, 255, 0.4);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 0 10px rgba(0, 255, 255, 0.3),
+    0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+/* ===== Navigation Buttons (fixes your plain links issue) ===== */
+.home-button,
+.privacy-link {
+  position: fixed;
+  top: 15px;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #00f7ff;
+  border-radius: 8px;
+  color: #00f7ff;
+  text-decoration: none;
+  box-shadow: 0 0 10px #00f7ff;
+  z-index: 1000;
+}
+
+.home-button {
+  left: 15px;
+}
+
+.privacy-link {
+  left: 180px;
+}
+
+.home-button:hover,
+.privacy-link:hover {
+  background: #00f7ff;
+  color: black;
+}
