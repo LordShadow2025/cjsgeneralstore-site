@@ -2495,7 +2495,93 @@ body.library-page {
   }
 }
 
+/* === LoreKeeper Room Door Trigger === */
 
+body.library-page {
+  position: relative;
+}
+
+.lorekeeper-door {
+  position: absolute;
+  top: 48%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  z-index: 50;
+  display: block;
+  text-decoration: none;
+}
+
+.lorekeeper-door-img {
+  display: block;
+  width: 130px;
+  max-width: 14vw;
+  height: auto;
+  opacity: 0.92;
+  border-radius: 18px;
+  transition:
+    transform 0.28s ease,
+    opacity 0.28s ease,
+    filter 0.28s ease;
+  animation: lorekeeperPulse 3.2s ease-in-out infinite;
+}
+
+.lorekeeper-door:hover .lorekeeper-door-img {
+  opacity: 1;
+  transform: scale(1.06);
+  filter:
+    drop-shadow(0 0 6px #00ffff)
+    drop-shadow(0 0 12px #00ffff)
+    drop-shadow(0 0 20px #ff00ff)
+    drop-shadow(0 0 28px rgba(255, 0, 255, 0.75));
+}
+
+.lorekeeper-door:focus-visible .lorekeeper-door-img {
+  opacity: 1;
+  transform: scale(1.06);
+  filter:
+    drop-shadow(0 0 6px #00ffff)
+    drop-shadow(0 0 12px #00ffff)
+    drop-shadow(0 0 20px #ff00ff)
+    drop-shadow(0 0 28px rgba(255, 0, 255, 0.75));
+  outline: none;
+}
+
+@keyframes lorekeeperPulse {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 4px rgba(0, 255, 255, 0.55))
+      drop-shadow(0 0 8px rgba(255, 0, 255, 0.35));
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 8px rgba(0, 255, 255, 0.85))
+      drop-shadow(0 0 16px rgba(255, 0, 255, 0.55));
+  }
+}
+
+@media (max-width: 900px) {
+  .lorekeeper-door {
+    top: 50%;
+    left: 60%;
+  }
+
+  .lorekeeper-door-img {
+    width: 105px;
+    max-width: 22vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .lorekeeper-door {
+    top: 52%;
+    left: 61%;
+  }
+
+  .lorekeeper-door-img {
+    width: 88px;
+    max-width: 26vw;
+  }
+}
 
 
 
