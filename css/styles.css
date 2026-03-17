@@ -2400,6 +2400,39 @@ header, .angled-banner-brush {
     transform: scale(1.05);
 }
 
+/* === Sentinel Styling (ADD ONLY) === */
+
+.sentinel-box {
+  text-align: center;
+  margin: 25px auto;
+  max-width: 400px;
+}
+
+.sentinel-link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.sentinel-image {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 12px;
+
+  box-shadow:
+    0 0 10px #00ffff,
+    0 0 20px #00ffff,
+    0 0 30px #ff00ff;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.sentinel-image:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 0 20px #00ffff,
+    0 0 40px #ff00ff,
+    0 0 60px #ff00ff;
+}
 
 
 
