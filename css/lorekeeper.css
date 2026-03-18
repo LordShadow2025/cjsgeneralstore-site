@@ -149,3 +149,49 @@ body {
   margin: 20px auto;
   max-width: 600px;
 }
+
+/* === FINAL LOREKEEPER POSITION TWEAKS === */
+
+/* top-left buttons: tighten spacing */
+.top-buttons {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  gap: 8px;
+  z-index: 999;
+}
+
+/* move the top box up a bit */
+.lorekeeper-intro {
+  position: relative;
+  margin: 0 auto;
+  top: -30px;
+  max-width: 600px;
+  z-index: 20;
+}
+
+/* move the bottom box down onto the table area */
+.lorekeeper-placeholder {
+  position: relative;
+  margin: 0 auto;
+  top: 95px;
+  left: -40px;
+  max-width: 600px;
+  z-index: 20;
+
+  /* fade in after 10 seconds */
+  opacity: 0;
+  animation: lorekeeperFadeIn 2.5s ease forwards;
+  animation-delay: 10s;
+}
+
+/* fade animation */
+@keyframes lorekeeperFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
