@@ -80,3 +80,38 @@ body.lorekeeper-page {
 
 .home-button { left: 15px; }
 .privacy-link { left: 180px; }
+
+/* === Layout Fixes === */
+
+/* Top buttons positioning */
+.top-buttons {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 100;
+}
+
+/* Page base */
+.lorekeeper-page {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* Center overlay content */
+.lorekeeper-overlay {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 120px;
+  text-align: center;
+}
+
+/* Center the boxes */
+.lorekeeper-intro,
+.lorekeeper-placeholder {
+  margin: 20px auto;
+  max-width: 600px;
+}
