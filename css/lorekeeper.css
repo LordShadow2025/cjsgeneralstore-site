@@ -115,3 +115,37 @@ body.lorekeeper-page {
   margin: 20px auto;
   max-width: 600px;
 }
+
+/* === FINAL POSITIONING FIX (LoreKeeper) === */
+
+/* Lock buttons to screen (fix spacing issue) */
+.top-buttons {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  display: flex;
+  gap: 10px;
+  z-index: 999;
+}
+
+/* Prevent weird horizontal shift */
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Keep content centered and stable */
+.lorekeeper-overlay {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 120px;
+  text-align: center;
+}
+
+/* Center boxes cleanly */
+.lorekeeper-intro,
+.lorekeeper-placeholder {
+  margin: 20px auto;
+  max-width: 600px;
+}
