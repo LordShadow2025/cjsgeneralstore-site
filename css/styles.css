@@ -2402,10 +2402,6 @@ header, .angled-banner-brush {
 
 /* === LoreKeeper Room Door Trigger === */
 
-body.library-page {
-  position: relative;
-}
-
 .lorekeeper-door {
   position: absolute;
   top: 43%;
@@ -2488,4 +2484,9 @@ body.library-page {
     width: 82px;
     max-width: 24vw;
   }
+}
+
+/* === Library Container Anchor Fix === */
+.library-container {
+  position: relative;
 }
