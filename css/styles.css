@@ -2408,8 +2408,8 @@ body.library-page {
 
 .lorekeeper-door {
   position: absolute;
-  top: 49%;
-  left: 67%;
+  top: 43%;
+  left: 68%;
   transform: translate(-50%, -50%);
   z-index: 50;
   display: block;
