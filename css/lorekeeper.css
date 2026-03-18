@@ -11,27 +11,19 @@ body.lorekeeper-page {
   overflow-x: hidden;
 }
 
-/* overall content area */
+/* overall layout */
 .lorekeeper-overlay {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  padding-top: 90px;
+  padding-top: 70px;
 }
 
-/* top-left buttons wrapper */
-.top-buttons {
-  position: fixed;
-  top: 12px;
-  left: 12px;
-  display: flex;
-  gap: 8px;
-  z-index: 1000;
-}
-
-/* button styling */
+/* top-left buttons */
 .home-button,
 .privacy-link {
+  position: fixed;
+  top: 12px;
   display: inline-block;
   padding: 8px 14px;
   background: rgba(0, 0, 0, 0.72);
@@ -39,13 +31,22 @@ body.lorekeeper-page {
   border-radius: 8px;
   color: #00f7ff;
   text-decoration: none;
-  box-shadow: 0 0 10px #00f7ff;
   text-shadow:
     0 0 5px #00f7ff,
     0 0 10px #ff00ff;
+  box-shadow: 0 0 10px #00f7ff;
+  z-index: 1000;
 }
 
-/* shared glass style */
+.home-button {
+  left: 12px;
+}
+
+.privacy-link {
+  left: 175px;
+}
+
+/* shared glass look */
 .glass-box {
   background: rgba(0, 0, 0, 0.55);
   border: 2px solid rgba(0, 255, 255, 0.45);
@@ -56,20 +57,20 @@ body.lorekeeper-page {
     0 0 20px rgba(0, 255, 255, 0.2);
 }
 
-/* top title box */
+/* top box */
 .lorekeeper-intro {
   position: relative;
-  width: 600px;
+  width: 620px;
   max-width: 90%;
   margin: 0 auto;
   padding: 20px 40px;
-  top: -10px;
-  left: 0;
+  top: 10px;
   text-align: center;
   z-index: 20;
 }
 
 .lorekeeper-title {
+  margin: 0;
   font-size: 2.5rem;
   color: #00f7ff;
   text-shadow:
@@ -77,7 +78,6 @@ body.lorekeeper-page {
     0 0 10px #00f7ff,
     0 0 20px #00f7ff,
     0 0 30px #ff00ff;
-  margin: 0;
 }
 
 .lorekeeper-subtitle {
@@ -86,19 +86,19 @@ body.lorekeeper-page {
   opacity: 0.85;
 }
 
-/* lower box */
+/* bottom box: visible immediately, then fades OUT after 10 seconds */
 .lorekeeper-placeholder {
   position: relative;
-  width: 600px;
-  max-width: 90%;
+  width: 560px;
+  max-width: 88%;
   margin: 0 auto;
   padding: 30px;
-  top: 115px;
-  left: -70px;
+  top: 130px;
+  left: -85px;
   text-align: center;
   z-index: 20;
-  opacity: 0;
-  animation: lorekeeperFadeIn 2.5s ease forwards;
+  opacity: 1;
+  animation: lorekeeperFadeOut 2.5s ease forwards;
   animation-delay: 10s;
 }
 
@@ -109,39 +109,42 @@ body.lorekeeper-page {
   font-style: italic;
 }
 
-@keyframes lorekeeperFadeIn {
+@keyframes lorekeeperFadeOut {
   from {
-    opacity: 0;
+    opacity: 1;
   }
   to {
-    opacity: 1;
+    opacity: 0;
   }
 }
 
 /* mobile safety */
 @media (max-width: 900px) {
-  .top-buttons {
-    top: 10px;
-    left: 10px;
-    gap: 6px;
-  }
-
   .home-button,
   .privacy-link {
+    top: 10px;
     padding: 7px 10px;
     font-size: 0.9rem;
   }
 
+  .home-button {
+    left: 10px;
+  }
+
+  .privacy-link {
+    left: 150px;
+  }
+
   .lorekeeper-intro {
-    top: 10px;
     width: 88%;
+    top: 20px;
     padding: 18px 20px;
   }
 
   .lorekeeper-placeholder {
-    top: 95px;
+    width: 84%;
+    top: 110px;
     left: 0;
-    width: 88%;
     padding: 22px;
   }
 
@@ -151,32 +154,35 @@ body.lorekeeper-page {
 }
 
 @media (max-width: 600px) {
-  .lorekeeper-overlay {
-    padding-top: 80px;
-  }
-
-  .top-buttons {
-    top: 8px;
-    left: 8px;
-    gap: 6px;
-  }
-
   .home-button,
   .privacy-link {
+    top: 8px;
     padding: 6px 8px;
     font-size: 0.8rem;
   }
 
+  .home-button {
+    left: 8px;
+  }
+
+  .privacy-link {
+    left: 130px;
+  }
+
+  .lorekeeper-overlay {
+    padding-top: 60px;
+  }
+
   .lorekeeper-intro {
-    top: 0;
     width: 90%;
+    top: 10px;
     padding: 16px;
   }
 
   .lorekeeper-placeholder {
-    top: 70px;
+    width: 88%;
+    top: 80px;
     left: 0;
-    width: 90%;
     padding: 18px;
   }
 
