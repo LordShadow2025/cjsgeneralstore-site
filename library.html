@@ -17,155 +17,150 @@
 </head>
 <body class="library-page" style="background-image: url('assets/images/library.png'); background-size: cover; background-position: center center; background-repeat: no-repeat; min-height: 100vh;">
 
-  <!-- Navigation -->
-  <div class="top-buttons">
-    <a href="index.html" class="home-button">🔙 Back to Home</a>
-    <a href="privacy.html" class="privacy-link">🔒 Privacy</a>
-  </div>
+  <div class="library-container">
 
-  <!-- Audio Controls (TV area) -->
-  <div class="weather-audio-btn neon-btn-styled">
-    <button id="weather-music-btn">🔊 Weather Audio</button>
-  </div>
+    <!-- Navigation -->
+    <div class="top-buttons">
+      <a href="index.html" class="home-button">🔙 Back to Home</a>
+      <a href="privacy.html" class="privacy-link">🔒 Privacy</a>
+    </div>
 
-  <!-- Background Music (NO AUTOPLAY) -->
-  <audio id="bg-music" preload="auto" loop>
-    <source src="assets/audio/Library.mp3" type="audio/mp3" />
-  </audio>
-  <audio id="weather-music" preload="auto" loop>
-    <source src="assets/audio/dailytemps.mp3" type="audio/mp3" />
-  </audio>
+    <!-- Audio Controls (TV area) -->
+    <div class="weather-audio-btn neon-btn-styled">
+      <button id="weather-music-btn">🔊 Weather Audio</button>
+    </div>
 
-  <!-- Welcome Message -->
-  <div class="welcome-banner">
-    <h2>Step into the Library – where stories glow and zines still breathe. Poems, journals, and old-school vibes await.</h2>
-  </div>
+    <!-- Background Music (NO AUTOPLAY) -->
+    <audio id="bg-music" preload="auto" loop>
+      <source src="assets/audio/Library.mp3" type="audio/mp3" />
+    </audio>
+    <audio id="weather-music" preload="auto" loop>
+      <source src="assets/audio/dailytemps.mp3" type="audio/mp3" />
+    </audio>
 
-  <!-- GenX Media Linkout -->
-  <div class="linkout-row">
-    <a class="neon-btn" href="https://www.youtube.com/watch?v=6DzzPDnIKtQ&list=PLKJR_fa1TmjaVYJQepCM7KC7P2ZEYaTFA" target="_blank" rel="noopener">
-      📺 GenX Media
-    </a>
-  </div>
+    <!-- Welcome Message -->
+    <div class="welcome-banner">
+      <h2>Step into the Library – where stories glow and zines still breathe. Poems, journals, and old-school vibes await.</h2>
+    </div>
 
-  <!-- CJ’s Blog -->
-  <div class="neon-blog-box">
-    <h2 class="neon-title">📚 CJ’s Blog</h2>
-    <iframe 
-      src="https://cjsgeneralstore.blogspot.com/" 
-      width="460" 
-      height="520" 
-      frameborder="0" 
-      class="blog-iframe"
-      title="CJ’s Blog">
-    </iframe>
-
-    <div class="visit-row">
-      <a class="neon-btn" href="https://cjsgeneralstore.blogspot.com/" target="_blank" rel="noopener">
-        Visit Blog (Full View)
+    <!-- GenX Media Linkout -->
+    <div class="linkout-row">
+      <a class="neon-btn" href="https://www.youtube.com/watch?v=6DzzPDnIKtQ&list=PLKJR_fa1TmjaVYJQepCM7KC7P2ZEYaTFA" target="_blank" rel="noopener">
+        📺 GenX Media
       </a>
     </div>
+
+    <!-- CJ’s Blog -->
+    <div class="neon-blog-box">
+      <h2 class="neon-title">📚 CJ’s Blog</h2>
+      <iframe 
+        src="https://cjsgeneralstore.blogspot.com/" 
+        width="460" 
+        height="520" 
+        frameborder="0" 
+        class="blog-iframe"
+        title="CJ’s Blog">
+      </iframe>
+
+      <div class="visit-row">
+        <a class="neon-btn" href="https://cjsgeneralstore.blogspot.com/" target="_blank" rel="noopener">
+          Visit Blog (Full View)
+        </a>
+      </div>
+    </div>
+
+    <!-- 🎵 Background Music Controls -->
+    <div class="audio-controls">
+      <button id="music-toggle">🔊 Music On/Off</button>
+      <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" title="Volume">
+    </div>
+
+    <!-- ONE clean script: no autoplay + working buttons/slider -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const bg = document.getElementById('bg-music');
+        const weather = document.getElementById('weather-music');
+        const musicBtn = document.getElementById('music-toggle');
+        const vol = document.getElementById('volume-slider');
+        const weatherBtn = document.getElementById('weather-music-btn');
+
+        // Default volume only (no autoplay)
+        if (bg && vol) bg.volume = Number(vol.value || 0.5);
+
+        // Music play/pause button
+        if (musicBtn && bg) {
+          musicBtn.addEventListener('click', () => {
+            if (bg.paused) { bg.play(); }
+            else { bg.pause(); }
+          });
+        }
+
+        // Volume slider
+        if (vol && bg) {
+          vol.addEventListener('input', (e) => {
+            bg.volume = Number(e.target.value);
+          });
+        }
+
+        // Weather audio toggle
+        let weatherPlaying = false;
+        if (weatherBtn && weather) {
+          weatherBtn.addEventListener('click', () => {
+            if (weatherPlaying) {
+              weather.pause();
+              weatherBtn.textContent = '🔊 Weather Audio';
+            } else {
+              weather.play();
+              weatherBtn.textContent = '🔈 Weather Audio';
+            }
+            weatherPlaying = !weatherPlaying;
+          });
+        }
+      });
+    </script>
+
+    <!-- LoreKeeper Room Door Trigger -->
+    <a href="lorekeeper.html" class="lorekeeper-door" aria-label="Enter the LoreKeeper Room">
+      <img src="assets/images/keyhole.png" alt="Keyhole view into the LoreKeeper Room" class="lorekeeper-door-img">
+    </a>
+
+    <div id="site-footer"></div>
+    <script>
+    (function () {
+      const PATH = '/footer.html'; // root path
+
+      function inject(html) {
+        var slot = document.getElementById('site-footer');
+        if (!slot) { slot = document.createElement('div'); slot.id = 'site-footer'; document.body.appendChild(slot); }
+        slot.innerHTML = html;
+      }
+
+      function load() {
+        fetch(PATH, { cache: 'no-store' })
+          .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+          .then(inject)
+          .catch(err => {
+            console.warn('Footer include failed:', err);
+            // Fallback so the page still gets a footer even if fetch fails
+            inject('<footer class="glow-footer" role="navigation" aria-label="Section navigation">\
+              <nav class="glow-footer__wrap">\
+                <a class="glow-card" href="/index.html">Home</a>\
+                <a class="glow-card" href="/soundroom.html">Sound Room</a>\
+                <a class="glow-card" href="/library.html">Library</a>\
+                <a class="glow-card" href="/clubhouse.html">Clubhouse</a>\
+                <a class="glow-card" href="/office.html">Office</a>\
+                <a class="glow-card" href="/showcase.html">Showcase</a>\
+                <a class="glow-card" href="/privacy.html">Privacy</a>\
+              </nav></footer>');
+          });
+      }
+
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load);
+      else load();
+    })();
+    </script>
+
   </div>
-
-  <!-- 🎵 Background Music Controls -->
-  <div class="audio-controls">
-    <button id="music-toggle">🔊 Music On/Off</button>
-    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" title="Volume">
-  </div>
-
-  <!-- ONE clean script: no autoplay + working buttons/slider -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const bg = document.getElementById('bg-music');
-      const weather = document.getElementById('weather-music');
-      const musicBtn = document.getElementById('music-toggle');
-      const vol = document.getElementById('volume-slider');
-      const weatherBtn = document.getElementById('weather-music-btn');
-
-      // Default volume only (no autoplay)
-      if (bg && vol) bg.volume = Number(vol.value || 0.5);
-
-      // Music play/pause button
-      if (musicBtn && bg) {
-        musicBtn.addEventListener('click', () => {
-          if (bg.paused) { bg.play(); }
-          else { bg.pause(); }
-        });
-      }
-
-      // Volume slider
-      if (vol && bg) {
-        vol.addEventListener('input', (e) => {
-          bg.volume = Number(e.target.value);
-        });
-      }
-
-      // Weather audio toggle
-      let weatherPlaying = false;
-      if (weatherBtn && weather) {
-        weatherBtn.addEventListener('click', () => {
-          if (weatherPlaying) {
-            weather.pause();
-            weatherBtn.textContent = '🔊 Weather Audio';
-          } else {
-            weather.play();
-            weatherBtn.textContent = '🔈 Weather Audio';
-          }
-          weatherPlaying = !weatherPlaying;
-        });
-      }
-    });
-  </script>
-
-  <!-- LoreKeeper Room Door Trigger -->
-  <a href="lorekeeper.html" class="lorekeeper-door" aria-label="Enter the LoreKeeper Room">
-    <img src="assets/images/keyhole.png" alt="Keyhole view into the LoreKeeper Room" class="lorekeeper-door-img">
-  </a>
-
-  <div id="site-footer"></div>
-  <script>
-  (function () {
-    const PATH = '/footer.html'; // root path
-
-    function inject(html) {
-      var slot = document.getElementById('site-footer');
-      if (!slot) { slot = document.createElement('div'); slot.id = 'site-footer'; document.body.appendChild(slot); }
-      slot.innerHTML = html;
-    }
-
-    function load() {
-      fetch(PATH, { cache: 'no-store' })
-        .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
-        .then(inject)
-        .catch(err => {
-          console.warn('Footer include failed:', err);
-          // Fallback so the page still gets a footer even if fetch fails
-          inject('<footer class="glow-footer" role="navigation" aria-label="Section navigation">\
-            <nav class="glow-footer__wrap">\
-              <a class="glow-card" href="/index.html">Home</a>\
-              <a class="glow-card" href="/soundroom.html">Sound Room</a>\
-              <a class="glow-card" href="/library.html">Library</a>\
-              <a class="glow-card" href="/clubhouse.html">Clubhouse</a>\
-              <a class="glow-card" href="/office.html">Office</a>\
-              <a class="glow-card" href="/showcase.html">Showcase</a>\
-              <a class="glow-card" href="/privacy.html">Privacy</a>\
-            </nav></footer>');
-        });
-    }
-
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load);
-    else load();
-  })();
-  </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
