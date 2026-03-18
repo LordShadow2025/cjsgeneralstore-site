@@ -8,52 +8,44 @@ body.lorekeeper-page {
   background-size: cover;
   font-family: 'Permanent Marker', cursive;
   color: #ffffff;
+  overflow-x: hidden;
 }
 
+/* overall content area */
 .lorekeeper-overlay {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  position: relative;
+  width: 100%;
   min-height: 100vh;
-  padding-top: 40px;
+  padding-top: 90px;
 }
 
-.lorekeeper-intro {
-  text-align: center;
-  padding: 20px 40px;
-  margin-bottom: 20px;
+/* top-left buttons wrapper */
+.top-buttons {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 1000;
 }
 
-.lorekeeper-title {
-  font-size: 2.5rem;
+/* button styling */
+.home-button,
+.privacy-link {
+  display: inline-block;
+  padding: 8px 14px;
+  background: rgba(0, 0, 0, 0.72);
+  border: 2px solid #00f7ff;
+  border-radius: 8px;
   color: #00f7ff;
+  text-decoration: none;
+  box-shadow: 0 0 10px #00f7ff;
   text-shadow:
     0 0 5px #00f7ff,
-    0 0 10px #00f7ff,
-    0 0 20px #00f7ff,
-    0 0 30px #ff00ff;
+    0 0 10px #ff00ff;
 }
 
-.lorekeeper-subtitle {
-  margin-top: 10px;
-  font-size: 1rem;
-  opacity: 0.85;
-}
-
-.lorekeeper-placeholder {
-  text-align: center;
-  padding: 30px;
-  max-width: 500px;
-}
-
-.lorekeeper-whisper {
-  margin-top: 15px;
-  font-size: 0.85rem;
-  opacity: 0.6;
-  font-style: italic;
-}
-
+/* shared glass style */
 .glass-box {
   background: rgba(0, 0, 0, 0.55);
   border: 2px solid rgba(0, 255, 255, 0.45);
@@ -64,134 +56,136 @@ body.lorekeeper-page {
     0 0 20px rgba(0, 255, 255, 0.2);
 }
 
-.home-button,
-.privacy-link {
-  position: fixed;
-  top: 15px;
-  padding: 8px 16px;
-  background: rgba(0, 0, 0, 0.7);
-  border: 2px solid #00f7ff;
-  border-radius: 8px;
-  color: #00f7ff;
-  text-decoration: none;
-  box-shadow: 0 0 10px #00f7ff;
-  z-index: 1000;
-}
-
-.home-button { left: 15px; }
-.privacy-link { left: 180px; }
-
-/* === Layout Fixes === */
-
-/* Top buttons positioning */
-.top-buttons {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  display: flex;
-  gap: 10px;
-  z-index: 100;
-}
-
-/* Page base */
-.lorekeeper-page {
-  margin: 0;
-  padding: 0;
-  position: relative;
-}
-
-/* Center overlay content */
-.lorekeeper-overlay {
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto;
-  padding-top: 120px;
-  text-align: center;
-}
-
-/* Center the boxes */
-.lorekeeper-intro,
-.lorekeeper-placeholder {
-  margin: 20px auto;
-  max-width: 600px;
-}
-
-/* === FINAL POSITIONING FIX (LoreKeeper) === */
-
-/* Lock buttons to screen (fix spacing issue) */
-.top-buttons {
-  position: fixed;
-  top: 15px;
-  left: 15px;
-  display: flex;
-  gap: 10px;
-  z-index: 999;
-}
-
-/* Prevent weird horizontal shift */
-body {
-  margin: 0;
-  overflow-x: hidden;
-}
-
-/* Keep content centered and stable */
-.lorekeeper-overlay {
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto;
-  padding-top: 120px;
-  text-align: center;
-}
-
-/* Center boxes cleanly */
-.lorekeeper-intro,
-.lorekeeper-placeholder {
-  margin: 20px auto;
-  max-width: 600px;
-}
-
-/* === FINAL LOREKEEPER POSITION TWEAKS === */
-
-/* top-left buttons: tighten spacing */
-.top-buttons {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  display: flex;
-  gap: 8px;
-  z-index: 999;
-}
-
-/* move the top box up a bit */
+/* top title box */
 .lorekeeper-intro {
   position: relative;
+  width: 600px;
+  max-width: 90%;
   margin: 0 auto;
-  top: -30px;
-  max-width: 600px;
+  padding: 20px 40px;
+  top: -10px;
+  left: 0;
+  text-align: center;
   z-index: 20;
 }
 
-/* move the bottom box down onto the table area */
+.lorekeeper-title {
+  font-size: 2.5rem;
+  color: #00f7ff;
+  text-shadow:
+    0 0 5px #00f7ff,
+    0 0 10px #00f7ff,
+    0 0 20px #00f7ff,
+    0 0 30px #ff00ff;
+  margin: 0;
+}
+
+.lorekeeper-subtitle {
+  margin-top: 10px;
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+/* lower box */
 .lorekeeper-placeholder {
   position: relative;
+  width: 600px;
+  max-width: 90%;
   margin: 0 auto;
-  top: 95px;
-  left: -40px;
-  max-width: 600px;
+  padding: 30px;
+  top: 115px;
+  left: -70px;
+  text-align: center;
   z-index: 20;
-
-  /* fade in after 10 seconds */
   opacity: 0;
   animation: lorekeeperFadeIn 2.5s ease forwards;
   animation-delay: 10s;
 }
 
-/* fade animation */
+.lorekeeper-whisper {
+  margin-top: 15px;
+  font-size: 0.85rem;
+  opacity: 0.6;
+  font-style: italic;
+}
+
 @keyframes lorekeeperFadeIn {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
+  }
+}
+
+/* mobile safety */
+@media (max-width: 900px) {
+  .top-buttons {
+    top: 10px;
+    left: 10px;
+    gap: 6px;
+  }
+
+  .home-button,
+  .privacy-link {
+    padding: 7px 10px;
+    font-size: 0.9rem;
+  }
+
+  .lorekeeper-intro {
+    top: 10px;
+    width: 88%;
+    padding: 18px 20px;
+  }
+
+  .lorekeeper-placeholder {
+    top: 95px;
+    left: 0;
+    width: 88%;
+    padding: 22px;
+  }
+
+  .lorekeeper-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .lorekeeper-overlay {
+    padding-top: 80px;
+  }
+
+  .top-buttons {
+    top: 8px;
+    left: 8px;
+    gap: 6px;
+  }
+
+  .home-button,
+  .privacy-link {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+  }
+
+  .lorekeeper-intro {
+    top: 0;
+    width: 90%;
+    padding: 16px;
+  }
+
+  .lorekeeper-placeholder {
+    top: 70px;
+    left: 0;
+    width: 90%;
+    padding: 18px;
+  }
+
+  .lorekeeper-title {
+    font-size: 1.6rem;
+  }
+
+  .lorekeeper-subtitle,
+  .lorekeeper-whisper {
+    font-size: 0.8rem;
   }
 }
