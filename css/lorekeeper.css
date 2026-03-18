@@ -195,3 +195,63 @@ body.lorekeeper-page {
     font-size: 0.8rem;
   }
 }
+
+/* === HARD OVERRIDES FOR LOREKEEPER PAGE === */
+
+/* top-left buttons: force side-by-side */
+body.lorekeeper-page .home-button,
+body.lorekeeper-page .privacy-link {
+  position: fixed !important;
+  top: 12px !important;
+  display: inline-block !important;
+  padding: 8px 14px !important;
+  margin: 0 !important;
+  background: rgba(0, 0, 0, 0.72) !important;
+  border: 2px solid #00f7ff !important;
+  border-radius: 8px !important;
+  color: #00f7ff !important;
+  text-decoration: none !important;
+  text-shadow:
+    0 0 5px #00f7ff,
+    0 0 10px #ff00ff !important;
+  box-shadow: 0 0 10px #00f7ff !important;
+  z-index: 2000 !important;
+}
+
+body.lorekeeper-page .home-button {
+  left: 12px !important;
+}
+
+body.lorekeeper-page .privacy-link {
+  left: 170px !important;
+}
+
+/* top box: move up */
+body.lorekeeper-page .lorekeeper-intro {
+  position: relative !important;
+  top: -10px !important;
+  left: 0 !important;
+  margin: 0 auto !important;
+  width: 620px !important;
+  max-width: 90% !important;
+  z-index: 20 !important;
+}
+
+/* bottom box: visible immediately, then fade OUT after 10s */
+body.lorekeeper-page .lorekeeper-placeholder {
+  position: relative !important;
+  top: 120px !important;
+  left: -85px !important;
+  margin: 0 auto !important;
+  width: 560px !important;
+  max-width: 88% !important;
+  opacity: 1 !important;
+  animation: lorekeeperFadeOut 2.5s ease forwards !important;
+  animation-delay: 10s !important;
+  z-index: 20 !important;
+}
+
+@keyframes lorekeeperFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
