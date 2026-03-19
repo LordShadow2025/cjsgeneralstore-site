@@ -113,10 +113,18 @@ body.lorekeeper-page > .privacy-link {
 }
 
 @keyframes lorekeeperFadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
+  0%   { opacity: 1; }
+  80%  { opacity: 1; }
 
+  85%  { opacity: 0.3; }
+  88%  { opacity: 1; }
+
+  91%  { opacity: 0.2; }
+  93%  { opacity: 1; }
+
+  96%  { opacity: 0.1; }
+  100% { opacity: 0; }
+}
 /* mobile */
 @media (max-width: 900px) {
   body.lorekeeper-page > .home-button,
