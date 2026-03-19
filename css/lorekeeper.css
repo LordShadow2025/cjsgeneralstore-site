@@ -37,7 +37,7 @@ body.lorekeeper-page > .home-button {
 }
 
 body.lorekeeper-page > .privacy-link {
-  left: 180px !important;
+  left: 220px !important;
 }
 
 /* page layout */
@@ -96,8 +96,8 @@ body.lorekeeper-page > .privacy-link {
   max-width: 88%;
   margin: 0 auto;
   padding: 30px;
-  top: 120px;
-  left: -85px;
+  top: 145px;
+  left: -220px;
   text-align: center;
   z-index: 20;
   opacity: 1;
