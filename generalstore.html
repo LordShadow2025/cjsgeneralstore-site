@@ -1,98 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>General Store</title>
-  <meta name="google-adsense-account" content="ca-pub-5761934203737590">
-  <link rel="stylesheet" href="assets/css/shared.css" />
-  <link rel="stylesheet" href="/css/sentinel.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>General Store</title>
+<meta name="google-adsense-account" content="ca-pub-5761934203737590">
+<link rel="stylesheet" href="assets/css/shared.css" />
+<link rel="stylesheet" href="/css/sentinel.css" />
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
 </head>
 <body class="background-generalstore">
-  <!-- Welcome Message -->
-  <div class="welcome-box shelves-welcome glass-box">
-    <p class="welcome-text">
-      Welcome to the shelves, here is my main display of the shop. Please visit our 
-      <a href="https://www.ebay.com/usr/cjs_general_store_and_more" target="_blank">eBay store</a> 
-      for more info on items. Or stop by the Library—or if you’re just looking to hang out, 
-      <a href="clubhouse.html">The Clubhouse</a> would be a good one to check out… some GenX favorites. 
-      <br><br>
-      The Office? Well… not much in there since our upgrade… just, if you go, pop in to say hi. Please 
-      disregard the taped door.
-      <br><br>
-      <span class="glitch-text">
-        ::static::...hibernate mode — inttterrpted… hehehehe, yes the tape, always the tap…sleep mode reserve ACTIVE.
-        <span class="glitch-flicker">giggle</span>
-      </span>
-    </p>
-  </div>
 
-  <!-- eBay Store Display Box -->
+<!-- Welcome Message -->
+<div class="welcome-box shelves-welcome glass-box">
+  <p class="welcome-text">
+    Welcome to the shelves, here is my main display of the shop. Please visit our
+    <a href="https://www.ebay.com/usr/cjs_general_store_and_more" target="_blank">eBay store</a>
+    for more info on items. Or stop by the Library—or if you're just looking to hang out,
+    <a href="clubhouse.html">The Clubhouse</a> would be a good one to check out… some GenX favorites.
+    <br><br>
+    The Office? Well… not much in there since our upgrade… just, if you go, pop in to say hi. Please
+    disregard the taped door.
+    <br><br>
+    <span class="glitch-text">
+      ::static::...hibernate mode — inttterrpted… hehehehe, yes the tape, always the tap…sleep mode reserve ACTIVE.
+      <span class="glitch-flicker">giggle</span>
+    </span>
+  </p>
+</div>
+
+<!-- eBay Store Display Box -->
 <div class="ebay-box glass-box">
   <p class="ebay-text">
     Browse our full collection at<br>
     <a href="https://www.ebay.com/usr/cjs_general_store_and_more" target="_blank">
-      CJ’s General Store on eBay
+      CJ's General Store on eBay
     </a><br>
     — vintage finds, unique items, and GenX goodies — all updated regularly.
   </p>
 </div>
+
 <div class="sentinel-box glass-box">
   <p class="sentinel-text">
-    Some prices… don’t quite add up.<br>
+    Some prices… don't quite add up.<br>
     The Sentinel notices.<br><br>
     Step forward.
   </p>
-
   <a href="sentinel-of-the-shelf.html" class="sentinel-link">
     <img src="assets/images/sentinel.png" alt="Sentinel Scanner" class="sentinel-image">
   </a>
 </div>
 
-  <!-- 🔙 Back to Home -->
-  <a href="index.html" class="home-button">🔙 Back to Home</a>
+<!-- 🔙 Back to Home -->
+<a href="index.html" class="home-button">🔙 Back to Home</a>
 
-  <!-- 🔐 Privacy Policy -->
-  <a href="privacy.html" class="privacy-link">🔐 Privacy Policy</a>
+<!-- 🔐 Privacy Policy -->
+<a href="privacy.html" class="privacy-link">🔐 Privacy Policy</a>
 
-  <!-- 🎵 Music Box -->
-  <div class="audio-controls">
-    <div class="control-group">
-      <button id="music-toggle">🎵 Play/Pause</button>
-      <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" title="Volume">
-    </div>
+<!-- 🎵 Music Box -->
+<div class="audio-controls">
+  <div class="control-group">
+    <button id="music-toggle">🎵 Play/Pause</button>
+    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" title="Volume">
   </div>
+</div>
 
-  <audio id="bg-music" preload="none" loop>
-    <source src="assets/audio/generalstore.mp3" type="audio/wav" />
-  </audio>
+<audio id="bg-music" preload="none" loop>
+  <source src="assets/audio/generalstore.mp3" type="audio/wav" />
+</audio>
 
-  <script>
-    const musicToggle = document.getElementById('music-toggle');
-    const bgMusic = document.getElementById('bg-music');
-    const volumeSlider = document.getElementById('volume-slider');
+<script>
+  const musicToggle = document.getElementById('music-toggle');
+  const bgMusic = document.getElementById('bg-music');
+  const volumeSlider = document.getElementById('volume-slider');
 
-    bgMusic.volume = 0.5;
-    bgMusic.pause();
-    let isPlaying = false;
-    
-    musicToggle.addEventListener('click', () => {
-      if (isPlaying) {
-        bgMusic.pause();
-      } else {
-        bgMusic.play();
-      }
-      isPlaying = !isPlaying;
-    });
+  bgMusic.volume = 0.5;
+  bgMusic.pause();
 
-    volumeSlider.addEventListener('input', () => {
-      bgMusic.volume = volumeSlider.value;
-    });
-  </script>
+  let isPlaying = false;
 
-  <!-- Footer Nav -->
-  <footer class="glow-footer" role="navigation" aria-label="Section navigation">
+  musicToggle.addEventListener('click', () => {
+    if (isPlaying) {
+      bgMusic.pause();
+    } else {
+      bgMusic.play();
+    }
+    isPlaying = !isPlaying;
+  });
+
+  volumeSlider.addEventListener('input', () => {
+    bgMusic.volume = volumeSlider.value;
+  });
+</script>
+
+<!-- Footer Nav -->
+<footer class="glow-footer" role="navigation" aria-label="Section navigation">
   <nav class="glow-footer__wrap">
     <a class="glow-card" href="/index.html">Home</a>
     <a class="glow-card" href="/soundroom.html">Sound Room</a>
@@ -103,15 +105,6 @@
     <a class="glow-card" href="/privacy.html">Privacy</a>
   </nav>
 </footer>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-

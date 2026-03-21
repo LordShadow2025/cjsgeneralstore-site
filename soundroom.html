@@ -1,92 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>CJ’s Sound Room | Music & Lyrics by C.B. Barkley™</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CJ's Sound Room | Music & Lyrics by C.B. Barkley™</title>
 <meta name="description" content="Explore music by C.B. Barkley™ – ambient, synth, and lyrical works. Stream Bandcamp tracks and YouTube playlists.">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="CJ’s Sound Room">
+<meta property="og:title" content="CJ's Sound Room">
 <meta property="og:description" content="Music, lyrics, and exclusive audio experiences by C.B. Barkley™.">
 <meta property="og:url" content="https://cjsgeneralstore.tech/soundroom.html">
 <meta property="og:image" content="https://cjsgeneralstore.tech/images/SoundRoomBackground.png">
 <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="assets/css/soundroom.css">
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/soundroom.css">
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <main id="page-content">
-    <a href="index.html" class="home-button">🏠 Back to Home</a>
+<main id="page-content">
 
-    <!-- 🎶 Audio Controls -->
-    <div class="audio-controls">
-      <div class="control-group">
-        <span>🎵</span>
-        <button onclick="toggleAudio()">Play/Pause</button>
-        <input type="range" id="volumeControl" min="0" max="1" step="0.01" onchange="setVolume(this.value)">
-      </div>
+  <a href="index.html" class="home-button">🏠 Back to Home</a>
+
+  <!-- 🎶 Audio Controls -->
+  <div class="audio-controls">
+    <div class="control-group">
+      <span>🎵</span>
+      <button onclick="toggleAudio()">Play/Pause</button>
+      <input type="range" id="volumeControl" min="0" max="1" step="0.01" onchange="setVolume(this.value)">
     </div>
-    <audio id="backgroundAudio" loop>
-      <source src="assets/audio/soundroom.mp3" type="audio/mp3">
-    </audio>
+  </div>
 
-    <!-- 🎤 Welcome Message -->
-    <div class="soundroom-welcome">
-      <p class="soundroom-welcome-text">
-        Welcome to the sound room — the musical expression of my writing. <br>
-        Check out my YouTube or Bandcamp for more info. Digital lyric prints — check out our other sections for more. <br>
-        Just avoid the office, been some strange noise from there… <span class="glitch">Heelloo??</span>
-      </p>
-    </div>
+  <audio id="backgroundAudio" loop>
+    <source src="assets/audio/soundroom.mp3" type="audio/mp3">
+  </audio>
 
-    <!-- 🎵 Bandcamp Embed (with artwork + neon-friendly colors) -->
-    <div class="bandcamp-card glass-box">
-      <iframe
-        style="border:0; width:100%; height:150px;"
-        src="https://bandcamp.com/EmbeddedPlayer/track=2453122849/size=large/bgcol=000000/linkcol=00e5ff/tracklist=false/artwork=small/transparent=true/"
-        seamless>
-        <a href="https://thestorekeeper.bandcamp.com/track/streetlight-memories">
-          Streetlight Memories by C.B. Barkley
-        </a>
-      </iframe>
-    </div>
+  <!-- 🎤 Welcome Message -->
+  <div class="soundroom-welcome">
+    <p class="soundroom-welcome-text">
+      Welcome to the sound room — the musical expression of my writing. <br>
+      Check out my YouTube or Bandcamp for more info. Digital lyric prints — check out our other sections for more. <br>
+      Just avoid the office, been some strange noise from there… <span class="glitch">Heelloo??</span>
+    </p>
+  </div>
 
-    <!-- 📺 YouTube Card -->
-    <div class="youtube-card glass-box">
-      <h3 class="neon-heading">📺 Visit My YouTube Channel</h3>
-      <p>Music videos, ambient sessions, and more.</p>
-      <a href="https://www.youtube.com/@shadowstriker6389" target="_blank">Go to Channel</a>
-    </div>
+  <!-- 🎵 Bandcamp Embed (with artwork + neon-friendly colors) -->
+  <div class="bandcamp-card glass-box">
+    <iframe
+      style="border:0; width:100%; height:150px;"
+      src="https://bandcamp.com/EmbeddedPlayer/track=2453122849/size=large/bgcol=000000/linkcol=00e5ff/tracklist=false/artwork=small/transparent=true/"
+      seamless>
+      <a href="https://thestorekeeper.bandcamp.com/track/streetlight-memories">
+        Streetlight Memories by C.B. Barkley
+      </a>
+    </iframe>
+  </div>
 
-    <!-- 💾 Exclusives -->
-    <div class="exclusives glass-box">
-      <h3 class="neon-heading">🎁 Exclusives</h3>
-      <p>New drops, site-only singles, and more.</p>
-    </div>
+  <!-- 📺 YouTube Card -->
+  <div class="youtube-card glass-box">
+    <h3 class="neon-heading">📺 Visit My YouTube Channel</h3>
+    <p>Music videos, ambient sessions, and more.</p>
+    <a href="https://www.youtube.com/@shadowstriker6389" target="_blank">Go to Channel</a>
+  </div>
 
-    <!-- 🖨️ Downloadables -->
-    <div class="prints glass-box">
-      <h3 class="neon-heading">🖨️ Downloadable Prints</h3>
-      <p>Coming soon — lyric sheets, cover art, exclusive releases</p>
-    </div>
+  <!-- 💾 Exclusives -->
+  <div class="exclusives glass-box">
+    <h3 class="neon-heading">🎁 Exclusives</h3>
+    <p>New drops, site-only singles, and more.</p>
+  </div>
 
-    <script>
-      const audio = document.getElementById("backgroundAudio");
-      function toggleAudio() {
-        if (audio.paused) {
-          audio.play();
-        } else {
-          audio.pause();
-        }
-      }
-      function setVolume(val) {
-        audio.volume = val;
-      }
-    </script>
-  </main>
+  <!-- 🖨️ Downloadables -->
+  <div class="prints glass-box">
+    <h3 class="neon-heading">🖨️ Downloadable Prints</h3>
+    <p>Coming soon — lyric sheets, cover art, exclusive releases</p>
+  </div>
 
-  <div id="site-footer"></div>
   <script>
+    const audio = document.getElementById("backgroundAudio");
+
+    function toggleAudio() {
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    }
+
+    function setVolume(val) {
+      audio.volume = val;
+    }
+  </script>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script>
   (function () {
     const PATH = '/footer.html'; // root path
 
@@ -104,22 +111,22 @@
           console.warn('Footer include failed:', err);
           // Fallback so the page still gets a footer even if fetch fails
           inject('<footer class="glow-footer" role="navigation" aria-label="Section navigation">\
-            <nav class="glow-footer__wrap">\
-              <a class="glow-card" href="/index.html">Home</a>\
-              <a class="glow-card" href="/soundroom.html">Sound Room</a>\
-              <a class="glow-card" href="/library.html">Library</a>\
-              <a class="glow-card" href="/clubhouse.html">Clubhouse</a>\
-              <a class="glow-card" href="/office.html">Office</a>\
-              <a class="glow-card" href="/showcase.html">Showcase</a>\
-              <a class="glow-card" href="/privacy.html">Privacy</a>\
-            </nav></footer>');
+<nav class="glow-footer__wrap">\
+<a class="glow-card" href="/index.html">Home</a>\
+<a class="glow-card" href="/soundroom.html">Sound Room</a>\
+<a class="glow-card" href="/library.html">Library</a>\
+<a class="glow-card" href="/clubhouse.html">Clubhouse</a>\
+<a class="glow-card" href="/office.html">Office</a>\
+<a class="glow-card" href="/showcase.html">Showcase</a>\
+<a class="glow-card" href="/privacy.html">Privacy</a>\
+</nav></footer>');
         });
     }
 
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load);
     else load();
   })();
-  </script>
+</script>
 
 </body>
 </html>
