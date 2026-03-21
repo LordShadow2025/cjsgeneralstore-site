@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="google-adsense-account" content="ca-pub-5761934203737590" />
-  <title>The Showcase | Visual Art & Digital Designs</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="google-adsense-account" content="ca-pub-5761934203737590" />
+<title>The Showcase | Visual Art & Digital Designs</title>
 <meta name="description" content="Browse digital art, project covers, and creative work from CJ's General Store. A visual archive of passion.">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="The Showcase">
@@ -12,100 +12,100 @@
 <meta property="og:url" content="https://cjsgeneralstore.tech/showcase.html">
 <meta property="og:image" content="https://cjsgeneralstore.tech/images/Showcase.png">
 <meta name="twitter:card" content="summary_large_image">
-
-  <!-- Site CSS + Font -->
-  <link rel="stylesheet" href="css/styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
+<!-- Site CSS + Font -->
+<link rel="stylesheet" href="css/styles.css" />
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
 </head>
-
 <!-- Add the page class so scoped styles apply -->
 <body class="showcase-page"
-      style="background-image: url('assets/images/showcase.png'); background-size: cover; background-position: center center; background-repeat: no-repeat; height: 100vh; overflow: hidden;">
+  style="background-image: url('assets/images/showcase.png'); background-size: cover; background-position: center center; background-repeat: no-repeat; height: 100vh; overflow: hidden;">
 
-  <!-- Top buttons -->
+<!-- Top buttons -->
 <div class="top-buttons">
   <a href="index.html" class="home-button">🔙 Back to Home</a>
   <a href="privacy.html" class="privacy-link">🔒 Privacy</a>
 </div>
 
-  <!-- Audio controls -->
-  <div class="audio-controls">
-    <div class="control-group">
-      <button id="music-toggle">🎵 Play/Pause</button>
-      <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" title="Volume">
-    </div>
+<!-- Audio controls -->
+<div class="audio-controls">
+  <div class="control-group">
+    <button id="music-toggle">🎵 Play/Pause</button>
+    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" title="Volume">
   </div>
+</div>
 
-  <!-- Showcase Welcome Banner -->
-  <div class="welcome-banner" id="showcase-welcome" role="region" aria-label="Showcase introduction">
-    <h2>Welcome to the Showcase!</h2>
-    <p>
-      Step into the Showcase of CJ’s General Store, where we display odd finds, share stories, and musings.
-      This will be my main area to share thoughts—and highlights from fellow GenX’ers. Be sure to check out
-      our other sections, starting with the Library.
-    </p>
-  </div>
+<!-- Showcase Welcome Banner -->
+<div class="welcome-banner" id="showcase-welcome" role="region" aria-label="Showcase introduction">
+  <h2>Welcome to the Showcase!</h2>
+  <p>
+    Step into the Showcase of CJ's General Store, where we display odd finds, share stories, and musings.
+    This will be my main area to share thoughts—and highlights from fellow GenX'ers. Be sure to check out
+    our other sections, starting with the Library.
+  </p>
+</div>
 
-  <!-- Background music -->
+<!-- Background music -->
 <audio id="bg-music" loop preload="auto">
   <source src="assets/audio/Showcase.mp3" type="audio/mp3">
 </audio>
-  
-  <script>
-    const musicToggle = document.getElementById('music-toggle');
-    const bgMusic = document.getElementById('bg-music');
-    const volumeSlider = document.getElementById('volume-slider');
 
-    bgMusic.volume = 0.5;
-
-    document.addEventListener('DOMContentLoaded', () => {
-      bgMusic.play().catch(() => {});
-    });
-
-    let isPlaying = true;
-    musicToggle.addEventListener('click', () => {
-      isPlaying ? bgMusic.pause() : bgMusic.play();
-      isPlaying = !isPlaying;
-    });
-
-    volumeSlider.addEventListener('input', () => {
-      bgMusic.volume = volumeSlider.value;
-    });
-  </script>
-  <div id="site-footer"></div>
 <script>
-(function () {
-  const PATH = '/footer.html'; // root path
+  const musicToggle = document.getElementById('music-toggle');
+  const bgMusic = document.getElementById('bg-music');
+  const volumeSlider = document.getElementById('volume-slider');
 
-  function inject(html) {
-    var slot = document.getElementById('site-footer');
-    if (!slot) { slot = document.createElement('div'); slot.id = 'site-footer'; document.body.appendChild(slot); }
-    slot.innerHTML = html;
-  }
+  bgMusic.volume = 0.5;
 
-  function load() {
-    fetch(PATH, { cache: 'no-store' })
-      .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
-      .then(inject)
-      .catch(err => {
-        console.warn('Footer include failed:', err);
-        // Fallback so the page still gets a footer even if fetch fails
-        inject('<footer class="glow-footer" role="navigation" aria-label="Section navigation">\
-          <nav class="glow-footer__wrap">\
-            <a class="glow-card" href="/index.html">Home</a>\
-            <a class="glow-card" href="/soundroom.html">Sound Room</a>\
-            <a class="glow-card" href="/library.html">Library</a>\
-            <a class="glow-card" href="/clubhouse.html">Clubhouse</a>\
-            <a class="glow-card" href="/office.html">Office</a>\
-            <a class="glow-card" href="/showcase.html">Showcase</a>\
-            <a class="glow-card" href="/privacy.html">Privacy</a>\
-          </nav></footer>');
-      });
-  }
+  document.addEventListener('DOMContentLoaded', () => {
+    bgMusic.play().catch(() => {});
+  });
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load);
-  else load();
-})();
+  let isPlaying = true;
+
+  musicToggle.addEventListener('click', () => {
+    isPlaying ? bgMusic.pause() : bgMusic.play();
+    isPlaying = !isPlaying;
+  });
+
+  volumeSlider.addEventListener('input', () => {
+    bgMusic.volume = volumeSlider.value;
+  });
+</script>
+
+<div id="site-footer"></div>
+
+<script>
+  (function () {
+    const PATH = '/footer.html';
+
+    function inject(html) {
+      var slot = document.getElementById('site-footer');
+      if (!slot) { slot = document.createElement('div'); slot.id = 'site-footer'; document.body.appendChild(slot); }
+      slot.innerHTML = html;
+    }
+
+    function load() {
+      fetch(PATH, { cache: 'no-store' })
+        .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+        .then(inject)
+        .catch(err => {
+          console.warn('Footer include failed:', err);
+          inject('<footer class="glow-footer" role="navigation" aria-label="Section navigation">\
+<nav class="glow-footer__wrap">\
+<a class="glow-card" href="/index.html">Home</a>\
+<a class="glow-card" href="/soundroom.html">Sound Room</a>\
+<a class="glow-card" href="/library.html">Library</a>\
+<a class="glow-card" href="/clubhouse.html">Clubhouse</a>\
+<a class="glow-card" href="/office.html">Office</a>\
+<a class="glow-card" href="/showcase.html">Showcase</a>\
+<a class="glow-card" href="/privacy.html">Privacy</a>\
+</nav></footer>');
+        });
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load);
+    else load();
+  })();
 </script>
 
 <script>
@@ -120,10 +120,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-

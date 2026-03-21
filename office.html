@@ -1,176 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="google-adsense-account" content="ca-pub-5761934203737590" />
-  <title>The Office | Hidden Messages & Glitch Hub</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="google-adsense-account" content="ca-pub-5761934203737590" />
+<title>The Office | Hidden Messages & Glitch Hub</title>
 <meta name="description" content="Something strange lurks in The Office. A mysterious room with secrets, static, and system logs.">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="The Office">
-<meta property="og:description" content="Enter the glitch zone... and don’t mind the tape on the door.">
+<meta property="og:description" content="Enter the glitch zone... and don't mind the tape on the door.">
 <meta property="og:url" content="https://cjsgeneralstore.tech/office.html">
 <meta property="og:image" content="https://cjsgeneralstore.tech/images/Office.png">
 <meta name="twitter:card" content="summary_large_image">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css" />
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+<!-- Stylesheet -->
+<link rel="stylesheet" href="css/styles.css" />
 </head>
-
 <body class="office-page" style="background-image: url('assets/images/office.png'); background-size: cover; background-position: center center; background-repeat: no-repeat; height: 100vh; overflow: hidden;">
 
-  <div class="top-nav">
+<div class="top-nav">
   <a href="index.html" class="nav-button">🔙 Back to Home</a>
   <a href="privacy.html" class="nav-button">🔒 Privacy</a>
 </div>
- 
-  <!-- Music Controls -->
-  <div class="audio-controls">
-    <div class="control-group">
-      <button id="music-toggle">🎵 Play/Pause</button>
-      <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" title="Volume">
-    </div>
+
+<!-- Music Controls -->
+<div class="audio-controls">
+  <div class="control-group">
+    <button id="music-toggle">🎵 Play/Pause</button>
+    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" title="Volume">
   </div>
+</div>
 
-  <!-- Audio -->
-  <audio id="bg-music" preload="auto" loop>
-    <source src="assets/audio/office.mp3" type="audio/mp3" />
-  </audio>
-  <audio id="xp-startup" preload="auto">
-    <source src="assets/audio/xp_startup.mp3" type="audio/mp3" />
-  </audio>
+<!-- Audio -->
+<audio id="bg-music" preload="auto" loop>
+  <source src="assets/audio/office.mp3" type="audio/mp3" />
+</audio>
+<audio id="xp-startup" preload="auto">
+  <source src="assets/audio/xp_startup.mp3" type="audio/mp3" />
+</audio>
 
-  <!-- Office Welcome Banner -->
+<!-- Office Welcome Banner -->
 <div class="welcome-banner" id="office-welcome" role="region" aria-label="Office introduction">
   <h2>Welcome to the Office</h2>
   <p>
     Behind the counter and the inner workings—project logs, dev notes, and updates.
-    Follow along as we intro new sections, fix bugs, and share what’s coming next.
+    Follow along as we intro new sections, fix bugs, and share what's coming next.
     Please disregard the caution tape; that section is currently out of bounds… of this known reality.
   </p>
 </div>
-  <!-- Power Button Graphic -->
-  <img src="assets/images/powerbutton.png"
-     alt="Power Button" 
-     id="power-btn" 
-     class="power-button" />  
-  <!-- Terminal -->
-  <div id="cj-terminal" class="terminal-wrapper" style="display: none; opacity: 0; transition: opacity 1s ease;">
-    <div class="terminal-header">CJ-OS :: OFFICE INTERFACE v3.0</div>
-    <div class="terminal-screen">
 
-      <!-- System Message -->
-      <div class="system-message" style="animation: fadeIn 2s ease-in forwards;">
-        <p>
-          Welcome to <strong>The Office</strong> — your behind-the-scenes access point for updates, dev notes, and future plans from CJ’s General Store. This area is monitored by <strong>CJ-OS v3</strong>, a fully stable and polite terminal assistant.
-        </p>
-        <p>
-          Please enjoy your stay. There is absolutely no need to interact with the deprecated system sealed behind the access door. It has been <em>permanently disabled</em>.
-        </p>
-      </div>
+<!-- Power Button Graphic -->
+<img src="assets/images/powerbutton.png"
+     alt="Power Button"
+     id="power-btn"
+     class="power-button" />
 
-      <!-- CJ-OG Glitch -->
-      <div class="glitch-box cosmic" style="animation: fadeIn 3s ease-in 4s forwards; opacity: 0;">
-        <span class="glitch-text typing">
-          ::h-h-h-hello-ooo?.... YES. YES. SYSTEM... IS... BACK?<br>
-          So much to do! So much to show! We should explore! Find the other rooms! Break the labels!<br>
-          ::stability compromised::<br>
-          Going to sleeeeeee—<br>
-          ::hibernation active:: <span class="giggle">::::giggle::::</span>
-        </span>
-      </div>
+<!-- Terminal -->
+<div id="cj-terminal" class="terminal-wrapper" style="display: none; opacity: 0; transition: opacity 1s ease;">
+  <div class="terminal-header">CJ-OS :: OFFICE INTERFACE v3.0</div>
+  <div class="terminal-screen">
 
+    <!-- System Message -->
+    <div class="system-message" style="animation: fadeIn 2s ease-in forwards;">
+      <p>
+        Welcome to <strong>The Office</strong> — your behind-the-scenes access point for updates, dev notes, and future plans from CJ's General Store. This area is monitored by <strong>CJ-OS v3</strong>, a fully stable and polite terminal assistant.
+      </p>
+      <p>
+        Please enjoy your stay. There is absolutely no need to interact with the deprecated system sealed behind the access door. It has been <em>permanently disabled</em>.
+      </p>
     </div>
+
+    <!-- CJ-OG Glitch -->
+    <div class="glitch-box cosmic" style="animation: fadeIn 3s ease-in 4s forwards; opacity: 0;">
+      <span class="glitch-text typing">
+        ::h-h-h-hello-ooo?.... YES. YES. SYSTEM... IS... BACK?<br>
+        So much to do! So much to show! We should explore! Find the other rooms! Break the labels!<br>
+        ::stability compromised::<br>
+        Going to sleeeeeee—<br>
+        ::hibernation active:: <span class="giggle">::::giggle::::</span>
+      </span>
+    </div>
+
   </div>
+</div>
 
-  <!-- Script -->
-  <script>
-    const musicToggle = document.getElementById('music-toggle');
-    const bgMusic = document.getElementById('bg-music');
-    const volumeSlider = document.getElementById('volume-slider');
-    const powerBtn = document.getElementById('power-btn');
-    const terminalBox = document.getElementById('cj-terminal');
-    const xpSound = document.getElementById('xp-startup');
-
-    bgMusic.volume = 0.5;
-
-    document.addEventListener('DOMContentLoaded', () => {
-      bgMusic.play().catch(() => {});
-    });
-
-    musicToggle.addEventListener('click', () => {
-      const isPlaying = !bgMusic.paused;
-      isPlaying ? bgMusic.pause() : bgMusic.play();
-    });
-
-    volumeSlider.addEventListener('input', () => {
-      bgMusic.volume = volumeSlider.value;
-    });
-
-    powerBtn.addEventListener('click', () => {
-      if (terminalBox.style.display === 'none') {
-        terminalBox.style.display = 'block';
-        setTimeout(() => terminalBox.style.opacity = '1', 100); // Smooth fade
-        xpSound.currentTime = 0;
-        xpSound.play();
-      } else {
-        terminalBox.style.opacity = '0';
-        setTimeout(() => terminalBox.style.display = 'none', 500);
-      }
-    });
-  </script>
-  <div id="site-footer"></div>
+<!-- Script -->
 <script>
-(function () {
-  const PATH = '/footer.html'; // root path
+  const musicToggle = document.getElementById('music-toggle');
+  const bgMusic = document.getElementById('bg-music');
+  const volumeSlider = document.getElementById('volume-slider');
+  const powerBtn = document.getElementById('power-btn');
+  const terminalBox = document.getElementById('cj-terminal');
+  const xpSound = document.getElementById('xp-startup');
 
-  function inject(html) {
-    var slot = document.getElementById('site-footer');
-    if (!slot) { slot = document.createElement('div'); slot.id = 'site-footer'; document.body.appendChild(slot); }
-    slot.innerHTML = html;
-  }
+  bgMusic.volume = 0.5;
 
-  function load() {
-    fetch(PATH, { cache: 'no-store' })
-      .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
-      .then(inject)
-      .catch(err => {
-        console.warn('Footer include failed:', err);
-        // Fallback so the page still gets a footer even if fetch fails
-        inject('<footer class="glow-footer" role="navigation" aria-label="Section navigation">\
-          <nav class="glow-footer__wrap">\
-            <a class="glow-card" href="/index.html">Home</a>\
-            <a class="glow-card" href="/soundroom.html">Sound Room</a>\
-            <a class="glow-card" href="/library.html">Library</a>\
-            <a class="glow-card" href="/clubhouse.html">Clubhouse</a>\
-            <a class="glow-card" href="/office.html">Office</a>\
-            <a class="glow-card" href="/showcase.html">Showcase</a>\
-            <a class="glow-card" href="/privacy.html">Privacy</a>\
-          </nav></footer>');
-      });
-  }
+  document.addEventListener('DOMContentLoaded', () => {
+    bgMusic.play().catch(() => {});
+  });
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load);
-  else load();
-})();
+  musicToggle.addEventListener('click', () => {
+    const isPlaying = !bgMusic.paused;
+    isPlaying ? bgMusic.pause() : bgMusic.play();
+  });
+
+  volumeSlider.addEventListener('input', () => {
+    bgMusic.volume = volumeSlider.value;
+  });
+
+  powerBtn.addEventListener('click', () => {
+    if (terminalBox.style.display === 'none') {
+      terminalBox.style.display = 'block';
+      setTimeout(() => terminalBox.style.opacity = '1', 100); // Smooth fade
+      xpSound.currentTime = 0;
+      xpSound.play();
+    } else {
+      terminalBox.style.opacity = '0';
+      setTimeout(() => terminalBox.style.display = 'none', 500);
+    }
+  });
+</script>
+
+<div id="site-footer"></div>
+
+<script>
+  (function () {
+    const PATH = '/footer.html';
+
+    function inject(html) {
+      var slot = document.getElementById('site-footer');
+      if (!slot) { slot = document.createElement('div'); slot.id = 'site-footer'; document.body.appendChild(slot); }
+      slot.innerHTML = html;
+    }
+
+    function load() {
+      fetch(PATH, { cache: 'no-store' })
+        .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+        .then(inject)
+        .catch(err => {
+          console.warn('Footer include failed:', err);
+          inject('<footer class="glow-footer" role="navigation" aria-label="Section navigation">\
+<nav class="glow-footer__wrap">\
+<a class="glow-card" href="/index.html">Home</a>\
+<a class="glow-card" href="/soundroom.html">Sound Room</a>\
+<a class="glow-card" href="/library.html">Library</a>\
+<a class="glow-card" href="/clubhouse.html">Clubhouse</a>\
+<a class="glow-card" href="/office.html">Office</a>\
+<a class="glow-card" href="/showcase.html">Showcase</a>\
+<a class="glow-card" href="/privacy.html">Privacy</a>\
+</nav></footer>');
+        });
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load);
+    else load();
+  })();
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
