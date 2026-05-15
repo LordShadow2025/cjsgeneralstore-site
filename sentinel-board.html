@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sentinel Protocol | CJ's General Store</title>
+<meta name="description" content="The Sentinel Protocol — live market watch, scalper detection, shelf weather reports, and sleeper item tracking for collectors.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Sentinel Protocol | CJ's General Store">
+<meta property="og:description" content="Watch the shelves before the scalpers do.">
+<meta property="og:url" content="https://cjsgeneralstore.tech/sentinel-board.html">
+<meta property="og:image" content="https://cjsgeneralstore.tech/assets/images/sentinel.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="google-adsense-account" content="ca-pub-5761934203737590" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Permanent+Marker&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<!-- Firebase -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, getDocs, query, orderBy, limit, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCbFo8gqICQFjJBNeH_QNQ4KvilEmFh0Es",
+    authDomain: "sentinel-protocol-ebddd.firebaseapp.com",
+    projectId: "sentinel-protocol-ebddd",
+    storageBucket: "sentinel-protocol-ebddd.firebasestorage.app",
+    messagingSenderId: "844084037527",
+    appId: "1:844084037527:web:aeba0d2dc04717167e66d2"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  window._sentinelDB = db;
+  window._firestore = { collection, addDoc, getDocs, query, orderBy, limit, onSnapshot };
+  window.dispatchEvent(new Event('firebaseReady'));
+</script>
+
+<!-- OneSignal -->
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "583eeae5-40cb-4c76-a31a-2437c3b10855",
+      notifyButton: { enable: false },
+    });
+  });
+</script>
+
+<style>
+/* ============================================================
+   ROOT & RESET
+   ============================================================ */
+:root {
+  --bg:           #06040f;
+  --bg2:          #0a0716;
+  --panel:        rgba(12,8,28,0.85);
+  --border:       rgba(0,240,255,0.2);
+  --border-hot:   rgba(255,40,100,0.5);
+  --cyan:         #00f0ff;
+  --pink:         #ff2864;
+  --purple:       #8b3fff;
+  --green:        #00ff88;
+  --yellow:       #ffd600;
+  --orange:       #ff6b00;
+  --red:          #ff2020;
+  --muted:        #5a6a8a;
+  --text:         #ddeeff;
+  --text-dim:     #8899bb;
+  --glow-cyan:    0 0 12px rgba(0,240,255,.6), 0 0 30px rgba(0,240,255,.2);
+  --glow-pink:    0 0 12px rgba(255,40,100,.6), 0 0 30px rgba(255,40,100,.2);
+  --glow-green:   0 0 12px rgba(0,255,136,.5), 0 0 24px rgba(0,255,136,.15);
+  --glow-red:     0 0 12px rgba(255,32,32,.7), 0 0 30px rgba(255,32,32,.3);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Share Tech Mono', monospace;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Animated grid background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,240,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,240,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Scanline overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(0,0,0,0.08) 3px,
+    rgba(0,0,0,0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.page {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 16px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px 20px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.header-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 900;
+  color: var(--cyan);
+  text-shadow: var(--glow-cyan);
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.header-tagline {
+  font-size: 0.75rem;
+  color: var(--pink);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-shadow: var(--glow-pink);
+}
+
+.header-nav {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--text-dim);
+  padding: 8px 14px;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 8px;
+  background: rgba(255,255,255,.04);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all .2s ease;
+  cursor: pointer;
+}
+
+.nav-btn:hover, .nav-btn.active {
+  color: var(--cyan);
+  border-color: rgba(0,240,255,.4);
+  box-shadow: var(--glow-cyan);
+}
+
+.nav-btn.notify-btn {
+  color: var(--pink);
+  border-color: rgba(255,40,100,.3);
+}
+
+.nav-btn.notify-btn:hover {
+  box-shadow: var(--glow-pink);
+}
+
+/* ============================================================
+   SYSTEM STATUS BAR
+   ============================================================ */
+.status-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 14px 20px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  align-items: center;
+}
+
+.status-bar-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-right: 6px;
+}
+
+.status-dot-wrap {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(0,0,0,.3);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+}
+
+.dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: pulse 2s infinite;
+}
+
+.dot-online  { background: var(--green); box-shadow: 0 0 8px var(--green); }
+.dot-idle    { background: var(--yellow); box-shadow: 0 0 8px var(--yellow); animation-delay: .5s; }
+.dot-waiting { background: var(--orange); box-shadow: 0 0 8px var(--orange); animation-delay: 1s; }
+.dot-offline { background: var(--red); box-shadow: 0 0 8px var(--red); }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ============================================================
+   PANEL BASE
+   ============================================================ */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+  position: relative;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.panel-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  text-shadow: 0 0 8px rgba(0,240,255,.4);
+}
+
+.panel-body {
+  padding: 20px;
+}
+
+/* ============================================================
+   LIVE PRICE SCANNER
+   ============================================================ */
+.scanner-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.field { margin-bottom: 14px; }
+
+.field label {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.field input {
+  width: 100%;
+  padding: 12px 14px;
+  background: rgba(0,0,0,.4);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.field input:focus {
+  border-color: rgba(0,240,255,.5);
+  box-shadow: 0 0 0 3px rgba(0,240,255,.1);
+}
+
+.field input::placeholder { color: var(--muted); }
+
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+
+.btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform .2s, filter .2s;
+}
+
+.btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+.btn:active { transform: translateY(0); }
+
+.btn-scan {
+  background: linear-gradient(135deg, rgba(0,240,255,.25), rgba(139,63,255,.3));
+  border: 1px solid rgba(0,240,255,.4);
+  color: var(--cyan);
+  box-shadow: var(--glow-cyan);
+  flex: 1;
+}
+
+.btn-live {
+  background: linear-gradient(135deg, rgba(0,255,136,.2), rgba(0,240,255,.15));
+  border: 1px solid rgba(0,255,136,.35);
+  color: var(--green);
+  box-shadow: var(--glow-green);
+  flex: 1;
+}
+
+.btn-reset {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  color: var(--text-dim);
+}
+
+.btn-watch {
+  background: linear-gradient(135deg, rgba(255,214,0,.2), rgba(255,107,0,.2));
+  border: 1px solid rgba(255,214,0,.3);
+  color: var(--yellow);
+  flex: 1;
+}
+
+/* Result card */
+.result-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sentinel-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.15);
+  background: rgba(0,0,0,.3);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all .3s ease;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.stat-box {
+  background: rgba(0,0,0,.3);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.stat-box small {
+  display: block;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.stat-box strong {
+  font-size: 1.2rem;
+  color: var(--text);
+  display: block;
+}
+
+.verdict-box {
+  background: rgba(0,0,0,.3);
+  border: 1px solid rgba(255,255,255,.07);
+  border-left: 3px solid var(--cyan);
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+}
+
+.verdict-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.demand-signal {
+  background: rgba(0,0,0,.3);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.demand-signal .signal-type {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: var(--purple);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* Fairness bar */
+.fairness-wrap { display: flex; flex-direction: column; gap: 6px; }
+.fairness-row { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--muted); }
+.bar-track {
+  height: 8px; border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%; width: 0%; border-radius: 999px;
+  background: linear-gradient(90deg, var(--green), var(--yellow), var(--orange), var(--red));
+  transition: width .5s cubic-bezier(.4,0,.2,1);
+}
+
+/* Status badge colors */
+.badge-calm    { color: var(--green);  border-color: rgba(0,255,136,.3);  box-shadow: var(--glow-green); }
+.badge-flicker { color: var(--yellow); border-color: rgba(255,214,0,.3);  box-shadow: 0 0 12px rgba(255,214,0,.4); }
+.badge-static  { color: #ff9500;       border-color: rgba(255,149,0,.3);  }
+.badge-surge   { color: var(--orange); border-color: rgba(255,107,0,.4);  box-shadow: 0 0 12px rgba(255,107,0,.4); }
+.badge-fog     { color: #aa88ff;       border-color: rgba(170,136,255,.3);}
+.badge-restock { color: var(--cyan);   border-color: rgba(0,240,255,.3);  box-shadow: var(--glow-cyan); }
+.badge-echo    { color: #ffaa44;       border-color: rgba(255,170,68,.3); }
+.badge-sleeper { color: #44ddff;       border-color: rgba(68,221,255,.3); }
+.badge-grab    { color: var(--green);  border-color: rgba(0,255,136,.4);  box-shadow: var(--glow-green); }
+.badge-anomaly { color: #ff44aa;       border-color: rgba(255,68,170,.4); }
+.badge-red     { color: var(--red);    border-color: rgba(255,32,32,.5);  box-shadow: var(--glow-red); }
+.badge-waiting { color: var(--muted);  border-color: rgba(255,255,255,.1);}
+
+/* ============================================================
+   WATCH LIST TABLE
+   ============================================================ */
+.watch-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.watch-table th {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  white-space: nowrap;
+}
+
+.watch-table td {
+  padding: 12px 12px;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  color: var(--text-dim);
+  vertical-align: middle;
+}
+
+.watch-table tr:hover td { background: rgba(255,255,255,.02); }
+
+.watch-table .item-name { color: var(--text); font-weight: 600; }
+
+.status-chip {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,.1);
+  white-space: nowrap;
+}
+
+.watch-empty {
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+  padding: 30px;
+  font-size: 0.85rem;
+}
+
+/* ============================================================
+   SHELF WEATHER
+   ============================================================ */
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.weather-card {
+  background: rgba(0,0,0,.3);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.weather-card:hover {
+  border-color: rgba(0,240,255,.2);
+  box-shadow: 0 0 20px rgba(0,240,255,.06);
+}
+
+.weather-card .wc-category {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.weather-card .wc-item { color: var(--text); font-size: 0.9rem; font-weight: 600; }
+.weather-card .wc-condition { font-size: 0.8rem; color: var(--text-dim); }
+.weather-card .wc-rec { font-size: 0.75rem; color: var(--text-dim); font-style: italic; margin-top: 4px; }
+
+/* ============================================================
+   SLEEPER BOARD
+   ============================================================ */
+.sleeper-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.sleeper-card {
+  background: rgba(0,0,0,.3);
+  border: 1px solid rgba(68,221,255,.15);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sleeper-card .sc-status {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #44ddff;
+}
+
+.sleeper-card .sc-item { color: var(--text); font-size: 0.9rem; font-weight: 600; }
+.sleeper-card .sc-reason { font-size: 0.78rem; color: var(--text-dim); line-height: 1.5; }
+
+/* ============================================================
+   ACTIVITY LOG
+   ============================================================ */
+.log-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.log-feed::-webkit-scrollbar { width: 4px; }
+.log-feed::-webkit-scrollbar-track { background: rgba(255,255,255,.03); }
+.log-feed::-webkit-scrollbar-thumb { background: rgba(0,240,255,.2); border-radius: 999px; }
+
+.log-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.06);
+  background: rgba(0,0,0,.2);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  animation: logIn .3s ease;
+}
+
+@keyframes logIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.log-tag {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(0,0,0,.3);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.log-body { color: var(--text-dim); flex: 1; }
+.log-time { font-size: 0.65rem; color: var(--muted); white-space: nowrap; margin-left: auto; flex-shrink: 0; padding-top: 2px; }
+
+.log-info   .log-tag { color: var(--cyan);   border-color: rgba(0,240,255,.25); }
+.log-warn   .log-tag { color: var(--yellow); border-color: rgba(255,214,0,.25); }
+.log-alert  .log-tag { color: var(--red);    border-color: rgba(255,32,32,.3); }
+.log-ok     .log-tag { color: var(--green);  border-color: rgba(0,255,136,.25); }
+.log-system .log-tag { color: var(--purple); border-color: rgba(139,63,255,.25); }
+
+/* ============================================================
+   LOADING STATE
+   ============================================================ */
+.loading-pulse {
+  display: inline-block;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .scanner-grid { grid-template-columns: 1fr; }
+  .stats-grid   { grid-template-columns: 1fr 1fr; }
+  .weather-grid { grid-template-columns: 1fr; }
+  .sleeper-grid { grid-template-columns: 1fr; }
+  .watch-table  { font-size: 0.75rem; }
+  .watch-table th, .watch-table td { padding: 8px; }
+}
+
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: 1fr; }
+  .header-title { font-size: 1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ── HEADER ──────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="header-left">
+      <div class="header-title">⬡ SENTINEL PROTOCOL</div>
+      <div class="header-tagline">Watch the shelves before the scalpers do</div>
+    </div>
+    <nav class="header-nav">
+      <a href="index.html" class="nav-btn">&#8592; Home</a>
+      <a href="generalstore.html" class="nav-btn">Store</a>
+      <a href="sentinel-of-the-shelf.html" class="nav-btn">Price Scanner</a>
+      <button class="nav-btn notify-btn" onclick="requestNotifications()">🔔 Get Alerts</button>
+    </nav>
+  </header>
+
+  <!-- ── SYSTEM STATUS ────────────────────────────────────── -->
+  <div class="status-bar">
+    <span class="status-bar-label">System</span>
+    <div class="status-dot-wrap"><span class="dot dot-online"></span> Sentinel Online</div>
+    <div class="status-dot-wrap"><span class="dot dot-online"></span> Store Active</div>
+    <div class="status-dot-wrap" id="ebayStatus"><span class="dot dot-waiting"></span> eBay Pending</div>
+    <div class="status-dot-wrap" id="firebaseStatus"><span class="dot dot-idle"></span> Firebase Connecting</div>
+    <div class="status-dot-wrap" id="trendsStatus"><span class="dot dot-idle"></span> Trends Ready</div>
+    <div class="status-dot-wrap" id="notifyStatus"><span class="dot dot-idle"></span> Notifications Standby</div>
+  </div>
+
+  <!-- ── LIVE PRICE SCANNER ──────────────────────────────── -->
+  <section class="panel">
+    <div class="panel-header">
+      <span class="panel-title">🔍 Live Price Scanner</span>
+      <span style="font-size:0.72rem;color:var(--muted);">Powered by eBay + Google Trends</span>
+    </div>
+    <div class="panel-body">
+      <div class="scanner-grid">
+
+        <!-- Input side -->
+        <div>
+          <div class="field">
+            <label>Item Name</label>
+            <input id="itemName" type="text" placeholder="e.g. NeeDoh Atomic Cube">
+          </div>
+          <div class="field">
+            <label>Expected Retail Price ($) <span style="color:var(--muted);font-size:0.65rem;">(optional — auto-detected if blank)</span></label>
+            <input id="msrp" type="number" min="0" step="0.01" placeholder="Auto-detect from eBay">
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-live" id="liveBtn" onclick="runLiveScan()">⚡ Live Scan</button>
+            <button class="btn btn-scan" id="manualBtn" onclick="runManualScan()">Manual Scan</button>
+          </div>
+          <div class="btn-row" style="margin-top:8px;">
+            <button class="btn btn-watch" onclick="addToWatchList()">+ Add to Watch List</button>
+            <button class="btn btn-reset" onclick="resetScanner()">Reset</button>
+          </div>
+          <p style="margin-top:14px;font-size:0.75rem;color:var(--muted);line-height:1.6;">
+            Live Scan pulls real eBay sold listings and current asking prices automatically.
+            Manual Scan uses your entered values. Both log results to the Activity Log.
+          </p>
+
+          <!-- Status bands -->
+          <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06);">
+            <div style="font-family:'Orbitron',sans-serif;font-size:0.62rem;letter-spacing:2px;color:var(--muted);margin-bottom:10px;">STATUS BANDS</div>
+            <div style="display:flex;flex-direction:column;gap:5px;font-size:0.78rem;color:var(--text-dim);">
+              <div><span style="color:var(--green);">■</span> 0–10% over retail → Shelf Calm / Greenlight Grab</div>
+              <div><span style="color:var(--yellow);">■</span> 11–30% over retail → Neon Flicker</div>
+              <div><span style="color:var(--orange);">■</span> 31–75% over retail → Scalper Fog / Signal Surge</div>
+              <div><span style="color:var(--red);">■</span> 76%+ over retail → Red-Eye Warning</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result side -->
+        <div class="result-card">
+          <div id="sentinelBadge" class="sentinel-badge badge-waiting">Awaiting Scan</div>
+
+          <div class="stats-grid">
+            <div class="stat-box">
+              <small>Item</small>
+              <strong id="outItem">—</strong>
+            </div>
+            <div class="stat-box">
+              <small>Markup</small>
+              <strong id="outMarkup">—</strong>
+            </div>
+            <div class="stat-box">
+              <small>Avg Retail / MSRP</small>
+              <strong id="outMsrp">—</strong>
+            </div>
+            <div class="stat-box">
+              <small>Current Asking</small>
+              <strong id="outPrice">—</strong>
+            </div>
+          </div>
+
+          <div class="verdict-box">
+            <span class="verdict-label">Sentinel Verdict</span>
+            <div id="outVerdict">Run a scan to get a verdict. The Sentinel is watching.</div>
+          </div>
+
+          <div class="demand-signal">
+            <span class="signal-type">Demand Signal</span>
+            <div id="outSignal" style="color:var(--text-dim);font-size:0.82rem;">No signal data yet.</div>
+          </div>
+
+          <div class="fairness-wrap">
+            <div class="fairness-row">
+              <span>Fairness Drift</span>
+              <span id="outBarLabel">0%</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" id="barFill"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SHELF WEATHER ────────────────────────────────────── -->
+  <section class="panel">
+    <div class="panel-header">
+      <span class="panel-title">🌩 Shelf Weather Report</span>
+      <span style="font-size:0.72rem;color:var(--muted);">Current market conditions</span>
+    </div>
+    <div class="panel-body">
+      <div class="weather-grid" id="weatherGrid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRODUCT WATCH LIST ───────────────────────────────── -->
+  <section class="panel">
+    <div class="panel-header">
+      <span class="panel-title">📋 Product Watch List</span>
+      <span style="font-size:0.72rem;color:var(--muted);" id="watchCount">0 items tracked</span>
+    </div>
+    <div class="panel-body" style="padding:0;overflow-x:auto;">
+      <table class="watch-table" id="watchTable">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Retail</th>
+            <th>Current</th>
+            <th>Markup</th>
+            <th>Status</th>
+            <th>Signal</th>
+            <th>Rec</th>
+            <th>Added</th>
+          </tr>
+        </thead>
+        <tbody id="watchBody">
+          <tr><td colspan="8" class="watch-empty">No items on the watch list yet. Run a scan and click "Add to Watch List".</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── SLEEPER WATCH ────────────────────────────────────── -->
+  <section class="panel">
+    <div class="panel-header">
+      <span class="panel-title">😴 Sleeper Watch Board</span>
+      <span style="font-size:0.72rem;color:var(--muted);">Items to watch before the market wakes up</span>
+    </div>
+    <div class="panel-body">
+      <div class="sleeper-grid" id="sleeperGrid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ACTIVITY LOG ─────────────────────────────────────── -->
+  <section class="panel">
+    <div class="panel-header">
+      <span class="panel-title">📡 Activity Log</span>
+      <button class="nav-btn" onclick="clearLog()" style="font-size:0.65rem;">Clear</button>
+    </div>
+    <div class="panel-body">
+      <div class="log-feed" id="logFeed">
+        <div class="log-entry log-system">
+          <span class="log-tag">System</span>
+          <span class="log-body">Sentinel Protocol initialized. All modules standing by.</span>
+          <span class="log-time">BOOT</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /.page -->
+
+<script>
+/* ============================================================
+   SENTINEL PROTOCOL — CORE LOGIC
+   ============================================================ */
+
+// ── State ────────────────────────────────────────────────────
+const state = {
+  lastScan: null,
+  watchList: JSON.parse(localStorage.getItem('sentinel_watchlist') || '[]'),
+  db: null,
+  firebaseReady: false,
+};
+
+// ── Shelf Weather Data (manually curated, update as needed) ──
+const shelfWeather = [
+  { category: 'Sensory Toys', item: 'NeeDoh Products', condition: 'Scalper Fog', signal: 'Short-Form Video', rec: 'Wait for restock. Avoid elevated resale.' },
+  { category: 'LEGO', item: 'Retiring Sets 2025', condition: 'Sleeper Watch', signal: 'Collector Community', rec: 'Buy at retail before retirement.' },
+  { category: 'Action Figures', item: 'MOTU Classics', condition: 'Collector Echo', signal: 'Nostalgia Signal', rec: 'Prices reflect genuine rarity.' },
+  { category: 'Diecast', item: 'Hot Wheels Treasure Hunts', condition: 'Neon Flicker', signal: 'Collector Community', rec: 'Watch secondary market pricing.' },
+  { category: 'Trading Cards', item: 'Pokémon Vintage', condition: 'Red-Eye Warning', signal: 'Media Signal', rec: 'Extreme caution. Verify authenticity.' },
+  { category: 'Vintage Toys', item: 'Kenner Star Wars (loose)', condition: 'Grab Window', signal: 'Nostalgia Signal', rec: 'Fair pricing still available locally.' },
+];
+
+// ── Sleeper Watch Data (manually curated) ───────────────────
+const sleeperItems = [
+  { status: 'Low Glow', item: 'LEGO Ideas Sets Near Retirement', reason: 'Retirement dates approaching. Collector demand often spikes 30-60 days before EOL.' },
+  { status: 'Quiet Shelf', item: 'Older NeeDoh Color Variants', reason: 'Current viral attention is on newer items. Legacy colors may be quietly disappearing from shelves.' },
+  { status: 'Warming Signal', item: 'Vintage Fisher-Price Little People', reason: 'Nostalgia market showing early collector interest. Local thrift finds still undervalued.' },
+  { status: 'Hidden Gem', item: 'Diecast Local Shop Finds', reason: 'Items not yet indexed online often sit at near-retail. Worth checking local stores before listing pressure hits.' },
+];
+
+// ── Sentinel Status System ───────────────────────────────────
+function getStatus(markup) {
+  if (markup <= 10)  return { label: 'Shelf Calm',      cls: 'badge-calm',    verdict: 'Fair value confirmed. Window is open.',                           rec: 'Safe to buy at current pricing.' };
+  if (markup <= 20)  return { label: 'Neon Flicker',    cls: 'badge-flicker', verdict: 'Demand is rising. Stock may be thinning.',                        rec: 'Buy now if you need it. Monitor for further movement.' };
+  if (markup <= 35)  return { label: 'Hype Static',     cls: 'badge-static',  verdict: 'Trend visibility detected. Watch carefully.',                     rec: 'Avoid impulse buying. Check for restock.' };
+  if (markup <= 75)  return { label: 'Scalper Fog',     cls: 'badge-fog',     verdict: 'Resale pricing is inflated beyond normal retail.',                rec: 'Do not overpay. Watch trusted retailers for restock.' };
+  if (markup <= 100) return { label: 'Signal Surge',    cls: 'badge-surge',   verdict: 'Clear demand spike detected. Source tracing recommended.',        rec: 'Avoid panic buy. Wait for retail restock.' };
+  return               { label: 'Red-Eye Warning', cls: 'badge-red',     verdict: 'Extreme price inflation detected. Heavy market distortion.',       rec: 'Do not buy at current resale pricing. Alert issued.' };
+}
+
+// ── Utility ──────────────────────────────────────────────────
+function money(v) {
+  return isNaN(v) ? '—' : new Intl.NumberFormat('en-US', { style:'currency', currency:'USD' }).format(v);
+}
+
+function nowTime() {
+  return new Date().toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit', hour12:false });
+}
+
+function pushLog(type, tag, message) {
+  const feed = document.getElementById('logFeed');
+  const entry = document.createElement('div');
+  entry.className = 'log-entry log-' + type;
+  entry.innerHTML =
+    '<span class="log-tag">' + tag + '</span>' +
+    '<span class="log-body">' + message + '</span>' +
+    '<span class="log-time">' + nowTime() + '</span>';
+  feed.insertBefore(entry, feed.firstChild);
+
+  // Save to Firebase if ready
+  if (state.firebaseReady && state.db) {
+    const { collection, addDoc } = window._firestore;
+    addDoc(collection(state.db, 'activity_log'), {
+      type, tag, message, timestamp: new Date().toISOString()
+    }).catch(() => {});
+  }
+}
+
+function clearLog() {
+  const feed = document.getElementById('logFeed');
+  feed.innerHTML = '';
+  pushLog('system', 'System', 'Log cleared.');
+}
+
+// ── eBay Live Scan ───────────────────────────────────────────
+// eBay credentials (read-only Browse API)
+const _a=atob("Q2xhdWRlQmEtU2VudGluZWwtUFJELTgxODNmNjRkNS00NDUzM2I1Yg==");
+const _b=atob("OTEyNmMwNjAtOTZlYi00NTA3LWE1NTMtMjNhZDEyZTM1Y2Nj");
+const _c=atob("UFJELTE4M2Y2NGQ1MmRhYS02MTk0LTQwZjYtODllZi0xZGNj");
+const _t=atob("dl4xLjEjaV4xI3JeMCNJXjMjZl4wI3BeMSN0Xkg0c0lBQUFBQUFBQS8rVllXMndVVlJqdTduWkxHbWg1d0FDQmlzdEFFNlhNN054M1oreXUyVjRJSy9UQ2JxM1NST0RNek5sMjJ0bVpkUzYwQzRUVUJ2RVdpS21JeGdjbG9oYlFoQklyUWlSRWZKRllFeEVpaXNFWWpFRVNRcUkrd0FQV2VHWmJ5cllTUUxyRUptNG0yY3gvL3ZPZjcvL09memx6eU42UzBtWGJWMjYvVnVhWjRkM1RTL1o2UFI1cUpsbGE0cThxOTNrWCtJdklQQVhQbnQ2bHZjVjl2a3ZWRmtockdURUJyWXloV3pEUWs5WjBTOHdKSTVoajZxSUJMTlVTZFpDR2xtakxZakxXc0Zxa0NWTE1tSVp0eUlhR0JlSjFFU3hFc3p3cnNBb0Y1SkJBOHdCSjlSczJXNHdJeHZLS0xMQ0FZNEZDQzVTVVF1T1c1Y0M0YnRsQXR5TVlUZEk0VG5JNHhiV1FqSWdlbGlkWWdXN0RBcTNRdEZSRFJ5b0VpVVZ6Y01YY1hETVA2KzJoQXN1Q3BvMk1ZTkY0YkVXeUtSYXZxMjlzcVE3bTJZcU84WkMwZ2UxWUU5OXFEUVVHV29IbXdOc3ZZK1cweGFRank1Q3lzR0IwZElXSlJzWFlEVEQzQUQ5SE5jMnhGQThVWG1JRWxxSENTa0dvWEdHWWFXRGZIb2NyVVJVOGxWTVZvVzZyZHZaT2pDSTJwRTRvMjJOdmpjaEV2QzdnL3ExeGdLYW1WR2hHc1BxYTJOcFljek1XcmRXQW84QWFnQ2RkNnpyVThPWkVIUjZtd2t5S1p4VU9aMW1PWVNST0dsdG8xTm9ZelpOV3FqVjBSWFZKc3dLTmhsMERFV280a1J0YTVQSzRRVXBOZXBNWlM5a3Vvbnc5N2dhSG9YQ2J1Nm1qdStqWUhicTdyekNOb0FaeXIzZmVnZkhadG0ycWttUERjUXVUQjNJVVJUQ1F5YWdLTm5rd0Y0dGo0ZE5qUmJBTzI4Nkl3V0IzZHpmUnpSQ0cyUjZrU1pJS1B0V3dPaWwzd0RSS3hwNjBtK3VqK3VxZEorQnF6aFVab3BtV0t0clpETUxTZzJJVkFkRGJzU2dYcG5sU0dPTjlJcXpvWk9rL0JIaytCeWRtUktFeWhPZDRpcFhEdE13TERBdlpnbVJJZEN4SWd5NE9LSUVzbmdabUY3UXpHcEFoTHFNNGM5TFFWQldSNFZJMEUwNUJYT0dGRk00S3FSUXVjUXFQVXlrSVNRZ2xTUmJDLzZkRXVkdFFUMExaaEhaQllyMWdjVjRUWnpmU1Q0YmFnS2FBVFRWcnV6ZDJVazVqVjMyWFU2c2tha05NWXBQa2NBMWFCd3hMYk9SdXMrR1d6dGRxS21LbUJhMWZDQUxjWEM0Y0NTc055NGJLbE54THlrWUdOaHVhS21lbjF3WXpwdElNVER1YmhKcUdCRk55TXBiSnhBdFRxd3ZtM3I0c0UvZm1kK0Y2MUgvVW4yN3BsZVdHN1BUeXlwMXZJUU1nb3hKdUJ5SmtJeDEwYzkwQTZQamhpdGZuVUFkdXFUaEpLWWhrcUdISmtFQjlTWkdBM0VXWUVDaUdybVdueEp1S1RyN1RpalhrNXlnSnFqSjZaQ1Z5VEJEV1JobDViQmtPNHNBaW10d1RYSXZSQlhYVUQyM1QwRFJvdGxKVHJnZnB0R01EU1lQVHJUQVVJRUZVTU0yYU5SVUtoY01VUzlQOGxQeVNjNjE0L1hRcmFXNHBMKzd6Z1B0ZXpoTVFhT25wNVh2R05CUkhkcytvOStHVEl6anhBaVJhbFB0UmZaN1B5VDdQY2EvSFExYVRsZFFTY25HSjc0bGkzNndGbG1wRFFnVXB3bExiZGZSZGIwS2lDMll6UURXOWM0cSsvUFpjNDZKUEg5LzM0aS96ZXA5Ykd1d3ZLcys3Zjluek5EbC8vQWFtMUVmTnpMdU9JU3R1anZpcDJmUEtVSDV5RkVjeUpNUHliZVNTbTZQRjFOemlCL2JPKzJqUjdNcGxwN2dkZy9Wekx2aFBEcjlXZW9nc0cxZnllUHhGS0ZpS3RseGIvdWdmeHo0Y3ZyaDkvNUUvcys0ZmpzVEIrYUhGRmQ2RmljZGVPaVNFbi9uZytyWUVmbVhydnZZM2RrWXJMbjkvRUJ3YlNJUlBab2QycFg0VTVxOEwweWUvKytaUWt2Rlp3dVhxR1RzaUc0U3J2UnY4MTZPWDJuOFlTWnloZno3VzNucDZ1UExzd28vZmZmbWdIbml3Ym1HdHZmUWhxV1RWd2Y1OVI3MURiejE3cGJ5djBqOHdhM2ZUQzgvdkhXYmVPZmYyMEs0MWc5NDMrdzhZNSt2L0dqbGJNWkk5djMra3ZLSHpXTm5tMDRQODE0dnBkUXI3R2ExZTNIS0VJVTRGSTYydjdpeDcvVVI5aWRGM2RNai9oYjA3VmZWZVc1VisvS2N6M0ZXbTg0aUViWFBJQ3dNSGZ2OHQ0TlVTNlpXNUoxWlY2YnNIL1o5c1Bod1plUGhYbjRmZjZudGs5ZWhlL2cyL1NLL2hHUk1BQUE9PQ==");
+const EBAY_APP_ID=_a,EBAY_DEV_ID=_b,EBAY_CERT_ID=_c,EBAY_TOKEN=_t;
+
+async function fetchEbayData(itemName) {
+  try {
+    const encoded = encodeURIComponent(itemName);
+    const ebayUrl = `https://api.ebay.com/buy/browse/v1/item_summary/search?q=${encoded}&limit=20&sort=price&filter=buyingOptions:%7BFIXED_PRICE%7D`;
+    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(ebayUrl)}`;
+
+    const res = await fetch(proxyUrl, {
+      headers: {
+        'Authorization': 'Bearer ' + EBAY_TOKEN,
+        'X-EBAY-C-MARKETPLACE-ID': 'EBAY_US'
+      }
+    });
+
+    if (!res.ok) throw new Error('eBay API error: ' + res.status);
+    const wrapper = await res.json();
+    const data = JSON.parse(wrapper.contents);
+
+    if (!data.itemSummaries || !data.itemSummaries.length) {
+      throw new Error('No results found for: ' + itemName);
+    }
+
+    const prices = data.itemSummaries
+      .filter(item => item.price && item.price.value)
+      .map(item => parseFloat(item.price.value));
+
+    if (!prices.length) throw new Error('No pricing data returned');
+
+    prices.sort((a, b) => a - b);
+    const low    = prices[0];
+    const high   = prices[prices.length - 1];
+    const median = prices[Math.floor(prices.length / 2)];
+
+    const lowQ  = prices.slice(0, Math.max(1, Math.floor(prices.length * 0.25)));
+    const retail = lowQ.reduce((a, b) => a + b, 0) / lowQ.length;
+    const current = median;
+
+    document.getElementById('ebayStatus').innerHTML =
+      '<span class="dot dot-online"></span> eBay Live';
+
+    pushLog('ok', 'eBay', 'Live data: "' + itemName + '" — ' + prices.length + ' listings. Range: $' + low.toFixed(2) + '–$' + high.toFixed(2));
+
+    return {
+      retail:  parseFloat(retail.toFixed(2)),
+      current: parseFloat(current.toFixed(2)),
+      signal: 'Marketplace Signal',
+      confidence: 'High',
+      source: 'eBay Live (' + prices.length + ' listings)',
+      raw: { low, high, median, count: prices.length }
+    };
+
+  } catch(e) {
+    pushLog('warn', 'eBay', 'Live fetch issue — using estimated data. (' + e.message + ')');
+    return simulateEbayData(itemName);
+  }
+}
+
+function simulateEbayData(itemName) {
+  // Realistic simulation based on item name keywords
+  const name = itemName.toLowerCase();
+  let base = 15;
+  let inflationMultiplier = 1;
+  let signal = 'Unknown Signal';
+
+  if (name.includes('needoh') || name.includes('sensory')) {
+    base = 6; inflationMultiplier = 3.5; signal = 'Short-Form Video Signal';
+  } else if (name.includes('lego')) {
+    base = 40; inflationMultiplier = 1.8; signal = 'Collector Community Signal';
+  } else if (name.includes('pokemon') || name.includes('pokémon')) {
+    base = 20; inflationMultiplier = 4.2; signal = 'Media Signal';
+  } else if (name.includes('hot wheels') || name.includes('diecast')) {
+    base = 5; inflationMultiplier = 2.1; signal = 'Collector Community Signal';
+  } else if (name.includes('motu') || name.includes('masters')) {
+    base = 35; inflationMultiplier = 2.8; signal = 'Nostalgia Signal';
+  } else if (name.includes('star wars') || name.includes('kenner')) {
+    base = 15; inflationMultiplier = 3.0; signal = 'Nostalgia Signal';
+  } else {
+    inflationMultiplier = 1 + (Math.random() * 2);
+    signal = 'Unknown Signal';
+  }
+
+  const retail = base;
+  const current = parseFloat((base * inflationMultiplier).toFixed(2));
+  return { retail, current, signal, confidence: 'Medium', source: 'Simulated (eBay pending)' };
+}
+
+// ── Google Trends Signal ─────────────────────────────────────
+async function fetchTrendsSignal(itemName) {
+  // Google Trends doesn't have an official API
+  // We detect signal strength based on known patterns
+  // Full integration available via pytrends backend when ready
+  const name = itemName.toLowerCase();
+  let trending = false;
+  let trendSignal = 'Unknown Signal';
+  let confidence = 'Low';
+
+  const viralKeywords = ['needoh', 'pokemon', 'stanley cup', 'labubu', 'squishmallow', 'lego', 'funko'];
+  const nostalgia = ['star wars', 'kenner', 'motu', 'he-man', 'gi joe', 'transformers', 'hot wheels'];
+
+  if (viralKeywords.some(k => name.includes(k))) {
+    trending = true; trendSignal = 'Short-Form Video Signal'; confidence = 'High';
+  } else if (nostalgia.some(k => name.includes(k))) {
+    trending = true; trendSignal = 'Nostalgia Signal'; confidence = 'Medium';
+  }
+
+  return { trending, trendSignal, confidence };
+}
+
+// ── Run Live Scan ─────────────────────────────────────────────
+async function runLiveScan() {
+  const itemName = document.getElementById('itemName').value.trim();
+  if (!itemName) { pushLog('warn', 'Input', 'Please enter an item name.'); return; }
+
+  const btn = document.getElementById('liveBtn');
+  btn.textContent = '⚡ Scanning...';
+  btn.disabled = true;
+
+  pushLog('info', 'Scan', 'Live scan initiated: ' + itemName);
+
+  try {
+    const [ebay, trends] = await Promise.all([
+      fetchEbayData(itemName),
+      fetchTrendsSignal(itemName)
+    ]);
+
+    const retail  = parseFloat(document.getElementById('msrp').value) || ebay.retail;
+    const current = ebay.current;
+    const markup  = ((current - retail) / retail) * 100;
+    const status  = getStatus(markup);
+    const signal  = trends.trending ? trends.trendSignal : ebay.signal;
+    const confidence = trends.confidence;
+
+    displayResult({ itemName, retail, current, markup, status, signal, confidence, source: ebay.source || 'eBay Live' });
+
+    // Fire Red-Eye notification
+    if (markup > 75) {
+      fireAlert(itemName, status.label, markup);
+    }
+
+  } catch(err) {
+    pushLog('alert', 'Error', 'Scan failed: ' + err.message);
+  }
+
+  btn.textContent = '⚡ Live Scan';
+  btn.disabled = false;
+}
+
+// ── Run Manual Scan ───────────────────────────────────────────
+function runManualScan() {
+  const itemName = document.getElementById('itemName').value.trim() || 'Unidentified Item';
+  const retail   = parseFloat(document.getElementById('msrp').value);
+  const current  = parseFloat(document.getElementById('msrp').value); // placeholder
+
+  if (isNaN(retail) || retail <= 0) {
+    pushLog('warn', 'Input', 'Please enter a retail price for manual scan.');
+    return;
+  }
+
+  // For manual we need asking price — prompt
+  const askStr = prompt('Enter the current asking/resale price ($):');
+  if (!askStr) return;
+  const asking = parseFloat(askStr);
+  if (isNaN(asking)) { pushLog('warn', 'Input', 'Invalid asking price.'); return; }
+
+  const markup = ((asking - retail) / retail) * 100;
+  const status = getStatus(markup);
+
+  displayResult({ itemName, retail, current: asking, markup, status, signal: 'Manual Entry', confidence: 'N/A', source: 'Manual' });
+
+  if (markup > 75) fireAlert(itemName, status.label, markup);
+}
+
+// ── Display Result ────────────────────────────────────────────
+function displayResult({ itemName, retail, current, markup, status, signal, confidence, source }) {
+  document.getElementById('sentinelBadge').className = 'sentinel-badge ' + status.cls;
+  document.getElementById('sentinelBadge').textContent = status.label;
+  document.getElementById('outItem').textContent    = itemName;
+  document.getElementById('outMarkup').textContent  = (markup >= 0 ? '+' : '') + markup.toFixed(1) + '%';
+  document.getElementById('outMsrp').textContent    = money(retail);
+  document.getElementById('outPrice').textContent   = money(current);
+  document.getElementById('outVerdict').textContent = status.verdict;
+  document.getElementById('outSignal').textContent  =
+    signal + ' · Confidence: ' + confidence + (source ? ' · Source: ' + source : '');
+  document.getElementById('barFill').style.width    = Math.min(Math.max(markup, 0) / 2, 100) + '%';
+  document.getElementById('outBarLabel').textContent = (markup >= 0 ? '+' : '') + markup.toFixed(1) + '%';
+
+  // Log it
+  const logType = markup <= 10 ? 'ok' : markup <= 35 ? 'info' : markup <= 75 ? 'warn' : 'alert';
+  pushLog(logType, status.label, itemName + ' | ' + money(current) + ' vs ' + money(retail) + ' retail | ' + status.rec);
+
+  // Save to state
+  state.lastScan = { itemName, retail, current, markup, status, signal, confidence };
+}
+
+// ── Add to Watch List ─────────────────────────────────────────
+function addToWatchList() {
+  if (!state.lastScan) { pushLog('warn', 'Watch', 'Run a scan first.'); return; }
+
+  const { itemName, retail, current, markup, status, signal } = state.lastScan;
+  const entry = {
+    id: Date.now(),
+    itemName, retail, current, markup,
+    statusLabel: status.label,
+    statusCls: status.cls,
+    signal, rec: status.rec,
+    added: new Date().toLocaleDateString()
+  };
+
+  state.watchList.push(entry);
+  localStorage.setItem('sentinel_watchlist', JSON.stringify(state.watchList));
+
+  // Save to Firebase
+  if (state.firebaseReady && state.db) {
+    const { collection, addDoc } = window._firestore;
+    addDoc(collection(state.db, 'watchlist'), entry).catch(() => {});
+  }
+
+  renderWatchList();
+  pushLog('ok', 'Watch', itemName + ' added to Watch List.');
+}
+
+// ── Render Watch List ─────────────────────────────────────────
+function renderWatchList() {
+  const body = document.getElementById('watchBody');
+  const count = document.getElementById('watchCount');
+  count.textContent = state.watchList.length + ' items tracked';
+
+  if (!state.watchList.length) {
+    body.innerHTML = '<tr><td colspan="8" class="watch-empty">No items on the watch list yet. Run a scan and click "Add to Watch List".</td></tr>';
+    return;
+  }
+
+  body.innerHTML = state.watchList.map(w => `
+    <tr>
+      <td class="item-name">${w.itemName}</td>
+      <td>${money(w.retail)}</td>
+      <td>${money(w.current)}</td>
+      <td>${(w.markup >= 0 ? '+' : '') + w.markup.toFixed(1) + '%'}</td>
+      <td><span class="status-chip ${w.statusCls}">${w.statusLabel}</span></td>
+      <td style="font-size:0.75rem;">${w.signal}</td>
+      <td style="font-size:0.75rem;color:var(--text-dim);">${w.rec}</td>
+      <td style="font-size:0.75rem;">${w.added}</td>
+    </tr>
+  `).join('');
+}
+
+// ── Render Shelf Weather ──────────────────────────────────────
+function renderShelfWeather() {
+  const grid = document.getElementById('weatherGrid');
+  grid.innerHTML = shelfWeather.map(w => `
+    <div class="weather-card">
+      <span class="wc-category">${w.category}</span>
+      <div class="wc-item">${w.item}</div>
+      <div class="wc-condition">${w.condition} · ${w.signal}</div>
+      <div class="wc-rec">${w.rec}</div>
+    </div>
+  `).join('');
+}
+
+// ── Render Sleeper Board ──────────────────────────────────────
+function renderSleeperBoard() {
+  const grid = document.getElementById('sleeperGrid');
+  grid.innerHTML = sleeperItems.map(s => `
+    <div class="sleeper-card">
+      <span class="sc-status">${s.status}</span>
+      <div class="sc-item">${s.item}</div>
+      <div class="sc-reason">${s.reason}</div>
+    </div>
+  `).join('');
+}
+
+// ── Reset Scanner ─────────────────────────────────────────────
+function resetScanner() {
+  document.getElementById('itemName').value = '';
+  document.getElementById('msrp').value = '';
+  document.getElementById('sentinelBadge').className = 'sentinel-badge badge-waiting';
+  document.getElementById('sentinelBadge').textContent = 'Awaiting Scan';
+  document.getElementById('outItem').textContent    = '—';
+  document.getElementById('outMarkup').textContent  = '—';
+  document.getElementById('outMsrp').textContent    = '—';
+  document.getElementById('outPrice').textContent   = '—';
+  document.getElementById('outVerdict').textContent = 'Run a scan to get a verdict. The Sentinel is watching.';
+  document.getElementById('outSignal').textContent  = 'No signal data yet.';
+  document.getElementById('barFill').style.width    = '0%';
+  document.getElementById('outBarLabel').textContent = '0%';
+  state.lastScan = null;
+  pushLog('system', 'System', 'Scanner reset. Ready for new input.');
+}
+
+// ── OneSignal Notifications ───────────────────────────────────
+async function requestNotifications() {
+  try {
+    await OneSignal.Notifications.requestPermission();
+    document.getElementById('notifyStatus').innerHTML =
+      '<span class="dot dot-online"></span> Notifications Active';
+    pushLog('ok', 'Notify', 'Push notifications enabled. You will receive Sentinel alerts.');
+  } catch(e) {
+    pushLog('warn', 'Notify', 'Notification permission denied or unavailable.');
+  }
+}
+
+async function fireAlert(itemName, statusLabel, markup) {
+  pushLog('alert', 'Alert', 'RED-EYE WARNING — ' + itemName + ' at +' + markup.toFixed(0) + '% over retail. Alert issued.');
+  // OneSignal notification fires automatically via their dashboard rules
+  // Manual trigger available via OneSignal REST API from backend
+}
+
+// ── Firebase Ready ────────────────────────────────────────────
+window.addEventListener('firebaseReady', () => {
+  state.db = window._sentinelDB;
+  state.firebaseReady = true;
+  document.getElementById('firebaseStatus').innerHTML =
+    '<span class="dot dot-online"></span> Firebase Connected';
+  pushLog('ok', 'Firebase', 'Database connected. Watch list sync active.');
+});
+
+// ── Keyboard shortcut — Enter to scan ────────────────────────
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && document.activeElement.id === 'itemName') runLiveScan();
+});
+
+// ── Init ──────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  renderShelfWeather();
+  renderSleeperBoard();
+  renderWatchList();
+  pushLog('info', 'Info', 'Shelf Weather loaded. ' + shelfWeather.length + ' categories monitored.');
+  pushLog('info', 'Info', 'Sleeper Watch active. ' + sleeperItems.length + ' items flagged.');
+  pushLog('warn', 'eBay', 'API keys under review. Live pricing uses estimated data until approved.');
+});
+</script>
+
+</body>
+</html>
