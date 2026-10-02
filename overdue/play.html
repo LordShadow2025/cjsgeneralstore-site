@@ -34,7 +34,11 @@ body{
   display:flex; justify-content:center; padding:clamp(10px,4vw,36px) clamp(8px,3vw,28px) 28px;
 }
 .col{width:100%; max-width:540px}
-.mast{margin:0 0 14px; text-align:center; font-family:var(--caps); font-weight:400; font-size:15px; letter-spacing:.14em; color:var(--bone-dim)}
+.exit{position:absolute; left:0; top:-2px; font-family:inherit; font-size:13px; letter-spacing:.06em; color:var(--bone-dim); text-decoration:none; border:1px solid rgba(214,174,98,.3); padding:3px 9px; border-radius:3px}
+.exit:hover,.exit:focus-visible{color:var(--bone); border-color:rgba(214,174,98,.7)}
+@media (max-width:560px){ p.mast{text-align:right !important; padding-left:86px !important; letter-spacing:.06em !important; font-size:12.5px !important} }
+.gate .exit{position:absolute; left:16px; top:16px; z-index:3; font-size:14px; background:rgba(0,0,0,.5)}
+.mast{position:relative;margin:0 0 14px; text-align:center; font-family:var(--caps); font-weight:400; font-size:15px; letter-spacing:.14em; color:var(--bone-dim)}
 
 .top{display:flex; justify-content:space-between; align-items:flex-end; gap:12px; margin-bottom:12px}
 .lvl .shelf{font-style:italic; color:var(--bone-dim); font-size:15px}
@@ -320,7 +324,7 @@ summary{padding:9px 12px; cursor:pointer; font-size:16px}
 <body>
 
 <main class="col">
-  <p class="mast">The Unfound Library: Overdue</p>
+  <p class="mast"><a class="exit" href="/library.html">&larr; Library</a>The Unfound Library: Overdue</p>
   <div class="top">
     <div class="lvl"><div class="shelf"><span id="lvlShelf">Shelf I</span> <span class="cat" id="lvlCat"></span></div><h1 id="lvlName">Sorting the Shelves</h1></div>
     <div class="counts">
@@ -362,6 +366,7 @@ summary{padding:9px 12px; cursor:pointer; font-size:16px}
       </div>
     </div>
     <div class="gate" id="gate">
+      <a class="exit" href="/library.html">&larr; Back to the Library</a>
       <div class="tbg" id="tbgA"></div><div class="tbg wrong" id="tbgB"></div><div class="tshade"></div>
       <div class="title" id="titleMenu">
         <img class="logo" id="tLogo" alt="The Unfound Library: Overdue">
