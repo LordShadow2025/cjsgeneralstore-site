@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Unfound Library: Overdue | Free Match-3 Horror Puzzle Game | CJ's General Store</title>
+<meta name="description" content="Play The Unfound Library: Overdue, a free browser match-3 puzzle game that slowly turns into a horror story. Ten shelves, locked cubbies, clocks that run backward, and an original soundtrack, from the lore of The Unfound Library by C.B. Barkley.">
+<link rel="canonical" href="https://cjsgeneralstore.tech/overdue/">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="/assets/images/favicon.png" type="image/png">
+<meta name="google-adsense-account" content="ca-pub-5761934203737590">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Unfound Library: Overdue">
+<meta property="og:description" content="A pleasant lost game where something is wrong. A free match-3 horror puzzle game you play in your browser.">
+<meta property="og:url" content="https://cjsgeneralstore.tech/overdue/">
+<meta property="og:image" content="https://cjsgeneralstore.tech/overdue/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "The Unfound Library: Overdue",
+  "url": "https://cjsgeneralstore.tech/overdue/",
+  "image": "https://cjsgeneralstore.tech/overdue/img/og.jpg",
+  "description": "A free browser match-3 puzzle game that slowly turns into a horror story, part of the lore of The Unfound Library.",
+  "genre": ["Puzzle", "Match-3", "Horror"],
+  "gamePlatform": "Web browser",
+  "applicationCategory": "Game",
+  "operatingSystem": "Any",
+  "author": { "@type": "Person", "name": "C.B. Barkley" },
+  "publisher": { "@type": "Organization", "name": "CJ's General Store", "url": "https://cjsgeneralstore.tech/" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is The Unfound Library: Overdue free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. It is free to play in your browser, with no download, sign-up, or ads inside the game." } },
+    { "@type": "Question", "name": "Does the game save my progress?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Your furthest shelf, best candle ratings, and the pages you find are saved in your browser on this device." } },
+    { "@type": "Question", "name": "Can I play on my phone?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. It works with touch on phones and tablets, and with a mouse or keyboard on a computer." } },
+    { "@type": "Question", "name": "How long is it?", "acceptedAnswer": { "@type": "Answer", "text": "Chapter One has ten shelves and takes most players about an hour or two." } }
+  ]
+}
+</script>
+<style>
+:root{--ink:#e9dcc3; --dim:#b3a385; --gold:#d6ae62; --violet:#b48cff; --bg:#0b0705}
+body.overdue-page{margin:0; background:var(--bg); color:var(--ink); font-family:'IM Fell English',Georgia,serif; font-size:18px; line-height:1.6}
+.overdue-page a{color:var(--gold)}
+.ov-hero{position:relative; min-height:88vh; display:flex; align-items:center; overflow:hidden;
+  background:#050302 url('img/hero.webp') 62% center / cover no-repeat}
+.ov-hero::before{content:''; position:absolute; inset:0; background:linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.3) 50%,rgba(0,0,0,.1) 70%), linear-gradient(0deg,var(--bg),transparent 30%)}
+.ov-hero-inner{position:relative; width:min(560px,92vw); margin-left:5vw; text-align:center}
+.ov-hero h1{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0)}
+.ov-logo{width:100%; height:auto; filter:drop-shadow(0 0 20px #000)}
+.ov-tag{font-style:italic; font-size:21px; margin:6px 0 22px; text-shadow:0 0 10px #000}
+.ov-play{display:inline-block; font-family:'IM Fell English SC',Georgia,serif; font-size:24px; letter-spacing:.06em; text-decoration:none;
+  color:#1a0f08 !important; background:linear-gradient(#f0cf86,#b9853a); padding:12px 38px; border-radius:4px; box-shadow:0 0 24px rgba(214,174,98,.45)}
+.ov-play:hover,.ov-play:focus-visible{box-shadow:0 0 34px rgba(214,174,98,.8)}
+.ov-meta{margin:14px 0 0; font-size:15px; color:var(--dim); text-shadow:0 0 8px #000}
+.ov-back{position:absolute; top:16px; left:16px; z-index:2; font-size:15px; text-decoration:none; background:rgba(0,0,0,.55); padding:6px 12px; border:1px solid #5a4432; border-radius:3px}
+.ov-main{width:min(900px,92vw); margin:0 auto; padding:10px 0 40px}
+.ov-main h2{font-family:'IM Fell English SC',Georgia,serif; font-weight:400; color:var(--gold); font-size:30px; margin:46px 0 10px; letter-spacing:.03em}
+.ov-main p{margin:0 0 14px}
+.ov-shots{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:18px 0}
+.ov-shots figure{margin:0}
+.ov-shots img{width:100%; height:auto; border:1px solid #3a2a1d; display:block}
+.ov-shots figcaption{font-size:14px; color:var(--dim); font-style:italic; margin-top:4px; text-align:center}
+.ov-shelves{list-style:none; padding:0; margin:0; display:grid; grid-template-columns:1fr 1fr; gap:6px 26px}
+.ov-shelves li{border-bottom:1px solid #2a1d14; padding:5px 0}
+.ov-shelves b{font-weight:400; color:var(--gold); font-family:'IM Fell English SC',Georgia,serif; margin-right:6px}
+.ov-powers{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+.ov-powers div{border:1px solid #3a2a1d; padding:12px 14px; background:#120c08}
+.ov-powers h3{margin:0 0 4px; font-weight:400; color:var(--ink); font-size:20px}
+.ov-powers p{font-size:16px; color:var(--dim); margin:0}
+.ov-faq dt{color:var(--ink); margin-top:12px; font-size:19px}
+.ov-faq dd{margin:2px 0 0; color:var(--dim)}
+.ov-cta{text-align:center; margin:44px 0 10px}
+.ov-violet{color:var(--violet)}
+.overdue-page .glow-footer{position:static; margin:10px 0 0; padding:18px 0 26px; background:transparent}
+@media (max-width:760px){
+  .ov-hero{min-height:92vh; align-items:flex-end; background-position:64% center}
+  .ov-hero::before{background:linear-gradient(0deg,var(--bg) 4%,rgba(0,0,0,.6) 45%,rgba(0,0,0,.15))}
+  .ov-hero-inner{margin:0 auto 7vh}
+  .ov-shots,.ov-powers{grid-template-columns:1fr}
+  .ov-shelves{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body class="overdue-page">
+
+<header class="ov-hero">
+  <a class="ov-back" href="/library.html">&larr; Back to the Library</a>
+  <div class="ov-hero-inner">
+    <h1>The Unfound Library: Overdue</h1>
+    <img class="ov-logo" src="img/logo.webp" alt="The Unfound Library: Overdue" width="780" height="380">
+    <p class="ov-tag">A pleasant lost game where something is wrong.</p>
+    <a class="ov-play" href="play.html">Play now</a>
+    <p class="ov-meta">Free &middot; plays in your browser &middot; no download or sign-up &middot; best with sound on</p>
+  </div>
+</header>
+
+<main class="ov-main">
+
+  <h2>What is Overdue?</h2>
+  <p><em>The Unfound Library: Overdue</em> is a free match-3 puzzle game set in the Unfound Library, the dark archive hidden behind CJ's General Store. It begins as a cozy puzzle: it's after hours, the returns are piling up, and your job is to match books, keys, crystals, gears, notes, and lanterns to put the lost Tomes back where they belong.</p>
+  <p>But the Library is not an ordinary library. Shelf by shelf, small things stop adding up. A book opens an eye. A catalogue number doesn't fit. A music box starts to play on its own. By the last shelf, you will understand why some books are never meant to be found, and why the Library has been so glad to have you.</p>
+
+  <div class="ov-shots">
+    <figure><img src="img/locks.webp" alt="Shelf II, The Locked Cubbies: a match-3 board with Tomes locked behind iron bars" width="560" height="684" loading="lazy"><figcaption>Shelf II: Tomes locked away in their cubbies</figcaption></figure>
+    <figure><img src="img/clockwork.webp" alt="Shelf IX, The Clockwork Shelf: old clocks running backward among the books" width="560" height="748" loading="lazy"><figcaption>Shelf IX: the clocks run backward</figcaption></figure>
+    <figure><img src="img/speaks.webp" alt="Shelf X, The Library Speaks: violet words appear over the board" width="560" height="745" loading="lazy"><figcaption>Shelf X: the Library speaks</figcaption></figure>
+  </div>
+
+  <h2>How to play</h2>
+  <p>Swap two neighboring pieces to line up three or more of a kind. Recover the Tomes each shelf asks for before your moves run out. Line up four to make a <em>charged</em> piece that fires a beam across the shelf, and line up five (or an L or T shape of five) to make an <span class="ov-violet">Unfound Book</span>, which takes every piece of one kind when you swap it.</p>
+  <p>Each shelf adds one new idea: Keys open locked cubbies, any match sweeps away dust, Gears stop clocks, and a crack in the wall hides torn pages worth finding. Finish a shelf with moves to spare to earn up to three candles.</p>
+
+  <h2>The ten shelves of Chapter One</h2>
+  <ul class="ov-shelves">
+    <li><b>I.</b> Sorting the Shelves</li>
+    <li><b>II.</b> The Locked Cubbies</li>
+    <li><b>III.</b> Dust Sheets</li>
+    <li><b>IV.</b> The Crack in the Wall</li>
+    <li><b>V.</b> Borrowed Light</li>
+    <li><b>VI.</b> The Unfound Book</li>
+    <li><b>VII.</b> Resonance</li>
+    <li><b>VIII.</b> Static</li>
+    <li><b>IX.</b> The Clockwork Shelf</li>
+    <li><b>X.</b> The Library Speaks</li>
+  </ul>
+
+  <h2>Power-ups</h2>
+  <div class="ov-powers">
+    <div><h3>Lantern Flare</h3><p>Charged by matching Lanterns. Burns away a 3&times;3 patch of the shelf, locks and dust included.</p></div>
+    <div><h3>Crystal Lens</h3><p>Charged by matching Crystals. One free swap anywhere, whether it makes a match or not.</p></div>
+    <div><h3>Hourglass</h3><p>Charged by matching Gears. Three more moves when you need them most.</p></div>
+  </div>
+
+  <h2>An original soundtrack</h2>
+  <p>Every shelf has its own music, written for the game, from the quiet <em>The Door Behind the Store</em> to the cosmic chaos of <em>The Static Room</em>, <em>The Clock Runs Backward</em>, and <em>The Library Speaks</em>. Turn your sound on. For more music from the General Store, visit the <a href="https://thestorekeeper.bandcamp.com/" target="_blank" rel="noopener">Bandcamp page</a> and the <a href="/soundroom.html">Sound Room</a>.</p>
+
+  <h2>Part of the lore</h2>
+  <p>Overdue is a piece of the Unfound Library's story, told through play instead of print. The catalogue numbers, the torn pages you pull from the walls, and the things the Library says on the last shelf all belong to the same world as the rest of the lore. Collect every page, then wander back to the <a href="/library.html">Library</a> and the <a href="/lorekeeper.html">LoreKeeper Room</a> to see where the story goes next.</p>
+
+  <h2>Questions</h2>
+  <dl class="ov-faq">
+    <dt>Is it free?</dt><dd>Yes. It's free to play in your browser, with no download, sign-up, or ads inside the game.</dd>
+    <dt>Does it save my progress?</dt><dd>Yes. Your furthest shelf, best candles, and the pages you've found are saved in your browser on this device.</dd>
+    <dt>Can I play on my phone?</dt><dd>Yes. It works with touch on phones and tablets, and with a mouse or keyboard on a computer.</dd>
+    <dt>I can't hear anything.</dt><dd>Check that your sound is on. On an iPhone, make sure the silent switch is off. Music can also be switched on or off with the button under the board.</dd>
+    <dt>How long is it?</dt><dd>Chapter One has ten shelves and takes most players an hour or two.</dd>
+  </dl>
+
+  <p class="ov-cta"><a class="ov-play" href="play.html">Enter the Library</a></p>
+</main>
+
+<div id="site-footer"></div>
+<script>
+  (function () {
+    function inject(html){ var slot=document.getElementById('site-footer'); if(slot) slot.innerHTML=html; }
+    fetch('/footer.html',{cache:'no-store'}).then(function(r){ if(!r.ok) throw 0; return r.text(); }).then(inject).catch(function(){
+      inject('<footer class="glow-footer"><nav class="glow-footer__wrap"><a class="glow-card" href="/index.html">Home</a><a class="glow-card" href="/library.html">Library</a><a class="glow-card" href="/soundroom.html">Sound Room</a></nav></footer>');
+    });
+  })();
+</script>
+</body>
+</html>
