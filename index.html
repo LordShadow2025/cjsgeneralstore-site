@@ -6,7 +6,7 @@
 <link rel="canonical" href="https://cjsgeneralstore.tech/" />
 <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 <link rel="icon" href="/assets/images/favicon.png" type="image/png" />
-<meta name="description" content="Retro GenX vibes, music, stories, collectibles, and fun. Visit the Clubhouse, Sound Room, Library, and more.">
+<meta name="description" content="Retro GenX vibes, original music, dark poetry, collectibles, and games. Visit the Sound Room, Library, Clubhouse, and play The Unfound Library: Overdue.">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="CJ's General Store and More">
 <meta property="og:description" content="Your nostalgic GenX destination — music, stories, games, and collectibles.">
@@ -47,6 +47,18 @@
 <!-- STYLES & FONTS -->
 <link rel="stylesheet" href="css/styles.css" />
 <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+/* Site guide: readable text below the storefront scene */
+.site-guide{max-width:820px; margin:0 auto 110px; padding:22px 28px 26px; background:rgba(0,0,0,.72); border:2px solid #00ffff; border-radius:14px;
+  box-shadow:0 0 10px rgba(0,255,255,.6), 0 0 22px rgba(255,0,255,.35); color:#f2f2f2; font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; font-size:16.5px; line-height:1.65; text-align:left}
+.site-guide h2{font-family:'Permanent Marker',cursive; font-weight:400; color:#00ffff; text-shadow:0 0 8px rgba(0,255,255,.7); font-size:26px; margin:6px 0 10px; text-align:center}
+.site-guide h3{font-family:'Permanent Marker',cursive; font-weight:400; color:#ff66ff; font-size:20px; margin:18px 0 4px}
+.site-guide p{margin:0 0 10px}
+.site-guide a{color:#7ff9ff}
+.site-guide .feature{border:1px solid #ff00ff; border-radius:10px; padding:12px 16px; margin:16px 0 6px; background:rgba(40,0,40,.45)}
+.site-guide .feature h3{margin-top:0; color:#ffd36b}
+@media (max-width:600px){ .site-guide{margin:0 12px 140px; padding:18px} }
+</style>
 </head>
 <body>
 <div class="wrapper">
@@ -86,6 +98,53 @@
     This site celebrates everything analog, neon, and heartfelt — built for dreamers who still remember Saturday mornings and streetlight memories.
   </p>
 </div>
+
+<!-- 🗺️ Site guide (readable text for visitors and search engines) -->
+<section class="site-guide" aria-labelledby="guide-title">
+  <h2 id="guide-title">Take a Walk Around the Store</h2>
+  <p>CJ's General Store and More is one GenX'er's corner of the internet: part shop, part hangout, part haunted archive. Everything here is made by hand, from the music and the writing to the art and the games. Pull up a rocking chair, turn the sound on, and wander. Each room has something different waiting.</p>
+
+  <div class="feature">
+    <h3>New in the Library: The Unfound Library: Overdue</h3>
+    <p>A free match-3 puzzle game you play right in your browser. It starts cozy: it's after hours and you're putting lost books back on the shelves. Shelf by shelf, something starts to feel wrong. Ten shelves, an original soundtrack, and a story that belongs to the lore of The Unfound Library. <a href="/overdue/">Step inside and play</a>.</p>
+  </div>
+
+  <h3>The General Store</h3>
+  <p>The main shelves of the shop: vintage finds, collectibles, and GenX goodies. The full stock lives in our eBay store, and the <a href="generalstore.html">General Store</a> is where to start browsing.</p>
+
+  <h3>The Sound Room</h3>
+  <p>Original music by C.B. Barkley, the musical side of the writing. Ambient, synth, and lyrical tracks, with links to Bandcamp and YouTube. Put on <em>Streetlight Memories</em> in the <a href="soundroom.html">Sound Room</a> and stay a while.</p>
+
+  <h3>The Library</h3>
+  <p>At first glance the <a href="library.html">Library</a> is a cozy reading room: poems, stories, and the GenX blog. Stay a little longer and you'll notice it's a bit off. Books aren't quite where you left them, and the quiet feels like it's listening. It's where Overdue begins, and if you look closely, there's a keyhole into the LoreKeeper Room, where some works are shelved and some are kept.</p>
+
+  <h3>The Clubhouse</h3>
+  <p>The hangout. Saturday morning cartoons, MST3K, Bob Ross, 80s and 90s radio, and a Discord to chat with fellow GenX'ers. Kick back in the <a href="clubhouse.html">Clubhouse</a> like it's a Saturday with nowhere to be.</p>
+
+  <h3>The Showcase</h3>
+  <p>Where the spotlight goes. The <a href="showcase.html">Showcase</a> is for indie bands, nerd bands, and GenX artists worth your time, along with honest reviews of the odd finds that come through the store.</p>
+
+  <h3>The Office</h3>
+  <p>Behind the counter: project logs, dev notes, and updates on what's coming next. Please ignore the caution tape and any strange noises. The <a href="office.html">Office</a> is mostly safe.</p>
+
+  <h3>The Sentinel Protocol</h3>
+  <p>A free tool for collectors who are tired of scalpers. The <a href="sentinel-board.html">Sentinel Board</a> watches live market prices and flags inflated listings, and <a href="sentinel-of-the-shelf.html">Sentinel of the Shelf</a> tells you in seconds whether an asking price is fair or scalped.</p>
+
+  <p>Want to know more about who runs the place? Read the <a href="about.html">About page</a>, or say hello at <a href="mailto:info@cjsgeneralstore.tech">info@cjsgeneralstore.tech</a>.</p>
+</section>
+
+<script>
+  // Keep the guide below the storefront scene (the signs and video are positioned over the page).
+  (function(){
+    function place(){
+      var g=document.querySelector('.site-guide'); if(!g) return;
+      var low=0; ['.mid-sign-row','.promo-wrap'].forEach(function(q){ var e=document.querySelector(q); if(e){ var b=e.getBoundingClientRect().bottom+window.scrollY; if(b>low) low=b; } });
+      g.style.marginTop='0px'; var top=g.getBoundingClientRect().top+window.scrollY;
+      g.style.marginTop=Math.max(0, low+40-top)+'px';
+    }
+    window.addEventListener('load',place); window.addEventListener('resize',place); place();
+  })();
+</script>
 
 <!-- 📎 Footer Links -->
 <div class="footer-links">
