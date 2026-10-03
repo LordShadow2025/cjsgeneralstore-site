@@ -18,6 +18,20 @@
 <title>Sound Room | Music & Lyrics by C.B. Barkley | CJ's General Store</title>
 <link rel="stylesheet" href="assets/css/soundroom.css">
 <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
+<style>
+/* Room guide: readable text below the scene. The page now scrolls; the scene background stays put. */
+html, body{height:auto !important; min-height:100vh; overflow-y:auto !important}
+body{background-attachment:fixed !important}
+.room-guide{position:relative; z-index:5; max-width:820px; margin:40px auto 130px; padding:22px 28px 26px; background:rgba(0,0,0,.74);
+  border:2px solid var(--rg,#00ffff); border-radius:14px; box-shadow:0 0 10px var(--rg,#00ffff), 0 0 24px rgba(255,0,255,.3);
+  color:#f2f2f2; font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; font-size:16.5px; line-height:1.65; text-align:left}
+.room-guide h2{font-family:'Permanent Marker',cursive; font-weight:400; color:var(--rg,#00ffff); text-shadow:0 0 8px var(--rg,#00ffff); font-size:26px; margin:4px 0 10px; text-align:center}
+.room-guide h3{font-family:'Permanent Marker',cursive; font-weight:400; color:var(--rg2,#ff66ff); font-size:20px; margin:18px 0 4px}
+.room-guide p{margin:0 0 10px}
+.room-guide a{color:#7ff9ff}
+@media (max-width:600px){ .room-guide{margin:30px 12px 200px; padding:18px} }
+</style>
 </head>
 <body>
 
@@ -95,6 +109,43 @@
   </script>
 
 </main>
+
+<section class="room-guide" style="--rg:#00ffff; --rg2:#ff66ff">
+  <h2>About the Sound Room</h2>
+  <p>The Sound Room is the musical side of the writing. Everything here is by C.B. Barkley: ambient pieces for late nights, synth tracks that sound like a drive past closed shops and streetlights, and lyrical songs that started life as poems. If the Library is where the words live, this is where they hum.</p>
+
+  <h3>Start here: Streetlight Memories</h3>
+  <p>The player in this room is loaded with <em>Streetlight Memories</em>. Give it a listen, then head to <a href="https://thestorekeeper.bandcamp.com/" target="_blank" rel="noopener">Bandcamp</a> for the full collection, where you can stream, buy, and support the music directly.</p>
+
+  <h3>Music for The Unfound Library: Overdue</h3>
+  <p>The Sound Room also scored a game. <a href="overdue/">Overdue</a>, the free puzzle game in the Library, has a soundtrack written for it, from the title song <em>The Unfound Library</em> and the quiet <em>The Door Behind the Store</em> to the cosmic chaos of <em>The Static Room</em>, <em>The Clock Runs Backward</em>, and <em>The Library Speaks</em>. Play it with the sound on.</p>
+
+  <h3>Watch and listen</h3>
+  <p>The <a href="https://www.youtube.com/@shadowstriker6389" target="_blank" rel="noopener">YouTube channel</a> has music videos and ambient sessions, good for working, reading, or just leaving on in the background.</p>
+
+  <h3>Lyrics and prints</h3>
+  <p>Many of these songs began as written pieces, and lyric sheets and cover art are being prepared as downloadable prints. Site-only singles and new drops will show up in this room first.</p>
+
+  <p>And yes, the noises from the Office are real. Nobody has gone in to check.</p>
+</section>
+
+<script>
+  // Keep the guide below the scene (several scene pieces are positioned over the page).
+  (function(){
+    function place(){
+      var g=document.querySelector('.room-guide'); if(!g) return;
+      var low=0;
+      document.querySelectorAll('body *').forEach(function(e){
+        if(g.contains(e)||e.closest('#site-footer')) return;
+        var cs=getComputedStyle(e); if(cs.position!=='absolute'||cs.display==='none'||cs.visibility==='hidden') return;
+        var r=e.getBoundingClientRect(); if(r.width<40||r.height<20) return;
+        var b=r.bottom+window.scrollY; if(b>low) low=b; });
+      g.style.marginTop='40px'; var top=g.getBoundingClientRect().top+window.scrollY;
+      if(low+40>top) g.style.marginTop=(40+low+40-top)+'px';
+    }
+    window.addEventListener('load',place); window.addEventListener('resize',place); place();
+  })();
+</script>
 
 <div id="site-footer"></div>
 
